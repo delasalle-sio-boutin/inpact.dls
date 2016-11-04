@@ -1,0 +1,3 @@
+Mettre en gitignore : 
+
+	- parametres.localhost.php (car pas les mêmes valeurs de chez nous)
