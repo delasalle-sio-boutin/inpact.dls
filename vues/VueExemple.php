@@ -1,6 +1,6 @@
 <?php
 
-include ('VueAccueil.php');
+include ('VueMenu.php');
 
 ?>
 
