@@ -1,3 +1,12 @@
+/* --------------------------------------------------------------------- MISE EN FORME GÉNÉRALE --------------------------------------------------------------------- */
+
+/* Mise en forme générale de la page */
+body{
+    background: #c0c0c0;
+    margin: 1% 2%;
+}
+
+/* Mise en forme de la div "#page" */
 div#page {
 	/* largeur, centrage avec des marges auto, padding nul, bordure noire, alignement gauche */
 	width: 100%;
@@ -11,11 +20,11 @@ div#page {
 	background: -webkit-gradient(linear, left top, left bottom, from(rgb(180, 180, 180)), to(rgb(180, 180, 180)));
 	background: linear-gradient(to bottom, rgb(210, 210, 210), rgb(180, 180, 180));
 }
-body{
-    background: #c0c0c0;
-    margin: 1% 2%;
-    
-}
+
+/* ------------------------------------------------------------------ MISE EN FORME DU MENU HEADER ------------------------------------------------------------------ */
+
+
+/* Barre de navigation (couleur, border, taille minimum) */
 .navbar, .dropdown-menu{
 	background: #f5b570;
 	border-bottom: solid 1px;
@@ -28,50 +37,64 @@ body{
 	margin-top: 17px;
 }
 
+/* Commencement de la page / fin de la barre de navigation (la navbar ne passe pas sur le texte) */
 .navbar-wrapper{
 	height: 70px;
 }
 
+/* Affectation d'une hauteur minimale pour la barre de navigation */
 .navbar-header{
 	min-height: 70px;
 }
 
-.nav>li>a, .dropdown-menu>li>a:focus, .dropdown-menu>li>a:hover, .dropdown-menu>li>a, .dropdown-menu>li{
-  border-bottom: 3px solid transparent;
-}
+/* Mise en forme des boutons de la navigation (on enleve la couleur du background) quand on passe la souris dessus */
 .nav>li>a:focus, .nav>li>a:hover,.nav .open>a, .nav .open>a:focus, .nav .open>a:hover, .dropdown-menu>li>a:focus, .dropdown-menu>li>a:hover{
-  border-bottom: 3px solid transparent;
   background: none;
 }
 
-/* Couleur des titres de la navigation */
+/* Mise en forme des titres de la navigation */
 .navbar a, .dropdown-menu>li>a, .dropdown-menu>li>a:focus, .dropdown-menu>li>a:hover, .navbar-toggle{
 	color: #fff;
 }
-.dropdown-menu{
-    -webkit-box-shadow: none;
-    box-shadow:none;
-}
 
+/* Mise en forme du texte de la barre de navigation quand on passe la souris dessus */
 .nav li a:hover{
   color: black;
 }
 
-/* Enlever le menu de droite  quand la page est entre 768px et 991px */
+/* Enlever le "connecté en tant que" quand la page est comprise entre 768px et 991px */
 @media (min-width: 768px) and (max-width: 991px) {
 		ul.ui-right{
 			margin-right: -9999px;
 		}
 }
 
+/* Mise en forme du bouton de navigation quand la taille d'écran est inférieure à 768px */
 .navbar-toggle .icon-bar{
     color: #fff;
     background: #737373;
 }
 
+/* Mise en forme des images affiché dans le dropdown des liens utiles */
 img#liens{
 	width: 25px;
 	height: 25px;
 	margin-right: 5px;
 }
 
+/* Mettre une bordure prononcée dans le menu quand on clique sur un dropdown */
+.dropdown-menu{
+	border: 1px solid #d09a5f;
+}
+
+/* Permet de mettre la division de connection à gauche, quand la taille d'écran est inférieure à 768px */
+@media (min-width: 0px) and (max-width: 768px) {
+	.ui-login{
+		border: 1px solid black;
+		margin-left: 15px;
+		text-align: left;
+	}
+	.pull-right {
+ 	 float: left !important;
+	}
+}
