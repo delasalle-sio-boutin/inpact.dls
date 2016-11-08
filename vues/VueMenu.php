@@ -51,7 +51,7 @@
 	                        </li>
 							<li><a href="#">Contact</a></li>
 	                    </ul>
-	                    <ul class="nav navbar-nav pull-right ui-deco">
+	                    <ul class="nav navbar-nav pull-right">
 	                        <li><a href="#">Se déconnecter</a></li>
 	                    </ul>
 	                    <ul class="nav navbar-nav pull-right ui-right">

@@ -60,13 +60,8 @@ body{
 /* Enlever le menu de droite  quand la page est entre 768px et 991px */
 @media (min-width: 768px) and (max-width: 991px) {
 		ul.ui-right{
-			opacity: 0;
 			margin-right: -9999px;
 		}
-}
-
-.ui-deco{
-	border: solid 1px #737373;
 }
 
 .navbar-toggle .icon-bar{
