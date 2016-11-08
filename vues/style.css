@@ -53,29 +53,20 @@ body{
     box-shadow:none;
 }
 
-.nav li a:hover:nth-child(8n+1), .nav li.active:nth-child(8n+1){
-  border-bottom: #C4E17F 3px solid;
+.nav li a:hover{
+  color: black;
 }
-.nav li a:hover:nth-child(8n+2), .nav li.active:nth-child(8n+2){
-  border-bottom: #F7FDCA 3px solid;
+
+/* Enlever le menu de droite  quand la page est entre 768px et 991px */
+@media (min-width: 768px) and (max-width: 991px) {
+		ul.ui-right{
+			opacity: 0;
+			margin-right: -9999px;
+		}
 }
-.nav li a:hover:nth-child(8n+3), .nav li.active:nth-child(8n+3){
-  border-bottom: #FECF71 3px solid;
-}
-.nav li a:hover:nth-child(8n+4), .nav li.active:nth-child(8n+4){
-  border-bottom: #F0776C 3px solid;
-}
-.nav li a:hover:nth-child(8n+5), .nav li.active:nth-child(8n+5){
-  border-bottom: #DB9DBE 3px solid;
-}
-.nav li a:hover:nth-child(8n+6), .nav li.active:nth-child(8n+6){
-  border-bottom: #C49CDE 3px solid;
-}
-.nav li a:hover:nth-child(8n+7), .nav li.active:nth-child(8n+7){
-  border-bottom: #669AE1 3px solid;
-}
-.nav li a:hover:nth-child(8n+8), .nav li.active:nth-child(8n+8){
-  border-bottom: #62C2E4 3px solid;
+
+.ui-deco{
+	border: solid 1px #737373;
 }
 
 .navbar-toggle .icon-bar{
@@ -88,3 +79,4 @@ img#liens{
 	height: 25px;
 	margin-right: 5px;
 }
+

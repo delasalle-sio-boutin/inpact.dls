@@ -51,12 +51,13 @@
 	                        </li>
 							<li><a href="#">Contact</a></li>
 	                    </ul>
-	                    <ul class="nav navbar-nav pull-right">
-	                        <li>
-	                        Connecté en tant que<br>
-	                        Killian BOUTIN
-	                        </li>
+	                    <ul class="nav navbar-nav pull-right ui-deco">
 	                        <li><a href="#">Se déconnecter</a></li>
+	                    </ul>
+	                    <ul class="nav navbar-nav pull-right ui-right">
+	                        <li><a>
+	                        	Connecté en tant Killian BOUTIN &nbsp;
+	                        </a></li>
 	                    </ul>
 	                </div>
 	            </div>
