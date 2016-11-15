@@ -40,7 +40,7 @@ switch($action){
 		include_once ('controleurs/CtrlMenu.php'); break;
 	}
 	
-	// toute autre tentative est automatiquement redirigée vers le contrôleur d'authentification	
+	// toute autre tentative est automatiquement redirigée vers le menu
 	default : {
 		include_once ('controleurs/CtrlMenu.php'); break;
 	}
