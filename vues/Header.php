@@ -71,17 +71,9 @@
 							<li><a href="#">Contact</a>
 							</li>
 						</ul>
-
+						
+						<?php if ($login == ''){?>
 						<ul class="nav navbar-nav pull-right">
-							<!--
-	                        <li><a href="#">Se déconnecter</a></li>
-		                    </ul>
-		                    <ul class="nav navbar-nav pull-right ui-right">
-		                        <li><a>
-		                        	Connecté en tant Killian BOUTIN &nbsp;
-		                        </a></li>
-		                    </ul>
-		                    -->
 		                    <li class="dropdown ui-login">
 		                    	<a href="#" class="dropdown-toggle active" data-toggle="dropdown" role="button" aria-haspopup="true" 
 		                    	aria-expanded="false">Connexion <span class="caret"></span></a>
@@ -107,6 +99,17 @@
 								</ul>
 							</li>
 						</ul>
+						
+						<?php }else{?>
+						<ul class="nav navbar-nav pull-right">
+							<li><a href="#">Se déconnecter</a></li>
+		                </ul>
+		                <ul class="nav navbar-nav pull-right ui-right">
+	                        <li><a>
+	                        	Connecté en tant que <b><?php echo $login; ?></b>
+	                        </a></li>
+	                    </ul>
+	                    <?php } ?>
 					</div>
 				</div>
 			</nav>

@@ -27,7 +27,7 @@ if ($action == '' || $action == 'Deconnecter')
 }
 
 // pour mémoriser l'adresse mail, le mot de passe et le type d'utilisateur ("eleve", "administrateur" ou "professeur") :
-if ( isset ($_SESSION['adrMail']) == false)  $adrMail = '';  else  $adrMail = $_SESSION['adrMail'];
+if ( isset ($_SESSION['login']) == false)  $login = '';  else  $login = $_SESSION['login'];
 if ( isset ($_SESSION['motDePasse']) == false)  $motDePasse = '';  else  $motDePasse = $_SESSION['motDePasse'];
 if ( isset ($_SESSION['typeUtilisateur']) == false)  $typeUtilisateur = '';  else  $typeUtilisateur = $_SESSION['typeUtilisateur'];
 
