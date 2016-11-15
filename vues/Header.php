@@ -84,13 +84,13 @@
 												<form class="form" role="form" method="post" action="index.php?action=Connecter"
 													accept-charset="UTF-8" style="margin: 2px 8px;">
 													<div class="form-group">
-														<input type="text" class="form-control" id="login" placeholder="Login" required>
+														<input type="text" name="txtLogin" id="txtLogin" class="form-control" placeholder="Login" required>
 													</div>
 													<div class="form-group">
-														<input type="password" class="form-control" id="mdp" placeholder="Password" required>
+														<input type="password" name="txtMdp" id="txtMdp" class="form-control" placeholder="Password" required>
 													</div>
 													<div class="form-group">
-														<button type="submit" class="btn btn-success btn-block">Se connecter</button>
+														<button type="submit" name="btnConnecter" id="btnConnecter" class="btn btn-success btn-block">Se connecter</button>
 													</div>
 												</form>
 											</div>
@@ -102,7 +102,7 @@
 						
 						<?php }else{?>
 						<ul class="nav navbar-nav pull-right">
-							<li><a href="#">Se déconnecter</a></li>
+							<li><a href="index.php?action=Deconnecter">Se déconnecter</a></li>
 		                </ul>
 		                <ul class="nav navbar-nav pull-right ui-right">
 	                        <li><a>
