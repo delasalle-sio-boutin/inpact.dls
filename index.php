@@ -12,7 +12,7 @@
 //    index.php?action=Menu                   : pour afficher le menu
 
 session_start();				// permet d'utiliser des variables de session
-
+ 
 // si $debug est égal à true, certaines variables sont affichées (pour la mise au point)
 $debug = false;
 
