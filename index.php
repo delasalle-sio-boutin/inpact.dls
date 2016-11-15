@@ -1,5 +1,5 @@
 <?php
-// Projet DLS Inpact
+// Projet annuel - DLS Inpact
 // Ecrit le 15/11/2016 par Killian BOUTIN
 // Modifié le 15/11/2016 par Killian BOUTIN
 
