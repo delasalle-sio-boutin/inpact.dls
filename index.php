@@ -1,6 +1,6 @@
 <?php
 // Projet annuel - DLS Inpact
-// Ecrit le 15/11/2016 par Killian BOUTIN
+// Ecrit le 10/11/2016 par Killian BOUTIN
 // Modifié le 15/11/2016 par Killian BOUTIN
 
 // Fonction de la page principale index.php : analyser toutes les demandes et activer le contrôleur chargé de traiter l'action demandée
