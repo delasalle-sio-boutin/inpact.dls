@@ -7,11 +7,11 @@ body{
 }
 
 /* Mise en forme de la div "#page" */
-div#page {
+div#page{
 	/* largeur, centrage avec des marges auto, padding nul, bordure noire, alignement gauche */
 	width: 100%;
 	margin: 0 auto;
-	padding: 0;
+	padding: 0 20px;
 	border: #000 1px solid; 
 	text-align: left;
 		
@@ -20,6 +20,102 @@ div#page {
 	background: -webkit-gradient(linear, left top, left bottom, from(rgb(180, 180, 180)), to(rgb(180, 180, 180)));
 	background: linear-gradient(to bottom, rgb(210, 210, 210), rgb(180, 180, 180));
 }
+
+div#page-contenu{
+	/* hauteur, largeur, centrage avec des marges auto, padding nul, bordure noire, alignement gauche, arrière plan orange */
+	width: 35%;
+	margin: 30px auto;
+	padding: 0;
+	border: #000 1px solid;
+	
+	/* coins arrondis en haut uniquement */
+	-moz-border-radius: 15px 15px 0 0;
+	-webkit-border-radius: 15px 15px 0 0;
+	-o-border-radius: 15px 15px 0 0;
+	-ms-border-radius: 15px 15px 0 0;
+	-khtml-border-radius: 15px 15px 0 0;
+	border-radius: 15px 15px 0 0;
+}
+
+
+div#page-contenu-head{
+	background: #f5b570;
+	border-bottom: #000 1px solid;
+	padding: 3px auto;
+	padding-top: 10px;
+	
+	/* coins arrondis en haut uniquement */
+	-moz-border-radius: 15px 15px 0 0;
+	-webkit-border-radius: 15px 15px 0 0;
+	-o-border-radius: 15px 15px 0 0;
+	-ms-border-radius: 15px 15px 0 0;
+	-khtml-border-radius: 15px 15px 0 0;
+	border-radius: 15px 15px 0 0;
+}
+
+div#page-contenu-body{
+	width: 100%;
+	margin: 10px 0;
+}
+
+table{
+	margin: 0 auto;
+	width: 95%;
+}
+
+td:first-child{
+	width: 20%;
+	margin: 0 auto;
+}
+
+td:last-child {
+	width: 80%;
+	text-align: center;
+	margin: 0 auto;
+}
+
+input[type="text"], input[type="password"]{
+	/* coins arrondis */
+	-moz-border-radius: 5px 5px 5px 5px;
+	-webkit-border-radius: 5px 5px 5px 5px;
+	-o-border-radius: 5px 5px 5px 5px;
+	-ms-border-radius: 5px 5px 5px 5px;
+	-khtml-border-radius: 5px 5px 5px 5px;
+	border-radius: 5px 5px 5px 5px;
+}
+
+input[type="text"]:focus, input[type="password"]:focus{
+	border: solid 2px #f5b570;
+	outline: 0;
+}
+
+/* style de la liste <ul id="menu-horizontal"> */
+ul#menu-horizontal {
+	padding: 0;
+	list-style-type: none; 
+}
+
+/* style des éléments <li> de la liste <ul id="menu-horizontal"> */
+ul#menu-horizontal li {
+	padding: 0;
+	margin: 0;
+	font-weight : bold;
+	font-size: 25px;
+	text-align: center
+}
+
+@media (min-width: 0px) and (max-width: 768px) {
+	ul#menu-horizontal li {
+		font-size: 15px;
+	}
+	div#page-contenu{
+		/* hauteur, largeur, centrage avec des marges auto, padding nul, bordure noire, alignement gauche, arrière plan orange */
+		width: 80%;
+	}
+}
+
+
+
 
 /* ------------------------------------------------------------------ MISE EN FORME DU MENU HEADER ------------------------------------------------------------------ */
 
