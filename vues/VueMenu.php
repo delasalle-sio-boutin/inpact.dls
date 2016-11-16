@@ -10,3 +10,8 @@ include ('Header.php');
 	<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
 	Et j'aime faire des tests.
 </div>
+<?php
+
+include ('Footer.php');
+
+?>
