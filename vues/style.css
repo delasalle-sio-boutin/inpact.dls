@@ -243,13 +243,13 @@ footer h4 {
 	margin: auto auto;
 }
 
-/* Mise en page de la div "page" contenu dans la div "footer-nav" */
+/* Mise en page du <ul> "page" contenu dans la div "footer-nav" */
 .footer-nav ul.pages { list-style:none; padding:0px; }
 .footer-nav ul.pages li { padding: 1px 0px; }
 .footer-nav ul.pages a { padding: 5px 0px; color: rgba(255,255,255,1.00); font-weight: bold; }
 .footer-nav ul.pages a:hover { color:rgba(255,255,255,0.80); text-decoration:none; }
 
-/* Mise en page de la div "list" contenu dans la div "footer-nav" */
+/* Mise en page du <ul> "list" contenu dans la div "footer-nav" */
 .footer-nav ul.list { list-style:none; padding:0px; }
 .footer-nav ul.list li { padding:2px 0px;}
 .footer-nav ul.list a { color:rgba(255,255,255,0.80); }
@@ -257,8 +257,8 @@ footer h4 {
 
 /* Mise en page de la div "footer-social" */
 .footer-social ul { list-style:none; padding:0px; }
-.footer-social li { padding:1px 4px;}
-.footer-social a { color:rgba(255,255,255,1.00);}
+.footer-social li { padding:2px 0px;}
+.footer-social ul a { padding: 5px 10px; color: rgba(255,255,255,1.00); }
 .footer-social a:hover { color:rgba(255,255,255,0.80); text-decoration:none; }
 
 @media (min-width: 768px) {
