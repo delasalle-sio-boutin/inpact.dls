@@ -72,7 +72,7 @@
 							</li>
 						</ul>
 						
-						<?php if ($login == ''){?>
+						<?php if ($_SESSION['login'] == ''){?>
 						<ul class="nav navbar-nav pull-right">
 		                    <li class="dropdown ui-login">
 		                    	<a href="#" class="dropdown-toggle active" data-toggle="dropdown" role="button" aria-haspopup="true" 
