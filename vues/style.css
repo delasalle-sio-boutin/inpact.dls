@@ -1,9 +1,15 @@
 /* --------------------------------------------------------------------- MISE EN FORME GÉNÉRALE --------------------------------------------------------------------- */
 
+*{
+	margin: 0;
+	padding: 0;
+}
+
 /* Mise en forme générale de la page */
 body{
     background: #c0c0c0;
-    margin: 1% 0%;
+    margin: 0;
+    padding: 0;
 }
 
 /* Mise en forme de la div "#page" */
@@ -159,7 +165,7 @@ ul#menu-horizontal li {
 }
 
 /* Enlever le "connecté en tant que" quand la page est comprise entre 768px et 991px */
-@media (min-width: 768px) and (max-width: 991px) {
+@media (max-width: 991px) {
 		ul.ui-right{
 			margin-right: -9999px;
 		}
@@ -184,7 +190,7 @@ img#liens{
 }
 
 /* Permet de mettre la division de connection à gauche, quand la taille d'écran est inférieure à 768px */
-@media (min-width: 0px) and (max-width: 768px) {
+@media (min-width: 0px) and (max-width: 767px) {
 	.ui-login{
 		border: 1px solid black;
 		margin-left: 15px;
@@ -197,66 +203,67 @@ img#liens{
 
 
 /* ------------------------------------------------------------------ MISE EN FORME DU MENU FOOTER ------------------------------------------------------------------ */
-div#footer{
-	position : absolute;
-	width : 100%;
-	margin: 0;
-	
-	padding:0;
-	
-}
-footer#footer{
-	
-}
+
+/* Mise en page du footer en général (taille, marge, overflow) */
 .footer-bs {
-    background-color: #ff8000;
-	
-	
+	width : 100%;
+	height: 100%;
+	margin: 20px auto 0 auto;
+	padding:0;
+	background-color: #ff9933;
 	color: rgba(255,255,255,1.00);
-	margin-bottom: 20px;
-	border-bottom-right-radius: 6px;
-	border-top-left-radius: 0px;
-	border-bottom-left-radius: 6px;
 }
-.footer-bs .footer-brand, .footer-bs .footer-nav, .footer-bs .footer-social, .footer-bs .footer-ns { padding:10px 25px ; }
-.footer-bs .footer-nav, .footer-bs .footer-social, .footer-bs .footer-ns { border-color: transparent; }
-.footer-bs .footer-brand h2 { margin:0px 0px 10px; }
-.footer-bs .footer-brand p { font-size:12px; color:rgba(255,255,255,0.70); }
 
-.footer-bs .footer-nav ul.pages { list-style:none; padding:0px; }
-.footer-bs .footer-nav ul.pages li { padding:5px 0px;}
-.footer-bs .footer-nav ul.pages a { color:rgba(255,255,255,1.00); font-weight:bold; text-transform:uppercase; }
-.footer-bs .footer-nav ul.pages a:hover { color:rgba(255,255,255,0.80); text-decoration:none; }
-.footer-bs .footer-nav h4 {
-	font-size: 11px;
+/* Ajout d'un padding pour chaque div du footer */
+.footer-bs, .footer-nav, .footer-social { 
+	padding: 1% 25px ; 
+}
+
+/* Modification des caractéristiques des titres <h4> du footer (taille, majuscules, espacement des lettres, marges) */
+footer h4 {
+	font-size: 13px;
 	text-transform: uppercase;
-	letter-spacing: 3px;
-	margin-bottom:10px;
+	letter-spacing: 1px;
+	margin-bottom: 5px;
 }
 
-.footer-bs .footer-nav ul.list { list-style:none; padding:0px; }
-.footer-bs .footer-nav ul.list li { padding:5px 0px;}
-.footer-bs .footer-nav ul.list a { color:rgba(255,255,255,0.80); }
-.footer-bs .footer-nav ul.list a:hover { color:rgba(255,255,255,0.60); text-decoration:none; }
-
-.footer-bs .footer-social ul { list-style:none; padding:0px; }
-.footer-bs .footer-social h4 {
-	font-size: 11px;
-	text-transform: uppercase;
-	letter-spacing: 3px;
+/* Mise en forme de la division "footer-logo" */
+.footer-logo{
+	margin-top: -5px;
+	width: 25%;
+	display: flex;
+    justify-content: center;
+    align-items: center;
 }
-.footer-bs .footer-social li { padding:5px 4px;}
-.footer-bs .footer-social a { color:rgba(255,255,255,1.00);}
-.footer-bs .footer-social a:hover { color:rgba(255,255,255,0.80); text-decoration:none; }
 
-.footer-bs .footer-ns h4 {
-	font-size: 11px;
-	text-transform: uppercase;
-	letter-spacing: 3px;
-	margin-bottom:10px;
+.footer-logo img{
+	width: 100%;
+	vertical-align: middle;
+	text-align: center;
+	margin: auto auto;
 }
-.footer-bs .footer-ns p { font-size:12px; color:rgba(255,255,255,0.70); }
+
+/* Mise en page de la div "page" contenu dans la div "footer-nav" */
+.footer-nav ul.pages { list-style:none; padding:0px; }
+.footer-nav ul.pages li { padding: 1px 0px; }
+.footer-nav ul.pages a { padding: 5px 0px; color: rgba(255,255,255,1.00); font-weight: bold; }
+.footer-nav ul.pages a:hover { color:rgba(255,255,255,0.80); text-decoration:none; }
+
+/* Mise en page de la div "list" contenu dans la div "footer-nav" */
+.footer-nav ul.list { list-style:none; padding:0px; }
+.footer-nav ul.list li { padding:2px 0px;}
+.footer-nav ul.list a { color:rgba(255,255,255,0.80); }
+.footer-nav ul.list a:hover { color:rgba(255,255,255,0.60); text-decoration:none; }
+
+/* Mise en page de la div "footer-social" */
+.footer-social ul { list-style:none; padding:0px; }
+.footer-social li { padding:1px 4px;}
+.footer-social a { color:rgba(255,255,255,1.00);}
+.footer-social a:hover { color:rgba(255,255,255,0.80); text-decoration:none; }
 
 @media (min-width: 768px) {
-	.footer-bs .footer-nav, .footer-bs .footer-social, .footer-bs .footer-ns { border-left:solid 1px rgba(255,255,255,0.10); }
+	.footer-nav, .footer-social{ 
+		border-left: solid 1px rgba(255,255,255,0.10);
+		margin-top: -15px;
+	}
 }

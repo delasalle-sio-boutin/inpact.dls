@@ -106,7 +106,7 @@
 		                </ul>
 		                <ul class="nav navbar-nav pull-right ui-right">
 	                        <li><a>
-	                        	Connecté en tant que <b><?php echo $login; ?></b>
+	                        	&nbsp;Connecté en tant que <b><?php echo $login; ?></b>
 	                        </a></li>
 	                    </ul>
 	                    <?php } ?>
