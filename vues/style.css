@@ -5,11 +5,19 @@
 	padding: 0;
 }
 
+html, body {
+	height: 100%;
+	overflow-x: hidden;
+}
+
 /* Mise en forme gÃ©nÃ©rale de la page */
 body{
     background: #c0c0c0;
     margin: 0;
     padding: 0;
+    display: table;
+    width: 100%;
+    
 }
 
 /* Mise en forme de la div "#page" */
@@ -211,6 +219,8 @@ img#liens{
 	padding:0;
 	background-color: #ff9933;
 	color: rgba(255,255,255,1.00);
+	display: table-row;
+	height: 1px;
 }
 
 /* Ajout d'un padding pour chaque div du footer */

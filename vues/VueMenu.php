@@ -6,10 +6,10 @@ include ('Header.php');
 
 <body>
 	<div id="page">
-		Je m'appelle Florentin, j'essaye ce site !
+		Phrase de début de page.
 		<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
 		<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
-		Et j'aime faire des tests.
+		Phrase de fin de page.
 	</div>
 </body>
 
