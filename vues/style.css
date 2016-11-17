@@ -1,11 +1,11 @@
-/* --------------------------------------------------------------------- MISE EN FORME GÉNÉRALE --------------------------------------------------------------------- */
+/* --------------------------------------------------------------------- MISE EN FORME GÃ‰NÃ‰RALE --------------------------------------------------------------------- */
 
 *{
 	margin: 0;
 	padding: 0;
 }
 
-/* Mise en forme générale de la page */
+/* Mise en forme gÃ©nÃ©rale de la page */
 body{
     background: #c0c0c0;
     margin: 0;
@@ -21,14 +21,14 @@ div#page{
 	border: #000 1px solid; 
 	text-align: left;
 		
-	/* fond avec un dégradé de couleur (blanc en haut, gris léger en bas) */
+	/* fond avec un dÃ©gradÃ© de couleur (blanc en haut, gris lÃ©ger en bas) */
 	background: -moz-linear-gradient(top, rgb(180, 180, 180), rgb(180, 180, 180));
 	background: -webkit-gradient(linear, left top, left bottom, from(rgb(180, 180, 180)), to(rgb(180, 180, 180)));
 	background: linear-gradient(to bottom, rgb(210, 210, 210), rgb(180, 180, 180));
 }
 
 div#page-contenu{
-	/* hauteur, largeur, centrage avec des marges auto, padding nul, bordure noire, alignement gauche, arrière plan orange */
+	/* hauteur, largeur, centrage avec des marges auto, padding nul, bordure noire, alignement gauche, arriÃ¨re plan orange */
 	width: 35%;
 	margin: 30px auto;
 	padding: 0;
@@ -164,7 +164,7 @@ ul#menu-horizontal li {
   color: black;
 }
 
-/* Enlever le "connecté en tant que" quand la page est comprise entre 768px et 991px */
+/* Enlever le "connectÃ© en tant que" quand la page est comprise entre 768px et 991px */
 @media (max-width: 991px) {
 		ul.ui-right{
 			margin-right: -9999px;
@@ -189,7 +189,7 @@ img#liens{
 	border: 1px solid #d09a5f;
 }
 
-/* Permet de mettre la division de connection à gauche, quand la taille d'écran est inférieure à 768px */
+/* Permet de mettre la division de connection à  gauche, quand la taille d'écran est infèrieure à 768px */
 @media (min-width: 0px) and (max-width: 767px) {
 	.ui-login{
 		border: 1px solid black;
@@ -207,8 +207,6 @@ img#liens{
 /* Mise en page du footer en général (taille, marge, overflow) */
 .footer-bs {
 	width : 100%;
-	height: 170px;
-	overflow: hidden;
 	margin: 20px auto 0 auto;
 	padding:0;
 	background-color: #ff9933;
@@ -230,7 +228,6 @@ footer h4 {
 
 /* Mise en forme de la division "footer-logo" */
 .footer-logo{
-	margin-top: -5px;
 	width: 25%;
 	display: flex;
     justify-content: center;
@@ -244,6 +241,10 @@ footer h4 {
 	margin: auto auto;
 }
 
+.social-fb:hover { color: #3B5998; }
+.social-tw:hover { color: #4099FF; }
+.social-in:hover { color: #0177B5; }
+
 /* Mise en page du <ul> "page" contenu dans la div "footer-nav" */
 .footer-nav ul.pages { list-style:none; padding:0px; }
 .footer-nav ul.pages li { padding: 1px 0px; }
@@ -252,7 +253,7 @@ footer h4 {
 
 /* Mise en page du <ul> "list" contenu dans la div "footer-nav" */
 .footer-nav ul.list { list-style:none; padding:0px; }
-.footer-nav ul.list li { padding:2px 0px;}
+.footer-nav ul.list li { padding:2px 0px; }
 .footer-nav ul.list a { color:rgba(255,255,255,0.80); }
 .footer-nav ul.list a:hover { color:rgba(255,255,255,0.60); text-decoration:none; }
 
