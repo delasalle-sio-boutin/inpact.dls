@@ -8,7 +8,6 @@ include ('Header.php');
 	<div id="page">
 		Phrase de début de page.
 		<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
-		<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
 		Phrase de fin de page.
 	</div>
 </body>
