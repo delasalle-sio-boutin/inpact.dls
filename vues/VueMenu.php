@@ -6,7 +6,7 @@ include ('Header.php');
 
 <body>
 	<div id="page">
-		Je m'appelle Killian, j'essaye ce site !
+		Je m'appelle Florentin, j'essaye ce site !
 		<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
 		<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
 		Et j'aime faire des tests.
