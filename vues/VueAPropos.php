@@ -22,7 +22,7 @@ Nous sommes toujours à la recherche:
 
 L’association fonctionne uniquement avec des familles d’accueil, nous ne disposons pas de refuges dédiés.
 
-Vous pouvez consulter les Statuts de l’association ainsi que le Règlement Intérieur.
+Vous pouvez consulter les Statuts de l’association ainsi que le Règlement Intérieur.<i class="fa fa-shower" aria-hidden="true"></i><i class="fa fa-bath" aria-hidden="true"></i>
 	</div>
 </body>
 
