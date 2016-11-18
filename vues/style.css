@@ -278,7 +278,7 @@ footer h4 {
 		margin-top: -15px;
 	}
 	ul.pages, ul.list{
-		list-style-position: inside;
-		border-left: solid 1px rgba(255,255,255,0.10);
+		border-left: solid 3px rgba(255,255,255,1.0);
+		padding-left: 100px;
 	}
 }

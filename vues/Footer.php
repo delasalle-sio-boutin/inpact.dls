@@ -7,11 +7,9 @@
         <h4>Menu</h4>
         <div class="col-xs-12">
         	<ul class="pages">
-        	    <li><a href="#">Accueil</a></li>
-                <li><a href="#">Evenements</a></li>
-                <li><a href="#">Aide aux devoirs</a></li>
-                <li><a href="#"></a></li>
-                <li><a href="#"></a></li>
+        	    <li><a href="index.php?action=Accueil">Accueil</a></li>
+                <li><a href="index.php?action=Evenements">Evenements</a></li>
+                <li><a href="index.php?action=AideDevoirs">Aide aux devoirs</a></li>
             </ul>
         </div>
     </div>
@@ -19,10 +17,10 @@
         <h4>Informations</h4>
         <div class="col-xs-12">
             <ul class="list">
-				<li><a href="#">A propos</a></li>
-                <li><a href="#">Contacts</a></li>
-                <li><a href="#">Termes & Condition</a></li>
-                <li><a href="#">Politique de confidentialité</a></li>
+				<li><a href="index.php?action=APropos">A propos</a></li>
+                <li><a href="index.php?action=Contact">Contact</a></li>
+                <li><a href="index.php?action=TermesConditions">Termes & conditions</a></li>
+                <li><a href="index.php?action=PolitiqueConfidentialite">Politique de confidentialité</a></li>
             </ul>
         </div>
     </div>

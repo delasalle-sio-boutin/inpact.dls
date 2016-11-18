@@ -48,13 +48,13 @@ switch($action){
 	case 'Contact': {
 		include_once ('controleurs/CtrlContact.php'); break;
 	}
-	case 'Evenement': {
+	case 'Evenements': {
 		include_once ('controleurs/CtrlEvenements.php'); break;
 	}
-	case 'Politique': {
+	case 'PolitiqueConfidentilite': {
 		include_once ('controleurs/CtrlPolitiqueConfidentialite.php'); break;
 	}
-	case 'Termes': {
+	case 'TermesConditions': {
 		include_once ('controleurs/CtrlTermesConditions.php'); break;
 	}
 	// toute autre tentative est automatiquement redirigée vers le menu

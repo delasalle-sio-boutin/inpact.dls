@@ -68,7 +68,7 @@
 									<li><a href="#"><img id="liens" src="images/twitter.png">Twitter</a></li>
 								</ul>
 							</li>
-							<li><a href="#">Contact</a>
+							<li><a href="index.php?action=Contact">Contact</a>
 							</li>
 						</ul>
 						
