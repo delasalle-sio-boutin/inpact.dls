@@ -41,9 +41,9 @@
                                 </div>
                                 <div class="col-md-6">
                                     <div class="form-group">
-                                        <label for="form_classe">Classe</label>
+                                        <label for="form_classe">Groupe *</label>
                                         <select class=form-control id="form_classe" required>
-                                        <option selected value=>Selectionnez une classe</option>
+                                        <option selected value=>Selectionnez un groupe</option>
                                      		<option value=Sio1>SIO1</option>
 											<option value=Sio2>SIO2</option>
 											<option value=Prof>Professeur</option>
@@ -67,7 +67,7 @@
                             </div>
                             <div class="row">
                                 <div class="col-md-12">
-                                    <p class="text-muted"><strong>*</strong> These fields are required.</p>
+                                    <p class="text-muted"><strong>*</strong> Ce champ est requis.</p>
                                 </div>
                             </div>
                         </div>
