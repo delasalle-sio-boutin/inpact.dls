@@ -39,7 +39,24 @@ switch($action){
 	case 'Menu': {
 		include_once ('controleurs/CtrlMenu.php'); break;
 	}
-	
+	case 'AideDevoirs': {
+		include_once ('controleurs/CtrlAideDevoirs.php'); break;
+	}
+	case 'APropos': {
+		include_once ('controleurs/CtrlAPropos.php'); break;
+	}
+	case 'Contact': {
+		include_once ('controleurs/CtrlContact.php'); break;
+	}
+	case 'Evenement': {
+		include_once ('controleurs/CtrlEvenements.php'); break;
+	}
+	case 'Politique': {
+		include_once ('controleurs/CtrlPolitiqueConfidentialite.php'); break;
+	}
+	case 'Termes': {
+		include_once ('controleurs/CtrlTermesConditions.php'); break;
+	}
 	// toute autre tentative est automatiquement redirigée vers le menu
 	default : {
 		include_once ('controleurs/CtrlMenu.php'); break;
