@@ -51,21 +51,25 @@
 								aria-expanded="false" style="border-top: #000 solid 1px; margin-top: -14px; padding-top: 28px">Accueil</a>
 							</li>
 							
-							<li class=" dropdown"><a href="#" class="dropdown-toggle " data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Evenements <span class="caret"></span></a>
+							<li class=" dropdown"><a href="#" class="dropdown-toggle " data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Menu <span class="caret"></span></a>
 								<ul class="dropdown-menu">
-									<li class=" dropdown"><a href="#" class="dropdown-toggle " data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">View Departments</a></li>
-									<li><a href="#">Add New</a></li>
+									<li><a href="#">View Departments</a></li>
+									<?php if ($_SESSION['login'] != ''){
+									echo '<li><a href="#">Add New</a></li>';
+									echo '<li><a href="#">Add New</a></li>';
+									}?>
 								</ul>
 							</li>
 							<li class=" dropdown"><a href="#" class="dropdown-toggle active"
 								data-toggle="dropdown" role="button" aria-haspopup="true"
 								aria-expanded="false">Liens utiles <span class="caret"></span></a>
 								<ul class="dropdown-menu">
-									<li><a href="#"><img id="liens" src="images/dls.png">Lycée de la salle</a></li>
-									<li><a href="#"><img id="liens" src="images/anciens_eleves.png">Anciens élèves</a></li>
-									<li><a href="#"><img id="liens" src="images/dls_arena.png">DLS Arena</a></li>
-									<li><a href="#"><img id="liens" src="images/facebook.png">Facebook</a></li>
-									<li><a href="#"><img id="liens" src="images/twitter.png">Twitter</a></li>
+									<li><a href="http://www.lycee-delasalle.com/" target="_blank"><img id="liens" target="_blank" src="images/dls.png">Lycée de la salle</a></li>
+									<li><a href="http://sio.lyceedelasalle.fr/ae/" target="_blank"><img id="liens"  src="images/anciens_eleves.png">Anciens élèves</a></li>
+									<li><a href="http://dlsarena.lycee-dls.com/" target="_blank"><img id="liens" src="images/dls_arena.png">DLS Arena</a></li>
+									<li><a href="https://www.facebook.com/Inpactdls/" target="_blank"><img id="liens" src="images/facebook.png">Facebook</a></li>
+									<li><a href="https://twitter.com/dls_sio" target="_blank"><img id="liens" src="images/twitter.png">Twitter</a></li>
+									<li><a href="https://fr.linkedin.com/" target="_blank"><img id="liens" src="images/Linkedin.png" >Linkedin</a></li>
 								</ul>
 							</li>
 							<li><a href="index.php?action=Contact">Contact</a>
