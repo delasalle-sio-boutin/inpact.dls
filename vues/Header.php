@@ -53,9 +53,9 @@
 							
 							<li class=" dropdown"><a href="#" class="dropdown-toggle " data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Menu <span class="caret"></span></a>
 								<ul class="dropdown-menu">
-									<li><a href="#">View Departments</a></li>
+									<li><a href="controleurs/CtrlEvenement.php">Evenements</a></li>
 									<?php if ($_SESSION['login'] != ''){
-									echo '<li><a href="#">Add New</a></li>';
+									echo '<li><a href="controleurs/CtrlAideDevoirs.php">Aide aux devoirs</a></li>';
 									echo '<li><a href="#">Add New</a></li>';
 									}?>
 								</ul>
