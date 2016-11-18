@@ -274,8 +274,11 @@ footer h4 {
 .footer-social a:hover { color:rgba(255,255,255,0.80); text-decoration:none; }
 
 @media (min-width: 768px) {
-	.footer-nav, .footer-social{ 
-		border-left: solid 1px rgba(255,255,255,0.10);
+	.footer-nav, .footer-social{
 		margin-top: -15px;
+	}
+	ul.pages, ul.list{
+		list-style-position: inside;
+		border-left: solid 1px rgba(255,255,255,0.10);
 	}
 }

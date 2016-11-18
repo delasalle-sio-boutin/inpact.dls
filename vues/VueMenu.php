@@ -1,8 +1,4 @@
-<?php
-
-include ('Header.php');
-
-?>
+<header> <?php include ('Header.php'); ?> </header>
 
 <body>
 	<div id="page">
@@ -12,8 +8,4 @@ include ('Header.php');
 	</div>
 </body>
 
-<?php
-
-include ('Footer.php');
-
-?>
+<footer class="footer-bs fixed-bottom" id="footer"> <?php include ('Footer.php'); ?> </footer>
