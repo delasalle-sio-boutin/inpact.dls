@@ -1,3 +1,15 @@
+<?php
+// Projet Annuel - Site Inpact
+// Fonction de la vue VueContact.php : affiche la vue permettant le contact des administrateurs / profs
+// Ecrit le 18/11/2016 par Tony BRAY
+// Modifié le 20/11/2016 par Killian BOUTIN
+
+// IL FAUDRAIT QUE TU AJOUTES UNE LISTE DEROULANTE A QUI ENVOYER LE MAIL => ADMIN : leurs adr mails
+//																			PROF : delasalle.sio.profs@gmail.com
+
+
+?>
+
 <header> <?php include ('Header.php'); ?> </header>
 <head>
         <link href='css/css-contact.css' rel='stylesheet' type='text/css'>
@@ -62,7 +74,7 @@
                                     </div>
                                 </div>
                                 <div class="col-md-12">
-                                    <input type="submit" class="btn btn-success btn-send" value="Send message">
+                                    <input id="btnEnvoi" name="btnEnvoi" type="submit" class="btn btn-success btn-send" value="Send message">
                                 </div>
                             </div>
                             <div class="row">

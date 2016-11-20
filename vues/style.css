@@ -196,6 +196,7 @@ img#liens{
 /* Mettre une bordure prononcée dans le menu quand on clique sur un dropdown */
 .dropdown-menu{
 	border: 1px solid #d09a5f;
+	min-height: 10px;
 }
 
 /* Permet de mettre la division de connection à  gauche, quand la taille d'écran est infèrieure à 768px */

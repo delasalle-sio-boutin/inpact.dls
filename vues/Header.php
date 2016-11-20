@@ -51,13 +51,12 @@
 								aria-expanded="false" style="border-top: #000 solid 1px; margin-top: -14px; padding-top: 28px">Accueil</a>
 							</li>
 							
-							<li class=" dropdown"><a href="#" class="dropdown-toggle " data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Menu <span class="caret"></span></a>
+							<li class="dropdown"><a href="#" class="dropdown-toggle " data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Menu <span class="caret"></span></a>
 								<ul class="dropdown-menu">
-									<li><a href="controleurs/CtrlEvenement.php">Evenements</a></li>
-									<?php if ($_SESSION['login'] != ''){
-									echo '<li><a href="controleurs/CtrlAideDevoirs.php">Aide aux devoirs</a></li>';
-									echo '<li><a href="#">Add New</a></li>';
-									}?>
+									<li><a href="../index.php?action=Evenements.php">Evenements</a></li>
+									<?php if ($_SESSION['login'] != ''){ ?>
+									<li><a href="../index.php?action=AideDevoirs.php">Aide aux devoirs</a></li>
+									<?php } ?>
 								</ul>
 							</li>
 							<li class=" dropdown"><a href="#" class="dropdown-toggle active"

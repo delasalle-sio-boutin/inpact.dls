@@ -1,3 +1,12 @@
+<?php 
+// Projet Annuel - Site Inpact
+// Fonction de la vue VueMenu.php : affiche la vue d'accueil
+// Ecrit le 18/11/2016 par Killian BOUTIN
+// Modifié le 20/11/2016 par Killian BOUTIN
+
+// Cette vue affiche les données principales du site avec un fil twitter
+?>
+
 <header> <?php include ('Header.php'); ?> </header>
 
 <body>
