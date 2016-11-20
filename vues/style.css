@@ -5,19 +5,21 @@
 	padding: 0;
 }
 
+
 html, body {
 	height: 100%;
 	overflow-x: hidden;
 }
+
 
 /* Mise en forme générale de la page */
 body{
     background: #c0c0c0;
     margin: 0;
     padding: 0;
-    display: table;
     width: 100%;
-    
+    display: flex;
+    flex-direction: column;
 }
 
 /* Mise en forme de la div "#page" */
@@ -27,7 +29,7 @@ div#page{
 	margin: 10px auto;
 	padding: 0 20px;
 	/* border: #000 1px solid;
-	overflow: hidden; */
+	overflow-x: hidden; */
 	text-align: left;
 		
 	/* fond avec un dégradé de couleur (blanc en haut, gris léger en bas) */
@@ -119,12 +121,11 @@ ul#menu-horizontal li {
 	text-align: center
 }
 
-@media (min-width: 0px) and (max-width: 768px) {
+@media (max-width: 768px){
 	ul#menu-horizontal li {
 		font-size: 15px;
 	}
 	div#page-contenu{
-		/* hauteur, largeur, centrage avec des marges auto, padding nul, bordure noire, alignement gauche, arrière plan orange */
 		width: 80%;
 	}
 }
@@ -217,12 +218,11 @@ img#liens{
 /* Mise en page du footer en général (taille, marge, overflow) */
 .footer-bs {
 	width : 100%;
-	margin: 20px auto 0 auto;
 	padding: 0;
 	background-color: #f5b570;
 	color: rgba(255,255,255,1.00);
-	display: table-row;
-	height: 1px;
+	margin-top: auto;
+  	padding: 15px;
 }
 
 /* Ajout d'un padding pour chaque div du footer */
@@ -283,11 +283,10 @@ footer h4 {
 		border-left: solid 3px rgba(255,255,255,1.0);
 		list-style: none;
 	}
-	
 }
 
 @media (max-width: 767px) {
-	.footer-nav{ font-size: 13px; }
+	.footer-nav{ font-size: 13px;}
 	
 	/* Mise en page du <ul> "page" contenu dans la div "footer-nav" */
 	.footer-nav ul.pages li {margin: 0px -22px; }
@@ -298,6 +297,7 @@ footer h4 {
 	.footer-nav h4.info { margin-left: -20px; }
 	
 	.footer-social h4 { margin: 10px -37px 20px -15px;}
+	
 }
 
 /* ------------------------------------------------------------------ MISE EN FORME DE L'ACCUEIL ----------------------------------------------------------------- */

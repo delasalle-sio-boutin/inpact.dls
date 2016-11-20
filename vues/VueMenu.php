@@ -20,8 +20,10 @@
 			</div>
 		</div>
 		<div class="col-xs-12 col-sm-12 col-md-4 col-lg-4 ui-fil-twitter">
+		<!-- 
 			<a class="twitter-timeline" data-lang="fr" data-dnt="true" data-height="650" data-theme="dark" data-link-color="#f5b570" href="https://twitter.com/TiboisLoL/lists/inpact">A Twitter List by TiboisLoL</a> <script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
 			<br><br><br>
+		-->
 		</div>
 	</div>
 </body>
