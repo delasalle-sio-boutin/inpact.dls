@@ -6,6 +6,7 @@
 
 // IL FAUDRAIT QUE TU AJOUTES UNE LISTE DEROULANTE A QUI ENVOYER LE MAIL => ADMIN : leurs adr mails
 //																			PROF : delasalle.sio.profs@gmail.com
+//TODO : Voir pour quel mail mettre 
 
 
 ?>
@@ -26,7 +27,19 @@
                         <div class="messages"></div>
 
                         <div class="controls">
-
+                        	<div class="row">
+							    <div class="col-md-12">
+                                    <div class="form-group">
+                                        <label for="form_classe">Qui voulez vous contacter ?</label>
+                                        <select class=form-control id="form_classe" required>
+                                        	<option selected value=></option>
+                                     		<option value=MailAdmin>Administrateur du site</option>
+											<option value=MailProf>Professeur</option>
+										</select>
+                                        <div class="help-block with-errors"></div>
+                                    </div>
+                                </div>
+							</div>
                             <div class="row">
                                 <div class="col-md-6">
                                     <div class="form-group">
@@ -64,6 +77,7 @@
                                         <div class="help-block with-errors"></div>
                                     </div>
                                 </div>
+                            
                             </div>
                             <div class="row">
                                 <div class="col-md-12">
