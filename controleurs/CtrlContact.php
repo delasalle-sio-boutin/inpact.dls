@@ -16,4 +16,14 @@ if ( isset ($_POST ["btnEnvoi"]) == false) {
 	
 	include_once ('vues/VueContact.php');
 }
+else {
+	$mailAContacter = $_POST['contact'];
+	$nom = $_POST['nom'];
+	$prenom = $_POST['prenom'];
+	$mailUtilisateur = $_POST['mail'];
+	$classe = $_POST['classe'];
+	$message = $_POST['message'];
+	//echo $mailAContacter." ".$nom." ".$prenom." ".$mailUtilisateur." ".$classe." ".$message;
+	
+}
 ?>
