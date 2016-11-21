@@ -74,7 +74,7 @@
                                     </div>
                                 </div>
                                 <div class="col-md-12">
-                                    <input id="btnEnvoi" name="btnEnvoi" type="submit" class="btn btn-success btn-send" value="Send message">
+                                    <input id="btnEnvoi" name="btnEnvoi" type="submit" class="btn btn-success btn-send" value="SEND MESSAGE">
                                 </div>
                             </div>
                             <div class="row">

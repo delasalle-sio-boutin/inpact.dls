@@ -27,7 +27,7 @@ div#page{
 	/* largeur, centrage avec des marges auto, padding nul, bordure noire, alignement gauche */
 	width: 98%;
 	margin: 10px auto;
-	padding: 0 20px;
+	padding: 0 0px;
 	/* border: #000 1px solid;
 	overflow-x: hidden; */
 	text-align: left;
@@ -302,9 +302,29 @@ footer h4 {
 
 /* ------------------------------------------------------------------ MISE EN FORME DE L'ACCUEIL ----------------------------------------------------------------- */
 
-@media (max-width: 768px) {
+.ui-accueil-content{
+	border: 1px solid orange;
+}
+
+.ui-accueil-actu{
+	margin: auto;
+	border: 1px solid blue;
+}
+
+
+@media (min-width: 768px) {
+	.ui-accueil-actu{
+		height: 325px;
+		padding: 20px;
+	}
+}
+
+@media (max-width: 767px) {
 	.ui-fil-twitter{
 		margin: 0;
 		padding: 0;
+	}
+	.ui-accueil-content{
+		margin-bottom: 15px;
 	}
 }

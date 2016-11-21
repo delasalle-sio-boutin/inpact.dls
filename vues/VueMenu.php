@@ -11,17 +11,22 @@
 
 <body>
 	<div id="page">
-		<div class="col-xs-12 col-sm-12 col-md-8 col-lg-8">
-			<div class="col-lg-12">
+		<div class="col-xs-12 col-sm-9 col-md-9 col-lg-9 ui-accueil-content">
+			<div class="col-sm-6 ui-accueil-actu">
 				Div une
 			</div>
-			<div class="col-lg-12">
+			<div class="col-sm-6 ui-accueil-actu">
 				Div deux
 			</div>
+			<div class="col-sm-6 ui-accueil-actu">
+				Div trois
+			</div>
+			<div class="col-sm-6 ui-accueil-actu">
+				Div quatre
+			</div>
 		</div>
-		<div class="col-xs-12 col-sm-12 col-md-4 col-lg-4 ui-fil-twitter">
+		<div class="col-xs-12 col-sm-3 col-md-3 col-lg-3 ui-fil-twitter">
 			<a class="twitter-timeline" data-lang="fr" data-dnt="true" data-height="650" data-theme="dark" data-link-color="#f5b570" href="https://twitter.com/TiboisLoL/lists/inpact">A Twitter List by TiboisLoL</a> <script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
-			<br><br><br>
 		</div>
 	</div>
 </body>
