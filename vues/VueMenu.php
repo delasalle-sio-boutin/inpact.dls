@@ -6,6 +6,14 @@
 
 // Cette vue affiche les données principales du site avec un fil twitter
 ?>
+<script type="text/javascript">
+$(function () {
+    $(document).delegate("#serverinfo, #goto_pagetop", "click", function (event) {
+        event.preventDefault();
+        $('html, body').animate({scrollTop: 0}, 'fast');
+    });
+});
+</script>
 
 <header> <?php include ('Header.php'); ?> </header>
 
@@ -28,6 +36,7 @@
 		<div class="col-xs-12 col-sm-3 col-md-3 col-lg-3 ui-fil-twitter">
 			<a class="twitter-timeline" data-lang="fr" data-dnt="true" data-height="650" data-theme="dark" data-link-color="#f5b570" href="https://twitter.com/TiboisLoL/lists/inpact">A Twitter List by TiboisLoL</a> <script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
 		</div>
+		<a id="goto_pagetop" href="#" title="Cliquez sur la barre pour faire défiler en haut de page"><img src="images/top.png" style="width: 30px; height: 30px;"title="" alt="" class="icon ic_s_top" /></a>
 	</div>
 </body>
 
