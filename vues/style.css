@@ -8,7 +8,6 @@
 
 html, body {
 	height: 100%;
-	overflow-x: hidden;
 }
 
 
@@ -20,6 +19,7 @@ body{
     width: 100%;
     display: flex;
     flex-direction: column;
+    overflow-x: hidden;
 }
 
 /* Mise en forme de la div "#page" */
@@ -89,21 +89,6 @@ td:last-child {
 	width: 80%;
 	text-align: center;
 	margin: 0 auto;
-}
-
-input[type="text"], input[type="password"]{
-	/* coins arrondis */
-	-moz-border-radius: 5px 5px 5px 5px;
-	-webkit-border-radius: 5px 5px 5px 5px;
-	-o-border-radius: 5px 5px 5px 5px;
-	-ms-border-radius: 5px 5px 5px 5px;
-	-khtml-border-radius: 5px 5px 5px 5px;
-	border-radius: 5px 5px 5px 5px;
-}
-
-input[type="text"]:focus, input[type="password"]:focus{
-	border: solid 2px #f5b570;
-	outline: 0;
 }
 
 /* style de la liste <ul id="menu-horizontal"> */
@@ -300,6 +285,59 @@ footer h4 {
 	
 }
 
+/* ------------------------------------------------------------------ MISE EN FORME DU BOUTON TOP ----------------------------------------------------------------- */
+
+.test:not{
+	x-overflow: hidden;
+}
+
+.cd-top {
+  display: inline-block;
+  height: 40px;
+  width: 40px;
+  position: fixed;
+  bottom: 40px;
+  right: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.05);
+  /* image replacement properties */
+  overflow: hidden;
+  text-indent: 100%;
+  white-space: nowrap;
+  background: #f5b570 url(../images/cd-top-arrow.svg) no-repeat center 50%;
+  visibility: hidden;
+  opacity: 0;
+  -webkit-transition: opacity .3s 0s, visibility 0s .3s;
+  -moz-transition: opacity .3s 0s, visibility 0s .3s;
+  transition: opacity .3s 0s, visibility 0s .3s;
+}
+.cd-top.cd-is-visible, .cd-top.cd-fade-out, .no-touch .cd-top:hover {
+  -webkit-transition: opacity .3s 0s, visibility 0s 0s;
+  -moz-transition: opacity .3s 0s, visibility 0s 0s;
+  transition: opacity .3s 0s, visibility 0s 0s;
+}
+.cd-top.cd-is-visible {
+  /* the button becomes visible */
+  visibility: visible;
+  opacity: 1;
+}
+.cd-top.cd-fade-out {
+  /* if the user keeps scrolling down, the button is out of focus and becomes less visible */
+  opacity: .5;
+}
+.no-touch .cd-top:hover {
+  background-color: #e86256;
+  opacity: 1;
+}
+
+@media only screen and (min-width: 768px) {
+  .cd-top {
+    right: 20px;
+    bottom: 20px;
+    height: 60px;
+    width: 60px;
+  }
+}
+
 /* ------------------------------------------------------------------ MISE EN FORME DE L'ACCUEIL ----------------------------------------------------------------- */
 
 .ui-accueil-content{
@@ -311,11 +349,86 @@ footer h4 {
 	border: 1px solid blue;
 }
 
+.ui-accueil-div1{
+	/* coins arrondis */
+	-moz-border-radius: 20px 0px 0px 0px;
+	-webkit-border-radius: 20px 0px 0px 0px;
+	-o-border-radius: 20px 0px 0px 0px;
+	-ms-border-radius: 20px 0px 0px 0px;
+	-khtml-border-radius: 20px 0px 0px 0px;
+	border-radius: 20px 0px 0px 0px;
+}
+.ui-accueil-div2{
+	/* coins arrondis */
+	-moz-border-radius: 0px 20px 0px 0px;
+	-webkit-border-radius: 0px 20px 0px 0px;
+	-o-border-radius: 0px 20px 0px 0px;
+	-ms-border-radius: 0px 20px 0px 0px;
+	-khtml-border-radius: 0px 20px 0px 0px;
+	border-radius: 0px 20px 0px 0px;	
+}
+.ui-accueil-div3{
+		/* coins arrondis */
+	-moz-border-radius: 0px 0px 0px 20px;
+	-webkit-border-radius: 0px 0px 0px 20px;
+	-o-border-radius: 0px 0px 0px 20px;
+	-ms-border-radius: 0px 0px 0px 20px;
+	-khtml-border-radius: 0px 0px 0px 20px;
+	border-radius: 0px 0px 0px 20px;
+	margin: 1% 2% 0 5%;
+}
+.ui-accueil-div4{
+	/* coins arrondis */
+	-moz-border-radius: 0px 0px 20px 0px;
+	-webkit-border-radius: 0px 0px 20px 0px;
+	-o-border-radius: 0px 0px 20px 0px;
+	-ms-border-radius: 0px 0px 20px 0px;
+	-khtml-border-radius: 0px 0px 20px 0px;
+	border-radius: 0px 0px 20px 0px;
+	margin: 1% 5% 0 2%;
+}
+
+
+/* MARGES EN FONCTION DE LA TAILLE DE L'ÉCRAN POUR LES DIVS */
+
+@media (min-width: 1081px) {
+	.ui-accueil-div1{
+		margin: 0 15px 15px 0;
+	}
+	.ui-accueil-div2{
+		margin: 0 0 15px 15px;
+	}
+	.ui-accueil-div3{
+		margin: 15px 15px 0 0;
+	}
+	.ui-accueil-div4{
+		margin: 15px 0 0 15px;
+	}
+}
+
+@media (min-width: 0px) and (max-width: 1080px) {
+	.ui-accueil-div1{
+		margin: 0 10px 10px 0;
+	}
+	.ui-accueil-div2{
+		margin: 0 0 10px 10px;
+	}
+	.ui-accueil-div3{
+		margin: 10px 10px 0 0;
+	}
+	.ui-accueil-div4{
+		margin: 10px 0 0 10px;
+	}
+}
 
 @media (min-width: 768px) {
 	.ui-accueil-actu{
 		height: 325px;
 		padding: 20px;
+	}
+	
+	.ui-accueil-content > div{
+		width: 48%;
 	}
 }
 
@@ -327,4 +440,25 @@ footer h4 {
 	.ui-accueil-content{
 		margin-bottom: 15px;
 	}
+	.ui-accueil-content > div{
+		margin: 10px;
+		border-radius: 0;
+	}
+}
+
+/* ------------------------------------------------------------------ MISE EN FORME DE "CONTACT" ----------------------------------------------------------------- */
+
+input[type="text"], input[type="password"]{
+	/* coins arrondis */
+	-moz-border-radius: 5px 5px 5px 5px;
+	-webkit-border-radius: 5px 5px 5px 5px;
+	-o-border-radius: 5px 5px 5px 5px;
+	-ms-border-radius: 5px 5px 5px 5px;
+	-khtml-border-radius: 5px 5px 5px 5px;
+	border-radius: 5px 5px 5px 5px;
+}
+
+input[type="text"]:focus, input[type="password"]:focus{
+	border: solid 2px #f5b570;
+	outline: 0;
 }

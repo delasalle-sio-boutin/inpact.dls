@@ -1,3 +1,11 @@
+<!-- GO TO TOP -->
+<div class="test">
+	<a href="#0" class="cd-top"></a>
+	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+	<script src="js/main.js"></script> <!-- Gem jQuery -->
+</div>
+
+<!-- FOOTER -->
 <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
 <div class="row">
     <div class="col-xs-3 col-md-3 footer-logo animated fadeInLeft hidden-xs">
