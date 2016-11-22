@@ -352,7 +352,7 @@ footer h4 {
 	height: 100%;
 }
 
-.ui-accueil-div1, .ui-accueil-div1 > img{
+.ui-accueil-div1{
 	/* coins arrondis */
 	-moz-border-radius: 20px 0px 0px 0px;
 	-webkit-border-radius: 20px 0px 0px 0px;
@@ -360,6 +360,9 @@ footer h4 {
 	-ms-border-radius: 20px 0px 0px 0px;
 	-khtml-border-radius: 20px 0px 0px 0px;
 	border-radius: 20px 0px 0px 0px;
+	/* fond de la division */
+	background-image: url('../images/noir.jpg');
+	overflow: hidden;
 }
 .ui-accueil-div2, .ui-accueil-div2 > img{
 	/* coins arrondis */
@@ -368,7 +371,9 @@ footer h4 {
 	-o-border-radius: 0px 20px 0px 0px;
 	-ms-border-radius: 0px 20px 0px 0px;
 	-khtml-border-radius: 0px 20px 0px 0px;
-	border-radius: 0px 20px 0px 0px;	
+	border-radius: 0px 20px 0px 0px;
+	background-image: url('../images/bleu.jpg');
+	overflow: hidden;	
 }
 .ui-accueil-div3, .ui-accueil-div3 > img{
 	/* coins arrondis */
@@ -378,6 +383,8 @@ footer h4 {
 	-ms-border-radius: 0px 0px 0px 20px;
 	-khtml-border-radius: 0px 0px 0px 20px;
 	border-radius: 0px 0px 0px 20px;
+	background-image: url('../images/jaune.jpg');
+	overflow: hidden;
 }
 .ui-accueil-div4, .ui-accueil-div4 > img{
 	/* coins arrondis */
@@ -387,6 +394,12 @@ footer h4 {
 	-ms-border-radius: 0px 0px 20px 0px;
 	-khtml-border-radius: 0px 0px 20px 0px;
 	border-radius: 0px 0px 20px 0px;
+	background-image: url('../images/orange.png');
+	overflow: hidden;
+}
+
+.ui-accueil-evt{
+	text-align: justify;
 }
 
 
@@ -425,15 +438,35 @@ footer h4 {
 @media (min-width: 768px) {
 	.ui-accueil-actu{
 		height: 325px;
-		padding:0;
+		padding: 0px;
 	}
-	
+	.ui-accueil-evt{
+		height: 80%;
+		padding: 25px;
+		overflow: hidden;
+	}	
+	.ui-accueil-suite{
+		height: 20%;
+		padding: 25px;
+	}
 	.ui-accueil-content > div{
 		width: 48%;
 	}
 }
 
 @media (max-width: 767px) {
+	.ui-accueil-actu{
+		height: 200px;
+	}
+	.ui-accueil-evt{
+		height: 80%;
+		padding: 5px;
+		overflow: hidden;
+	}
+	.ui-accueil-suite{
+		height: 10%;
+		padding: 5px;
+	}
 	.ui-fil-twitter{
 		margin: 0;
 		padding: 0;
