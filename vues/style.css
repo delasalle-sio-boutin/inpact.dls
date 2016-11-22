@@ -341,15 +341,18 @@ footer h4 {
 /* ------------------------------------------------------------------ MISE EN FORME DE L'ACCUEIL ----------------------------------------------------------------- */
 
 .ui-accueil-content{
-	border: 1px solid orange;
 }
 
 .ui-accueil-actu{
 	margin: auto;
-	border: 1px solid blue;
 }
 
-.ui-accueil-div1{
+.ui-accueil-div1 > img, .ui-accueil-div2 > img, .ui-accueil-div3 > img, .ui-accueil-div4 > img{
+	width:100%;
+	height: 100%;
+}
+
+.ui-accueil-div1, .ui-accueil-div1 > img{
 	/* coins arrondis */
 	-moz-border-radius: 20px 0px 0px 0px;
 	-webkit-border-radius: 20px 0px 0px 0px;
@@ -358,7 +361,7 @@ footer h4 {
 	-khtml-border-radius: 20px 0px 0px 0px;
 	border-radius: 20px 0px 0px 0px;
 }
-.ui-accueil-div2{
+.ui-accueil-div2, .ui-accueil-div2 > img{
 	/* coins arrondis */
 	-moz-border-radius: 0px 20px 0px 0px;
 	-webkit-border-radius: 0px 20px 0px 0px;
@@ -367,17 +370,16 @@ footer h4 {
 	-khtml-border-radius: 0px 20px 0px 0px;
 	border-radius: 0px 20px 0px 0px;	
 }
-.ui-accueil-div3{
-		/* coins arrondis */
+.ui-accueil-div3, .ui-accueil-div3 > img{
+	/* coins arrondis */
 	-moz-border-radius: 0px 0px 0px 20px;
 	-webkit-border-radius: 0px 0px 0px 20px;
 	-o-border-radius: 0px 0px 0px 20px;
 	-ms-border-radius: 0px 0px 0px 20px;
 	-khtml-border-radius: 0px 0px 0px 20px;
 	border-radius: 0px 0px 0px 20px;
-	margin: 1% 2% 0 5%;
 }
-.ui-accueil-div4{
+.ui-accueil-div4, .ui-accueil-div4 > img{
 	/* coins arrondis */
 	-moz-border-radius: 0px 0px 20px 0px;
 	-webkit-border-radius: 0px 0px 20px 0px;
@@ -385,7 +387,6 @@ footer h4 {
 	-ms-border-radius: 0px 0px 20px 0px;
 	-khtml-border-radius: 0px 0px 20px 0px;
 	border-radius: 0px 0px 20px 0px;
-	margin: 1% 5% 0 2%;
 }
 
 
@@ -424,7 +425,7 @@ footer h4 {
 @media (min-width: 768px) {
 	.ui-accueil-actu{
 		height: 325px;
-		padding: 20px;
+		padding:0;
 	}
 	
 	.ui-accueil-content > div{
@@ -442,7 +443,22 @@ footer h4 {
 	}
 	.ui-accueil-content > div{
 		margin: 10px;
-		border-radius: 0;
+		-moz-border-radius: 0px;
+		-webkit-border-radius: 0px;
+		-o-border-radius: 0px;
+		-ms-border-radius: 0px;
+		-khtml-border-radius: 0px;
+		border-radius: 0px;
+	}
+	.ui-accueil-div1 > img, .ui-accueil-div2 > img, .ui-accueil-div3 > img, .ui-accueil-div4 > img{
+		width:100%;
+		height: 100px;
+		-moz-border-radius: 0px;
+		-webkit-border-radius: 0px;
+		-o-border-radius: 0px;
+		-ms-border-radius: 0px;
+		-khtml-border-radius: 0px;
+		border-radius: 0px;
 	}
 }
 

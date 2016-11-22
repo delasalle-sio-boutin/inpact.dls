@@ -14,16 +14,16 @@
 		<div id="page">
 			<div class="col-xs-12 col-sm-9 col-md-9 col-lg-9 ui-accueil-content">
 				<div class="col-sm-5 ui-accueil-actu ui-accueil-div1">
-					Div une
+					<img src="images/noir.jpg">
 				</div>
 				<div class="col-sm-5 ui-accueil-actu ui-accueil-div2">
-					Div deux
+					<img src="images/jaune.jpg">
 				</div>
 				<div class="col-sm-5 ui-accueil-actu ui-accueil-div3">
-					Div trois
+					<img src="images/orange.png">
 				</div>
 				<div class="col-sm-5 ui-accueil-actu ui-accueil-div4">
-					Div quatre
+					<img src="images/bleu.jpg">
 				</div>
 			</div>
 			<div class="col-xs-12 col-sm-3 col-md-3 col-lg-3 ui-fil-twitter">
