@@ -10,6 +10,21 @@
 
 // inclusion de la classe Outils
 include_once ('modele/Outils.class.php');
+include_once ('modele/DAO.class.php');
+
+// connexion à la classe DAO
+$dao = new DAO();
+
+$lesEvenements = $dao->getLesEvenements();
+$i = 1;
+foreach ($lesEvenements as $unEvenement){
+	${'uneClass'.$i} = "ui-accueil-div" . $i;
+	${'$unId'.$i}= $unEvenement->getId();
+	${'$unTitre'.$i} = $unEvenement->getTitre();
+	${'$unContenu'.$i} = $unEvenement->getContenu();
+	echo "<br>";
+	$i += 1;
+}
 
 include_once ('vues/VueMenu.php');
 ?>

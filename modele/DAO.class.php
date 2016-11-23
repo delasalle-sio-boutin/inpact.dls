@@ -5,7 +5,7 @@
 //                             Cette classe fournit des méthodes d'accès à la bdd inpact
 //                                                 Elle utilise l'objet PDO
 //                       Auteur : Killian BOUTIN, Erwann BIENVENU, Tony BRAY, Florentin GREMY, Lucie QUEREL, Corentin CLEMENT, Sophie AUDIGOU
-//												Dernière modification : 08/11/2016
+//												Dernière modification : 23/11/2016
 // -------------------------------------------------------------------------------------------------------------------------
 
 // ATTENTION : la position des méthodes dans ce fichier est identique à la position des tests dans la classe DAO.test.php
@@ -34,6 +34,8 @@
 
 // certaines méthodes nécessitent les fichiers suivants :
 include_once ('Administrateur.class.php');
+include_once ('Evenement.class.php');
+include_once ('Outils.class.php');
 
 
 // inclusion des paramètres de l'application
@@ -107,54 +109,90 @@ class DAO
 	}
 	
 	
-	// fournit le type d'un utilisateur identifié par $adrMail et $motDePasse
+// fournit le type d'un utilisateur identifié par $adrMail et $motDePasse
 	// renvoie "eleve" ou "administrateur" ou "professeur" si authentification correcte, "inconnu" sinon
 	// modifié par Killian BOUTIN le 15/11/2016
 	public function getTypeUtilisateur($unLogin, $unMdp)
 	{	// préparation de la requête de recherche dans la table inp_administrateurs
-	$txt_req = "SELECT count(*) FROM inp_administrateurs WHERE login = :login AND mdp = :mdp";
-	$req = $this->cnx->prepare($txt_req);
-	// liaison de la requête et de ses paramètres
-	$req->bindValue("login", $unLogin, PDO::PARAM_STR);
-	$req->bindValue("mdp", sha1($unMdp), PDO::PARAM_STR);
-	// extraction des données et comptage des réponses
-	$req->execute();
-	$nbReponses = $req->fetchColumn(0);
-	// libère les ressources du jeu de données
-	$req->closeCursor();
-	// fourniture de la réponse
-	if ($nbReponses == 1) return "administrateur";
+		$txt_req = "SELECT count(*) FROM inp_administrateurs WHERE login = :login AND mdp = :mdp";
+		$req = $this->cnx->prepare($txt_req);
+		// liaison de la requête et de ses paramètres
+		$req->bindValue("login", $unLogin, PDO::PARAM_STR);
+		$req->bindValue("mdp", sha1($unMdp), PDO::PARAM_STR);
+		// extraction des données et comptage des réponses
+		$req->execute();
+		$nbReponses = $req->fetchColumn(0);
+		// libère les ressources du jeu de données
+		$req->closeCursor();
+		// fourniture de la réponse
+		if ($nbReponses == 1) return "administrateur";
+		
+		// préparation de la requête de recherche dans la table inp_professeurs
+		$txt_req = "SELECT count(*) FROM inp_professeurs WHERE login = :login AND mdp = :mdp";
+		$req = $this->cnx->prepare($txt_req);
+		// liaison de la requête et de ses paramètres
+		$req->bindValue("login", $unLogin, PDO::PARAM_STR);
+		$req->bindValue("mdp", sha1($unMdp), PDO::PARAM_STR);
+		// extraction des données et comptage des réponses
+		$req->execute();
+		$nbReponses = $req->fetchColumn(0);
+		// libère les ressources du jeu de données
+		$req->closeCursor();
+		// fourniture de la réponse
+		if ($nbReponses == 1) return "professeur";
+		
+		// préparation de la requête de recherche dans la table inp_eleves
+		$txt_req = "SELECT count(*) FROM inp_eleves WHERE login = :login AND mdp = :mdp";
+		$req = $this->cnx->prepare($txt_req);
+		// liaison de la requête et de ses paramètres
+		$req->bindValue("login", $unLogin, PDO::PARAM_STR);
+		$req->bindValue("mdp", sha1($unMdp), PDO::PARAM_STR);
+		// extraction des données et comptage des réponses
+		$req->execute();
+		$nbReponses = $req->fetchColumn(0);
+		// libère les ressources du jeu de données
+		$req->closeCursor();
+		// fourniture de la réponse
+		if ($nbReponses == 1) return "eleve";
+		
+		// si on arrive ici, c'est que l'authentification est incorrecte
+		return "inconnu";
+	}
 	
-	// préparation de la requête de recherche dans la table inp_professeurs
-	$txt_req = "SELECT count(*) FROM inp_professeurs WHERE login = :login AND mdp = :mdp";
-	$req = $this->cnx->prepare($txt_req);
-	// liaison de la requête et de ses paramètres
-	$req->bindValue("login", $unLogin, PDO::PARAM_STR);
-	$req->bindValue("mdp", sha1($unMdp), PDO::PARAM_STR);
-	// extraction des données et comptage des réponses
-	$req->execute();
-	$nbReponses = $req->fetchColumn(0);
-	// libère les ressources du jeu de données
-	$req->closeCursor();
-	// fourniture de la réponse
-	if ($nbReponses == 1) return "professeur";
 	
-	// préparation de la requête de recherche dans la table inp_eleves
-	$txt_req = "SELECT count(*) FROM inp_eleves WHERE login = :login AND mdp = :mdp";
-	$req = $this->cnx->prepare($txt_req);
-	// liaison de la requête et de ses paramètres
-	$req->bindValue("login", $unLogin, PDO::PARAM_STR);
-	$req->bindValue("mdp", sha1($unMdp), PDO::PARAM_STR);
-	// extraction des données et comptage des réponses
-	$req->execute();
-	$nbReponses = $req->fetchColumn(0);
-	// libère les ressources du jeu de données
-	$req->closeCursor();
-	// fourniture de la réponse
-	if ($nbReponses == 1) return "eleve";
-	
-	// si on arrive ici, c'est que l'authentification est incorrecte
-	return "inconnu";
+	// fournit les Evenements dans une collection 
+	// renvoie une collection d'evenements
+	// modifié par Killian BOUTIN le 23/11/2016
+	public function getLesEvenements()
+	{	// préparation de la requête d'extraction des inscriptions non annulées
+		$txt_req = "SELECT *";
+		$txt_req .= " FROM inp_evenements";
+		$req = $this->cnx->prepare($txt_req);
+		
+		// extraction des données
+		$req->execute();
+		$uneLigne = $req->fetch(PDO::FETCH_OBJ);
+
+		// construction d'une collection d'objets Inscription
+		$lesEvenements = array();
+		
+		// tant qu'une ligne est trouvée :
+		while ($uneLigne)
+			{	// création d'un objet Inscription
+				$unId = utf8_encode($uneLigne->id);
+				$unTitre = utf8_encode($uneLigne->titre);
+				$unContenu = utf8_encode($uneLigne->contenu);
+				
+				$unEvenement = new Evenement($unId, $unTitre, $unContenu);
+				// ajout de l'inscription à la collection
+				$lesEvenements[] = $unEvenement;
+				// extraction de la ligne suivante
+				$uneLigne = $req->fetch(PDO::FETCH_OBJ);
+			}
+		// libère les ressources du jeu de données
+		$req->closeCursor();
+		
+		return $lesEvenements;
 	}
 	
 	
