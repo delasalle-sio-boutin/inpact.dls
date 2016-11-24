@@ -1,4 +1,4 @@
-/* --------------------------------------------------------------------- MISE EN FORME GÉNÉRALE --------------------------------------------------------------------- */
+/* --------------------------------------------------------------------- MISE EN FORME GÃ‰NÃ‰RALE --------------------------------------------------------------------- */
 
 *{
 	margin: 0;
@@ -11,7 +11,7 @@ html, body {
 }
 
 
-/* Mise en forme générale de la page */
+/* Mise en forme gÃ©nÃ©rale de la page */
 body{
     background: #c0c0c0;
     margin: 0;
@@ -32,14 +32,14 @@ div#page{
 	overflow-x: hidden; */
 	text-align: left;
 		
-	/* fond avec un dégradé de couleur (blanc en haut, gris léger en bas) */
+	/* fond avec un dÃ©gradÃ© de couleur (blanc en haut, gris lÃ©ger en bas) */
 	background: -moz-linear-gradient(top, rgb(180, 180, 180), rgb(180, 180, 180));
 	background: -webkit-gradient(linear, left top, left bottom, from(rgb(180, 180, 180)), to(rgb(180, 180, 180)));
 	background: linear-gradient(to bottom, rgb(210, 210, 210), rgb(180, 180, 180));
 }
 
 div#page-contenu{
-	/* hauteur, largeur, centrage avec des marges auto, padding nul, bordure noire, alignement gauche, arriÃ¨re plan orange */
+	/* hauteur, largeur, centrage avec des marges auto, padding nul, bordure noire, alignement gauche, arriÃƒÂ¨re plan orange */
 	width: 35%;
 	margin: 30px auto;
 	padding: 0;
@@ -97,7 +97,7 @@ ul#menu-horizontal {
 	list-style-type: none; 
 }
 
-/* style des éléments <li> de la liste <ul id="menu-horizontal"> */
+/* style des Ã©lÃ©ments <li> de la liste <ul id="menu-horizontal"> */
 ul#menu-horizontal li {
 	padding: 0;
 	margin: 0;
@@ -134,10 +134,11 @@ ul#menu-horizontal li {
 	margin-top: 17px;
 }
 
-/* Commencement de la page / fin de la barre de navigation (la navbar ne passe pas sur le texte) */
+/* Commencement de la page / fin de la barre de navigation (la navbar ne passe pas sur le texte)
 .navbar-wrapper{
 	height: 70px;
 }
+*/
 
 /* Affectation d'une hauteur minimale pour la barre de navigation */
 .navbar-header{
@@ -159,33 +160,33 @@ ul#menu-horizontal li {
   color: black;
 }
 
-/* Enlever le "connecté en tant que" quand la page est comprise entre 768px et 991px */
+/* Enlever le "connectÃ© en tant que" quand la page est comprise entre 768px et 991px */
 @media (max-width: 991px) {
 		ul.ui-right{
 			margin-right: -9999px;
 		}
 }
 
-/* Mise en forme du bouton de navigation quand la taille d'écran est inférieure à 768px */
+/* Mise en forme du bouton de navigation quand la taille d'Ã©cran est infÃ©rieure Ã  768px */
 .navbar-toggle .icon-bar{
     color: #fff;
     background: #737373;
 }
 
-/* Mise en forme des images affiché dans le dropdown des liens utiles */
+/* Mise en forme des images affichÃ© dans le dropdown des liens utiles */
 img#liens{
 	width: 25px;
 	height: 25px;
 	margin-right: 5px;
 }
 
-/* Mettre une bordure prononcée dans le menu quand on clique sur un dropdown */
+/* Mettre une bordure prononcÃ©e dans le menu quand on clique sur un dropdown */
 .dropdown-menu{
 	border: 1px solid #d09a5f;
 	min-height: 10px;
 }
 
-/* Permet de mettre la division de connection à  gauche, quand la taille d'écran est infèrieure à 768px */
+/* Permet de mettre la division de connection Ã Â  gauche, quand la taille d'Ã©cran est infÃ¨rieure Ã  768px */
 @media (min-width: 0px) and (max-width: 767px) {
 	.ui-login{
 		border: 1px solid black;
@@ -200,7 +201,7 @@ img#liens{
 
 /* ------------------------------------------------------------------ MISE EN FORME DU MENU FOOTER ------------------------------------------------------------------ */
 
-/* Mise en page du footer en général (taille, marge, overflow) */
+/* Mise en page du footer en gÃ©nÃ©ral (taille, marge, overflow) */
 .footer-bs {
 	width : 100%;
 	padding: 0;
@@ -215,7 +216,7 @@ img#liens{
 	padding: 1% 25px ; 
 }
 
-/* Modification des caractéristiques des titres <h4> du footer (taille, majuscules, espacement des lettres, marges) */
+/* Modification des caractÃ©ristiques des titres <h4> du footer (taille, majuscules, espacement des lettres, marges) */
 footer h4 {
 	font-size: 13px;
 	text-transform: uppercase;
@@ -361,7 +362,7 @@ footer h4 {
 	-khtml-border-radius: 20px 0px 0px 0px;
 	border-radius: 20px 0px 0px 0px;
 	/* fond de la division */
-	background-image: url('../images/vert.jpg');
+	background-color: #8bc763;
 	overflow: hidden;
 }
 .ui-accueil-div2, .ui-accueil-div2 > img{
@@ -403,7 +404,7 @@ footer h4 {
 }
 
 
-/* MARGES EN FONCTION DE LA TAILLE DE L'ÉCRAN POUR LES DIVS */
+/* MARGES EN FONCTION DE LA TAILLE DE L'Ã‰CRAN POUR LES DIVS */
 
 @media (min-width: 1081px) {
 	.ui-accueil-div1{
@@ -487,8 +488,9 @@ footer h4 {
 		padding: 5px;
 	}
 	.ui-fil-twitter{
-		margin: 0;
-		padding: 0;
+		width: 95%;
+		padding: auto;
+		margin: 0 12px;
 	}
 }
 
