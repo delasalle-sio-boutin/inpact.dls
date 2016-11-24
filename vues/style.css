@@ -38,6 +38,22 @@ div#page{
 	background: linear-gradient(to bottom, rgb(210, 210, 210), rgb(180, 180, 180));
 }
 
+/* Mise en forme de la div "#page" */
+div#page-accueil{
+	/* largeur, centrage avec des marges auto, padding nul, bordure noire, alignement gauche */
+	width: 98%;
+	margin: -70px auto;
+	padding: 0 0px;
+	/* border: #000 1px solid;
+	overflow-x: hidden; */
+	text-align: left;
+		
+	/* fond avec un dÃ©gradÃ© de couleur (blanc en haut, gris lÃ©ger en bas) */
+	background: -moz-linear-gradient(top, rgb(180, 180, 180), rgb(180, 180, 180));
+	background: -webkit-gradient(linear, left top, left bottom, from(rgb(180, 180, 180)), to(rgb(180, 180, 180)));
+	background: linear-gradient(to bottom, rgb(210, 210, 210), rgb(180, 180, 180));
+}
+
 div#page-contenu{
 	/* hauteur, largeur, centrage avec des marges auto, padding nul, bordure noire, alignement gauche, arriÃƒÂ¨re plan orange */
 	width: 35%;
@@ -134,11 +150,11 @@ ul#menu-horizontal li {
 	margin-top: 17px;
 }
 
-/* Commencement de la page / fin de la barre de navigation (la navbar ne passe pas sur le texte)
+/* Commencement de la page / fin de la barre de navigation (la navbar ne passe pas sur le texte) */
 .navbar-wrapper{
 	height: 70px;
 }
-*/
+
 
 /* Affectation d'une hauteur minimale pour la barre de navigation */
 .navbar-header{
