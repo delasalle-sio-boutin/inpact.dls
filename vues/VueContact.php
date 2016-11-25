@@ -4,18 +4,9 @@
 // Ecrit le 18/11/2016 par Tony BRAY
 // Modifié le 20/11/2016 par Killian BOUTIN
 
-// IL FAUDRAIT QUE TU AJOUTES UNE LISTE DEROULANTE A QUI ENVOYER LE MAIL => ADMIN : leurs adr mails
-//																			PROF : delasalle.sio.profs@gmail.com
-//TODO : Voir pour quel mail mettre 
-
-
 ?>
 
 <header> <?php include ('Header.php'); ?> </header>
-<head>
-        <link href='css/css-contact.css' rel='stylesheet' type='text/css'>
-
-</head>
 
 <body>
 	<div id="page">

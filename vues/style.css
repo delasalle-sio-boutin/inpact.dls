@@ -32,7 +32,7 @@ div#page{
 	overflow-x: hidden; */
 	text-align: left;
 		
-	/* fond avec un dÃ©gradÃ© de couleur (blanc en haut, gris lÃ©ger en bas) */
+	/* fond avec un dégradé de couleur (blanc en haut, gris lÃ©ger en bas) */
 	background: -moz-linear-gradient(top, rgb(180, 180, 180), rgb(180, 180, 180));
 	background: -webkit-gradient(linear, left top, left bottom, from(rgb(180, 180, 180)), to(rgb(180, 180, 180)));
 	background: linear-gradient(to bottom, rgb(210, 210, 210), rgb(180, 180, 180));
@@ -113,7 +113,7 @@ ul#menu-horizontal {
 	list-style-type: none; 
 }
 
-/* style des Ã©lÃ©ments <li> de la liste <ul id="menu-horizontal"> */
+/* style des éléments <li> de la liste <ul id="menu-horizontal"> */
 ul#menu-horizontal li {
 	padding: 0;
 	margin: 0;

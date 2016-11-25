@@ -22,7 +22,6 @@ foreach ($lesEvenements as $unEvenement){
 	${'$unId'.$i}= $unEvenement->getId();
 	${'$unTitre'.$i} = $unEvenement->getTitre();
 	${'$unContenu'.$i} = $unEvenement->getContenu();
-	echo "<br>";
 	$i += 1;
 }
 
