@@ -30,7 +30,7 @@
 			$i += 1; } ?>
 			</div>
 			<div class="col-xs-12 col-sm-3 col-md-3 col-lg-3 ui-fil-twitter">
-				<a class="twitter-timeline" data-lang="fr" data-dnt="true" data-height="650" data-theme="dark" data-link-color="#f5b570" href="https://twitter.com/TiboisLoL/lists/inpact">A Twitter List by TiboisLoL</a> <script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
+				<a class="twitter-timeline" data-lang="fr" data-dnt="true" data-height="650" data-theme="dark" data-link-color="#f5b570" href="https://twitter.com/DLS_SIO/lists/tweets-dls-rennes?lang=fr">A Twitter List by DLS_SIO</a> <script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
 			</div>
 		</div>
 	</body>
