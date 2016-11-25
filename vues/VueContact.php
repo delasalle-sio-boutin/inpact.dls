@@ -33,7 +33,7 @@
                                         <label for="form_mail">Qui voulez vous contacter ?</label>
                                         <select class=form-control id="form_mail" name="contact" required>
                                         	<option selected value=>Selectionnez une personne</option>
-                                     		<option value="delasalle.sio.bray.t@gmail.com">Administrateur du site</option>
+                                     		<option value="admimpact@yopmail.com">Administrateur du site</option>
 											<option value="admimpact@yopmail.com">Professeur</option>
 										</select>
                                         <div class="help-block with-errors"></div>
