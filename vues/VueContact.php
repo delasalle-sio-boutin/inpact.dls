@@ -28,14 +28,21 @@
 
                         <div class="controls">
                         	<div class="row">
-							    <div class="col-md-12">
+							    <div class="col-md-6">
                                     <div class="form-group">
                                         <label for="form_mail">Qui voulez vous contacter ?</label>
                                         <select class=form-control id="form_mail" name="contact" required>
-                                        	<option selected value=></option>
-                                     		<option value=MailAdmin>Administrateur du site</option>
-											<option value=MailProf>Professeur</option>
+                                        	<option selected value=>Selectionnez une personne</option>
+                                     		<option value="delasalle.sio.bray.t@gmail.com">Administrateur du site</option>
+											<option value="admimpact@yopmail.com">Professeur</option>
 										</select>
+                                        <div class="help-block with-errors"></div>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label for="form_sujet">Sujet *</label>
+                                        <input id="form_sujet" type="text" name="sujet" class="form-control" placeholder="Sujet du message *" required="required" data-error="Le sujet est requis.">
                                         <div class="help-block with-errors"></div>
                                     </div>
                                 </div>
@@ -93,7 +100,8 @@
                             </div>
                             <div class="row">
                                 <div class="col-md-12">
-                                    <p class="text-muted"><strong>*</strong> Ce champ est requis.</p>
+                                    <!--<p class="text-muted"><strong>*</strong> Ce champ est requis.</p>-->
+                                    <p style="text-align: center;"><?php echo $info; ?></p>
                                 </div>
                             </div>
                         </div>
