@@ -13,11 +13,10 @@
 	<body>
 		<div id="page">
 			<div class="col-xs-12 col-sm-9 col-md-9 col-lg-9 ui-accueil-content">
-			
 			<?php 
 			$i = 1;
 			foreach ($lesEvenements as $unEvenement){ ?>
-				<div class="col-sm-5 ui-accueil-actu <?php echo ${'uneClass'.$i} ?>">
+				<div class="col-sm-6 ui-accueil-actu <?php echo ${'uneClass'.$i} ?>">
 					<div class="ui-accueil-evt">
 						<b><?php echo ${'$unTitre'.$i} . "<br>";?></b>
 						<?php echo ${'$unContenu'.$i}; ?>
@@ -29,7 +28,7 @@
 			<?php 
 			$i += 1; } ?>
 			</div>
-			<div class="col-xs-12 col-sm-3 col-md-3 col-lg-3 ui-fil-twitter">
+			<div class="col-xs-10 col-xs-offset-1 col-sm-3 col-sm-offset-0 col-md-3 col-lg-3 ui-fil-twitter">
 				<a class="twitter-timeline" data-lang="fr" data-dnt="true" data-height="650" data-theme="dark" data-link-color="#f5b570" href="https://twitter.com/DLS_SIO/lists/tweets-dls-rennes?lang=fr">A Twitter List by DLS_SIO</a> <script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
 			</div>
 		</div>
