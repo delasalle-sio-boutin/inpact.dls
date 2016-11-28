@@ -13,7 +13,7 @@
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 	<link rel="stylesheet" media="(min-width: 768px)" href="vues/styleLG.css" />
 	<link rel="stylesheet" media="(max-width: 767px)" href="vues/styleXS.css" />
-	<link rel="stylesheet" href="vues/style.css" />
+	<link rel="stylesheet" href="vues/style2.css" />
 	<script type="text/javascript">
 
 		$(document).ready(function(){
