@@ -21,6 +21,7 @@ body{
   position: relative;
   padding-bottom: 185px;
   width: 98%;
+  margin: 0 auto;
 	/* border: #000 1px solid;
 	overflow-x: hidden; */
 	text-align: left;
