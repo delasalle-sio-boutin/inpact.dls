@@ -22,7 +22,7 @@
 						<?php echo ${'$unContenu'.$i}; ?>
 					</div>
 					<div class="ui-accueil-suite">
-						<a href="index.php?action=Evenements">Lire la suite (...)</a>
+						<a href="index.php?action=Evenements&id=<?php echo ${'$unId'.$i} ?>">Lire la suite (...)</a>
 					</div>
 				</div>
 			<?php 

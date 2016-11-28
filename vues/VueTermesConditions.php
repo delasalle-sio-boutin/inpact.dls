@@ -17,7 +17,7 @@
 			<p> les autres pages </p>
 		<?php } ?>
 	<?php }else{ ?>
-		Première arrivée sur la page
+		<IFRAME src="https://www.scolinfo.net/" width=100%; height=100%; scrolling=auto frameborder=1 > </IFRAME>
 	<?php }?>
 	</div>
 </body>
