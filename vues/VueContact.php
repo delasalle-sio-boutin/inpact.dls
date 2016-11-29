@@ -5,11 +5,10 @@
 // Modifié le 20/11/2016 par Killian BOUTIN
 
 ?>
-
-<header> <?php include ('Header.php'); ?> </header>
-
 <body>
 	<div id="page">
+	<header> <?php include ('Header.php'); ?> </header>
+	<div id="main">
 		<div class="row">
 
                 <div class="col-lg-8 col-lg-offset-2">
@@ -102,11 +101,10 @@
                 </div><!-- /.8 -->
 
             </div> <!-- /.row-->
+	</div> <!--  /.main -->
 	</div>
 	<script src="https://code.jquery.com/jquery-1.12.0.min.js"></script>
 	<script src="js/validator.js"></script>
    <!--  <script src="js/contact.js"></script> -->
-	
+   <footer class="footer-bs fixed-bottom" id="footer"> <?php include ('Footer.php'); ?> </footer>	
 </body>
-
-<footer class="footer-bs fixed-bottom" id="footer"> <?php include ('Footer.php'); ?> </footer>
