@@ -1,38 +1,118 @@
+/* --------------------------------------------------------------------- MISE EN FORME GÉNÉRALE --------------------------------------------------------------------- */
+
+*{
+	margin: 0;
+	padding: 0;
+}
+
 html{
-  height:100%;
+	height:100%;
 }
- 
+
+/* Mise en forme générale de la page */
 body{
-  height:100%;
-  position: relative;
-  background: #c0c0c0;
+	height:100%;
+	position: relative;
+	background: #c0c0c0;
 }
- 
-#wrap{
-  min-height:99%;
-  position: relative;
-  overflow: hidden;
+
+/* Mise en forme de la div "#page" */
+div#page{
+	min-height:99%;
+	position: relative;
 }
  
 #header{
-  position: relative;
+	position: relative;
 }
+
 #main{
-  position: relative;
-  padding-bottom: 185px;
-  width: 98%;
-  margin: 0 auto;
+	position: relative;
+	padding-bottom: 205px;
+	margin: 0 auto;
+	width: 98%;
 	/* border: #000 1px solid;
 	overflow-x: hidden; */
 	text-align: left;
+	overflow-x: hidden;
 }
+
 #footer{
 	border-top: solid 1px black;
-	height: 165px;
+	height: 185px;
 	position: absolute;
 	bottom: 0;
 }
 
+/* ------------------------------------------------------------------ MISE EN FORME DES PAGES "connexion" ; "..." ------------------------------------------------------------------ */
+
+div#page-contenu{
+	/* hauteur, largeur, centrage avec des marges auto, padding nul, bordure noire, alignement gauche, arrière plan orange */
+	width: 35%;
+	margin: 30px auto;
+	padding: 0;
+	border: #000 1px solid;
+	
+	/* coins arrondis en haut uniquement */
+	-moz-border-radius: 15px 15px 0 0;
+	-webkit-border-radius: 15px 15px 0 0;
+	-o-border-radius: 15px 15px 0 0;
+	-ms-border-radius: 15px 15px 0 0;
+	-khtml-border-radius: 15px 15px 0 0;
+	border-radius: 15px 15px 0 0;
+}
+
+div#page-contenu-head{
+	background: #f5b570;
+	border-bottom: #000 1px solid;
+	padding: 3px auto;
+	padding-top: 10px;
+	
+	/* coins arrondis en haut uniquement */
+	-moz-border-radius: 15px 15px 0 0;
+	-webkit-border-radius: 15px 15px 0 0;
+	-o-border-radius: 15px 15px 0 0;
+	-ms-border-radius: 15px 15px 0 0;
+	-khtml-border-radius: 15px 15px 0 0;
+	border-radius: 15px 15px 0 0;
+}
+
+div#page-contenu-body{
+	width: 100%;
+	margin: 10px 0;
+}
+
+
+table{
+	margin: 0 auto;
+	width: 95%;
+}
+
+td:first-child{
+	width: 20%;
+	margin: 0 auto;
+}
+
+td:last-child {
+	width: 80%;
+	text-align: center;
+	margin: 0 auto;
+}
+
+/* style de la liste <ul id="menu-horizontal"> */
+ul#menu-horizontal {
+	padding: 0;
+	list-style-type: none; 
+}
+
+/* style des éléments <li> de la liste <ul id="menu-horizontal"> */
+ul#menu-horizontal li {
+	padding: 0;
+	margin: 0;
+	font-weight : bold;
+	font-size: 25px;
+	text-align: center
+}
 
 /* ------------------------------------------------------------------ MISE EN FORME DU MENU HEADER ------------------------------------------------------------------ */
 
@@ -76,55 +156,35 @@ body{
   color: black;
 }
 
-/* Enlever le "connectÃ© en tant que" quand la page est comprise entre 768px et 991px */
-@media (max-width: 991px) {
-		ul.ui-right{
-			margin-right: -9999px;
-		}
-}
-
-/* Mise en forme du bouton de navigation quand la taille d'Ã©cran est infÃ©rieure Ã  768px */
+/* Mise en forme du bouton de navigation quand la taille d'écran est inférieure à 768px */
 .navbar-toggle .icon-bar{
     color: #fff;
     background: #737373;
 }
 
-/* Mise en forme des images affichÃ© dans le dropdown des liens utiles */
+/* Mise en forme des images affichées dans le dropdown des liens utiles */
 img#liens{
 	width: 25px;
 	height: 25px;
 	margin-right: 5px;
 }
 
-/* Mettre une bordure prononcÃ©e dans le menu quand on clique sur un dropdown */
+/* Mettre une bordure prononcée dans le menu quand on clique sur un dropdown */
 .dropdown-menu{
 	border: 1px solid #d09a5f;
 	min-height: 10px;
 }
 
-/* Permet de mettre la division de connection Ã Â  gauche, quand la taille d'Ã©cran est infÃ¨rieure Ã  768px */
-@media (min-width: 0px) and (max-width: 767px) {
-	.ui-login{
-		border: 1px solid black;
-		margin-left: 15px;
-		text-align: left;
-	}
-	.pull-right {
- 	 float: left !important;
-	}
-}
-
-
 /* ------------------------------------------------------------------ MISE EN FORME DU MENU FOOTER ------------------------------------------------------------------ */
 
-/* Mise en page du footer en gÃ©nÃ©ral (taille, marge, overflow) */
+/* Mise en page du footer en général (taille, marge, overflow) */
 .footer-bs {
-	width : 100%;
+	width: 100%;
+	height: 100%;
 	padding: 0;
+	margin: 0;
 	background-color: #f5b570;
-	color: rgba(255,255,255,1.00);
 	margin-top: auto;
-  	padding: 15px;
 }
 
 /* Ajout d'un padding pour chaque div du footer */
@@ -132,7 +192,9 @@ img#liens{
 	padding: 1% 25px ; 
 }
 
-/* Modification des caractÃ©ristiques des titres <h4> du footer (taille, majuscules, espacement des lettres, marges) */
+.footer-nav, .footer-social{ margin-top: -15px; }
+
+/* Modification des caractéristiques des titres <h4> du footer (taille, majuscules, espacement des lettres, marges) */
 footer h4 {
 	font-size: 13px;
 	text-transform: uppercase;
@@ -177,29 +239,121 @@ footer h4 {
 .footer-social ul a { padding: 5px 10px; color: rgba(255,255,255,1.00); }
 .footer-social a:hover { color:rgba(255,255,255,0.80); text-decoration:none; }
 
-@media (min-width: 768px) {
-	.footer-nav, .footer-social{
-		margin-top: -15px;
-	}
-	ul.pages > li, ul.list >li{
-		border-left: solid 3px rgba(255,255,255,1.0);
-		list-style: none;
-	}
+ul.pages > li, ul.list > li{
+	border-left: solid 3px rgba(255,255,255,1.0);
+	list-style: none;
 }
 
-@media (max-width: 767px) {
-	.footer-nav{ font-size: 13px;}
-	
-	/* Mise en page du <ul> "page" contenu dans la div "footer-nav" */
-	.footer-nav ul.pages li {margin: 0px -22px; }
-	
-	/* Mise en page du <ul> "list" contenu dans la div "footer-nav" */
-	.footer-nav ul.list li {margin: 0px -40px; }
-	
-	.footer-nav h4.info { margin-left: -20px; }
-	
-	.footer-social h4 { margin: 10px -37px 20px -15px;}
-	
+/* ------------------------------------------------------------------ MISE EN FORME DE L'ACCUEIL ----------------------------------------------------------------- */
+
+.ui-accueil-actu{
+	margin: auto;
+}
+
+.ui-accueil-div1{
+	/* coins arrondis */
+	-moz-border-radius: 20px 0px 0px 0px;
+	-webkit-border-radius: 20px 0px 0px 0px;
+	-o-border-radius: 20px 0px 0px 0px;
+	-ms-border-radius: 20px 0px 0px 0px;
+	-khtml-border-radius: 20px 0px 0px 0px;
+	border-radius: 20px 0px 0px 0px;
+	/* fond de la division */
+	background-color: #8bc763;
+	overflow: hidden;
+}
+
+.ui-accueil-div2{
+	/* coins arrondis */
+	-moz-border-radius: 0px 20px 0px 0px;
+	-webkit-border-radius: 0px 20px 0px 0px;
+	-o-border-radius: 0px 20px 0px 0px;
+	-ms-border-radius: 0px 20px 0px 0px;
+	-khtml-border-radius: 0px 20px 0px 0px;
+	border-radius: 0px 20px 0px 0px;
+	/* fond de la division */
+	background-image: url('../images/bleu.jpg');
+	overflow: hidden;	
+}
+
+.ui-accueil-div3{
+	/* coins arrondis */
+	-moz-border-radius: 0px 0px 0px 20px;
+	-webkit-border-radius: 0px 0px 0px 20px;
+	-o-border-radius: 0px 0px 0px 20px;
+	-ms-border-radius: 0px 0px 0px 20px;
+	-khtml-border-radius: 0px 0px 0px 20px;
+	border-radius: 0px 0px 0px 20px;
+	/* fond de la division */
+	background-image: url('../images/jaune.jpg');
+	overflow: hidden;
+}
+
+.ui-accueil-div4{
+	/* coins arrondis */
+	-moz-border-radius: 0px 0px 20px 0px;
+	-webkit-border-radius: 0px 0px 20px 0px;
+	-o-border-radius: 0px 0px 20px 0px;
+	-ms-border-radius: 0px 0px 20px 0px;
+	-khtml-border-radius: 0px 0px 20px 0px;
+	border-radius: 0px 0px 20px 0px;
+	/* fond de la division */
+	background-image: url('../images/orange.png');
+	overflow: hidden;
+}
+
+.ui-accueil-evt{
+	text-align: justify;
+}
+
+
+/* MARGES EN FONCTION DE LA TAILLE DE L'ÉCRAN POUR LES DIVS */
+
+.ui-accueil-div1{ margin: 0 15px 15px 0; }
+.ui-accueil-div2{ margin: 0 0 15px 15px; }
+.ui-accueil-div3{ margin: 15px 15px 0 0; }
+.ui-accueil-div4{ margin: 15px 0 0 15px; }
+
+.ui-accueil-actu{
+	height: 325px;
+	padding: 0px;
+	margin: 0;
+}
+
+.ui-accueil-evt{
+	height: 80%;
+	padding: 25px;
+	overflow: hidden;
+}	
+
+.ui-accueil-suite{
+	height: 20%;
+	padding: 25px;
+}
+
+.ui-accueil-content > div{
+	width: 48%;
+}
+
+/* ------------------------------------------------------------------ MISE EN FORME DE "CONTACT" ----------------------------------------------------------------- */
+
+input[type="text"], input[type="password"]{
+	/* coins arrondis */
+	-moz-border-radius: 5px 5px 5px 5px;
+	-webkit-border-radius: 5px 5px 5px 5px;
+	-o-border-radius: 5px 5px 5px 5px;
+	-ms-border-radius: 5px 5px 5px 5px;
+	-khtml-border-radius: 5px 5px 5px 5px;
+	border-radius: 5px 5px 5px 5px;
+}
+
+input[type="text"]:focus, input[type="password"]:focus{
+	border: solid 2px #f5b570;
+	outline: 0;
+}
+
+div.controls{
+	padding-top: 125px;
 }
 
 /* ------------------------------------------------------------------ MISE EN FORME DE "LIENS EXTERNES" ----------------------------------------------------------------- */
@@ -243,8 +397,7 @@ ul.ui-externes li a{
                 0 -4px 0 hsl(210, 100%, 50%) inset, 
                 0 -5px 0 hsl(210, 100%, 60%) inset;
      transition: padding .1s, background .1s;
-     position: relative;
-     
+     position: relative;    
 }
 
 /* Coins arrondis */
@@ -293,10 +446,4 @@ ul.ui-externes li a:focus::before{
     background: white;
     box-shadow: 0 0 2px white, 
                 0 -1px 0 rgba(0, 0, 0, .4);
-}
-
-@media (max-width: 767px) {
-	ul.ui-externes{
-	    width: 80%;
-	}
 }
