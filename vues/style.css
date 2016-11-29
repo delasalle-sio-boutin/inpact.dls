@@ -16,7 +16,7 @@ body{
     margin: 0;
     padding: 0;
     width: 100%;
-    display: flex;
+    display: flex; /* pour le footer */
     flex-direction: column;
     overflow-x: hidden;
 }
@@ -152,33 +152,33 @@ ul#menu-horizontal li {
   color: black;
 }
 
-/* Enlever le "connectÃ© en tant que" quand la page est comprise entre 768px et 991px */
+/* Enlever le "connecté en tant que" quand la page est comprise entre 768px et 991px */
 @media (max-width: 991px) {
 		ul.ui-right{
 			margin-right: -9999px;
 		}
 }
 
-/* Mise en forme du bouton de navigation quand la taille d'Ã©cran est infÃ©rieure Ã  768px */
+/* Mise en forme du bouton de navigation quand la taille d'écran est inférieure à  768px */
 .navbar-toggle .icon-bar{
     color: #fff;
     background: #737373;
 }
 
-/* Mise en forme des images affichÃ© dans le dropdown des liens utiles */
+/* Mise en forme des images affichées dans le dropdown des liens utiles */
 img#liens{
 	width: 25px;
 	height: 25px;
 	margin-right: 5px;
 }
 
-/* Mettre une bordure prononcÃ©e dans le menu quand on clique sur un dropdown */
+/* Mettre une bordure prononcée dans le menu quand on clique sur un dropdown */
 .dropdown-menu{
 	border: 1px solid #d09a5f;
 	min-height: 10px;
 }
 
-/* Permet de mettre la division de connection Ã Â  gauche, quand la taille d'Ã©cran est infÃ¨rieure Ã  768px */
+/* Permet de mettre la division de connection Ã Â  gauche, quand la taille d'écran est infèrieure à 768px */
 @media (min-width: 0px) and (max-width: 767px) {
 	.ui-login{
 		border: 1px solid black;
@@ -208,7 +208,7 @@ img#liens{
 	padding: 1% 25px ; 
 }
 
-/* Modification des caractÃ©ristiques des titres <h4> du footer (taille, majuscules, espacement des lettres, marges) */
+/* Modification des caractéristiques des titres <h4> du footer (taille, majuscules, espacement des lettres, marges) */
 footer h4 {
 	font-size: 13px;
 	text-transform: uppercase;

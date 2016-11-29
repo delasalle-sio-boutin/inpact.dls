@@ -1,38 +1,113 @@
+/* --------------------------------------------------------------------- MISE EN FORME GÉNÉRALE --------------------------------------------------------------------- */
+
+*{
+	margin: 0;
+	padding: 0;
+}
+
 html{
-  height:100%;
+	height:100%;
 }
  
 body{
-  height:100%;
-  position: relative;
-  background: #c0c0c0;
+	height:100%;
+	position: relative;
+	background: #c0c0c0;
 }
  
-#wrap{
-  min-height:99%;
-  position: relative;
-  overflow: hidden;
+div#page{
+	min-height:99%;
+	position: relative;
 }
  
 #header{
-  position: relative;
+	position: relative;
 }
+
 #main{
-  position: relative;
-  padding-bottom: 185px;
-  width: 98%;
-  margin: 0 auto;
+	position: relative;
+	padding-bottom: 205px;
+	margin: 0 auto;
+	width: 98%;
 	/* border: #000 1px solid;
 	overflow-x: hidden; */
 	text-align: left;
+	overflow-x: hidden;
 }
 #footer{
 	border-top: solid 1px black;
-	height: 165px;
+	height: 185px;
 	position: absolute;
 	bottom: 0;
 }
 
+div#page-contenu{
+	/* hauteur, largeur, centrage avec des marges auto, padding nul, bordure noire, alignement gauche, arriÃƒÂ¨re plan orange */
+	width: 35%;
+	margin: 30px auto;
+	padding: 0;
+	border: #000 1px solid;
+	
+	/* coins arrondis en haut uniquement */
+	-moz-border-radius: 15px 15px 0 0;
+	-webkit-border-radius: 15px 15px 0 0;
+	-o-border-radius: 15px 15px 0 0;
+	-ms-border-radius: 15px 15px 0 0;
+	-khtml-border-radius: 15px 15px 0 0;
+	border-radius: 15px 15px 0 0;
+}
+
+div#page-contenu-head{
+	background: #f5b570;
+	border-bottom: #000 1px solid;
+	padding: 3px auto;
+	padding-top: 10px;
+	
+	/* coins arrondis en haut uniquement */
+	-moz-border-radius: 15px 15px 0 0;
+	-webkit-border-radius: 15px 15px 0 0;
+	-o-border-radius: 15px 15px 0 0;
+	-ms-border-radius: 15px 15px 0 0;
+	-khtml-border-radius: 15px 15px 0 0;
+	border-radius: 15px 15px 0 0;
+}
+
+div#page-contenu-body{
+	width: 100%;
+	margin: 10px 0;
+}
+
+
+table{
+	margin: 0 auto;
+	width: 95%;
+}
+
+td:first-child{
+	width: 20%;
+	margin: 0 auto;
+}
+
+td:last-child {
+	width: 80%;
+	text-align: center;
+	margin: 0 auto;
+}
+
+/* style de la liste <ul id="menu-horizontal"> */
+ul#menu-horizontal {
+	padding: 0;
+	list-style-type: none; 
+}
+
+/* style des éléments <li> de la liste <ul id="menu-horizontal"> */
+ul#menu-horizontal li {
+	padding: 0;
+	margin: 0;
+	font-weight : bold;
+	font-size: 25px;
+	text-align: center
+}
 
 /* ------------------------------------------------------------------ MISE EN FORME DU MENU HEADER ------------------------------------------------------------------ */
 
@@ -119,12 +194,12 @@ img#liens{
 
 /* Mise en page du footer en gÃ©nÃ©ral (taille, marge, overflow) */
 .footer-bs {
-	width : 100%;
+	width: 100%;
+	height: 100%;
 	padding: 0;
+	margin: 0;
 	background-color: #f5b570;
-	color: rgba(255,255,255,1.00);
 	margin-top: auto;
-  	padding: 15px;
 }
 
 /* Ajout d'un padding pour chaque div du footer */

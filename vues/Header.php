@@ -4,7 +4,8 @@
 <head>
 
 
-<title>Association Inpact</title>
+	<title>Association Inpact</title>
+	<link rel="icon" href="images/logo.png">
 
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -14,6 +15,9 @@
 	<link rel="stylesheet" media="(min-width: 768px)" href="vues/styleLG.css" />
 	<link rel="stylesheet" media="(max-width: 767px)" href="vues/styleXS.css" />
 	<link rel="stylesheet" href="vues/style2.css" />
+	
+	<!-- 
+	APPAREMENT UTILE POUR LA CONNEXION
 	<script type="text/javascript">
 
 		$(document).ready(function(){
@@ -23,7 +27,7 @@
 		    });
 		});
 
-	</script>
+	</script> -->
 </head>
 
 <body>
