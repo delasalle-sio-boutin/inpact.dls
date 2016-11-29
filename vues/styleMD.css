@@ -1,0 +1,506 @@
+/* --------------------------------------------------------------------- MISE EN FORME GÉNÉRALE --------------------------------------------------------------------- */
+
+*{
+	margin: 0;
+	padding: 0;
+}
+
+html{
+	height: 100%;
+}
+
+/* Mise en forme générale de la page */
+body{
+    height: 100%;
+	position: relative;
+	background: #c0c0c0;
+}
+
+/* Mise en forme de la div "#page" */
+div#page{
+	min-height: 99%;
+	position: relative;
+}
+
+#header{
+	position: relative;
+}
+
+#main{
+	position: relative;
+	padding-bottom: 205px;
+	margin: 0 auto;
+	width: 98%;
+	/* border: #000 1px solid;
+	overflow-x: hidden; */
+	text-align: left;
+	overflow-x: hidden;
+}
+
+#footer{
+	border-top: solid 1px black;
+	height: 185px;
+	position: absolute;
+	bottom: 0;
+}
+
+/* ------------------------------------------------------------------ MISE EN FORME DES PAGES "connexion" ; "..." ------------------------------------------------------------------ */
+
+div#page-contenu{
+	/* hauteur, largeur, centrage avec des marges auto, padding nul, bordure noire, alignement gauche, arrière plan orange */
+	width: 35%;
+	margin: 30px auto;
+	padding: 0;
+	border: #000 1px solid;
+	
+	/* coins arrondis en haut uniquement */
+	-moz-border-radius: 15px 15px 0 0;
+	-webkit-border-radius: 15px 15px 0 0;
+	-o-border-radius: 15px 15px 0 0;
+	-ms-border-radius: 15px 15px 0 0;
+	-khtml-border-radius: 15px 15px 0 0;
+	border-radius: 15px 15px 0 0;
+}
+
+div#page-contenu-head{
+	background: #f5b570;
+	border-bottom: #000 1px solid;
+	padding: 3px auto;
+	padding-top: 10px;
+	
+	/* coins arrondis en haut uniquement */
+	-moz-border-radius: 15px 15px 0 0;
+	-webkit-border-radius: 15px 15px 0 0;
+	-o-border-radius: 15px 15px 0 0;
+	-ms-border-radius: 15px 15px 0 0;
+	-khtml-border-radius: 15px 15px 0 0;
+	border-radius: 15px 15px 0 0;
+}
+
+div#page-contenu-body{
+	width: 100%;
+	margin: 10px 0;
+}
+
+table{
+	margin: 0 auto;
+	width: 95%;
+}
+
+td:first-child{
+	width: 20%;
+	margin: 0 auto;
+}
+
+td:last-child {
+	width: 80%;
+	text-align: center;
+	margin: 0 auto;
+}
+
+/* style de la liste <ul id="menu-horizontal"> */
+ul#menu-horizontal {
+	padding: 0;
+	list-style-type: none; 
+}
+
+/* style des éléments <li> de la liste <ul id="menu-horizontal"> */
+ul#menu-horizontal li {
+	padding: 0;
+	margin: 0;
+	font-weight : bold;
+	font-size: 25px;
+	text-align: center;
+}
+
+
+/* ------------------------------------------------------------------ MISE EN FORME DU MENU HEADER ------------------------------------------------------------------ */
+
+/* Barre de navigation (couleur, border, taille minimum) */
+.navbar, .dropdown-menu{
+	background: #f5b570;
+	border-bottom: solid 1px;
+	min-height: 70px;
+}
+
+/* Bouton dans la navigation pour mobile */
+.navbar-toggle{
+	border: solid 2px #737373;
+	margin-top: 17px;
+}
+
+/* Commencement de la page / fin de la barre de navigation (la navbar ne passe pas sur le texte) */
+.navbar-wrapper{
+	height: 70px;
+}
+
+
+/* Affectation d'une hauteur minimale pour la barre de navigation */
+.navbar-header{
+	min-height: 70px;
+}
+
+/* Mise en forme des boutons de la navigation (on enleve la couleur du background) quand on passe la souris dessus */
+.nav>li>a:focus, .nav>li>a:hover,.nav .open>a, .nav .open>a:focus, .nav .open>a:hover, .dropdown-menu>li>a:focus, .dropdown-menu>li>a:hover{
+  background: none;
+}
+
+/* Mise en forme des titres de la navigation */
+.navbar a, .dropdown-menu>li>a, .dropdown-menu>li>a:focus, .dropdown-menu>li>a:hover, .navbar-toggle{
+	color: #fff;
+}
+
+/* Mise en forme du texte de la barre de navigation quand on passe la souris dessus */
+.nav li a:hover{
+  color: black;
+}
+
+/* Enlever le "connecté en tant que" quand la page est inférieure à 991px */
+ul.ui-right{
+	margin-right: -9999px;
+}
+
+/* Mise en forme du bouton de navigation quand la taille d'écran est inférieure à  768px */
+.navbar-toggle .icon-bar{
+    color: #fff;
+    background: #737373;
+}
+
+/* Mise en forme des images affichées dans le dropdown des liens utiles */
+img#liens{
+	width: 25px;
+	height: 25px;
+	margin-right: 5px;
+}
+
+/* Mettre une bordure prononcée dans le menu quand on clique sur un dropdown */
+.dropdown-menu{
+	border: 1px solid #d09a5f;
+	min-height: 10px;
+}
+
+
+/* ------------------------------------------------------------------ MISE EN FORME DU MENU FOOTER ------------------------------------------------------------------ */
+
+/* Mise en page du footer en général (taille, marge, overflow) */
+.footer-bs {
+	width : 100%;
+	padding: 0;
+	background-color: #f5b570;
+	color: rgba(255,255,255,1.00);
+	margin-top: auto;
+  	padding: 15px;
+}
+
+/* Ajout d'un padding pour chaque div du footer */
+.footer-bs, .footer-nav, .footer-social { 
+	padding: 1% 25px ; 
+}
+
+.footer-nav, .footer-social{ margin-top: -15px; }
+
+/* Modification des caractéristiques des titres <h4> du footer (taille, majuscules, espacement des lettres, marges) */
+footer h4 {
+	font-size: 13px;
+	text-transform: uppercase;
+	letter-spacing: 1px;
+	margin-bottom: 5px;
+}
+
+/* Mise en forme de la division "footer-logo" */
+.footer-logo{
+	width: 25%;
+	display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.footer-logo img{
+	width: 100%;
+	vertical-align: middle;
+	text-align: center;
+	margin: auto auto;
+}
+
+.social-fb:hover { color: #3B5998; }
+.social-tw:hover { color: #4099FF; }
+.social-in:hover { color: #0177B5; }
+
+/* Mise en page du <ul> "page" contenu dans la div "footer-nav" */
+.footer-nav ul.pages { list-style:none; }
+.footer-nav ul.pages li {margin: 0px -15px; padding:2px 10px; }
+.footer-nav ul.pages a { padding: 5px 0px; color: rgba(255,255,255,1.00); font-weight: bold; }
+.footer-nav ul.pages a:hover { color:rgba(255,255,255,0.80); text-decoration:none; }
+
+/* Mise en page du <ul> "list" contenu dans la div "footer-nav" */
+.footer-nav ul.list { list-style:none; }
+.footer-nav ul.list li {margin: 0px -15px; padding:2px 10px; }
+.footer-nav ul.list a { color:rgba(255,255,255,0.80); }
+.footer-nav ul.list a:hover { color:rgba(255,255,255,0.60); text-decoration:none; }
+
+/* Mise en page de la div "footer-social" */
+.footer-social ul { list-style:none; padding:0px; }
+.footer-social li { padding:2px 0px;}
+.footer-social ul a { padding: 5px 10px; color: rgba(255,255,255,1.00); }
+.footer-social a:hover { color:rgba(255,255,255,0.80); text-decoration:none; }
+
+ul.pages > li, ul.list >li{
+	border-left: solid 3px rgba(255,255,255,1.0);
+	list-style: none;
+}
+
+
+/* ------------------------------------------------------------------ MISE EN FORME DU BOUTON TOP ----------------------------------------------------------------- */
+
+.test:not{
+	x-overflow: hidden;
+}
+
+.cd-top {
+  display: inline-block;
+  height: 40px;
+  width: 40px;
+  position: fixed;
+  bottom: 40px;
+  right: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.05);
+  /* image replacement properties */
+  overflow: hidden;
+  text-indent: 100%;
+  white-space: nowrap;
+  background: #f5b570 url(../images/cd-top-arrow.svg) no-repeat center 50%;
+  visibility: hidden;
+  opacity: 0;
+  -webkit-transition: opacity .3s 0s, visibility 0s .3s;
+  -moz-transition: opacity .3s 0s, visibility 0s .3s;
+  transition: opacity .3s 0s, visibility 0s .3s;
+}
+.cd-top.cd-is-visible, .cd-top.cd-fade-out, .no-touch .cd-top:hover {
+  -webkit-transition: opacity .3s 0s, visibility 0s 0s;
+  -moz-transition: opacity .3s 0s, visibility 0s 0s;
+  transition: opacity .3s 0s, visibility 0s 0s;
+}
+.cd-top.cd-is-visible {
+  /* the button becomes visible */
+  visibility: visible;
+  opacity: 1;
+}
+.cd-top.cd-fade-out {
+  /* if the user keeps scrolling down, the button is out of focus and becomes less visible */
+  opacity: .5;
+}
+.no-touch .cd-top:hover {
+  background-color: #e86256;
+  opacity: 1;
+}
+
+.cd-top {
+	right: 20px;
+	bottom: 20px;
+	height: 60px;
+	width: 60px;
+}
+
+/* ------------------------------------------------------------------ MISE EN FORME DE L'ACCUEIL ----------------------------------------------------------------- */
+
+.ui-accueil-actu{
+	margin: auto;
+}
+
+.ui-accueil-div1{
+	/* coins arrondis */
+	-moz-border-radius: 20px 0px 0px 0px;
+	-webkit-border-radius: 20px 0px 0px 0px;
+	-o-border-radius: 20px 0px 0px 0px;
+	-ms-border-radius: 20px 0px 0px 0px;
+	-khtml-border-radius: 20px 0px 0px 0px;
+	border-radius: 20px 0px 0px 0px;
+	/* fond de la division */
+	background-color: #8bc763;
+	overflow: hidden;
+}
+
+.ui-accueil-div2{
+	/* coins arrondis */
+	-moz-border-radius: 0px 20px 0px 0px;
+	-webkit-border-radius: 0px 20px 0px 0px;
+	-o-border-radius: 0px 20px 0px 0px;
+	-ms-border-radius: 0px 20px 0px 0px;
+	-khtml-border-radius: 0px 20px 0px 0px;
+	border-radius: 0px 20px 0px 0px;
+	/* fond de la division */
+	background-image: url('../images/bleu.jpg');
+	overflow: hidden;	
+}
+
+.ui-accueil-div3{
+	/* coins arrondis */
+	-moz-border-radius: 0px 0px 0px 20px;
+	-webkit-border-radius: 0px 0px 0px 20px;
+	-o-border-radius: 0px 0px 0px 20px;
+	-ms-border-radius: 0px 0px 0px 20px;
+	-khtml-border-radius: 0px 0px 0px 20px;
+	border-radius: 0px 0px 0px 20px;
+	/* fond de la division */
+	background-image: url('../images/jaune.jpg');
+	overflow: hidden;
+}
+
+.ui-accueil-div4{
+	/* coins arrondis */
+	-moz-border-radius: 0px 0px 20px 0px;
+	-webkit-border-radius: 0px 0px 20px 0px;
+	-o-border-radius: 0px 0px 20px 0px;
+	-ms-border-radius: 0px 0px 20px 0px;
+	-khtml-border-radius: 0px 0px 20px 0px;
+	border-radius: 0px 0px 20px 0px;
+	/* fond de la division */
+	background-image: url('../images/orange.png');
+	overflow: hidden;
+}
+
+.ui-accueil-evt{
+	text-align: justify;
+}
+
+
+/* MARGES EN FONCTION DE LA TAILLE DE L'ÉCRAN POUR LES DIVS */
+.ui-accueil-div1{ margin: 0 10px 10px 0; }
+.ui-accueil-div2{ margin: 0 0 10px 10px; }
+.ui-accueil-div3{ margin: 10px 10px 0 0; }
+.ui-accueil-div4{ margin: 10px 0 0 10px; }
+
+.ui-accueil-actu{
+	height: 325px;
+	padding: 0px;
+	margin: 0;
+}
+
+.ui-accueil-evt{
+	height: 80%;
+	padding: 25px;
+	overflow: hidden;
+}	
+
+.ui-accueil-suite{
+	height: 20%;
+	padding: 25px;
+}
+
+.ui-accueil-content > div{
+	width: 48%;
+}
+
+/* ------------------------------------------------------------------ MISE EN FORME DE "CONTACT" ----------------------------------------------------------------- */
+
+input[type="text"], input[type="password"]{
+	/* coins arrondis */
+	-moz-border-radius: 5px 5px 5px 5px;
+	-webkit-border-radius: 5px 5px 5px 5px;
+	-o-border-radius: 5px 5px 5px 5px;
+	-ms-border-radius: 5px 5px 5px 5px;
+	-khtml-border-radius: 5px 5px 5px 5px;
+	border-radius: 5px 5px 5px 5px;
+}
+
+input[type="text"]:focus, input[type="password"]:focus{
+	border: solid 2px #f5b570;
+	outline: 0;
+}
+
+div.controls{
+	padding-top: 125px;
+}
+
+/* ------------------------------------------------------------------ MISE EN FORME DE "LIENS EXTERNES" ----------------------------------------------------------------- */
+
+/* Menu horizontal, dégradé, coins arrondis */
+ul.ui-externes{
+    display: table;
+    width: 600px;
+    margin: 15px auto;
+    padding: 0;
+    background: linear-gradient(deepskyblue, dodgerblue);
+    background: -webkit-linear-gradient(deepskyblue, dodgerblue);
+    background:    -moz-linear-gradient(deepskyblue, dodgerblue);
+    background:     -ms-linear-gradient(deepskyblue, dodgerblue);
+    background:      -o-linear-gradient(deepskyblue, dodgerblue);
+    background:         linear-gradient(deepskyblue, dodgerblue);
+    border-radius: 3px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, .3),
+                0 3px 5px rgba(0, 0, 0, .2),
+                0 5px 10px rgba(0, 0, 0, .2),
+                0 20px 20px rgba(0, 0, 0, .15);
+}
+
+/* Menu horizontal */
+ul.ui-externes li{
+    display: table-cell;
+}
+
+/* Style des liens, ombre sur le texte, effet 3D sur le menu, transition */
+ul.ui-externes li a{
+    display: block;
+    text-align: center;
+    color: rgba(0, 0, 0, .7); 
+    text-decoration: none;
+    padding: 8px 8px 17px 8px;
+    text-shadow: 0 1px 0 rgba(255, 255, 255, .4);
+    box-shadow: 0 1px 0 rgba(255, 255, 255, .7) inset, 
+                0 -1px 0 hsl(210, 100%, 32%) inset, 
+                0 -2px 0 hsl(210, 100%, 38%) inset, 
+                0 -3px 0 hsl(210, 100%, 44%) inset, 
+                0 -4px 0 hsl(210, 100%, 50%) inset, 
+                0 -5px 0 hsl(210, 100%, 60%) inset;
+     transition: padding .1s, background .1s;
+     position: relative;
+     
+}
+
+/* Coins arrondis */
+ul.ui-externes li:first-child a{
+    border-radius: 3px 0 0 3px;
+}
+
+/* Coins arrondis */
+ul.ui-externes li:last-child a{
+    border-radius: 0 3px 3px 0;
+}
+
+/* Eclats, marge interne au survol */
+ul.ui-externes li a:hover, 
+ul.ui-externes li a:focus{
+    background: rgba(255,255,255,.2);
+    box-shadow: 0 1px 0 rgba(255, 255, 255, .7) inset, 
+                0 -1px 0 hsl(210, 100%, 42%) inset, 
+                0 -2px 0 hsl(210, 100%, 48%) inset, 
+                0 -3px 0 hsl(210, 100%, 54%) inset, 
+                0 -4px 0 hsl(210, 100%, 60%) inset, 
+                0 -5px 0 hsl(210, 100%, 70%) inset;
+     padding: 8px 15px 17px 15px;
+} 
+
+/* Nouveau background lors du clic */
+ul.ui-externes li a:active{
+    background: linear-gradient(rgba(0,0,0,.2),rgba(0,0,0,.1)); 
+    box-shadow: 0 0 2px rgba(0,0,0,.3) inset;
+}
+
+ul.ui-externes li a::before{
+    content: '';
+    position: absolute;
+    left: 50%;
+    bottom: 9px;
+    margin-left: -2px;
+    width: 4px;
+    height: 4px;
+    border-radius: 50%;
+    background: rgba(0, 0, 0, .5);
+}
+
+ul.ui-externes li a:hover::before,
+ul.ui-externes li a:focus::before{
+    background: white;
+    box-shadow: 0 0 2px white, 
+                0 -1px 0 rgba(0, 0, 0, .4);
+}

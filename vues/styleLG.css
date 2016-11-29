@@ -5,35 +5,49 @@
 	padding: 0;
 }
 
-
-html, body {
-	height: 100%;
+html{
+	height:100%;
 }
 
 /* Mise en forme générale de la page */
 body{
-    background: #c0c0c0;
-    margin: 0;
-    padding: 0;
-    width: 100%;
-    display: flex; /* pour le footer */
-    flex-direction: column;
-    overflow-x: hidden;
+	height:100%;
+	position: relative;
+	background: #c0c0c0;
 }
 
 /* Mise en forme de la div "#page" */
 div#page{
-	/* largeur, centrage avec des marges auto, padding nul, bordure noire, alignement gauche */
+	min-height:99%;
+	position: relative;
+}
+ 
+#header{
+	position: relative;
+}
+
+#main{
+	position: relative;
+	padding-bottom: 205px;
+	margin: 0 auto;
 	width: 98%;
-	margin: 10px auto;
-	padding: 0 0px;
 	/* border: #000 1px solid;
 	overflow-x: hidden; */
 	text-align: left;
+	overflow-x: hidden;
 }
 
+#footer{
+	border-top: solid 1px black;
+	height: 185px;
+	position: absolute;
+	bottom: 0;
+}
+
+/* ------------------------------------------------------------------ MISE EN FORME DES PAGES "connexion" ; "..." ------------------------------------------------------------------ */
+
 div#page-contenu{
-	/* hauteur, largeur, centrage avec des marges auto, padding nul, bordure noire, alignement gauche, arriÃƒÂ¨re plan orange */
+	/* hauteur, largeur, centrage avec des marges auto, padding nul, bordure noire, alignement gauche, arrière plan orange */
 	width: 35%;
 	margin: 30px auto;
 	padding: 0;
@@ -47,7 +61,6 @@ div#page-contenu{
 	-khtml-border-radius: 15px 15px 0 0;
 	border-radius: 15px 15px 0 0;
 }
-
 
 div#page-contenu-head{
 	background: #f5b570;
@@ -68,6 +81,7 @@ div#page-contenu-body{
 	width: 100%;
 	margin: 10px 0;
 }
+
 
 table{
 	margin: 0 auto;
@@ -99,16 +113,6 @@ ul#menu-horizontal li {
 	font-size: 25px;
 	text-align: center
 }
-
-@media (max-width: 768px){
-	ul#menu-horizontal li {
-		font-size: 15px;
-	}
-	div#page-contenu{
-		width: 80%;
-	}
-}
-
 
 /* ------------------------------------------------------------------ MISE EN FORME DU MENU HEADER ------------------------------------------------------------------ */
 
@@ -152,14 +156,7 @@ ul#menu-horizontal li {
   color: black;
 }
 
-/* Enlever le "connecté en tant que" quand la page est comprise entre 768px et 991px */
-@media (max-width: 991px) {
-		ul.ui-right{
-			margin-right: -9999px;
-		}
-}
-
-/* Mise en forme du bouton de navigation quand la taille d'écran est inférieure à  768px */
+/* Mise en forme du bouton de navigation quand la taille d'écran est inférieure à 768px */
 .navbar-toggle .icon-bar{
     color: #fff;
     background: #737373;
@@ -178,35 +175,24 @@ img#liens{
 	min-height: 10px;
 }
 
-/* Permet de mettre la division de connection Ã Â  gauche, quand la taille d'écran est infèrieure à 768px */
-@media (min-width: 0px) and (max-width: 767px) {
-	.ui-login{
-		border: 1px solid black;
-		margin-left: 15px;
-		text-align: left;
-	}
-	.pull-right {
- 	 float: left !important;
-	}
-}
-
-
 /* ------------------------------------------------------------------ MISE EN FORME DU MENU FOOTER ------------------------------------------------------------------ */
 
-/* Mise en page du footer en gÃ©nÃ©ral (taille, marge, overflow) */
+/* Mise en page du footer en général (taille, marge, overflow) */
 .footer-bs {
-	width : 100%;
+	width: 100%;
+	height: 100%;
 	padding: 0;
+	margin: 0;
 	background-color: #f5b570;
-	color: rgba(255,255,255,1.00);
 	margin-top: auto;
-  	padding: 15px;
 }
 
 /* Ajout d'un padding pour chaque div du footer */
 .footer-bs, .footer-nav, .footer-social { 
 	padding: 1% 25px ; 
 }
+
+.footer-nav, .footer-social{ margin-top: -15px; }
 
 /* Modification des caractéristiques des titres <h4> du footer (taille, majuscules, espacement des lettres, marges) */
 footer h4 {
@@ -253,82 +239,9 @@ footer h4 {
 .footer-social ul a { padding: 5px 10px; color: rgba(255,255,255,1.00); }
 .footer-social a:hover { color:rgba(255,255,255,0.80); text-decoration:none; }
 
-@media (min-width: 768px) {
-	.footer-nav, .footer-social{
-		margin-top: -15px;
-	}
-	ul.pages > li, ul.list >li{
-		border-left: solid 3px rgba(255,255,255,1.0);
-		list-style: none;
-	}
-}
-
-@media (max-width: 767px) {
-	.footer-nav{ font-size: 13px;}
-	
-	/* Mise en page du <ul> "page" contenu dans la div "footer-nav" */
-	.footer-nav ul.pages li {margin: 0px -22px; }
-	
-	/* Mise en page du <ul> "list" contenu dans la div "footer-nav" */
-	.footer-nav ul.list li {margin: 0px -40px; }
-	
-	.footer-nav h4.info { margin-left: -20px; }
-	
-	.footer-social h4 { margin: 10px -37px 20px -15px;}
-	
-}
-
-/* ------------------------------------------------------------------ MISE EN FORME DU BOUTON TOP ----------------------------------------------------------------- */
-
-.test:not{
-	x-overflow: hidden;
-}
-
-.cd-top {
-  display: inline-block;
-  height: 40px;
-  width: 40px;
-  position: fixed;
-  bottom: 40px;
-  right: 10px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.05);
-  /* image replacement properties */
-  overflow: hidden;
-  text-indent: 100%;
-  white-space: nowrap;
-  background: #f5b570 url(../images/cd-top-arrow.svg) no-repeat center 50%;
-  visibility: hidden;
-  opacity: 0;
-  -webkit-transition: opacity .3s 0s, visibility 0s .3s;
-  -moz-transition: opacity .3s 0s, visibility 0s .3s;
-  transition: opacity .3s 0s, visibility 0s .3s;
-}
-.cd-top.cd-is-visible, .cd-top.cd-fade-out, .no-touch .cd-top:hover {
-  -webkit-transition: opacity .3s 0s, visibility 0s 0s;
-  -moz-transition: opacity .3s 0s, visibility 0s 0s;
-  transition: opacity .3s 0s, visibility 0s 0s;
-}
-.cd-top.cd-is-visible {
-  /* the button becomes visible */
-  visibility: visible;
-  opacity: 1;
-}
-.cd-top.cd-fade-out {
-  /* if the user keeps scrolling down, the button is out of focus and becomes less visible */
-  opacity: .5;
-}
-.no-touch .cd-top:hover {
-  background-color: #e86256;
-  opacity: 1;
-}
-
-@media only screen and (min-width: 768px) {
-  .cd-top {
-    right: 20px;
-    bottom: 20px;
-    height: 60px;
-    width: 60px;
-  }
+ul.pages > li, ul.list > li{
+	border-left: solid 3px rgba(255,255,255,1.0);
+	list-style: none;
 }
 
 /* ------------------------------------------------------------------ MISE EN FORME DE L'ACCUEIL ----------------------------------------------------------------- */
@@ -349,6 +262,7 @@ footer h4 {
 	background-color: #8bc763;
 	overflow: hidden;
 }
+
 .ui-accueil-div2{
 	/* coins arrondis */
 	-moz-border-radius: 0px 20px 0px 0px;
@@ -361,6 +275,7 @@ footer h4 {
 	background-image: url('../images/bleu.jpg');
 	overflow: hidden;	
 }
+
 .ui-accueil-div3{
 	/* coins arrondis */
 	-moz-border-radius: 0px 0px 0px 20px;
@@ -373,6 +288,7 @@ footer h4 {
 	background-image: url('../images/jaune.jpg');
 	overflow: hidden;
 }
+
 .ui-accueil-div4{
 	/* coins arrondis */
 	-moz-border-radius: 0px 0px 20px 0px;
@@ -393,78 +309,30 @@ footer h4 {
 
 /* MARGES EN FONCTION DE LA TAILLE DE L'ÉCRAN POUR LES DIVS */
 
-@media (min-width: 1081px) {
-	.ui-accueil-div1{
-		margin: 0 15px 15px 0;
-	}
-	.ui-accueil-div2{
-		margin: 0 0 15px 15px;
-	}
-	.ui-accueil-div3{
-		margin: 15px 15px 0 0;
-	}
-	.ui-accueil-div4{
-		margin: 15px 0 0 15px;
-	}
+.ui-accueil-div1{ margin: 0 15px 15px 0; }
+.ui-accueil-div2{ margin: 0 0 15px 15px; }
+.ui-accueil-div3{ margin: 15px 15px 0 0; }
+.ui-accueil-div4{ margin: 15px 0 0 15px; }
+
+.ui-accueil-actu{
+	height: 325px;
+	padding: 0px;
+	margin: 0;
 }
 
-@media (min-width: 0px) and (max-width: 1080px) {
-	.ui-accueil-div1{
-		margin: 0 10px 10px 0;
-	}
-	.ui-accueil-div2{
-		margin: 0 0 10px 10px;
-	}
-	.ui-accueil-div3{
-		margin: 10px 10px 0 0;
-	}
-	.ui-accueil-div4{
-		margin: 10px 0 0 10px;
-	}
+.ui-accueil-evt{
+	height: 80%;
+	padding: 25px;
+	overflow: hidden;
+}	
+
+.ui-accueil-suite{
+	height: 20%;
+	padding: 25px;
 }
 
-@media (min-width: 768px) {
-	.ui-accueil-actu{
-		height: 325px;
-		padding: 0px;
-		margin: 0;
-	}
-	.ui-accueil-evt{
-		height: 80%;
-		padding: 25px;
-		overflow: hidden;
-	}	
-	.ui-accueil-suite{
-		height: 20%;
-		padding: 25px;
-	}
-	.ui-accueil-content > div{
-		width: 48%;
-	}
-}
-
-@media (max-width: 767px) {
-	.ui-accueil-content{
-		margin-bottom: 15px;
-	}
-	.ui-accueil-content > div{
-		margin: 10px;
-		-moz-border-radius: 0px;
-		-webkit-border-radius: 0px;
-		-o-border-radius: 0px;
-		-ms-border-radius: 0px;
-		-khtml-border-radius: 0px;
-		border-radius: 0px;
-	}
-	
-	.ui-accueil-evt{
-		padding: 5px;
-		overflow: hidden;
-	}
-	
-	.ui-accueil-suite{
-		padding: 5px;
-	}
+.ui-accueil-content > div{
+	width: 48%;
 }
 
 /* ------------------------------------------------------------------ MISE EN FORME DE "CONTACT" ----------------------------------------------------------------- */
@@ -482,6 +350,10 @@ input[type="text"], input[type="password"]{
 input[type="text"]:focus, input[type="password"]:focus{
 	border: solid 2px #f5b570;
 	outline: 0;
+}
+
+div.controls{
+	padding-top: 125px;
 }
 
 /* ------------------------------------------------------------------ MISE EN FORME DE "LIENS EXTERNES" ----------------------------------------------------------------- */
@@ -525,8 +397,7 @@ ul.ui-externes li a{
                 0 -4px 0 hsl(210, 100%, 50%) inset, 
                 0 -5px 0 hsl(210, 100%, 60%) inset;
      transition: padding .1s, background .1s;
-     position: relative;
-     
+     position: relative;    
 }
 
 /* Coins arrondis */
@@ -575,10 +446,4 @@ ul.ui-externes li a:focus::before{
     background: white;
     box-shadow: 0 0 2px white, 
                 0 -1px 0 rgba(0, 0, 0, .4);
-}
-
-@media (max-width: 767px) {
-	ul.ui-externes{
-	    width: 80%;
-	}
 }
