@@ -5,31 +5,47 @@
 	padding: 0;
 }
 
-
-html, body {
-	height: 100%;
+html{
+	height:100%;
 }
 
 /* Mise en forme générale de la page */
 body{
-    background: #c0c0c0;
-    margin: 0;
-    padding: 0;
-    width: 100%;
-    display: flex; /* pour le footer */
-    flex-direction: column;
-    overflow-x: hidden;
+	height:100%;
+	position: relative;
+	background: #c0c0c0;
 }
 
-/* Mise en forme de la div "#page" */
+/* Mise en forme de la div "#page" (comprend header main footer) */
 div#page{
-	/* largeur, centrage avec des marges auto, padding nul, bordure noire, alignement gauche */
+	min-height:99%;
+	position: relative;
+}
+ 
+#header{
+	position: relative;
+}
+
+#main{
+	position: relative;
+	padding-bottom: 205px;
+	margin: 0 auto;
 	width: 98%;
-	margin: 10px auto;
-	padding: 0 0px;
 	/* border: #000 1px solid;
 	overflow-x: hidden; */
 	text-align: left;
+	overflow-x: hidden;
+}
+
+div#ui-content(){
+	
+}
+
+#footer{
+	border-top: solid 1px black;
+	height: 185px;
+	position: absolute;
+	bottom: 0;
 }
 
 div#page-contenu{
@@ -128,7 +144,7 @@ ul#menu-horizontal li {
 
 /* Mise en forme des boutons de la navigation (on enleve la couleur du background) quand on passe la souris dessus */
 .nav>li>a:focus, .nav>li>a:hover,.nav .open>a, .nav .open>a:focus, .nav .open>a:hover, .dropdown-menu>li>a:focus, .dropdown-menu>li>a:hover{
-  background: none;
+  	background: none;
 }
 
 /* Mise en forme des titres de la navigation */
@@ -138,7 +154,7 @@ ul#menu-horizontal li {
 
 /* Mise en forme du texte de la barre de navigation quand on passe la souris dessus */
 .nav li a:hover{
-  color: black;
+  	color: black;
 }
 
 /* Enlever le "connecté en tant que" quand la page est inférieure à 991px */
@@ -173,7 +189,7 @@ img#liens{
 }
 
 .pull-right {
-	 float: left !important;
+	float: left !important;
 }
 
 
@@ -253,45 +269,52 @@ footer h4 {
 }
 
 .cd-top {
-  display: inline-block;
-  height: 40px;
-  width: 40px;
-  position: fixed;
-  bottom: 40px;
-  right: 10px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.05);
-  /* image replacement properties */
-  overflow: hidden;
-  text-indent: 100%;
-  white-space: nowrap;
-  background: #f5b570 url(../images/cd-top-arrow.svg) no-repeat center 50%;
-  visibility: hidden;
-  opacity: 0;
-  -webkit-transition: opacity .3s 0s, visibility 0s .3s;
-  -moz-transition: opacity .3s 0s, visibility 0s .3s;
-  transition: opacity .3s 0s, visibility 0s .3s;
+  	display: inline-block;
+  	height: 40px;
+  	width: 40px;
+  	position: fixed;
+  	bottom: 40px;
+  	right: 10px;
+  	box-shadow: 0 0 10px rgba(0, 0, 0, 0.05);
+  	/* image replacement properties */
+  	overflow: hidden;
+  	text-indent: 100%;
+  	white-space: nowrap;
+  	background: #f5b570 url(../images/cd-top-arrow.svg) no-repeat center 50%;
+  	visibility: hidden;
+  	opacity: 0;
+  	-webkit-transition: opacity .3s 0s, visibility 0s .3s;
+  	-moz-transition: opacity .3s 0s, visibility 0s .3s;
+  	transition: opacity .3s 0s, visibility 0s .3s;
+  	/* coins arrondis */
+	-moz-border-radius: 20px 20px 20px 20px;
+	-webkit-border-radius: 20px 20px 20px 20px;
+	-o-border-radius: 20px 20px 20px 20px;
+	-ms-border-radius: 20px 20px 20px 20px;
+	-khtml-border-radius: 20px 20px 20px 20px;
+	border-radius: 20px 20px 20px 20px;
 }
 
 .cd-top.cd-is-visible, .cd-top.cd-fade-out, .no-touch .cd-top:hover {
-  -webkit-transition: opacity .3s 0s, visibility 0s 0s;
-  -moz-transition: opacity .3s 0s, visibility 0s 0s;
-  transition: opacity .3s 0s, visibility 0s 0s;
+ 	-webkit-transition: opacity .3s 0s, visibility 0s 0s;
+  	-moz-transition: opacity .3s 0s, visibility 0s 0s;
+  	transition: opacity .3s 0s, visibility 0s 0s;
 }
 
 .cd-top.cd-is-visible {
-  /* the button becomes visible */
-  visibility: visible;
-  opacity: 1;
+  	/* the button becomes visible */
+  	visibility: visible;
+  	opacity: 1;
 }
 
 .cd-top.cd-fade-out {
-  /* if the user keeps scrolling down, the button is out of focus and becomes less visible */
-  opacity: .5;
+  	/* if the user keeps scrolling down, the button is out of focus and becomes less visible */
+  	opacity: .5;
 }
 
 .no-touch .cd-top:hover {
-  background-color: #e86256;
-  opacity: 1;
+  	background-color: #e86256;
+  	opacity: 1;
 }
 
 /* ------------------------------------------------------------------ MISE EN FORME DE L'ACCUEIL ----------------------------------------------------------------- */

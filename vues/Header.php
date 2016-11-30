@@ -2,8 +2,6 @@
 <html lang="en">
 
 <head>
-
-
 	<title>Association Inpact</title>
 	<link rel="icon" href="images/logo.png">
 

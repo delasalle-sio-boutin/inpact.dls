@@ -59,6 +59,6 @@ switch($action){
 	}
 	// toute autre tentative est automatiquement redirigée vers le menu
 	default : {
-		include_once ('vues/test.php'); break;
+		include_once ('controleurs/CtrlMenu.php'); break;
 	}
 }
