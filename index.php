@@ -8,8 +8,15 @@
 // Ce fichier est appelé par tous les liens internes, et par la validation de tous les formulaires
 // il est appelé avec un paramètre action qui peut prendre les valeurs suivantes :
 
-//    index.php?action=Connecter              : pour afficher la page de connexion
-//    index.php?action=Menu                   : pour afficher le menu
+//    index.php?action=Connecter              	: pour afficher la page de connexion
+//    index.php?action=Menu                   	: pour afficher le menu
+//    index.php?action=AideDevoirs            	: pour afficher la page d'Aide au devoirs
+//    index.php?action=APropos                	: pour afficher la page A Propos
+//    index.php?action=Contact                	: pour afficher la page de contact
+//    index.php?action=Evenements               : pour afficher la page Evenement
+//    index.php?action=PolitiqueConfidentilite  : pour afficher la page Politique et confidentialité
+//    index.php?action=TermesConditions         : pour afficher la page des termes et conditions
+//    index.php?action=                   		: Action par defaut
 
 session_start();				// permet d'utiliser des variables de session
  
