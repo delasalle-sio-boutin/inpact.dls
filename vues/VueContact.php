@@ -102,9 +102,11 @@
 
             </div> <!-- /.row-->
 	</div> <!--  /.main -->
+	<!-- Footer dans le div principale pour qu'il soit toujours en bas de la page -->
+	<footer class="footer-bs " id="footer"> <?php include ('Footer.php'); ?> </footer>
 	</div>
 	<script src="https://code.jquery.com/jquery-1.12.0.min.js"></script>
 	<script src="js/validator.js"></script>
    <!--  <script src="js/contact.js"></script> -->
-   <footer class="footer-bs fixed-bottom" id="footer"> <?php include ('Footer.php'); ?> </footer>	
+  
 </body>

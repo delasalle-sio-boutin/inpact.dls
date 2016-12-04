@@ -10,6 +10,7 @@
     <div id="main">
 		Page
 	</div>
+	<!-- Footer dans le div principale pour qu'il soit toujours en bas de la page -->
     <footer class="footer-bs fixed-bottom" id="footer"> <?php include ('Footer.php'); ?> </footer>
   </div>
 </body>

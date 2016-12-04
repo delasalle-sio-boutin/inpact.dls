@@ -24,7 +24,7 @@
 			
 <br><br><br><br><br><br><br><br>
 page en cours de rédaction<i class="fa fa-spinner fa-spin fa-1x fa-fw"></i> <br>
-
+<!-- Footer dans le div principale pour qu'il soit toujours en bas de la page -->
+<footer class="footer-bs fixed-bottom" id="footer"> <?php include ('Footer.php'); ?> </footer>
 	</div>
 </body>
-<footer class="footer-bs fixed-bottom" id="footer"> <?php include ('Footer.php'); ?> </footer>
