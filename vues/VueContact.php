@@ -14,7 +14,7 @@
                 <div class="col-lg-8 col-lg-offset-2">
                     <form id="contact-form" method="post" action="index.php?action=Contact" role="form">
 
-                        <div class="messages"></div>
+                        <div class="messages"> </div>
 
                         <div class="controls">
                         	<div class="row">

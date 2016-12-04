@@ -8,7 +8,8 @@
 // ATTENTION : la position des tests dans ce fichier est identique à la position des méthodes testées dans la classe DAO
 
 include_once ('Administrateur.class.php');
-
+include_once ('Eleve.class.php');
+//include_once ('../parametres.localhost.php');
 
 ?>
 <!DOCTYPE html>
@@ -42,7 +43,26 @@ if ($unAdministrateur == null)
 else
 	echo ($unAdministrateur->toString());
 	echo ('<br>');
+
 */
+/*
+ // test de la méthode getAdministrateur ----------------------------------------------------------
+ // modifié par Killian le 08/11/2016
+ echo "<h3>Test de getEleve(login) : </h3>";
+ $unEleve = $dao->getEleve("eleve");
+ if ($unEleve == null)
+ 	echo ("Identifiant \"eleve\" inexistant ! <br>");
+ 	else
+ 		echo ($unEleve->toString());
+ 		echo ('<br>');
+
+ 		$unEleve = $dao->getEleve("gremyf");
+ 		if ($unEleve == null)
+ 			echo ("Eleve \"gremyf\" inexistant ! <br>");
+ 			else
+ 				echo ($unEleve->toString());
+ 				echo ('<br>');
+ 			*/	
 
 /*
  // test de la méthode getTypeUtilisateur ----------------------------------------------------------

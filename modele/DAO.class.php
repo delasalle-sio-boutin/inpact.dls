@@ -36,7 +36,7 @@
 include_once ('Administrateur.class.php');
 include_once ('Evenement.class.php');
 include_once ('Outils.class.php');
-
+include_once ('Eleve.class.php');
 
 // inclusion des paramètres de l'application
 include_once ('parametres.localhost.php');
@@ -105,6 +105,42 @@ class DAO
 				
 			$unAdministrateur = new Administrateur($id, $login, $mdp);
 			return $unAdministrateur;
+		}
+	}
+	
+	// fournit un objet eleve à partir de son identifiant
+	// fournit la valeur null si l'id n'existe pas ou est incorrect
+	// modifié par Tony BRAY le 15/11/2016
+	public function getEleve($unLogin)
+	{	// préparation de la requete de recherche
+	$txt_req = "SELECT * FROM inp_eleves WHERE login = :login";
+	
+	$req = $this->cnx->prepare($txt_req);
+	
+	// liaison de la requête et de son paramètre
+	$req->bindValue("login", $unLogin, PDO::PARAM_STR);
+	
+	// extraction des données
+	$req->execute();
+	$uneLigne = $req->fetch(PDO::FETCH_OBJ);
+	// libère les ressources du jeu de données
+	$req->closeCursor();
+	
+	// traitement de la réponse
+	if ( ! $uneLigne)
+		return null;
+		else{	// création d'un objet eleve
+			$id = utf8_encode($uneLigne->id);
+			$login = utf8_encode($uneLigne->login);
+			$mdp = utf8_encode($uneLigne->mdp);
+			$nom = utf8_encode($uneLigne->nom);
+			$prenom = utf8_encode($uneLigne->prenom);
+			$classe = utf8_encode($uneLigne->classe);
+			$mail = utf8_encode($uneLigne->mail);
+			$naissance = utf8_decode($uneLigne->datenaiss);
+	
+			$unEleve = new Eleve($id, $login, $mdp, $classe, $nom, $prenom, $mail, $naissance);
+			return $unEleve;
 		}
 	}
 	

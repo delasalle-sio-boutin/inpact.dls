@@ -1,5 +1,5 @@
 <?php
-// Projet : DLS - BTS Info - Anciens élèves
+// Projet : DLS INPACT
 // fichier : modele/Administrateur.class.php
 // Rôle : la classe Administrateur représente les administrateurs de l'application
 // Création : 08/11/2016 par Killian BOUTIN
