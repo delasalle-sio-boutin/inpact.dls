@@ -22,8 +22,8 @@
                                         <label for="form_mail">Qui voulez vous contacter ?</label>
                                         <select class=form-control id="form_mail" name="contact" required>
                                         	<option selected value=>Selectionnez une personne</option>
-                                     		<option value="admimpact@yopmail.com">Administrateur du site</option>
-											<option value="admimpact@yopmail.com">Professeur</option>
+                                     		<option value="adminpact@yopmail.com">Administrateur du site</option>
+											<option value="adminpact@yopmail.com">Professeur</option>
 										</select>
                                         <div class="help-block with-errors"></div>
                                     </div>
@@ -47,7 +47,7 @@
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label for="form_prenom">Prenom *</label>
-                                        <input id="form_prenom" type="text" name="prenom" class="form-control" placeholder="Entrez votre prenom *" required="required" data-error="Le prenom est requis.">
+                                        <input id="form_prenom" type="text" name="prenom" class="form-control" placeholder="Entrez votre prenom *" required="required" value="<?php echo $prenom; ?>" data-error="Le prenom est requis.">
                                         <div class="help-block with-errors"></div>
                                     </div>
                                 </div>
@@ -56,7 +56,7 @@
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label for="form_email">Email *</label>
-                                        <input id="form_email" type="email" name="mail" class="form-control" placeholder="Entrez votre Email *" required="required" data-error="Entrez une adresse mail valide.">
+                                        <input id="form_email" type="email" name="mail" class="form-control" placeholder="Entrez votre Email *" required="required" value="<?php echo $mailUtilisateur; ?>" data-error="Entrez une adresse mail valide.">
                                         <div class="help-block with-errors"></div>
                                     </div>
                                 </div>

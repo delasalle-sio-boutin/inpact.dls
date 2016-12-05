@@ -56,8 +56,8 @@ else {
 	$mailUtilisateur = $_POST ['mail'];
 	$classe = $_POST ['classe'];
 	$message = $_POST ['message'];
-	$messageAEnvoyer = "Message de " . strtoupper ( $nom ) . " " . ucfirst ( $prenom ) . " Groupe : " . $classe . "\n";
-	$messageAEnvoyer = $messageAEnvoyer . " " . $message;
+	$messageAEnvoyer = "Message de " . strtoupper ( $nom ) . " " . ucfirst ( $prenom ) . " (" . $classe . ") \n";
+	$messageAEnvoyer = $messageAEnvoyer . "\r" . $message;
 	// echo $mailAContacter." ".$nom." ".$prenom." ".$mailUtilisateur." ".$classe." ".$message;
 	
 	if ($outils->estUneAdrMailValide ( $mailUtilisateur ) != true) {
