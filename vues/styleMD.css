@@ -408,10 +408,6 @@ input[type="text"]:focus, input[type="password"]:focus{
 	outline: 0;
 }
 
-div.controls{
-	padding-top: 125px;
-}
-
 /* ------------------------------------------------------------------ MISE EN FORME DE "LIENS EXTERNES" ----------------------------------------------------------------- */
 
 /* Menu horizontal, dégradé, coins arrondis */
