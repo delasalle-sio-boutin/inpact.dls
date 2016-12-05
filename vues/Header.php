@@ -10,9 +10,9 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<!-- Latest compiled and minified CSS -->
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-	<link rel="stylesheet" media="(max-width: 767px)" href="vues/styleXS.css" />
-	<link rel="stylesheet" media="(min-width: 768px)" media="(max-width: 991px)" href="vues/styleMD.css" />
-	<link rel="stylesheet" media="(min-width: 768px)" href="vues/styleLG.css" />
+	<link rel="stylesheet" media="(min-width: 0px) and (max-width: 767px)" href="vues/styleXS.css" />
+	<link rel="stylesheet" media="(min-width: 768px) and (max-width: 991px)" href="vues/styleMD.css" />
+	<link rel="stylesheet" media="(min-width: 992px)" href="vues/styleLG.css" />
 	
 	<!-- 
 	APPAREMENT UTILE POUR LA CONNEXION
