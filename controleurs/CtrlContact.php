@@ -10,9 +10,14 @@
 // IL FAUDRAIT QUE TU AJOUTES UNE LISTE DEROULANTE A QUI ENVOYER LE MAIL => ADMIN : leurs adr mails
 // PROF : delasalle.sio.profs@gmail.com
 // TODO : Prendre les informations de l'utilisateur si il est connecté
+
 if (isset ( $_POST ["btnEnvoi"] ) == false) {
 	// si les données n'ont pas été postées, c'est le premier appel du formulaire : affichage de la vue sans message d'erreur
 	$info = '';
+	$nom = "";
+	$prenom = "";
+	$mailUtilisateur = "";
+	$classe = "";
 	include_once ('vues/VueContact.php');
 	//Cas utilisateur non connecté
 	if (! isset ( $_SESSION ['typeUtilisateur'] )) {
@@ -23,6 +28,18 @@ if (isset ( $_POST ["btnEnvoi"] ) == false) {
 	}
 	//Utilisateur connecté
 	else {
+		include_once 'modele/DAO.class.php';
+		include_once 'modele/Eleve.class.php';
+		$dao = new DAO();
+		
+		//$unEleve = new Eleve();
+		
+		$unEleve = $dao->getEleve("eleve");
+		
+		$nom = $unEleve->getNom() ;
+		$prenom = $unEleve->getPrenom();
+		$mailUtilisateur = $unEleve->getMail();
+		$classe = $unEleve->getClasse();
 		
 	}
 } 

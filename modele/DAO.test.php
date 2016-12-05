@@ -24,6 +24,7 @@ include_once ('Eleve.class.php');
 <?php
 // connexion du serveur web à la base MySQL
 include_once ('DAO.class.php');
+include_once '../parametres.localhost.php';
 $dao = new DAO();
 
 /*
@@ -45,7 +46,7 @@ else
 	echo ('<br>');
 
 */
-/*
+
  // test de la méthode getAdministrateur ----------------------------------------------------------
  // modifié par Killian le 08/11/2016
  echo "<h3>Test de getEleve(login) : </h3>";
@@ -62,7 +63,7 @@ else
  			else
  				echo ($unEleve->toString());
  				echo ('<br>');
- 			*/	
+ 				
 
 /*
  // test de la méthode getTypeUtilisateur ----------------------------------------------------------

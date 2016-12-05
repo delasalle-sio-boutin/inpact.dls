@@ -3,7 +3,7 @@
 // Fonction de la vue VueContact.php : affiche la vue permettant le contact des administrateurs / profs
 // Ecrit le 18/11/2016 par Tony BRAY
 // Modifié le 20/11/2016 par Killian BOUTIN
-
+echo var_dump($unEleve);
 ?>
 <body>
 	<div id="page">
@@ -41,7 +41,7 @@
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label for="form_name">Nom *</label>
-                                        <input id="form_name" type="text" name="nom" class="form-control" placeholder="Entrez votre nom *" required="required" data-error="Le nom est requis.">
+                                        <input id="form_name" type="text" name="nom" class="form-control" placeholder="Entrez votre nom *" required="required"  value="<?php echo $nom; ?>" data-error="Le nom est requis.">
                                         <div class="help-block with-errors"></div>
                                     </div>
                                 </div>
