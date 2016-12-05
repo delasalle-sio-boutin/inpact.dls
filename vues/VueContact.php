@@ -2,8 +2,7 @@
 // Projet Annuel - Site Inpact
 // Fonction de la vue VueContact.php : affiche la vue permettant le contact des administrateurs / profs
 // Ecrit le 18/11/2016 par Tony BRAY
-// Modifié le 20/11/2016 par Killian BOUTIN
-echo var_dump($unEleve);
+// Modifié le 05/12/2016 par Erwann Bienvenu
 ?>
 <body>
 	<div id="page">
