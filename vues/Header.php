@@ -2,19 +2,23 @@
 <html lang="en">
 
 <head>
-	<title>Association Inpact</title>
-	<link rel="icon" href="images/logo.png">
+<title>Association Inpact</title>
+<link rel="icon" href="images/logo.png">
 
-	<meta charset="utf-8">
-	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<!-- Latest compiled and minified CSS -->
-	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-	<link rel="stylesheet" media="(min-width: 0px) and (max-width: 767px)" href="vues/styleXS.css" />
-	<link rel="stylesheet" media="(min-width: 768px) and (max-width: 991px)" href="vues/styleMD.css" />
-	<link rel="stylesheet" media="(min-width: 992px)" href="vues/styleLG.css" />
-	
-	<!-- 
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<!-- Latest compiled and minified CSS -->
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<link rel="stylesheet" media="(min-width: 0px) and (max-width: 767px)"
+	href="vues/styleXS.css" />
+<link rel="stylesheet" media="(min-width: 768px) and (max-width: 991px)"
+	href="vues/styleMD.css" />
+<link rel="stylesheet" media="(min-width: 992px)"
+	href="vues/styleLG.css" />
+
+<!-- 
 	APPAREMENT UTILE POUR LA CONNEXION
 	<script type="text/javascript">
 
@@ -48,72 +52,87 @@
 					<div id="navbar" class="navbar-collapse collapse"
 						style="padding-top: 6px;">
 						<ul class="nav navbar-nav">
-							<li>
-								<a href="index.php?action=VueMenu" role="button" aria-haspopup="true" 
-								aria-expanded="false" style="border-top: #000 solid 1px; margin-top: -14px; padding-top: 28px">Accueil</a>
+							<li><a href="index.php?action=VueMenu" role="button"
+								aria-haspopup="true" aria-expanded="false"
+								style="border-top: #000 solid 1px; margin-top: -14px; padding-top: 28px">Accueil</a>
 							</li>
-							
-							<li class="dropdown"><a href="#" class="dropdown-toggle " data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Menu <span class="caret"></span></a>
+
+							<li class="dropdown"><a href="#" class="dropdown-toggle "
+								data-toggle="dropdown" role="button" aria-haspopup="true"
+								aria-expanded="false">Menu <span class="caret"></span></a>
 								<ul class="dropdown-menu">
 									<li><a href="index.php?action=Evenements.php">Evenements</a></li>
 									<?php if ($_SESSION['login'] != ''){ ?>
 									<li><a href="index.php?action=AideDevoirs.php">Aide aux devoirs</a></li>
 									<?php } ?>
-								</ul>
-							</li>
+								</ul></li>
 							<li class=" dropdown"><a href="#" class="dropdown-toggle active"
 								data-toggle="dropdown" role="button" aria-haspopup="true"
 								aria-expanded="false">Liens utiles <span class="caret"></span></a>
 								<ul class="dropdown-menu">
-									<li><a href="http://www.lycee-delasalle.com/" target="_blank"><img id="liens" target="_blank" src="images/dls.png">Lycée de la salle</a></li>
-									<li><a href="http://sio.lyceedelasalle.fr/ae/" target="_blank"><img id="liens"  src="images/anciens_eleves.png">Anciens élèves</a></li>
-									<li><a href="http://dlsarena.lycee-dls.com/" target="_blank"><img id="liens" src="images/dls_arena.png">DLS Arena</a></li>
-									<li><a href="https://www.facebook.com/Inpactdls/" target="_blank"><img id="liens" src="images/facebook.png">Facebook</a></li>
-									<li><a href="https://twitter.com/dls_sio" target="_blank"><img id="liens" src="images/twitter.png">Twitter</a></li>
-									<li><a href="https://fr.linkedin.com/" target="_blank"><img id="liens" src="images/Linkedin.png" >Linkedin</a></li>
-								</ul>
-							</li>
+									<li><a href="http://www.lycee-delasalle.com/" target="_blank"><img
+											id="liens" target="_blank" src="images/dls.png">Lycée de la
+											salle</a></li>
+									<li><a href="http://sio.lyceedelasalle.fr/ae/" target="_blank"><img
+											id="liens" src="images/anciens_eleves.png">Anciens élèves</a></li>
+									<li><a href="http://dlsarena.lycee-dls.com/" target="_blank"><img
+											id="liens" src="images/dls_arena.png">DLS Arena</a></li>
+									<li><a href="https://www.facebook.com/Inpactdls/"
+										target="_blank"><img id="liens" src="images/facebook.png">Facebook</a></li>
+									<li><a href="https://twitter.com/dls_sio" target="_blank"><img
+											id="liens" src="images/twitter.png">Twitter</a></li>
+									<li><a href="https://fr.linkedin.com/" target="_blank"><img
+											id="liens" src="images/Linkedin.png">Linkedin</a></li>
+								</ul></li>
 							<li><a href="index.php?action=Contact">Contact</a></li>
 							<li><a href="vues/VueScolinfo.php">Scolinfo</a></li>
 						</ul>
 						
 						<?php if ($_SESSION['login'] == ''){?>
 						<ul class="nav navbar-nav pull-right">
-		                    <li class="dropdown ui-login">
-		                    	<a href="#" class="dropdown-toggle active" data-toggle="dropdown" role="button" aria-haspopup="true" 
-		                    	aria-expanded="false">Connexion <span class="caret"></span></a>
+							<li class="dropdown ui-login"><a href="#"
+								class="dropdown-toggle active" data-toggle="dropdown"
+								role="button" aria-haspopup="true" aria-expanded="false">Connexion
+									<span class="caret"></span>
+							</a>
 								<ul class="dropdown-menu">
 									<li>
 										<div class="row">
 											<div class="col-md-12">
-												<form class="form" role="form" method="post" action="index.php?action=Connecter"
-													accept-charset="UTF-8" style="margin: 2px 8px;">
+												<form class="form" role="form" method="post"
+													action="index.php?action=Connecter" accept-charset="UTF-8"
+													style="margin: 2px 8px;">
 													<div class="form-group">
-														<input type="text" name="txtLogin" id="txtLogin" class="form-control" placeholder="Login" required>
+														<input type="text" name="txtLogin" id="txtLogin"
+															class="form-control" placeholder="Login" required>
 													</div>
 													<div class="form-group">
-														<input type="password" name="txtMdp" id="txtMdp" class="form-control" placeholder="Password" required>
+														<input type="password" name="txtMdp" id="txtMdp"
+															class="form-control" placeholder="Password" required>
 													</div>
 													<div class="form-group">
-														<button type="submit" name="btnConnecter" id="btnConnecter" class="btn btn-success btn-block">Se connecter</button>
+														<button type="submit" name="btnConnecter"
+															id="btnConnecter" class="btn btn-success btn-block">Se
+															connecter</button>
 													</div>
 												</form>
 											</div>
 										</div>
 									</li>
-								</ul>
-							</li>
+								</ul></li>
 						</ul>
 						
 						<?php }else{?>
 						<ul class="nav navbar-nav pull-right">
 							<li><a href="index.php?action=Deconnecter">Se déconnecter</a></li>
-		                </ul>
-		                <ul class="nav navbar-nav pull-right ui-right">
-	                        <li><a>
-	                        	&nbsp;Connecté en tant que <b><?php echo $login; ?></b>
-	                        </a></li>
-	                    </ul>
+						</ul>
+						<ul class="nav navbar-nav pull-right ui-right">
+							<li><a> &nbsp;Connecté en tant que <b> <?php if ($_SESSION['typeUtilisateur'] == "eleve"){echo $_SESSION['nom'];} else {echo $login; }?></b>
+
+
+
+							</a></li>
+						</ul>
 	                    <?php } ?>
 					</div>
 				</div>

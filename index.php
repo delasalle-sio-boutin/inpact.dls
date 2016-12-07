@@ -64,6 +64,9 @@ switch($action){
 	case 'TermesConditions': {
 		include_once ('controleurs/CtrlTermesConditions.php'); break;
 	}
+	case 'Deconnecter': {
+		session_destroy(); include_once ('controleurs/CtrlMenu.php'); break;
+	}
 	// toute autre tentative est automatiquement redirigée vers le menu
 	default : {
 		include_once ('controleurs/CtrlMenu.php'); break;
