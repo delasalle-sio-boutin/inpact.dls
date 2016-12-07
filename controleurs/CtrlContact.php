@@ -20,7 +20,7 @@ if (isset ( $_POST ["btnEnvoi"] ) == false) {
 	$mailUtilisateur = "";
 	$classe = "";
 	//Cas utilisateur non connecté
-	if (! isset ( $_SESSION ['typeUtilisateur'] )) {
+	if (!isset ($_SESSION ['typeUtilisateur']) || $_SESSION ['typeUtilisateur'] != "eleve" ) {
 		$nom = "";
 		$prenom = "";
 		$mailUtilisateur = "";
@@ -34,8 +34,8 @@ if (isset ( $_POST ["btnEnvoi"] ) == false) {
 		$dao = new DAO();
 		
 		//$unEleve = new Eleve();
-		
-		$unEleve = $dao->getEleve('eleve');
+		$login = $_SESSION['login'];
+		$unEleve = $dao->getEleve($login);
 		
 		$nom = $unEleve->getNom() ;
 		$prenom = $unEleve->getPrenom();
