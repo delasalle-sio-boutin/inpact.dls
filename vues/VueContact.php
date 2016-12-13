@@ -4,6 +4,10 @@
 // Ecrit le 18/11/2016 par Tony BRAY
 // Modifié le 05/12/2016 par Erwann Bienvenu
 ?>
+<head>
+ <script src='https://www.google.com/recaptcha/api.js'></script>
+</head>
+
 <body>
 	<div id="page">
 	<header> <?php include ('Header.php'); ?> </header>
@@ -20,7 +24,7 @@
 							    <div class="col-md-6">
                                     <div class="form-group">
                                         <label for="form_mail">Qui voulez vous contacter ?</label>
-                                        <select class=form-control id="form_mail" name="contact" required>
+                                        <select class=form-control id="form_mail" name="txtContact" required>
                                         	<option selected value=>Selectionnez une personne</option>
                                      		<option value="adminpact@yopmail.com">Administrateur du site</option>
 											<option value="adminpact@yopmail.com">Professeur</option>
@@ -31,7 +35,7 @@
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label for="form_sujet">Sujet *</label>
-                                        <input id="form_sujet" type="text" name="sujet" class="form-control" placeholder="Sujet du message *" required="required" data-error="Le sujet est requis.">
+                                        <input id="form_sujet" type="text" name="txtSujet" class="form-control" placeholder="Sujet du message *" required="required" value="<?php echo $unSujet; ?>" data-error="Le sujet est requis.">
                                         <div class="help-block with-errors"></div>
                                     </div>
                                 </div>
@@ -40,14 +44,14 @@
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label for="form_name">Nom *</label>
-                                        <input id="form_name" type="text" name="nom" class="form-control" placeholder="Entrez votre nom *" required="required"  value="<?php echo $nom; ?>" data-error="Le nom est requis.">
+                                        <input id="form_name" type="text" name="txtNom" class="form-control" placeholder="Entrez votre nom *" required="required"  value="<?php echo $unNom; ?>" <?php if($unEleve) echo "disabled=\"disabled\""?> data-error="Le nom est requis.">
                                         <div class="help-block with-errors"></div>
                                     </div>
                                 </div>
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label for="form_prenom">Prenom *</label>
-                                        <input id="form_prenom" type="text" name="prenom" class="form-control" placeholder="Entrez votre prenom *" required="required" value="<?php echo $prenom; ?>" data-error="Le prenom est requis.">
+                                        <input id="form_prenom" type="text" name="txtPrenom" class="form-control" placeholder="Entrez votre prenom *" required="required" value="<?php echo $unPrenom; ?>" <?php if($unEleve) echo "disabled=\"disabled\""?> data-error="Le prenom est requis.">
                                         <div class="help-block with-errors"></div>
                                     </div>
                                 </div>
@@ -56,20 +60,21 @@
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label for="form_email">Email *</label>
-                                        <input id="form_email" type="email" name="mail" class="form-control" placeholder="Entrez votre Email *" required="required" value="<?php echo $mailUtilisateur; ?>" data-error="Entrez une adresse mail valide.">
+                                        <input id="form_email" type="email" name="txtMail" class="form-control" placeholder="Entrez votre Email *" required="required" value="<?php echo $unMailUtilisateur; ?>" <?php if($unEleve) echo "disabled=\"disabled\""?> data-error="Entrez une adresse mail valide.">
                                         <div class="help-block with-errors"></div>
                                     </div>
                                 </div>
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label for="form_classe">Groupe *</label>
-                                        <select class=form-control id="form_classe" name="classe" required>
-                                        <option selected value=>Selectionnez un groupe</option>
-                                     		<option value=Sio1>SIO1</option>
-											<option value=Sio2>SIO2</option>
-											<option value=Prof>Professeur</option>
-											<option value=Visiteur>Visiteur</option>
-											</select>
+                                        <select class=form-control id="form_classe" name="listClasse" required <?php if( $unEleve) echo "disabled = \"disabled\""?>>
+                                        <option <?php if ($uneClasse == "") echo "selected"?> value=>Selectionner un groupe</option>
+                                     		<option <?php if ($uneClasse == "SIO1") echo "selected"?> value=SIO1>SIO1</option>
+											<option <?php if ($uneClasse == "SIO2") echo "selected"?>value=SIO2>SIO2</option>
+											<option <?php if ($uneClasse == "Prof") echo "selected"?>value=Prof>Professeur</option>
+											<option <?php if ($uneClasse == "Visiteur") echo "selected"?>value=Visiteur>Visiteur</option>
+										</select>
+										
                                         <div class="help-block with-errors"></div>
                                     </div>
                                 </div>
@@ -79,8 +84,13 @@
                                 <div class="col-md-12">
                                     <div class="form-group">
                                         <label for="form_message">Message *</label>
-                                        <textarea id="form_message" name="message" class="form-control" placeholder="Entrez votre message *" rows="4" required="required" data-error="Entrez un message."></textarea>
+                                        <textarea id="form_message" name="txtMessage" class="form-control" placeholder="Entrez votre message *" rows="4" required="required" data-error="Entrez un message."><?php echo $unMessage; ?></textarea>
                                         <div class="help-block with-errors"></div>
+                                        <!--  captcha -->
+                                       <div class="col-xs-12 col-sm-6 col-sm-offset-3 col-md-4 col-md-offset-4" style="margin-bottom: 15px;">
+                                       		<div class="g-recaptcha" data-sitekey="6Lcltg4UAAAAAJK_c92iWns418RDALgSWSnjJqKz"></div>
+                                       </div>
+                                        <!--  captcha -->
                                     </div>
                                 </div>
                                 <div class="col-md-12">

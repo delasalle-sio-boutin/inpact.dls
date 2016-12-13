@@ -12,59 +12,93 @@
 // TODO : Prendre les informations de l'utilisateur si il est connecté [||||| 50% fait |||||]
 // TODO : Cas de figures pour tous les types d'utilisateurs
 
+include_once 'modele/DAO.class.php';
+include_once 'modele/Eleve.class.php';
+$dao = new DAO();
+
 if (isset ( $_POST ["btnEnvoi"] ) == false) {
 	// si les données n'ont pas été postées, c'est le premier appel du formulaire : affichage de la vue sans message d'erreur
 	$info = '';
-	$nom = "";
-	$prenom = "";
-	$mailUtilisateur = "";
-	$classe = "";
+	$unMessage = "";
+	$unSujet = "";
+	$unEleve = '';
+	
 	//Cas utilisateur non connecté
 	if (!isset ($_SESSION ['typeUtilisateur']) || $_SESSION ['typeUtilisateur'] != "eleve" ) {
-		$nom = "";
-		$prenom = "";
-		$mailUtilisateur = "";
-		$classe = "";
+		$unNom = "";
+		$unPrenom = "";
+		$unMailUtilisateur = "";
+		$uneClasse = "Selectionner un groupe";
+		
 		include_once ('vues/VueContact.php');
 	}
 	//Utilisateur connecté
-	else {
-		include_once 'modele/DAO.class.php';
-		include_once 'modele/Eleve.class.php';
-		$dao = new DAO();
+	else{
 		
 		//$unEleve = new Eleve();
 		$login = $_SESSION['login'];
 		$unEleve = $dao->getEleve($login);
 		
-		$nom = $unEleve->getNom() ;
-		$prenom = $unEleve->getPrenom();
-		$mailUtilisateur = $unEleve->getMail();
-		$classe = $unEleve->getClasse();
+		$unNom = $unEleve->getNom() ;
+		$unPrenom = $unEleve->getPrenom();
+		$unMailUtilisateur = $unEleve->getMail();
+		$uneClasse = $unEleve->getClasse();
 		include_once ('vues/VueContact.php');
 		
 	}
-} 
+}
 
 else {
+	
+	$unEleve = $dao->getEleve($login);
+	
+	if ( empty ($_POST ["txtNom"]) == true)  $unNom = $unEleve->getNom();  else   $unNom = $_POST ["txtNom"];
+	if ( empty ($_POST ["txtPrenom"]) == true)  $unPrenom = $unEleve->getPrenom();  else   $unPrenom = $_POST ["txtPrenom"];
+	if ( empty ($_POST ["txtContact"]) == true)  $unContact = "";  else   $unContact = $_POST ["txtContact"];
+	if ( empty ($_POST ["txtSujet"]) == true)  $unSujet = "";  else   $unSujet = $_POST ["txtSujet"];
+	if ( empty ($_POST ["txtMail"]) == true)  $unMailUtilisateur = $unEleve->getMail();  else   $unMailUtilisateur = $_POST ["txtMail"];
+	if ( empty ($_POST ["listClasse"]) == true)  $uneClasse = $unEleve->getClasse();  else   $uneClasse = $_POST ["listClasse"];
+	if ( empty ($_POST ["txtMessage"]) == true)  $unMessage = "";  else   $unMessage = $_POST ["txtMessage"];
+	
+	// Captcha
+	
+	$captcha;
+	
+	if(isset($_POST['g-recaptcha-response'])){
+		$captcha=$_POST['g-recaptcha-response'];
+	}
+	
+	if(!$captcha){
+		$info = "Merci de prouver que vous n'êtes pas un robot.";
+		include_once ('vues/VueContact.php');
+	}
+	
+	$secretKey = "6Lcltg4UAAAAAB-Qrchie13ynGdjKFKu4EBTYaox";
+	$ip = $_SERVER['REMOTE_ADDR'];
+	$response=file_get_contents("https://www.google.com/recaptcha/api/siteverify?secret=".$secretKey."&response=".$captcha."&remoteip=".$ip);
+	$responseKeys = json_decode($response,true);
+	
+	if(intval($responseKeys["success"]) !== 1) {
+		$info = "Merci de ne pas spammer le formulaire.";
+		include_once ('vues/VueContact.php');
+	}
+	
+	// Fin captcha
+	
 	include_once 'modele/Outils.class.php';
 	$outils = new Outils ();
-	$mailAContacter = $_POST ['contact'];
-	$sujet = "Message du site Inpact (" . $_POST ['sujet'] . ")";
-	$nom = $_POST ['nom'];
-	$prenom = $_POST ['prenom'];
-	$mailUtilisateur = $_POST ['mail'];
-	$classe = $_POST ['classe'];
-	$message = $_POST ['message'];
-	$messageAEnvoyer = "Message de " . strtoupper ( $nom ) . " " . ucfirst ( $prenom ) . " (" . $classe . ") \n";
-	$messageAEnvoyer = $messageAEnvoyer . "\r" . $message;
+	$leSujet = "Message du site Inpact (" . $unSujet . ")";
+	
+	$messageAEnvoyer = "Message de " . strtoupper ( $unNom ) . " " . ucfirst ( $unPrenom ) . " (" . $uneClasse . ") \n";
+	$messageAEnvoyer = $messageAEnvoyer . "\r" . $unMessage;
 	// echo $mailAContacter." ".$nom." ".$prenom." ".$mailUtilisateur." ".$classe." ".$message;
 	
-	if ($outils->estUneAdrMailValide ( $mailUtilisateur ) != true) {
+	if ($outils->estUneAdrMailValide ( $unMailUtilisateur ) != true) {
 		$info = "Adresse mail invalide";
+		include_once ('vues/VueContact.php');
 	} else {
-		$outils->envoyerMail ( $mailAContacter, $sujet, $messageAEnvoyer, $mailUtilisateur );
-		$info = "Message envoyé avec succès";
+		$outils->envoyerMail ( $unContact, $leSujet, $messageAEnvoyer, $unMailUtilisateur );
+		$info = "Message envoyé avec succès.";
 		include_once ('vues/VueContact.php');
 	}
 }
