@@ -10,7 +10,7 @@
 
 //    index.php?action=Connecter              	: pour afficher la page de connexion
 //    index.php?action=Menu                   	: pour afficher le menu
-//    index.php?action=AideDevoirs            	: pour afficher la page d'Aide au devoirs
+//    index.php?action=AideDevoirs            	: pour afficher la page d'Aide aux devoirs
 //    index.php?action=APropos                	: pour afficher la page A Propos
 //    index.php?action=Contact                	: pour afficher la page de contact
 //    index.php?action=Evenements               : pour afficher la page Evenement
@@ -64,8 +64,12 @@ switch($action){
 	case 'TermesConditions': {
 		include_once ('controleurs/CtrlTermesConditions.php'); break;
 	}
+	case 'MessagesPrives': {
+		include_once ('controleurs/CtrlMessages.php'); break;
+	}
 	case 'Deconnecter': {
-		session_destroy(); include_once ('controleurs/CtrlMenu.php'); break;
+		session_destroy(); 
+		include_once ('controleurs/CtrlMenu.php'); break;
 	}
 	// toute autre tentative est automatiquement redirigée vers le menu
 	default : {
