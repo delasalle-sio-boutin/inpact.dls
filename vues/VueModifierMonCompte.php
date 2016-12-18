@@ -37,7 +37,7 @@
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label for="form_classe">Groupe </label>
-                                        <input id="form_prenom" type="text" name="txtPrenom" class="form-control" value="<?php echo /*$unPrenom*/ "Groupe"; ?>" disabled="disabled">
+                                        <input id="form_classe" type="text" name="txtGroupe" class="form-control" value="<?php echo /*$unPrenom*/ "Groupe"; ?>" disabled="disabled">
                                     </div>
                                 </div>
                             
