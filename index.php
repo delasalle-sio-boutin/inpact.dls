@@ -16,6 +16,7 @@
 //    index.php?action=Evenements               : pour afficher la page Evenement
 //    index.php?action=PolitiqueConfidentilite  : pour afficher la page Politique et confidentialité
 //    index.php?action=TermesConditions         : pour afficher la page des termes et conditions
+//	  index.php?action=ModifierMonCompte		: pour afficher la pgae de modification du compte
 //    index.php?action=                   		: Action par defaut
 
 session_start();				// permet d'utiliser des variables de session
@@ -67,10 +68,14 @@ switch($action){
 	case 'MessagesPrives': {
 		include_once ('controleurs/CtrlMessages.php'); break;
 	}
+	case 'ModifierMonCompte': {
+		include_once ('controleurs/CtrlModifierMonCompte.php'); break;
+	}
 	case 'Deconnecter': {
 		session_destroy(); 
 		include_once ('controleurs/CtrlMenu.php'); break;
 	}
+
 	// toute autre tentative est automatiquement redirigée vers le menu
 	default : {
 		include_once ('controleurs/CtrlMenu.php'); break;

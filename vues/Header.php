@@ -131,7 +131,7 @@
 						<li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
 						aria-expanded="false"> &nbsp;Connecté en tant que <b> <?php if ($_SESSION['typeUtilisateur'] == "eleve"){echo $_SESSION['nom'];} else {echo $login; }?></b><span class="caret"></span></a>
 							<ul class="dropdown-menu">
-								<li><a href="index.php?action=Compte">Mon compte</a></li>
+								<li><a href="index.php?action=ModifierMonCompte">Mon compte</a></li>
 								<?php if ($typeUtilisateur == 'professeur'){?>
 								<li><a href="index.php?action=MessagesPrives">Messages</a></li>
 								<?php } ?>
