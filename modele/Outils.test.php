@@ -108,61 +108,6 @@ else echo ('L\'envoi du mail a rencontré un problème !<br>');
 echo ('<br>');
 */
 
-//Test de la méthode csvToArray--------------------------------
-//crée le 18/12/2016 par Tony BRAY
-echo "<h3>Test de la fonction csvToArray</h3>";
-
-Echo "<h3>Avec un bon fichier</h3>";
-$tableau = Outils::csv_to_array(file_get_contents('../upload/sample.csv'));
-//affiche//convertie en array//récupère le csv//url du csv
-
-if ($tableau != false){
-	foreach ($tableau as $ligne) {
-		//var_dump($ligne);
-		$Identifiant = $ligne[0];
-		$Motdepasse = $ligne[1];
-		$Nom = $ligne[2];
-		$Prenom = $ligne[3];
-		$Classe = $ligne[4];
-		$Email = $ligne[5];
-		$DateNaissance = $ligne[6];
-	
-	
-		$msg = $Identifiant."\t\t".$Motdepasse."\t".$Nom."\t".$Prenom."\t".$Classe."\t".$Email."\t".$DateNaissance;
-		echo $msg;
-		echo "<br />";
-	}
-}
-else {
-	echo "Probleme de lecture de fichier";
-}
-
-Echo "<h3>Avec un mauvais fichier</h3>";
-
-$tableau = Outils::csv_to_array(file_get_contents('../upload/sfample.csv'));
-//affiche//convertie en array//récupère le csv//url du csv
-
-if ($tableau != false){
-	foreach ($tableau as $ligne) {
-		//var_dump($ligne);
-		$Identifiant = $ligne[0];
-		$Motdepasse = $ligne[1];
-		$Nom = $ligne[2];
-		$Prenom = $ligne[3];
-		$Classe = $ligne[4];
-		$Email = $ligne[5];
-		$DateNaissance = $ligne[6];
-	
-	
-		$msg = $Identifiant." ".$Motdepasse." ".$Nom." ".$Prenom." ".$Classe." ".$Email." ".$DateNaissance;
-		echo $msg;
-		echo "<br />";
-	}
-}
-else {
-	echo "Probleme de lecture de fichier";
-}
-
 
 
 
