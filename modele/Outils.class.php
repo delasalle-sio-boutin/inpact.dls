@@ -27,6 +27,7 @@
 // getHauteurImage             : fournit la hauteur d'une image en pixels
 // redimensionnerImage         : redimensionne une image source pour la réduire à la taille maximum indiquée, et la place dans le dossier de destination
 	
+// cvsToArray				   : fournit un array a partir d'un .csv
 // ce fichier est destiné à être inclus dans les pages PHP qui ont besoin des fonctions qu'il contient
 // 2 possibilités pour inclure ce fichier :
 //     include_once ('Class.Outils.php');
@@ -289,28 +290,30 @@ class Outils
 		$dernierCaractere = $nomDossierSource[strlen($nomDossierSource)-1];
 		if ($dernierCaractere != "/") $nomDossierSource .= "/";
 		$dernierCaractere = $nomDossierDestination[strlen($nomDossierDestination)-1];
-		if ($dernierCaractere != "/") $nomDossierDestination .= "/";
-	
-		// mémoriser les noms complets des fichiers et l'extension
+		if ($dernierCaractere != "/")
+			$nomDossierDestination .= "/";
+			
+			// mémoriser les noms complets des fichiers et l'extension
 		$nomFichierSource = $nomDossierSource . $nomFichierPhoto;
 		$nomFichierDestination = $nomDossierDestination . $nomFichierPhoto;
-		$extensionFichier = strtoupper(strrchr($nomFichierPhoto, '.'));
-	
-		$imageSource = Outils::getImageByNomFichier($nomFichierSource);
-		if ( ! $imageSource) return false;
-	
-		// Largeur de la source
-		$largeurImageSource = imagesx ($imageSource);		// largeur en pixels
-		// Hauteur de la source
-		$hauteurImageSource = imagesy ($imageSource);		// hauteur en pixels
-	
+		$extensionFichier = strtoupper ( strrchr ( $nomFichierPhoto, '.' ) );
+		
+		$imageSource = Outils::getImageByNomFichier ( $nomFichierSource );
+		if (! $imageSource)
+			return false;
+			
+			// Largeur de la source
+		$largeurImageSource = imagesx ( $imageSource ); // largeur en pixels
+		                                              // Hauteur de la source
+		$hauteurImageSource = imagesy ( $imageSource ); // hauteur en pixels
+		                                              
 		// Largeur provisoire de la destination
 		$largeurImageDestination = $largeurImageSource;
 		// Hauteur provisoire de la destination
 		$hauteurImageDestination = $hauteurImageSource;
-	
+		
 		// Si l'image est trop large
-		if ($largeurImageDestination > $tailleMax){
+		if ($largeurImageDestination > $tailleMax) {
 			// Taux de réduction
 			$tauxReduction = $largeurImageDestination / $tailleMax;
 			// Largeur de la destination
@@ -318,9 +321,9 @@ class Outils
 			// Hauteur de la destination
 			$hauteurImageDestination = $hauteurImageSource / $tauxReduction;
 		}
-	
+		
 		// Si l'image est trop haute
-		if ($hauteurImageDestination > $tailleMax){
+		if ($hauteurImageDestination > $tailleMax) {
 			// Taux de réduction
 			$tauxReduction = $hauteurImageDestination / $tailleMax;
 			// Largeur de la destination
@@ -328,10 +331,11 @@ class Outils
 			// Hauteur de la destination
 			$hauteurImageDestination = $hauteurImageDestination / $tauxReduction;
 		}
-	
+		
 		// On donne à l'image ses dimensions finales
-		$imageDestination = imagecreatetruecolor($largeurImageDestination, $hauteurImageDestination);
-		if ( ! $imageDestination) return false;
+		$imageDestination = imagecreatetruecolor ( $largeurImageDestination, $hauteurImageDestination );
+		if (! $imageDestination)
+			return false;
 	
 		// On crée l'image, les 0 correspondent aux coordononnées
 		$ok = imagecopyresampled($imageDestination, $imageSource, 0, 0, 0, 0,
@@ -343,6 +347,45 @@ class Outils
 
 		return $ok;
 	}
+	
+	
+	// Fourni un array a partir d'un .csv
+	// Appeler par : csvstring_to_array(file_get_contents('fichier.csv'));
+	// retourne un tableau qui contient 7 entrées : [0]->$Identifiant [1]->$Motdepasse [2]->$Nom [3]->$Prenom [4]->$Classe [5]->$Email [6]->$DateNaissance
+	// Retourne false sinon
+	
+	public static function csv_to_array($string, $CSV_SEPARATOR = ';', $CSV_ENCLOSURE = '"', $CSV_LINEBREAK = "\r\n") {
+		if (!empty($string)){
+			$array1 = array(); //va contenir les lignes
+			$array2= array(); //va contenir les champs ("zat" ou zaze ou """azer" ...)
+			$arrayfinal= array(); //va contenir nos champs, correctement traités, avec une dimension par ligne.
+	
+			$array1=preg_split('#'.$CSV_LINEBREAK.'#',$string);//on éclate la chaine par ligne en array (une ligne par ligne)
+			for($i=0;$i<count($array1);$i++){//pour chaque ligne de notre chaine
+				for($o=0;$o<strlen($array1[$i]);$o++){//pour chaque caractère de la ligne
+					if(preg_match('#^'.$CSV_ENCLOSURE.'#',substr($array1[$i],$o))){//si sa commence par un ENCLOSURE
+						//on enregistre le mot jusqu'a qu'on trouve un seul ENCLOSURE suivie d'un SEPARATOR (donc qui commence pas par un ENCLOSURE)
+						if(!preg_match('#^"(([^'.$CSV_ENCLOSURE.']*('.$CSV_ENCLOSURE.$CSV_ENCLOSURE.')?[^'.$CSV_ENCLOSURE.']*)*)'.$CSV_ENCLOSURE.$CSV_SEPARATOR.'#i',substr($array1[$i],$o,strlen($array1[$i])),$mot)){
+							$mot[1]=substr(substr($array1[$i],$o,strlen($array1[$i])),1,-1);
+						}$o+=2;
+					}
+					else{//sinon ...
+						//on prend le mot (ne contenant pas SEPARATOR ou ENCLOSURE) jusqu'au prochain SEPARATOR
+						if(!preg_match('#^([^'.$CSV_ENCLOSURE.$CSV_SEPARATOR.']*)'.$CSV_SEPARATOR.'#i',substr($array1[$i],$o,strlen($array1[$i])),$mot)){
+							$mot[1]=substr($array1[$i],$o,strlen($array1[$i]));
+						}
+					}
+					$o=$o+strlen($mot[1]);//on avance dans la ligne jusqu'au prochain mot
+					$array2[$i][]=str_replace($CSV_ENCLOSURE.$CSV_ENCLOSURE,$CSV_ENCLOSURE,$mot[1]);//on transforme les double ENCLOSURE par des simple
+				}
+			}
+			return $array2;
+		}
+		else{
+			return false;
+		}
+	}
+	
 	
 } // fin de la classe Outils
 
