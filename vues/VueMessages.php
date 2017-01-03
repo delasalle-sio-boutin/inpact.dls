@@ -11,7 +11,7 @@
 	
 		<div id="page-contenu-head">
 			<ul id="menu-horizontal">
-				<li>Messages privés <?php if ($titre != '') echo "| " . $titre ?></li>
+				<li>Messages privés<?php if ($titre != '') echo " | " . $titre ?></li>
 			</ul>
 		</div>
 		
