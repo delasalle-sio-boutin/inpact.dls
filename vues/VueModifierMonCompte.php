@@ -34,6 +34,7 @@
                                 </div>
                             </div>
                             
+                            <div class="row">
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label for="form_classe">Groupe </label>
@@ -41,7 +42,7 @@
                                     </div>
                                 </div>
                             
-                            <div class="row">
+                            
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label for="form_email">Email</label>
