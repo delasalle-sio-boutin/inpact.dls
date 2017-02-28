@@ -16,13 +16,11 @@ include_once ('modele/DAO.class.php');
 $dao = new DAO();
 
 $lesEvenements = $dao->getLesEvenements();
-$i = 1;
-foreach ($lesEvenements as $unEvenement){
+for ($i = 1; $i <= 4; $i++){
 	${'uneClass'.$i} = "ui-accueil-div" . $i;
-	${'$unId'.$i}= $unEvenement->getId();
-	${'$unTitre'.$i} = $unEvenement->getTitre();
-	${'$unContenu'.$i} = $unEvenement->getContenu();
-	$i += 1;
+	${'$unId'.$i}= $lesEvenements[$i]->getId();
+	${'$unTitre'.$i} = $lesEvenements[$i]->getTitre();
+	${'$unContenu'.$i} = $lesEvenements[$i]->getContenu();
 }
 
 include_once ('vues/VueMenu.php');
