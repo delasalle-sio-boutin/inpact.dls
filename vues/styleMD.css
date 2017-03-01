@@ -79,7 +79,7 @@ div#page-contenu-head{
 
 div#page-contenu-body{
 	width: 100%;
-	margin: 10px 0;
+	margin: 10px;
 }
 
 table{
@@ -307,7 +307,7 @@ ul.pages > li, ul.list >li{
 	margin: auto;
 }
 
-.ui-accueil-div1{
+.ui-accueil-div0{
 	/* coins arrondis */
 	-moz-border-radius: 20px 0px 0px 0px;
 	-webkit-border-radius: 20px 0px 0px 0px;
@@ -320,7 +320,7 @@ ul.pages > li, ul.list >li{
 	overflow: hidden;
 }
 
-.ui-accueil-div2{
+.ui-accueil-div1{
 	/* coins arrondis */
 	-moz-border-radius: 0px 20px 0px 0px;
 	-webkit-border-radius: 0px 20px 0px 0px;
@@ -333,7 +333,7 @@ ul.pages > li, ul.list >li{
 	overflow: hidden;	
 }
 
-.ui-accueil-div3{
+.ui-accueil-div2{
 	/* coins arrondis */
 	-moz-border-radius: 0px 0px 0px 20px;
 	-webkit-border-radius: 0px 0px 0px 20px;
@@ -346,7 +346,7 @@ ul.pages > li, ul.list >li{
 	overflow: hidden;
 }
 
-.ui-accueil-div4{
+.ui-accueil-div3{
 	/* coins arrondis */
 	-moz-border-radius: 0px 0px 20px 0px;
 	-webkit-border-radius: 0px 0px 20px 0px;
@@ -365,10 +365,10 @@ ul.pages > li, ul.list >li{
 
 
 /* MARGES EN FONCTION DE LA TAILLE DE L'ÉCRAN POUR LES DIVS */
-.ui-accueil-div1{ margin: 0 10px 10px 0; }
-.ui-accueil-div2{ margin: 0 0 10px 10px; }
-.ui-accueil-div3{ margin: 10px 10px 0 0; }
-.ui-accueil-div4{ margin: 10px 0 0 10px; }
+.ui-accueil-div0{ margin: 0 10px 10px 0; }
+.ui-accueil-div1{ margin: 0 0 10px 10px; }
+.ui-accueil-div2{ margin: 10px 10px 0 0; }
+.ui-accueil-div3{ margin: 10px 0 0 10px; }
 
 .ui-accueil-actu{
 	height: 325px;
@@ -388,7 +388,8 @@ ul.pages > li, ul.list >li{
 }
 
 .ui-accueil-content > div{
-	width: 48%;
+	width: 49%;
+	margin: 2px;
 }
 
 /* ------------------------------------------------------------------ MISE EN FORME DE L'EVENEMENT ----------------------------------------------------------------- */

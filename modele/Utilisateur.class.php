@@ -25,7 +25,7 @@ class Utilisateur {
 	// ------------------------------------------------------------------------------------------------------
 	                        // ----------------------------------------- Constructeur -----------------------------------------------
 	                        // ------------------------------------------------------------------------------------------------------
-	public function Utilisateur($unId, $unLogin, $unMdp, $unNiveau ,$unNom, $unPrenom ,$uneClasse, $unMail, $uneDateNaissance, $unNbMailFromProfs, $unNbMailFromEleves) {
+	public function Utilisateur($unId, $unLogin, $unMdp, $unNiveau ,$unNom, $unPrenom ,$uneClasse, $unMail, $uneDateNaissance, $unMailFromProfs, $unMailFromEleves) {
 		$this->id = $unId;
 		$this->login = $unLogin;
 		$this->mdp = $unMdp;
@@ -35,8 +35,8 @@ class Utilisateur {
 		$this->classe = $uneClasse;
 		$this->mail = $unMail;
 		$this->dateNaissance = $uneDateNaissance;
-		$this->mailFromProfs = $unNbMailFromProfs;
-		$this->mailFromEleves = $unNbMailFromEleves;
+		$this->mailFromProfs = $unMailFromProfs;
+		$this->mailFromEleves = $unMailFromEleves;
 	}
 	
 	// ------------------------------------------------------------------------------------------------------

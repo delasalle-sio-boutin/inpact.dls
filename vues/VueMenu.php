@@ -13,17 +13,24 @@
 			<div id="main">
 				<div class="col-xs-12 col-sm-9 col-md-9 col-lg-9 ui-accueil-content">
 				<?php 
-				for ($i = 1; $i <= 4; $i++){ ?>
-					<div class="col-sm-6 ui-accueil-actu <?php echo ${'uneClass'.$i} ?>">
-						<div class="ui-accueil-evt">
-							<b><?php echo ${'$unTitre'.$i} . "<br>";?></b>
-							<?php echo ${'$unContenu'.$i}; ?>
+				if (!empty ($lesEvenements)){
+					for ($i = 0; $i <= 3; $i++){
+						?>
+						<div class="col-sm-6 ui-accueil-actu <?php echo ${'uneClass'.$i} ?>">
+							<div class="ui-accueil-evt">
+								<b><?php echo ${'unTitre'.$i} . " (du " . ${'uneDateEvenement'.$i} . ")";?>
+								<p style="float: right"><?php echo "J-" . ${'unCompteARebours'.$i} . "<br>" ?></p></b>
+								<br>
+								<?php echo ${'unContenu'.$i}; ?>
+							</div>
+							<div class="ui-accueil-suite">
+								<a href="index.php?action=Evenements&id=<?php echo ${'unId'.$i} ?>">Lire la suite (...)</a>
+								<p style="float: right">Publié le <?php echo ${'uneDateCreation'.$i} ?></p>
+							</div>
 						</div>
-						<div class="ui-accueil-suite">
-							<a href="index.php?action=Evenements&id=<?php echo $i ?>">Lire la suite (...)</a>
-						</div>
-					</div>
-				<?php } ?>
+					<?php 
+					}
+				}?>
 				</div>
 				<div class="col-xs-10 col-xs-offset-1 col-sm-3 col-sm-offset-0 col-md-3 col-lg-3 ui-fil-twitter">
 					<a class="twitter-timeline" data-lang="fr" data-dnt="true" data-height="650" data-theme="dark" data-link-color="#f5b570" href="https://twitter.com/DLS_SIO/lists/tweets-dls-rennes?lang=fr">A Twitter List by DLS_SIO</a> <script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>

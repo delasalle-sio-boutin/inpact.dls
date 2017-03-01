@@ -36,6 +36,7 @@
 include_once ('Utilisateur.class.php');
 include_once ('Evenement.class.php');
 include_once ('Outils.class.php');
+include_once ('Messages.class.php');
 
 
 // inclusion des paramètres de l'application
@@ -76,44 +77,12 @@ class DAO
 		unset($this->cnx);
 	}
 	
-
-	// fournit un objet Administrateur à partir de son identifiant
+// fournit un objet Utilisateur à partir de son login
 	// fournit la valeur null si l'id n'existe pas ou est incorrect
-	// modifié par Killian BOUTIN le 15/11/2016
-	public function getAdministrateur($unLogin)
+	// modifié par Killian BOUTIN le 01/03/2017
+	public function getUnUtilisateur($unLogin)
 	{	// préparation de la requete de recherche
-	$txt_req = "SELECT * FROM inp_administrateurs WHERE login = :login";
-	
-	$req = $this->cnx->prepare($txt_req);
-	
-	// liaison de la requête et de son paramètre
-	$req->bindValue("login", $unLogin, PDO::PARAM_STR);
-	
-	// extraction des données
-	$req->execute();
-	$uneLigne = $req->fetch(PDO::FETCH_OBJ);
-	// libère les ressources du jeu de données
-	$req->closeCursor();
-	
-	// traitement de la réponse
-	if ( ! $uneLigne)
-		return null;
-	else{	// création d'un objet Administrateur
-			$id = utf8_encode($uneLigne->id);
-			$login = utf8_encode($uneLigne->login);
-			$mdp = utf8_encode($uneLigne->mdp);
-				
-			$unAdministrateur = new Administrateur($id, $login, $mdp);
-			return $unAdministrateur;
-		}
-	}
-	
-	// fournit un objet eleve à partir de son identifiant
-	// fournit la valeur null si l'id n'existe pas ou est incorrect
-	// modifié par Tony BRAY le 15/11/2016
-	public function getEleve($unLogin)
-	{	// préparation de la requete de recherche
-	$txt_req = "SELECT * FROM inp_eleves WHERE login = :login";
+	$txt_req = "SELECT * FROM inp_utilisateurs WHERE login = :login";
 	
 	$req = $this->cnx->prepare($txt_req);
 	
@@ -130,17 +99,59 @@ class DAO
 	if ( ! $uneLigne)
 		return null;
 		else{	// création d'un objet eleve
-			$id = utf8_encode($uneLigne->id);
-			$login = utf8_encode($uneLigne->login);
-			$mdp = utf8_encode($uneLigne->mdp);
-			$nom = utf8_encode($uneLigne->nom);
-			$prenom = utf8_encode($uneLigne->prenom);
-			$classe = utf8_encode($uneLigne->classe);
-			$mail = utf8_encode($uneLigne->mail);
-			$naissance = utf8_decode($uneLigne->datenaiss);
+			$unId = utf8_encode($uneLigne->id);
+			$unLogin = utf8_encode($uneLigne->login);
+			$unMdp = utf8_encode($uneLigne->mdp);
+			$unNiveau = utf8_encode($uneLigne->niveau);
+			$unNom = utf8_encode($uneLigne->nom);
+			$unPrenom = utf8_encode($uneLigne->prenom);
+			$uneClasse = utf8_encode($uneLigne->classe);
+			$unMail = utf8_encode($uneLigne->mail);
+			$uneDateNaissance = utf8_decode($uneLigne->dateNaiss);
+			$unMailFromProfs = utf8_decode($uneLigne->mailFromProfs);
+			$unMailFromEleves = utf8_decode($uneLigne->mailFromEleves); 
 	
-			$unEleve = new Eleve($id, $login, $mdp, $classe, $nom, $prenom, $mail, $naissance);
-			return $unEleve;
+			$unUtilisateur = new Utilisateur($unId, $unLogin, $unMdp, $unNiveau, $unNom, $unPrenom, $uneClasse, $unMail, $uneDateNaissance, $unMailFromProfs, $unMailFromEleves);
+			return $unUtilisateur;
+		}
+	}
+	
+	// fournit un objet Utilisateur à partir de son id
+	// fournit la valeur null si l'id n'existe pas ou est incorrect
+	// modifié par Killian BOUTIN le 01/03/2017
+	public function getUnUtilisateurId($unId)
+	{	// préparation de la requete de recherche
+	$txt_req = "SELECT * FROM inp_utilisateurs WHERE id = :id";
+	
+	$req = $this->cnx->prepare($txt_req);
+	
+	// liaison de la requête et de son paramètre
+	$req->bindValue("id", $unId, PDO::PARAM_STR);
+	
+	// extraction des données
+	$req->execute();
+	$uneLigne = $req->fetch(PDO::FETCH_OBJ);
+	// libère les ressources du jeu de données
+	$req->closeCursor();
+	
+	// traitement de la réponse
+	if ( ! $uneLigne)
+		return null;
+		else{	// création d'un objet eleve
+			$unId = utf8_encode($uneLigne->id);
+			$unLogin = utf8_encode($uneLigne->login);
+			$unMdp = utf8_encode($uneLigne->mdp);
+			$unNiveau = utf8_encode($uneLigne->niveau);
+			$unNom = utf8_encode($uneLigne->nom);
+			$unPrenom = utf8_encode($uneLigne->prenom);
+			$uneClasse = utf8_encode($uneLigne->classe);
+			$unMail = utf8_encode($uneLigne->mail);
+			$uneDateNaissance = utf8_decode($uneLigne->dateNaiss);
+			$unMailFromProfs = utf8_decode($uneLigne->mailFromProfs);
+			$unMailFromEleves = utf8_decode($uneLigne->mailFromEleves);
+	
+			$unUtilisateur = new Utilisateur($unId, $unLogin, $unMdp, $unNiveau, $unNom, $unPrenom, $uneClasse, $unMail, $uneDateNaissance, $unMailFromProfs, $unMailFromEleves);
+			return $unUtilisateur;
 		}
 	}
 	
@@ -150,49 +161,32 @@ class DAO
 	// modifié par Killian BOUTIN le 15/11/2016
 	public function getTypeUtilisateur($unLogin, $unMdp)
 	{	// préparation de la requête de recherche dans la table inp_administrateurs
-		$txt_req = "SELECT count(*) FROM inp_administrateurs WHERE login = :login AND mdp = :mdp";
+		$txt_req = "SELECT * FROM inp_utilisateurs WHERE login = :login AND mdp = :mdp";
 		$req = $this->cnx->prepare($txt_req);
 		// liaison de la requête et de ses paramètres
 		$req->bindValue("login", $unLogin, PDO::PARAM_STR);
 		$req->bindValue("mdp", sha1($unMdp), PDO::PARAM_STR);
 		// extraction des données et comptage des réponses
 		$req->execute();
-		$nbReponses = $req->fetchColumn(0);
+		$uneLigne = $req->fetch(PDO::FETCH_OBJ);
 		// libère les ressources du jeu de données
 		$req->closeCursor();
 		// fourniture de la réponse
-		if ($nbReponses == 1) return "administrateur";
-		
-		// préparation de la requête de recherche dans la table inp_professeurs
-		$txt_req = "SELECT count(*) FROM inp_professeurs WHERE login = :login AND mdp = :mdp";
-		$req = $this->cnx->prepare($txt_req);
-		// liaison de la requête et de ses paramètres
-		$req->bindValue("login", $unLogin, PDO::PARAM_STR);
-		$req->bindValue("mdp", sha1($unMdp), PDO::PARAM_STR);
-		// extraction des données et comptage des réponses
-		$req->execute();
-		$nbReponses = $req->fetchColumn(0);
-		// libère les ressources du jeu de données
-		$req->closeCursor();
-		// fourniture de la réponse
-		if ($nbReponses == 1) return "professeur";
-		
-		// préparation de la requête de recherche dans la table inp_eleves
-		$txt_req = "SELECT count(*) FROM inp_eleves WHERE login = :login AND mdp = :mdp";
-		$req = $this->cnx->prepare($txt_req);
-		// liaison de la requête et de ses paramètres
-		$req->bindValue("login", $unLogin, PDO::PARAM_STR);
-		$req->bindValue("mdp", sha1($unMdp), PDO::PARAM_STR);
-		// extraction des données et comptage des réponses
-		$req->execute();
-		$nbReponses = $req->fetchColumn(0);
-		// libère les ressources du jeu de données
-		$req->closeCursor();
-		// fourniture de la réponse
-		if ($nbReponses == 1) return "eleve";
-		
-		// si on arrive ici, c'est que l'authentification est incorrecte
-		return "inconnu";
+		if ($uneLigne){
+			if ($uneLigne->niveau == 0){
+				return "eleve";
+			}
+			if ($uneLigne->niveau == 1){
+				return "professeur";
+			}
+			if ($uneLigne->niveau == 2){
+				return "administrateur";
+			}
+		}
+		else{
+			// si on arrive ici, c'est que l'authentification est incorrecte
+			return "inconnu";
+		}
 	}
 	
 	
@@ -214,12 +208,14 @@ class DAO
 		
 		// tant qu'une ligne est trouvée :
 		while ($uneLigne)
-			{	// création d'un objet Inscription
+			{	// création d'un objet Evenement
 				$unId = utf8_encode($uneLigne->id);
 				$unTitre = utf8_encode($uneLigne->titre);
 				$unContenu = utf8_encode($uneLigne->contenu);
+				$uneDateCreation = utf8_encode($uneLigne->dateCreation);
+				$uneDateEvenement = utf8_encode($uneLigne->dateEvenement);
 				
-				$unEvenement = new Evenement($unId, $unTitre, $unContenu);
+				$unEvenement = new Evenement($unId, $unTitre, $unContenu, $uneDateCreation, $uneDateEvenement);
 				// ajout de l'inscription à la collection
 				$lesEvenements[] = $unEvenement;
 				// extraction de la ligne suivante
@@ -229,6 +225,187 @@ class DAO
 		$req->closeCursor();
 		
 		return $lesEvenements;
+	}
+	
+	// fournit les Messages dans une collection
+	// renvoie une collection de messages
+	// modifié par Killian BOUTIN le 01/03/2017
+	public function getLesMessages()
+	{	// préparation de la requête d'extraction des inscriptions non annulées
+		$txt_req = "SELECT *";
+		$txt_req .= " FROM inp_messages";
+		$req = $this->cnx->prepare($txt_req);
+		
+		// extraction des données
+		$req->execute();
+		$uneLigne = $req->fetch(PDO::FETCH_OBJ);
+		
+		// construction d'une collection d'objets Inscription
+		$lesMessages = array();
+		
+		if (!$uneLigne) return null;
+		
+		// tant qu'une ligne est trouvée :
+		while ($uneLigne)
+		{	// création d'un objet Message
+			$unId = utf8_encode($uneLigne->idMessage);
+			$unIdFrom = utf8_encode($uneLigne->idFrom);
+			$unIdTo = utf8_encode($uneLigne->idTo);
+			$uneDateMessage = utf8_encode($uneLigne->dateMessage);
+			$unTitre = utf8_encode($uneLigne->titre);
+			$unContenu = utf8_encode($uneLigne->contenu);
+			$unLu = utf8_encode($uneLigne->lu);
+			
+			$unMessage = new Message($unId, $unIdFrom, $unIdTo, $uneDateMessage, $unTitre, $unContenu, $unLu);
+			// ajout de l'inscription à la collection
+			$lesMessages[] = $unMessage;
+			// extraction de la ligne suivante
+			$uneLigne = $req->fetch(PDO::FETCH_OBJ);
+		}
+		// libère les ressources du jeu de données
+		$req->closeCursor();
+		
+		return $lesMessages;
+	}
+	
+// fournit les Messages dans une collection reçu pour unIdTo
+	// renvoie une collection de messages
+	// modifié par Killian BOUTIN le 01/03/2017
+	public function getLesMessagesTo($unIdTo)
+	{	// préparation de la requête d'extraction des inscriptions non annulées
+		$txt_req = "SELECT *";
+		$txt_req .= " FROM inp_messages";
+		$txt_req .= " WHERE idTo = :unIdTo";
+		$req = $this->cnx->prepare($txt_req);
+		
+		// liaison de la requête et de son paramètre
+		$req->bindValue("unIdTo", $unIdTo, PDO::PARAM_INT);
+		
+		// extraction des données
+		$req->execute();
+		$uneLigne = $req->fetch(PDO::FETCH_OBJ);
+		
+		// construction d'une collection d'objets Inscription
+		$lesMessages = array();
+		
+		// si pas de ligne trouvée :
+		if (!$uneLigne){
+			return null;
+		}
+		else
+		{	
+			while ($uneLigne){
+				$unId = utf8_encode($uneLigne->idMessage);
+				$unIdFrom = utf8_encode($uneLigne->idFrom);
+				$unIdTo = utf8_encode($uneLigne->idTo);
+				$uneDateMessage = utf8_encode($uneLigne->dateMessage);
+				$unTitre = utf8_encode($uneLigne->titre);
+				$unContenu = utf8_encode($uneLigne->contenu);
+				$unLu = utf8_encode($uneLigne->lu);
+					
+				$unMessage = new Message($unId, $unIdFrom, $unIdTo, $uneDateMessage, $unTitre, $unContenu, $unLu);
+				// ajout de l'inscription à la collection
+				$lesMessages[] = $unMessage;
+				// extraction de la ligne suivante
+				$uneLigne = $req->fetch(PDO::FETCH_OBJ);
+			}
+		}
+		// libère les ressources du jeu de données
+		$req->closeCursor();
+		
+		return $lesMessages;
+	}
+	
+	// fournit les Messages dans une collection envoie par unIdFrom
+	// renvoie une collection de messages
+	// modifié par Killian BOUTIN le 01/03/2017
+	public function getLesMessagesFrom($unIdFrom)
+	{	// préparation de la requête d'extraction des inscriptions non annulées
+		$txt_req = "SELECT *";
+		$txt_req .= " FROM inp_messages";
+		$txt_req .= " WHERE idFrom = :unIdFrom";
+		$req = $this->cnx->prepare($txt_req);
+		
+		// liaison de la requête et de son paramètre
+		$req->bindValue("unIdFrom", $unIdFrom, PDO::PARAM_INT);
+		
+		// extraction des données
+		$req->execute();
+		$uneLigne = $req->fetch(PDO::FETCH_OBJ);
+		
+		// construction d'une collection d'objets Inscription
+		$lesMessages = array();
+		
+		// si pas de ligne trouvée :
+		if (!$uneLigne){
+			return null;
+		}
+		else
+		{	
+			while ($uneLigne){
+				// création d'un objet Message
+				$unId = utf8_encode($uneLigne->idMessage);
+				$unIdFrom = utf8_encode($uneLigne->idFrom);
+				$unIdTo = utf8_encode($uneLigne->idTo);
+				$uneDateMessage = utf8_encode($uneLigne->dateMessage);
+				$unTitre = utf8_encode($uneLigne->titre);
+				$unContenu = utf8_encode($uneLigne->contenu);
+				$unLu = utf8_encode($uneLigne->lu);
+					
+				$unMessage = new Message($unId, $unIdFrom, $unIdTo, $uneDateMessage, $unTitre, $unContenu, $unLu);
+				// ajout de l'inscription à la collection
+				$lesMessages[] = $unMessage;
+				// extraction de la ligne suivante
+				$uneLigne = $req->fetch(PDO::FETCH_OBJ);
+			}
+		}
+		// libère les ressources du jeu de données
+		$req->closeCursor();
+		
+		return $unMessage;
+	}
+	
+	// fournit les infos d'un message en fonction de l'id
+	// renvoie une collection de messages
+	// modifié par Killian BOUTIN le 01/03/2017
+	public function getUnMessage($unIdMessage)
+	{	// préparation de la requête d'extraction des inscriptions non annulées
+		$txt_req = "SELECT *";
+		$txt_req .= " FROM inp_messages";
+		$txt_req .= " WHERE id = :unIdMessage";
+		$req = $this->cnx->prepare($txt_req);
+		
+		// liaison de la requête et de son paramètre
+		$req->bindValue("unIdMessage", $unIdMessage, PDO::PARAM_INT);
+		
+		// extraction des données
+		$req->execute();
+		$uneLigne = $req->fetch(PDO::FETCH_OBJ);
+		
+		// construction d'une collection d'objets Inscription
+		$lesMessages = array();
+		
+		// tant qu'une ligne est trouvée :
+		while ($uneLigne)
+		{	// création d'un objet Message
+			$unId = utf8_encode($uneLigne->idMessage);
+			$unIdFrom = utf8_encode($uneLigne->idFrom);
+			$unIdTo = utf8_encode($uneLigne->idTo);
+			$uneDateMessage = utf8_encode($uneLigne->dateMessage);
+			$unTitre = utf8_encode($uneLigne->titre);
+			$unContenu = utf8_encode($uneLigne->contenu);
+			$unLu = utf8_encode($uneLigne->lu);
+			
+			$unMessage = new Message($unId, $unIdFrom, $unIdTo, $uneDateMessage, $unTitre, $unContenu, $unLu);
+			// ajout de l'inscription à la collection
+			$lesMessages[] = $unMessage;
+			// extraction de la ligne suivante
+			$uneLigne = $req->fetch(PDO::FETCH_OBJ);
+		}
+		// libère les ressources du jeu de données
+		$req->closeCursor();
+		
+		return $lesMessages;
 	}
 	
 	// fournit un Evenement en fonction de son id
@@ -253,14 +430,13 @@ class DAO
 		$unId = utf8_encode($uneLigne->id);
 		$unTitre = utf8_encode($uneLigne->titre);
 		$unContenu = utf8_encode($uneLigne->contenu);
+		$uneDateCreation = utf8_encode($uneLigne->dateCreation);
+		$uneDateEvenement = utf8_encode($uneLigne->dateEvenement);
 		
-		$unEvenement = new Evenement($unId, $unTitre, $unContenu);
+		$unEvenement = new Evenement($unId, $unTitre, $unContenu, $uneDateCreation, $uneDateEvenement);
 		// libère les ressources du jeu de données
 		$req->closeCursor();
 		
 		return $unEvenement;
-	}
-	
-	
-	
+	}	
 }

@@ -48,7 +48,7 @@ div#page{
 
 div#page-contenu{
 	/* hauteur, largeur, centrage avec des marges auto, padding nul, bordure noire, alignement gauche, arrière plan orange */
-	width: 35%;
+	width: 40%;
 	margin: 30px auto;
 	padding: 0;
 	border: #000 1px solid;
@@ -65,7 +65,6 @@ div#page-contenu{
 div#page-contenu-head{
 	background: #f5b570;
 	border-bottom: #000 1px solid;
-	padding: 3px auto;
 	padding-top: 10px;
 	
 	/* coins arrondis en haut uniquement */
@@ -79,9 +78,8 @@ div#page-contenu-head{
 
 div#page-contenu-body{
 	width: 100%;
-	margin: 10px 0;
+	/* padding: 10px; */
 }
-
 
 table{
 	margin: 0 auto;
@@ -305,7 +303,7 @@ ul.pages > li, ul.list > li{
 	margin: auto;
 }
 
-.ui-accueil-div1{
+.ui-accueil-div0{
 	/* coins arrondis */
 	-moz-border-radius: 20px 0px 0px 0px;
 	-webkit-border-radius: 20px 0px 0px 0px;
@@ -318,7 +316,7 @@ ul.pages > li, ul.list > li{
 	overflow: hidden;
 }
 
-.ui-accueil-div2{
+.ui-accueil-div1{
 	/* coins arrondis */
 	-moz-border-radius: 0px 20px 0px 0px;
 	-webkit-border-radius: 0px 20px 0px 0px;
@@ -331,7 +329,7 @@ ul.pages > li, ul.list > li{
 	overflow: hidden;	
 }
 
-.ui-accueil-div3{
+.ui-accueil-div2{
 	/* coins arrondis */
 	-moz-border-radius: 0px 0px 0px 20px;
 	-webkit-border-radius: 0px 0px 0px 20px;
@@ -344,7 +342,7 @@ ul.pages > li, ul.list > li{
 	overflow: hidden;
 }
 
-.ui-accueil-div4{
+.ui-accueil-div3{
 	/* coins arrondis */
 	-moz-border-radius: 0px 0px 20px 0px;
 	-webkit-border-radius: 0px 0px 20px 0px;
@@ -361,10 +359,10 @@ ul.pages > li, ul.list > li{
 	text-align: justify;
 }
 
-.ui-accueil-div1{ margin: 0 15px 15px 0; }
-.ui-accueil-div2{ margin: 0 0 15px 15px; }
-.ui-accueil-div3{ margin: 15px 15px 0 0; }
-.ui-accueil-div4{ margin: 15px 0 0 15px; }
+.ui-accueil-div0{ margin: 0 15px 15px 0; }
+.ui-accueil-div1{ margin: 0 0 15px 15px; }
+.ui-accueil-div2{ margin: 15px 15px 0 0; }
+.ui-accueil-div3{ margin: 15px 0 0 15px; }
 
 .ui-accueil-actu{
 	height: 325px;
@@ -379,12 +377,111 @@ ul.pages > li, ul.list > li{
 }	
 
 .ui-accueil-suite{
-	height: 20%;
+	height: 30%;
 	padding: 25px;
 }
 
 .ui-accueil-content > div{
-	width: 48%;
+	width: 49%;
+	margin: 2px;
+}
+
+/* ---------------------------------------------------------------- MISE EN FORME DE MESSAGES PRIVES --------------------------------------------------------------- */
+
+div#page-contenu{
+	width: 80%;
+}
+
+a#msgRetour{
+	position: absolute;
+	text-decoration: none;
+	color: black;
+	margin: 6px;
+}
+
+a#liens {
+	/* police, couleur et alignement du texte, style du lien */
+	color: black;
+	text-align: center;
+	text-decoration: none;
+	font-weight: bold;
+
+	/* ombre portée du texte du bouton */
+	text-shadow: 0 1px 0 #fff;
+		
+	/* dimensions, margin, padding, type d'affichage, bordure */
+	width: 350px;
+	display: block;
+	border: 1px solid rgba(0, 0, 0, 0.1);
+	
+	/* coins arrondis */
+	-moz-border-radius: 7px;
+	-webkit-border-radius: 7px;
+	-o-border-radius: 7px;
+	-ms-border-radius: 7px;
+	-khtml-border-radius: 7px;
+	border-radius: 7px;
+	
+	/* fond avec un dégradé de couleur (blanc en haut, gris en bas) */
+	background: -moz-linear-gradient(top, rgb(245,181,112), rgb(250, 218, 183));
+	background: -webkit-gradient(linear, right top, right bottom, from(rgb(245,181,112)), to(rgb(250, 218, 183)));
+	background: linear-gradient(to bottom, rgb(245,181,112), rgb(250, 218, 183));
+	
+	/* ombre portée du bouton */
+	-webkit-box-shadow: 2px 2px 2px 0px rgba(0, 0, 0, 0.3);
+	-moz-box-shadow: 2px 2px 2px 0px rgba(0, 0, 0, 0.3);
+	-o-box-shadow: 2px 2px 2px 0px rgba(0, 0, 0, 0.3);
+	box-shadow: 2px 2px 2px 0px rgba(0, 0, 0, 0.3);
+}
+
+a#liens:hover {
+	color: #3f3f3f;
+	opacity: 0.9;
+}
+
+a#messages{
+	display: block;
+	padding: 5px;
+	background: #b3b3b3;
+	border-top: 1px solid;
+	text-decoration: none;
+	height: 30px;
+	color: black;
+}
+
+div#messages:last-child{
+	border-bottom: 1px solid;
+}
+
+a#messages:hover{
+	color: black;
+	border-color: black;
+	background-color: #a6a6a6;
+}
+
+a#message:hover{
+	color: blue;
+}
+
+div#de{
+	float: left;
+	width: 25%;
+	height: 20px;
+	overflow: hidden;
+}
+
+div#titre{
+	float: left;
+	width: 68%;
+	height: 20px;
+	overflow: hidden;
+}
+
+div#date{
+	float: right;
+	width: 7%;
+	height: 20px;
+	overflow: hidden;
 }
 
 /* ------------------------------------------------------------------ MISE EN FORME DE L'EVENEMENT ----------------------------------------------------------------- */

@@ -17,6 +17,10 @@
 	href="vues/styleMD.css" />
 <link rel="stylesheet" media="(min-width: 992px)"
 	href="vues/styleLG.css" />
+<!-- Chargement des font awesome -->
+<link
+	href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css"
+	rel="stylesheet">
 
 <!-- 
 	APPAREMENT UTILE POUR LA CONNEXION
@@ -65,8 +69,7 @@
 									<?php if ($_SESSION['login'] != ''){ ?>
 									<li><a href="index.php?action=AideDevoirs">Aide aux devoirs</a></li>
 									<?php } ?>
-								</ul>
-							</li>
+								</ul></li>
 							<li class=" dropdown"><a href="#" class="dropdown-toggle active"
 								data-toggle="dropdown" role="button" aria-haspopup="true"
 								aria-expanded="false">Liens utiles <span class="caret"></span></a>
@@ -128,15 +131,16 @@
 							<li><a href="index.php?action=Deconnecter">Se déconnecter</a></li>
 						</ul>
 						<ul class="nav navbar-nav pull-right ui-right">
-						<li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
-						aria-expanded="false"> &nbsp;Connecté en tant que <b> <?php if ($_SESSION['typeUtilisateur'] == "eleve"){echo $_SESSION['nom'];} else {echo $login; }?></b><span class="caret"></span></a>
-							<ul class="dropdown-menu">
-								<li><a href="index.php?action=ModifierMonCompte">Mon compte</a></li>
+							<li class="dropdown"><a href="#" class="dropdown-toggle"
+								data-toggle="dropdown" role="button" aria-haspopup="true"
+								aria-expanded="false"> &nbsp;Connecté en tant que <b> <?php if ($_SESSION['typeUtilisateur'] == "eleve"){echo $_SESSION['nom'];} else {echo $login; }?></b><span
+									class="caret"></span></a>
+								<ul class="dropdown-menu">
+									<li><a href="index.php?action=ModifierMonCompte">Mon compte</a></li>
 								<?php if ($typeUtilisateur == 'professeur'){?>
 								<li><a href="index.php?action=MessagesPrives">Messages</a></li>
 								<?php } ?>
-							</ul>
-						</li>
+							</ul></li>
 						</ul>
 	                    <?php } ?>
 					</div>

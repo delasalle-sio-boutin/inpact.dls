@@ -15,12 +15,24 @@ include_once ('modele/DAO.class.php');
 // connexion à la classe DAO
 $dao = new DAO();
 
+function dateDiff($evt){
+	$now = new DateTime(date("Y-m-j"));
+	$evt = new DateTime(outils::convertirEnDateUS($evt));
+	$diff = $now->diff($evt);
+	return $diff->format('%a');
+}
+
 $lesEvenements = $dao->getLesEvenements();
-for ($i = 1; $i <= 4; $i++){
-	${'uneClass'.$i} = "ui-accueil-div" . $i;
-	${'$unId'.$i}= $lesEvenements[$i]->getId();
-	${'$unTitre'.$i} = $lesEvenements[$i]->getTitre();
-	${'$unContenu'.$i} = $lesEvenements[$i]->getContenu();
+if (!empty ($lesEvenements)){
+	for ($i = 0; $i <= 3; $i++){
+		${'uneClass'.$i} = "ui-accueil-div" . $i;
+		${'unId'.$i} = $lesEvenements[$i]->getId();
+		${'unTitre'.$i} = $lesEvenements[$i]->getTitre();
+		${'unContenu'.$i} = $lesEvenements[$i]->getContenu();
+		${'uneDateCreation'.$i} = $lesEvenements[$i]->getDateCreation();
+		${'uneDateEvenement'.$i} = $lesEvenements[$i]->getDateEvenement();
+		${'unCompteARebours'.$i} = dateDiff($lesEvenements[$i]->getDateEvenement());
+	}
 }
 
 include_once ('vues/VueMenu.php');

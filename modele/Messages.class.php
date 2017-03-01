@@ -1,34 +1,38 @@
 <?php
 // Projet : DLS - BTS Info - Anciens élèves
-// fichier : modele/Evenement.class.php
-// Rôle : la classe Evenement représente les évènements de l'association
+// fichier : modele/Message.class.php
+// Rôle : la classe Message représente les messages envoyés et reçus des utilisateurs
 // Création : 23/11/2016 par Killian BOUTIN
 
 // inclusion de la classe Outils
 include_once ('Outils.class.php');
 
-class Evenement
+class Message
 {
 	// ------------------------------------------------------------------------------------------------------
 	// ---------------------------------- Membres privés de la classe ---------------------------------------
 	// ------------------------------------------------------------------------------------------------------
 	
-	private $id;				// identifiant de l'administrateur
-	private $titre;				// titre de l'évènement
-	private $contenu;			// contenu de l'évènement
-	private $dateCreation;		// date de création de l'article
-	private $dateEvenement;		// date de l'évènement
+	private $id;				// id du message
+	private $idFrom;			// from
+	private $idTo;				// to
+	private $dateMessage;		// date du message
+	private $titre; 			// titre
+	private $contenu;			// contenu
+	private $lu; 				// 0 si non lu, 1 si lu
 	
 	// ------------------------------------------------------------------------------------------------------
 	// ----------------------------------------- Constructeur -----------------------------------------------
 	// ------------------------------------------------------------------------------------------------------
 	
-	public function Evenement($unId, $unTitre, $unContenu, $uneDateCreation, $uneDateEvenement) {
+	public function Message($unId, $unIdFrom, $unIdTo, $uneDateMessage, $unTitre, $unContenu, $unLu) {
 		$this->id = $unId;
+		$this->idFrom = $unIdFrom;
+		$this->idTo = $unIdTo;
+		$this->dateMessage = $uneDateMessage;
 		$this->titre = $unTitre;
 		$this->contenu = $unContenu;
-		$this->dateCreation = $uneDateCreation;
-		$this->dateEvenement = $uneDateEvenement;
+		$this->lu = $unLu;
 	}
 
 	// ------------------------------------------------------------------------------------------------------
@@ -37,18 +41,24 @@ class Evenement
 	
 	public function getId()	{return $this->id;}
 	public function setId($unId) {$this->id = $unId;}
+	
+	public function getIdFrom()	{return $this->idFrom;}
+	public function setIdFrom($unIdFrom) {$this->idFrom = $unIdFrom;}
+	
+	public function getIdTo()	{return $this->idTo;}
+	public function setIdTo($unIdTo) {$this->idTo = $unIdTo;}
+	
+	public function getDateMessage()	{return $this->dateMessage;}
+	public function setDateMessage($uneDateMessage) {$this->dateMessage = $uneDateMessage;}	
 
 	public function getTitre() {return $this->titre;}
 	public function setTitre($unTitre) {$this->titre = $unTitre;}
 	
 	public function getContenu() {return $this->contenu;}
 	public function setContenu($unContenu) {$this->contenu = $unContenu;}
-
-	public function getDateCreation() {return $this->dateCreation;}
-	public function setDateCreation($uneDateCreation) {$this->dateCreation = $uneDateCreation;}
 	
-	public function getDateEvenement() {return $this->dateEvenement;}
-	public function setDateEvenement($uneDateEvenement) {$this->dateEvenement = $uneDateEvenement;}
+	public function getLu() {return $this->lu;}
+	public function setLu($unLu) {$this->lu = $unLu;}
 
 	// ------------------------------------------------------------------------------------------------------
 	// -------------------------------------- Méthodes d'instances ------------------------------------------
@@ -61,6 +71,7 @@ class Evenement
 		$msg .= 'contenu : ' . $this->getContenu() . '<br>';
 		$msg .= 'date création : ' . $this->getDateCreation() . '<br>';
 		$msg .= 'date évènement : ' . $this->getDateEvenement() . '<br>';
+		$msg .= 'lu : ' . $this->getLu() . '<br>';
 		
 		return $msg;
 	}
