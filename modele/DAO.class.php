@@ -33,10 +33,10 @@
 
 
 // certaines méthodes nécessitent les fichiers suivants :
-include_once ('Administrateur.class.php');
+include_once ('Utilisateur.class.php');
 include_once ('Evenement.class.php');
 include_once ('Outils.class.php');
-include_once ('Eleve.class.php');
+
 
 // inclusion des paramètres de l'application
 include_once ('parametres.localhost.php');
@@ -231,6 +231,35 @@ class DAO
 		return $lesEvenements;
 	}
 	
+	// fournit un Evenement en fonction de son id
+	// renvoie une collection d'evenements
+	// modifié par Killian BOUTIN le 23/11/2016
+	public function getUnEvenement($unId)
+	{	// préparation de la requête d'extraction des inscriptions non annulées
+		$txt_req = "SELECT *";
+		$txt_req .= " FROM inp_evenements";
+		$txt_req .= " WHERE id = :unId";
+		$req = $this->cnx->prepare($txt_req);
+		
+		// liaison de la requête et de son paramètre
+		$req->bindValue("unId", $unId, PDO::PARAM_INT);
+		
+		// extraction des données
+		$req->execute();
+		$uneLigne = $req->fetch(PDO::FETCH_OBJ);
+		
+	
+		// création d'un objet Inscription
+		$unId = utf8_encode($uneLigne->id);
+		$unTitre = utf8_encode($uneLigne->titre);
+		$unContenu = utf8_encode($uneLigne->contenu);
+		
+		$unEvenement = new Evenement($unId, $unTitre, $unContenu);
+		// libère les ressources du jeu de données
+		$req->closeCursor();
+		
+		return $unEvenement;
+	}
 	
 	
 	

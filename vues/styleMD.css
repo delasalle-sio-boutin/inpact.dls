@@ -391,6 +391,56 @@ ul.pages > li, ul.list >li{
 	width: 48%;
 }
 
+/* ------------------------------------------------------------------ MISE EN FORME DE L'EVENEMENT ----------------------------------------------------------------- */
+
+.ui-evenement-actu{
+	margin: auto;
+}
+
+.ui-evenement-div{
+	/* coins arrondis */
+	-moz-border-radius: 20px 20px 20px 20px;
+	-webkit-border-radius: 20px 20px 20px 20px;
+	-o-border-radius: 20px 20px 20px 20px;
+	-ms-border-radius: 20px 20px 20px 20px;
+	-khtml-border-radius: 20px 20px 20px 20px;
+	border-radius: 20px 20px 20px 20px;
+	/* fond de la division */
+	background-color: #8bc763;
+	overflow: hidden;
+	margin: 10px 10px 10px 10px;
+}
+
+.ui-evenement-evt{
+	text-align: justify;
+}
+
+
+.ui-evenement-actu{
+	height: 150px;
+	padding: 0px;
+}
+
+.ui-evenement-titre{
+	height: 500px;
+	overflow: hidden;
+}	
+
+.ui-evenement-evt{
+	height: 80%;
+	padding: 25px;
+	overflow: hidden;
+}	
+
+.ui-evenement-suite{
+	height: 20%;
+	padding: 25px;
+}
+
+.ui-evenement-content > div{
+	width: 48%;
+}
+
 /* ------------------------------------------------------------------ MISE EN FORME DE "CONTACT" ----------------------------------------------------------------- */
 
 input[type="text"], input[type="password"]{
