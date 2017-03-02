@@ -405,14 +405,21 @@ a#liens {
 	text-align: center;
 	text-decoration: none;
 	font-weight: bold;
+	font-size: 15px;
 
 	/* ombre portée du texte du bouton */
 	text-shadow: 0 1px 0 #fff;
 		
 	/* dimensions, margin, padding, type d'affichage, bordure */
 	width: 350px;
+	height: 40px;
+	padding: 7px;
 	display: block;
 	border: 1px solid rgba(0, 0, 0, 0.1);
+	margin: 5px auto;
+	text-align: center;
+	vertical-align: center;
+	
 	
 	/* coins arrondis */
 	-moz-border-radius: 7px;
