@@ -44,14 +44,14 @@
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label for="form_name">Nom *</label>
-                                        <input id="form_name" type="text" name="txtNom" class="form-control" placeholder="Entrez votre nom *" required="required"  value="<?php echo $unNom; ?>" <?php if($unEleve) echo "disabled=\"disabled\""?> data-error="Le nom est requis.">
+                                        <input id="form_name" type="text" name="txtNom" class="form-control" placeholder="Entrez votre nom *" required="required"  value="<?php echo $unNom; ?>" <?php if($unUtilisateur) echo "disabled=\"disabled\""?> data-error="Le nom est requis.">
                                         <div class="help-block with-errors"></div>
                                     </div>
                                 </div>
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label for="form_prenom">Prenom *</label>
-                                        <input id="form_prenom" type="text" name="txtPrenom" class="form-control" placeholder="Entrez votre prenom *" required="required" value="<?php echo $unPrenom; ?>" <?php if($unEleve) echo "disabled=\"disabled\""?> data-error="Le prenom est requis.">
+                                        <input id="form_prenom" type="text" name="txtPrenom" class="form-control" placeholder="Entrez votre prenom *" required="required" value="<?php echo $unPrenom; ?>" <?php if($unUtilisateur) echo "disabled=\"disabled\""?> data-error="Le prenom est requis.">
                                         <div class="help-block with-errors"></div>
                                     </div>
                                 </div>
@@ -60,22 +60,29 @@
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label for="form_email">Email *</label>
-                                        <input id="form_email" type="email" name="txtMail" class="form-control" placeholder="Entrez votre Email *" required="required" value="<?php echo $unMailUtilisateur; ?>" <?php if($unEleve) echo "disabled=\"disabled\""?> data-error="Entrez une adresse mail valide.">
+                                        <input id="form_email" type="email" name="txtMail" class="form-control" placeholder="Entrez votre Email *" required="required" value="<?php echo $unMailUtilisateur; ?>" <?php if($unUtilisateur) echo "disabled=\"disabled\""?> data-error="Entrez une adresse mail valide.">
                                         <div class="help-block with-errors"></div>
                                     </div>
                                 </div>
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label for="form_classe">Groupe *</label>
-                                        <select class=form-control id="form_classe" name="listClasse" required <?php if( $unEleve) echo "disabled = \"disabled\""?>>
-                                        <option <?php if ($uneClasse == "") echo "selected"?> value=>Selectionner un groupe</option>
-                                     		<option <?php if ($uneClasse == "SIO1") echo "selected"?> value=SIO1>SIO1</option>
-											<option <?php if ($uneClasse == "SIO2") echo "selected"?>value=SIO2>SIO2</option>
-											<option <?php if ($uneClasse == "Prof") echo "selected"?>value=Prof>Professeur</option>
-											<option <?php if ($uneClasse == "Visiteur") echo "selected"?>value=Visiteur>Visiteur</option>
-										</select>
-										
-                                        <div class="help-block with-errors"></div>
+                                        <select class=form-control id="form_classe" name="listClasse" required <?php if( $unUtilisateur) echo "disabled = \"disabled\""?>>
+                                        <?php 
+                                        	if ($uneClasse != "Selectionner un groupe"){
+                                        ?>
+	                                        <option selected value=" <?php echo $uneClasse ?>"><?php echo $uneClasse ?></option>
+
+                                        <?php 
+                                        	}else{ ?>
+		                                        <option <?php if ($uneClasse == "") echo "selected"?> value=>Selectionner un groupe</option>
+		                                     		<option <?php if ($uneClasse == "SIO1") echo "selected"?> value=SIO1>SIO1</option>
+													<option <?php if ($uneClasse == "SIO2") echo "selected"?>value=SIO2>SIO2</option>
+													<option <?php if ($uneClasse == "Prof") echo "selected"?>value=Prof>Professeur</option>
+													<option <?php if ($uneClasse == "Visiteur") echo "selected"?>value=Visiteur>Visiteur</option>
+                                        	<?php }?>
+                                        </select>
+	                                     <div class="help-block with-errors"></div>
                                     </div>
                                 </div>
                             

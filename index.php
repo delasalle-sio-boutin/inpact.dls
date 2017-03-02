@@ -65,6 +65,9 @@ switch($action){
 	case 'TermesConditions': {
 		include_once ('controleurs/CtrlTermesConditions.php'); break;
 	}
+	case 'Frames': {
+		include_once ('controleurs/CtrlFrame.php'); break;
+	}
 	case 'MessagesPrives': {
 		include_once ('controleurs/CtrlMessages.php'); break;
 	}

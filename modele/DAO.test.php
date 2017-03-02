@@ -50,18 +50,18 @@ else
  // test de la méthode getAdministrateur ----------------------------------------------------------
  // modifié par Killian le 08/11/2016
  echo "<h3>Test de getEleve(login) : </h3>";
- $unEleve = $dao->getEleve("eleve");
- if ($unEleve == null)
+ $unUtilisateur = $dao->getEleve("eleve");
+ if ($unUtilisateur == null)
  	echo ("Identifiant \"eleve\" inexistant ! <br>");
  	else
- 		echo ($unEleve->toString());
+ 		echo ($unUtilisateur->toString());
  		echo ('<br>');
 
- 		$unEleve = $dao->getEleve("gremyf");
- 		if ($unEleve == null)
+ 		$unUtilisateur = $dao->getEleve("gremyf");
+ 		if ($unUtilisateur == null)
  			echo ("Eleve \"gremyf\" inexistant ! <br>");
  			else
- 				echo ($unEleve->toString());
+ 				echo ($unUtilisateur->toString());
  				echo ('<br>');
  				
 

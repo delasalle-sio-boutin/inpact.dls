@@ -37,6 +37,11 @@
 </head>
 
 <body>
+<?php 
+include_once 'modele/DAO.class.php';
+$dao = new DAO();
+?>
+
 	<div class="navbar-wrapper">
 		<div class="container-fluid">
 			<nav class="navbar navbar-fixed-top">
@@ -49,14 +54,14 @@
 								class="icon-bar"></span> <span class="icon-bar"></span> <span
 								class="icon-bar"></span>
 						</button>
-						<a href="index.php?action=VueMenu" class="navbar-brand"><img
+						<a href="index.php?action=Menu" class="navbar-brand"><img
 							src="images/logo.png"
 							style="width: 95px; height: 50px; margin-top: -5px;"></a>
 					</div>
 					<div id="navbar" class="navbar-collapse collapse"
 						style="padding-top: 6px;">
 						<ul class="nav navbar-nav">
-							<li><a href="index.php?action=VueMenu" role="button"
+							<li><a href="index.php?action=Menu" role="button"
 								aria-haspopup="true" aria-expanded="false"
 								style="border-top: #000 solid 1px; margin-top: -14px; padding-top: 28px">Accueil</a>
 							</li>
@@ -89,7 +94,7 @@
 											id="liens" src="images/Linkedin.png">Linkedin</a></li>
 								</ul></li>
 							<li><a href="index.php?action=Contact">Contact</a></li>
-							<li><a href="vues/VueScolinfo.php">Scolinfo</a></li>
+							<li><a href="index.php?action=Frames">Frames</a></li>
 						</ul>
 						
 						<?php if ($_SESSION['login'] == ''){?>
@@ -126,19 +131,39 @@
 								</ul></li>
 						</ul>
 						
-						<?php }else{?>
+						<?php }else{
+						
+							$lesMessages = $dao->getLesMessagesTo($dao->getUnUtilisateur($_SESSION['login'])->getId());
+							if (isset ($lesMessages)){
+								$nbMessagesNonLu = 0;
+								foreach ($lesMessages as $unMessage){
+									if ($unMessage->getLu() == 0){
+										$nbMessagesNonLu += 1;
+									}								
+								}
+							}
+							?>
 						<ul class="nav navbar-nav pull-right">
 							<li><a href="index.php?action=Deconnecter">Se déconnecter</a></li>
 						</ul>
 						<ul class="nav navbar-nav pull-right ui-right">
 							<li class="dropdown"><a href="#" class="dropdown-toggle"
 								data-toggle="dropdown" role="button" aria-haspopup="true"
-								aria-expanded="false"> &nbsp;Connecté en tant que <b> <?php if ($_SESSION['typeUtilisateur'] == "eleve"){echo $_SESSION['nom'];} else {echo $login; }?></b><span
+								aria-expanded="false"> &nbsp;Connecté en tant que <b> <?php if ($_SESSION['typeUtilisateur'] == "eleve"){echo $_SESSION['nom'];} else {echo $login; }
+								if (isset ($nbMessagesNonLu) && ($nbMessagesNonLu != 0)){
+									if ($nbMessagesNonLu == 1){
+										echo " (1 message)";	
+									}
+									else{
+										echo " (" . $nbMessagesNonLu . "messages)";
+									}
+								}
+								?></b><span
 									class="caret"></span></a>
 								<ul class="dropdown-menu">
 									<li><a href="index.php?action=ModifierMonCompte">Mon compte</a></li>
 								<?php if ($typeUtilisateur == 'professeur'){?>
-								<li><a href="index.php?action=MessagesPrives">Messages</a></li>
+								<li><a href="index.php?action=MessagesPrives">Messages<?php if (isset ($nbMessagesNonLu) && ($nbMessagesNonLu != 0)){ echo "<b> (1)</b>"; }?></a></li>
 								<?php } ?>
 							</ul></li>
 						</ul>

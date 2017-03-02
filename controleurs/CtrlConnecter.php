@@ -41,7 +41,7 @@ else {
 		// mémorisation des données de connexion dans des variables de session
 		$_SESSION['login'] = $login;
 		$_SESSION['mdp'] = $mdp;
-		if ($typeUtilisateur == "eleve"){$_SESSION['nom'] = $dao->getEleve($login)->getNom();}
+		if ($typeUtilisateur == "eleve"){$_SESSION['nom'] = $dao->getUnUtilisateur($login)->getNom();}
 		$_SESSION['typeUtilisateur'] = $typeUtilisateur;
 		// si l'authentification est correcte, redirection vers la page de menu
 		header ("Location: index.php?action=Menu");

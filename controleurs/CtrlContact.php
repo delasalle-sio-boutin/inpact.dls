@@ -13,7 +13,7 @@
 // TODO : Cas de figures pour tous les types d'utilisateurs
 
 include_once 'modele/DAO.class.php';
-include_once 'modele/Eleve.class.php';
+include_once 'modele/Utilisateur.class.php';
 $dao = new DAO();
 
 if (isset ( $_POST ["btnEnvoi"] ) == false) {
@@ -21,10 +21,10 @@ if (isset ( $_POST ["btnEnvoi"] ) == false) {
 	$info = '';
 	$unMessage = "";
 	$unSujet = "";
-	$unEleve = '';
-	
+	$unUtilisateur = '';
+
 	//Cas utilisateur non connecté
-	if (!isset ($_SESSION ['typeUtilisateur']) || $_SESSION ['typeUtilisateur'] != "eleve" ) {
+	if (!isset ($_SESSION ['typeUtilisateur']) && ($_SESSION['typeUtilisateur']) != "inconnu") {
 		$unNom = "";
 		$unPrenom = "";
 		$unMailUtilisateur = "";
@@ -35,29 +35,26 @@ if (isset ( $_POST ["btnEnvoi"] ) == false) {
 	//Utilisateur connecté
 	else{
 		
-		//$unEleve = new Eleve();
 		$login = $_SESSION['login'];
-		$unEleve = $dao->getEleve($login);
-		
-		$unNom = $unEleve->getNom() ;
-		$unPrenom = $unEleve->getPrenom();
-		$unMailUtilisateur = $unEleve->getMail();
-		$uneClasse = $unEleve->getClasse();
+		$unUtilisateur = $dao->getUnUtilisateur($login);
+		$unNom = $unUtilisateur->getNom();
+		$unPrenom = $unUtilisateur->getPrenom();
+		$unMailUtilisateur = $unUtilisateur->getMail();
+		$uneClasse = $unUtilisateur->getClasse();
 		include_once ('vues/VueContact.php');
 		
 	}
 }
 
 else {
+	$unUtilisateur = $dao->getEleve($login);
 	
-	$unEleve = $dao->getEleve($login);
-	
-	if ( empty ($_POST ["txtNom"]) == true)  $unNom = $unEleve->getNom();  else   $unNom = $_POST ["txtNom"];
-	if ( empty ($_POST ["txtPrenom"]) == true)  $unPrenom = $unEleve->getPrenom();  else   $unPrenom = $_POST ["txtPrenom"];
+	if ( empty ($_POST ["txtNom"]) == true)  $unNom = $unUtilisateur->getNom();  else   $unNom = $_POST ["txtNom"];
+	if( empty ($_POST ["txtPrenom"]) == true)  $unPrenom = $unUtilisateur->getPrenom();  else   $unPrenom = $_POST ["txtPrenom"];
 	if ( empty ($_POST ["txtContact"]) == true)  $unContact = "";  else   $unContact = $_POST ["txtContact"];
 	if ( empty ($_POST ["txtSujet"]) == true)  $unSujet = "";  else   $unSujet = $_POST ["txtSujet"];
-	if ( empty ($_POST ["txtMail"]) == true)  $unMailUtilisateur = $unEleve->getMail();  else   $unMailUtilisateur = $_POST ["txtMail"];
-	if ( empty ($_POST ["listClasse"]) == true)  $uneClasse = $unEleve->getClasse();  else   $uneClasse = $_POST ["listClasse"];
+	if( empty ($_POST ["txtMail"]) == true)  $unMailUtilisateur = $unUtilisateur->getMail();  else   $unMailUtilisateur = $_POST ["txtail"];
+	if ( empty ($_POST ["listClasse"]) == true)  $uneClasse = $unUtilisateur->getClasse();  else   $uneClasse = $_POST ["listClasse"];
 	if ( empty ($_POST ["txtMessage"]) == true)  $unMessage = "";  else   $unMessage = $_POST ["txtMessage"];
 	
 	// Captcha

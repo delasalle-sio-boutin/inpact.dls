@@ -12,7 +12,7 @@
 
 
 include_once 'modele/DAO.class.php';
-include_once 'modele/Eleve.class.php';
+include_once 'modele/Utilisateur.class.php';
 $dao = new DAO();
 
 

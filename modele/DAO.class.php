@@ -202,7 +202,6 @@ class DAO
 		
 		$req = $this->cnx->prepare($txt_req);
 		
-		
 		// extraction des données
 		$req->execute();
 		$uneLigne = $req->fetch(PDO::FETCH_OBJ);
