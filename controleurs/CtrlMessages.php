@@ -8,6 +8,8 @@ if ( isset ($_GET['choix']) == false)  $choix = 'Consulter';  else   $choix = $_
 $leTitre = '';
 $leMenu = '';
 
+if (empty ($_SESSION['login']))header("Location:index.php");
+
 $unUtilisateur = $dao->getUnUtilisateur($_SESSION['login']);
 
 // Recus
@@ -49,14 +51,27 @@ switch($choix){
 	case "ConsulterRecus": { //1er cas : lire un message
 		//Ici on a besoin de la valeur de l'id du mp que l'on veut lire
 		$leTitre = 'Messages reçus';
-		$lesMessages = (empty ($lesMessagesRecus)) ? "Aucun message reçu" : $lesMessagesRecus;
+		if (!isset ($_GET['id'])){
+			$lesMessages = (empty ($lesMessagesRecus)) ? "Aucun message reçu" : $lesMessagesRecus;
+		}
+		else{
+			$leMessage = $dao->getUnMessage($_GET['id']);
+			if (isset ($_GET['id'])){
+				$dao->marquerCommeLu($_GET['id']);
+			}
+		}
 		break;
 	}
 	
 	case "ConsulterEnvoyes": { //1er cas : lire un message
 		//Ici on a besoin de la valeur de l'id du mp que l'on veut lire
 		$leTitre = 'Messages envoyés';
-		$lesMessages = (empty ($lesMessagesEnvoyes)) ? "Aucun message envoyé" : $lesMessagesEnvoyes;
+		if (!isset ($_GET['id'])){
+			$lesMessages = (empty ($lesMessagesEnvoyes)) ? "Aucun message envoyé" : $lesMessagesEnvoyes;
+		}
+		else{
+			$leMessage = $dao->getUnMessage($_GET['id']);
+		}
 		break;
 	}
 	 
@@ -74,9 +89,21 @@ switch($choix){
 		break;
 	}
 	 
-	case "supprimer": { //4eme cas : supprimer un message reçu
-		//Ici on a besoin de la valeur de l'id du mp à supprimer
-		$leTitre = 'Suppression d\'un message';
+	case "Supprimer": { //4eme cas : supprimer un message reçu
+		$leTitre = "Suppression";
+		if (isset ($_POST['Supprimer'])){
+			$ok = $dao->supprimerUnMessage($_POST['Supprimer']);
+			if ($ok){
+				$lesMessages = "Message supprimé avec succès";
+			}
+			else{
+				$lesMessages = "Suppression du message a rencontré une erreur. Merci de contacter un technicien.";
+			}
+		}
+		else{
+			$choix = '';
+			header("Location:index.php?action=MessagesPrives&choix=ConsulterRecus");
+		}
 		break;
 	}
 	 

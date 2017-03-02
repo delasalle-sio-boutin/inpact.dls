@@ -272,7 +272,7 @@ class DAO
 	// renvoie une collection de messages
 	// modifié par Killian BOUTIN le 01/03/2017
 	public function getLesMessagesTo($unIdTo)
-	{	// préparation de la requête d'extraction des inscriptions non annulées
+	{	// préparation de la requête d'extraction
 		$txt_req = "SELECT *";
 		$txt_req .= " FROM inp_messages";
 		$txt_req .= " WHERE idTo = :unIdTo";
@@ -362,17 +362,17 @@ class DAO
 		// libère les ressources du jeu de données
 		$req->closeCursor();
 		
-		return $unMessage;
+		return $lesMessages;
 	}
 	
-	// fournit les infos d'un message en fonction de l'id
+// fournit les infos d'un message en fonction de l'id
 	// renvoie une collection de messages
 	// modifié par Killian BOUTIN le 01/03/2017
 	public function getUnMessage($unIdMessage)
 	{	// préparation de la requête d'extraction des inscriptions non annulées
 		$txt_req = "SELECT *";
 		$txt_req .= " FROM inp_messages";
-		$txt_req .= " WHERE id = :unIdMessage";
+		$txt_req .= " WHERE idMessage = :unIdMessage";
 		$req = $this->cnx->prepare($txt_req);
 		
 		// liaison de la requête et de son paramètre
@@ -382,30 +382,58 @@ class DAO
 		$req->execute();
 		$uneLigne = $req->fetch(PDO::FETCH_OBJ);
 		
-		// construction d'une collection d'objets Inscription
-		$lesMessages = array();
+		if (!isset ($uneLigne)) return null;
 		
-		// tant qu'une ligne est trouvée :
-		while ($uneLigne)
-		{	// création d'un objet Message
-			$unId = utf8_encode($uneLigne->idMessage);
-			$unIdFrom = utf8_encode($uneLigne->idFrom);
-			$unIdTo = utf8_encode($uneLigne->idTo);
-			$uneDateMessage = utf8_encode($uneLigne->dateMessage);
-			$unTitre = utf8_encode($uneLigne->titre);
-			$unContenu = utf8_encode($uneLigne->contenu);
-			$unLu = utf8_encode($uneLigne->lu);
-			
-			$unMessage = new Message($unId, $unIdFrom, $unIdTo, $uneDateMessage, $unTitre, $unContenu, $unLu);
-			// ajout de l'inscription à la collection
-			$lesMessages[] = $unMessage;
-			// extraction de la ligne suivante
-			$uneLigne = $req->fetch(PDO::FETCH_OBJ);
-		}
+		$unId = utf8_encode($uneLigne->idMessage);
+		$unIdFrom = utf8_encode($uneLigne->idFrom);
+		$unIdTo = utf8_encode($uneLigne->idTo);
+		$uneDateMessage = utf8_encode($uneLigne->dateMessage);
+		$unTitre = utf8_encode($uneLigne->titre);
+		$unContenu = utf8_encode($uneLigne->contenu);
+		$unLu = utf8_encode($uneLigne->lu);
+		
+		$unMessage = new Message($unId, $unIdFrom, $unIdTo, $uneDateMessage, $unTitre, $unContenu, $unLu);
+		
 		// libère les ressources du jeu de données
 		$req->closeCursor();
 		
-		return $lesMessages;
+		return $unMessage;
+	}
+	
+	// fournit les infos d'un message en fonction de l'id
+	// renvoie une collection de messages
+	// modifié par Killian BOUTIN le 01/03/2017
+	public function marquerCommeLu($unIdMessage)
+	{	// préparation de la requête d'extraction des inscriptions non annulées
+		$txt_req = "UPDATE inp_messages";
+		$txt_req .= " SET lu = '1'";
+		$txt_req .= " WHERE idMessage = :unIdMessage";
+		$req = $this->cnx->prepare($txt_req);
+		
+		// liaison de la requête et de son paramètre
+		$req->bindValue("unIdMessage", $unIdMessage, PDO::PARAM_INT);
+		
+		// extraction des données
+		$ok = $req->execute();
+		return $ok;
+	}
+	
+	// fournit les infos d'un message en fonction de l'id
+	// renvoie une collection de messages
+	// modifié par Killian BOUTIN le 01/03/2017
+	public function supprimerUnMessage($unIdMessage)
+	{	// préparation de la requête d'extraction des inscriptions non annulées
+		$txt_req = "DELETE";
+		$txt_req .= " FROM inp_messages";
+		$txt_req .= " WHERE idMessage = :unIdMessage";
+		$req = $this->cnx->prepare($txt_req);
+		
+		// liaison de la requête et de son paramètre
+		$req->bindValue("unIdMessage", $unIdMessage, PDO::PARAM_INT);
+		
+		// extraction des données
+		$ok = $req->execute();
+		return $ok;
 	}
 	
 	// fournit un Evenement en fonction de son id
@@ -425,7 +453,8 @@ class DAO
 		$req->execute();
 		$uneLigne = $req->fetch(PDO::FETCH_OBJ);
 		
-	
+		if (!isset ($uneLigne)) return null;
+		
 		// création d'un objet Inscription
 		$unId = utf8_encode($uneLigne->id);
 		$unTitre = utf8_encode($uneLigne->titre);

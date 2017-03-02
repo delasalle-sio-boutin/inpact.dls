@@ -44,24 +44,49 @@
 						if (is_string($lesMessages)){
 							echo '<p style="text-align: center; font-weight: bold;">'.$lesMessages.'</p>';
 						}
-						// Sinon on affiche les messages en question
 						else{
 							foreach ($lesMessages as $unMessage){
 								$unUtilisateurFrom = $dao->getUnUtilisateurId($unMessage->getIdFrom());
 								$nomFrom = $unUtilisateurFrom->getNom();
 								$prenomFrom = $unUtilisateurFrom->getPrenom();
 								$lu = $unMessage->getLu();
-								if ($lu == 0){ echo '<b>'; }
-									echo '<div id="messages">';
-										echo '<a id="messages" href=index.php?action=MessagesPrives&choix=' . $_GET['choix'] . '&id=' . $unMessage->getId() . '>';
-											echo '<div id="de">' . $nomFrom . " " . $prenomFrom . "</div>";
-											echo '<div id="titre">' . $unMessage->getTitre();
-											echo '<span style="color: #333333;"> - test</span></div>';
-											echo '<div id="date">' . $unMessage->getDateMessage() . '</div>';
-										echo '</a>';
-									echo '</div>';
+								if ($lu == 0 && $unMessage->getIdTo() == $unUtilisateur->getId()){ echo '<b>'; }
+								echo '<div id="messages">';
+									echo '<form id="FormSupprimer" action="index.php?action=MessagesPrives&choix=Supprimer&id=' . $unMessage->getId() . '" name="Suppression" method="post">';
+										echo '<button id="Supprimer" name="Supprimer" value="' . $unMessage->getId() . '" type="submit" class="fa fa-trash-o"></button>';
+									echo '</form>';
+									echo '<a id="messages" href=index.php?action=MessagesPrives&choix=' . $_GET['choix'] . '&id=' . $unMessage->getId() . '>';
+										echo '<div id="de">' . $nomFrom . " " . $prenomFrom . "</div>";
+										echo '<div id="titre">' . $unMessage->getTitre();
+										echo '<span style="color: #333333;"> - ' . $unMessage->getContenu() . '</span></div>';
+										echo '<div id="date">' . $unMessage->getDateMessage() . '</div>';
+									echo '</a>';
+						
+								echo '</div>';
 								if ($lu == 0){ echo '</b>'; }
 							}
+						}
+						// Sinon on affiche les messages en question
+						
+					}
+					else{
+						if (isset ($leMessage)){
+							$unUtilisateurFrom = $dao->getUnUtilisateurId($leMessage->getIdFrom());
+							$nomFrom = $unUtilisateurFrom->getNom();
+							$prenomFrom = $unUtilisateurFrom->getPrenom();
+							
+								echo '<div id="message">';
+									echo "<b>Message de " . $nomFrom . " " . $prenomFrom;
+								echo '<div id="dateMessage">' . $leMessage->getDateMessage() . '</div></b>';
+								echo "</div>";
+								
+								echo '<div id="message">';
+									echo "Objet : " . $leMessage->getTitre();
+								echo "</div>";
+								
+								echo '<div id="message">';
+								echo "Message : " . $leMessage->getContenu();
+								echo "</div>";
 						}
 					}
 				}

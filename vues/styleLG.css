@@ -470,8 +470,19 @@ a#message:hover{
 	color: blue;
 }
 
+button#Supprimer{
+	position: absolute;
+	text-decoration: none;
+	color: black;
+	margin: 6px;
+	border: none;
+	background: none;
+	font-size: 1.4em;
+}
+
 div#de{
 	float: left;
+	margin: 0 0 0 2%;
 	width: 25%;
 	height: 20px;
 	overflow: hidden;
@@ -479,7 +490,7 @@ div#de{
 
 div#titre{
 	float: left;
-	width: 68%;
+	width: 66%;
 	height: 20px;
 	overflow: hidden;
 }
@@ -490,6 +501,15 @@ div#date{
 	height: 20px;
 	overflow: hidden;
 }
+
+div#message{
+	padding: 5px;
+}
+
+div#dateMessage{
+	float: right;
+}
+
 
 /* ------------------------------------------------------------------ MISE EN FORME DE L'EVENEMENT ----------------------------------------------------------------- */
 
