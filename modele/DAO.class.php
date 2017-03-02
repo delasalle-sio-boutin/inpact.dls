@@ -197,7 +197,11 @@ class DAO
 	{	// préparation de la requête d'extraction des inscriptions non annulées
 		$txt_req = "SELECT *";
 		$txt_req .= " FROM inp_evenements";
+		$txt_req .= " WHERE DATEDIFF(STR_TO_DATE(dateEvenement, '%d/%m/%Y'), curdate()) >= 0";
+		$txt_req .= " ORDER BY dateEvenement";
+		
 		$req = $this->cnx->prepare($txt_req);
+		
 		
 		// extraction des données
 		$req->execute();

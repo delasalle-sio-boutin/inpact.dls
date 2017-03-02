@@ -14,12 +14,13 @@
 				<div class="col-xs-12 col-sm-9 col-md-9 col-lg-9 ui-accueil-content">
 				<?php 
 				if (!empty ($lesEvenements)){
-					for ($i = 0; $i <= 3; $i++){
+					for ($i = 0; $i <= $nbAffichage-1; $i++){
+						${'unCompteARebours'.$i} = (${'unCompteARebours'.$i} != 0) ? "J-" . ${'unCompteARebours'.$i} : "Aujourd'hui";
 						?>
 						<div class="col-sm-6 ui-accueil-actu <?php echo ${'uneClass'.$i} ?>">
 							<div class="ui-accueil-evt">
 								<b><?php echo ${'unTitre'.$i} . " (du " . ${'uneDateEvenement'.$i} . ")";?>
-								<p style="float: right"><?php echo "J-" . ${'unCompteARebours'.$i} . "<br>" ?></p></b>
+								<p style="float: right"><?php echo ${'unCompteARebours'.$i} . "<br>" ?></p></b>
 								<br>
 								<?php echo ${'unContenu'.$i}; ?>
 							</div>

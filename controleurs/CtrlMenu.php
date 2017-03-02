@@ -23,8 +23,10 @@ function dateDiff($evt){
 }
 
 $lesEvenements = $dao->getLesEvenements();
+$nbEvenements = sizeof($lesEvenements);
+$nbAffichage = ($nbEvenements < 4) ? $nbEvenements : 4;
 if (!empty ($lesEvenements)){
-	for ($i = 0; $i <= 3; $i++){
+	for ($i = 0; $i <= $nbAffichage-1; $i++){
 		${'uneClass'.$i} = "ui-accueil-div" . $i;
 		${'unId'.$i} = $lesEvenements[$i]->getId();
 		${'unTitre'.$i} = $lesEvenements[$i]->getTitre();
