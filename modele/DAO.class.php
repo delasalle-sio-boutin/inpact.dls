@@ -247,7 +247,7 @@ class DAO
 		$txt_req = "SELECT *";
 		$txt_req .= " FROM inp_evenements";
 		$txt_req .= " WHERE DATEDIFF(STR_TO_DATE(dateEvenement, '%d/%m/%Y'), curdate()) >= 0";
-		$txt_req .= " ORDER BY dateEvenement";
+		$txt_req .= " ORDER BY STR_TO_DATE(dateEvenement, '%d/%m/%Y')";
 		
 		$req = $this->cnx->prepare($txt_req);
 		
