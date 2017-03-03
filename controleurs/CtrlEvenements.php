@@ -22,7 +22,7 @@ function dateDiff($evt){
 	return $diff->format('%a');
 }
 
-$lesEvenements = $dao->getLesEvenements();
+$lesEvenements = $dao->getTousLesEvenements();
 $i = 1;
 foreach ($lesEvenements as $unEvenement){
 	${'uneClass'.$i} = "ui-evenement-div";

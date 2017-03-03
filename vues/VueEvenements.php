@@ -8,30 +8,28 @@
 	<div id="page">
 		<header> <?php include ('Header.php'); ?> </header>
 		
-		<div id="main">
+		<div id="mainEvenement">
 		
 			<?php foreach ($lesEvenements as $unEvenement){ ?>
-			 <?php echo '<a href="index.php?action=Evenements&id='. $unEvenement->getId() . '">' ?>
-				<div class="ui-evenement-actu">
-					<div class="ui-evenement-titre">
-						 <b><?php echo $unEvenement->getTitre() . " (du " . $unEvenement->getDateEvenement() . ")";?>
-						 <p style="float: right;"> J-<?php echo dateDiff($unEvenement->getDateEvenement()) . "<br>" ?></p></b>
-						 <br>
-					</div>
-					<div class="ui-evenement-evt">
-						 <?php echo $unEvenement->getContenu(); ?>
-					</div>
-					<div class="ui-evenement-suite">
-					<a href="index.php?action=Evenements&id=<?php echo $unEvenement->getId() ?>">Lire la suite (...)</a>
-					<p style="float: right">Publié le <?php echo $unEvenement->getDateCreation() ?></p>
-					</div>
+			<a id="divCliquable" href="index.php?action=Evenements&id=<?php echo $unEvenement->getId() ?>">
+				<div class="ui-evenement-titre">
+					 <?php echo $unEvenement->getTitre() . " (du " . $unEvenement->getDateEvenement() . ")";?>
+					 	
+					 <br>
 				</div>
-			
+				<div class="ui-evenement-evt">
+					 <?php echo $unEvenement->getContenu(); ?>
+					 <br>
+				</div>
+				<div class="ui-evenement-suite">
+					<?php if (dateDiff($unEvenement->getDateEvenement()) == 0){
+							echo '<p style="float: right;"> Aujourd\'hui <br></p>';
+						}else{
+					 		echo '<p style="float: right;"> J-' . dateDiff($unEvenement->getDateEvenement()). '<br></p>';
+						} ?>
+				</div>
+			</a>
 			<?php } ?>
-
-
-
-
 		</div>
 		<footer class="footer-bs fixed-bottom" id="footer"> <?php include ('Footer.php'); ?> </footer>
 	</div>

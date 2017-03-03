@@ -407,50 +407,64 @@ footer h4 {
 }
 
 /* ------------------------------------------------------------------ MISE EN FORME DE L'EVENEMENT ----------------------------------------------------------------- */
+#mainEvenement{
+	position: relative;
+	padding-bottom: 205px; /* 20px par rapport au footer */
+	width: 100%;
+	/* border: #000 1px solid;
+	overflow-x: hidden; */
+	text-align: left;
+	overflow-x: hidden;
+}
 
 .ui-evenement-evt{
 	text-align: justify;
 }
 
-.ui-evenement-actu{
-	/* coins arrondis */
-	-moz-border-radius: 20px 20px 20px 20px;
-	-webkit-border-radius: 20px 20px 20px 20px;
-	-o-border-radius: 20px 20px 20px 20px;
-	-ms-border-radius: 20px 20px 20px 20px;
-	-khtml-border-radius: 20px 20px 20px 20px;
-	border-radius: 20px 20px 20px 20px;
-	/* fond de la division */
-	border-color: red;
-	border-style: solid;
-    border-width: 1px;
-	overflow: hidden;
-	margin: 10px 10px 10px 10px;
-	height: 150px;
-	padding: 0px;
-}
+.ui-evenement-titre{
+	height: 10px;
+	padding: 15px;
+	font-size: 20px;
+}	
 
-.ui-evenement-content{
-	margin-bottom: 15px;
+.ui-evenement-evt{
+	height: 55%;
+	padding: 25px 15px 15px 15px;
+	overflow: hidden;
+}	
+
+.ui-evenement-suite{
+	height: 20%;
+	padding: 25px;	
 }
 
 .ui-evenement-content > div{
-	margin: 10px;
-	-moz-border-radius: 0px;
-	-webkit-border-radius: 0px;
-	-o-border-radius: 0px;
-	-ms-border-radius: 0px;
-	-khtml-border-radius: 0px;
-	border-radius: 0px;
+	width: 48%;
 }
 
-.ui-evenement-evt{
+a#divCliquable{
+	/* coins arrondis */
+	-moz-border-radius: 10px 10px 10px 10px;
+	-webkit-border-radius: 10px 10px 10px 10px;
+	-o-border-radius: 10px 10px 10px 10px;
+	-ms-border-radius: 10px 10px 10px 10px;
+	-khtml-border-radius: 10px 10px 10px 10px;
+	border-radius: 10px 10px 10px 10px;
+	/* fond de la division */
+	border-color: rgba(245,181,112, 0.5);
+	border-style: solid;
+    border-width: 3px;
 	overflow: hidden;
-	padding: 5px;
+	padding: 0px auto;
+	margin: 15px;
+	height: 225px;
+	display: block;
+	text-decoration: none;
+	width: 95%;
 }
 
-.ui-evenement-suite{
-	padding: 5px;
+a#divCliquable:hover{
+	border-color: rgba(245,181,112, 1);
 }
 
 /* ------------------------------------------------------------------ MISE EN FORME DE "CONTACT" ----------------------------------------------------------------- */
@@ -475,15 +489,15 @@ input[type="text"]:focus, input[type="password"]:focus{
 /* Menu horizontal, dégradé, coins arrondis */
 ul.ui-externes{
     display: table;
-    width: 80%;
+    width: 95%;
     margin: 15px auto;
     padding: 0;
-    background: linear-gradient(deepskyblue, dodgerblue);
-    background: -webkit-linear-gradient(deepskyblue, dodgerblue);
-    background:    -moz-linear-gradient(deepskyblue, dodgerblue);
-    background:     -ms-linear-gradient(deepskyblue, dodgerblue);
-    background:      -o-linear-gradient(deepskyblue, dodgerblue);
-    background:         linear-gradient(deepskyblue, dodgerblue);
+    background: linear-gradient(#f5b570, #d7760f);
+    background: -webkit-linear-gradient(#f5b570, #d7760f);
+    background:    -moz-linear-gradient(#f5b570, #d7760f);
+    background:     -ms-linear-gradient(#f5b570, #d7760f);
+    background:      -o-linear-gradient(#f5b570, #d7760f);
+    background:         linear-gradient(#f5b570, #d7760f);
     border-radius: 3px;
     box-shadow: 0 1px 3px rgba(0, 0, 0, .3),
                 0 3px 5px rgba(0, 0, 0, .2),
@@ -504,15 +518,8 @@ ul.ui-externes li a{
     text-decoration: none;
     padding: 8px 8px 17px 8px;
     text-shadow: 0 1px 0 rgba(255, 255, 255, .4);
-    box-shadow: 0 1px 0 rgba(255, 255, 255, .7) inset, 
-                0 -1px 0 hsl(210, 100%, 32%) inset, 
-                0 -2px 0 hsl(210, 100%, 38%) inset, 
-                0 -3px 0 hsl(210, 100%, 44%) inset, 
-                0 -4px 0 hsl(210, 100%, 50%) inset, 
-                0 -5px 0 hsl(210, 100%, 60%) inset;
-     transition: padding .1s, background .1s;
-     position: relative;
-     
+    transition: padding .1s, background .1s;
+    position: relative;    
 }
 
 /* Coins arrondis */
@@ -529,12 +536,6 @@ ul.ui-externes li:last-child a{
 ul.ui-externes li a:hover, 
 ul.ui-externes li a:focus{
     background: rgba(255,255,255,.2);
-    box-shadow: 0 1px 0 rgba(255, 255, 255, .7) inset, 
-                0 -1px 0 hsl(210, 100%, 42%) inset, 
-                0 -2px 0 hsl(210, 100%, 48%) inset, 
-                0 -3px 0 hsl(210, 100%, 54%) inset, 
-                0 -4px 0 hsl(210, 100%, 60%) inset, 
-                0 -5px 0 hsl(210, 100%, 70%) inset;
      padding: 8px 15px 17px 15px;
 } 
 

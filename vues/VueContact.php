@@ -101,7 +101,7 @@
                                     </div>
                                 </div>
                                 <div class="col-md-12">
-                                    <input id="btnEnvoi" name="btnEnvoi" type="submit" class="btn btn-success btn-block" value="SEND MESSAGE">
+                                    <input id="btnEnvoi" style="background-color: #f5b570; border-color: #f5b570" name="btnEnvoi" type="submit" class="btn btn-success btn-block" value="ENVOYER MESSAGE">
                                 </div>
                             </div>
                             <div class="row">

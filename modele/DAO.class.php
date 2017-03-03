@@ -53,6 +53,7 @@ include_once ('Utilisateur.class.php');
 include_once ('Evenement.class.php');
 include_once ('Outils.class.php');
 include_once ('Messages.class.php');
+include_once ('AideDevoirs.class.php');
 
 // inclusion des paramètres de l'application
 include_once ('parametres.localhost.php'); // à activer à la fin, désactiver pour DAO.test.php
@@ -126,7 +127,9 @@ class DAO
 			$unMailFromProfs = utf8_decode($uneLigne->mailFromProfs);
 			$unMailFromEleves = utf8_decode($uneLigne->mailFromEleves); 
 	
-			$unUtilisateur = new Utilisateur($unId, $unLogin, $unMdp, $unNiveau, $unNom, $unPrenom, $uneClasse, $unMail, $uneDateNaissance, $unMailFromProfs, $unMailFromEleves);
+			$unUtilisateur = new Utilisateur($unId, $unLogin, $unMdp, $unNiveau, $unNom, $unPrenom, $uneClasse, 
+
+$unMail, $uneDateNaissance, $unMailFromProfs, $unMailFromEleves);
 			return $unUtilisateur;
 		}
 	}
@@ -165,7 +168,9 @@ class DAO
 			$unMailFromProfs = utf8_decode($uneLigne->mailFromProfs);
 			$unMailFromEleves = utf8_decode($uneLigne->mailFromEleves);
 	
-			$unUtilisateur = new Utilisateur($unId, $unLogin, $unMdp, $unNiveau, $unNom, $unPrenom, $uneClasse, $unMail, $uneDateNaissance, $unMailFromProfs, $unMailFromEleves);
+			$unUtilisateur = new Utilisateur($unId, $unLogin, $unMdp, $unNiveau, $unNom, $unPrenom, $uneClasse, 
+
+$unMail, $uneDateNaissance, $unMailFromProfs, $unMailFromEleves);
 			return $unUtilisateur;
 		}
 	}
@@ -238,7 +243,7 @@ class DAO
 	}
 	
 	
-	// fournit les Evenements dans une collection 
+	// fournit les Evenements dans une collection (en ne gardant que les évèenements pas encore passés)
 	// renvoie une collection d'evenements
 	// modifié par Killian BOUTIN le 23/11/2016
 	public function getLesEvenements()
@@ -276,6 +281,45 @@ class DAO
 		$req->closeCursor();
 		
 		return $lesEvenements;
+	}
+	
+	// fournit les Evenements dans une collection (tous les évènements)
+	// renvoie une collection d'evenements
+	// modifié par Florentin le 03/03/2017
+	public function getTousLesEvenements()
+	{	// préparation de la requête d'extraction des inscriptions non annulées
+	$txt_req = "SELECT *";
+	$txt_req .= " FROM inp_evenements";
+	$txt_req .= " ORDER BY STR_TO_DATE(dateEvenement, '%d/%m/%Y')";
+	
+	$req = $this->cnx->prepare($txt_req);
+	
+	// extraction des données
+	$req->execute();
+	$uneLigne = $req->fetch(PDO::FETCH_OBJ);
+	
+	// construction d'une collection d'objets Inscription
+	$lesEvenements = array();
+	
+	// tant qu'une ligne est trouvée :
+	while ($uneLigne)
+	{	// création d'un objet Evenement
+	$unId = utf8_encode($uneLigne->id);
+	$unTitre = utf8_encode($uneLigne->titre);
+	$unContenu = utf8_encode($uneLigne->contenu);
+	$uneDateCreation = utf8_encode($uneLigne->dateCreation);
+	$uneDateEvenement = utf8_encode($uneLigne->dateEvenement);
+	
+	$unEvenement = new Evenement($unId, $unTitre, $unContenu, $uneDateCreation, $uneDateEvenement);
+	// ajout de l'inscription à la collection
+	$lesEvenements[] = $unEvenement;
+	// extraction de la ligne suivante
+	$uneLigne = $req->fetch(PDO::FETCH_OBJ);
+	}
+	// libère les ressources du jeu de données
+	$req->closeCursor();
+	
+	return $lesEvenements;
 	}
 	
 	// fournit les Messages dans une collection

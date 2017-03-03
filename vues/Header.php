@@ -94,7 +94,7 @@ $dao = new DAO();
 											id="liens" src="images/Linkedin.png">Linkedin</a></li>
 								</ul></li>
 							<li><a href="index.php?action=Contact">Contact</a></li>
-							<li><a href="index.php?action=Frames">Frames</a></li>
+							<li><a href="index.php?action=Frames">Embed</a></li>
 						</ul>
 						
 						<?php if ($_SESSION['login'] == ''){?>
