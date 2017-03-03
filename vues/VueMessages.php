@@ -65,9 +65,7 @@
 								echo '</div>';
 								if ($lu == 0){ echo '</b>'; }
 							}
-						}
-						// Sinon on affiche les messages en question
-						
+						}						
 					}
 					else{
 						if (isset ($leMessage)){

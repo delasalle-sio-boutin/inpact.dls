@@ -133,10 +133,10 @@ $dao = new DAO();
 						
 						<?php }else{
 						
-							$lesMessages = $dao->getLesMessagesTo($dao->getUnUtilisateur($_SESSION['login'])->getId());
-							if (isset ($lesMessages)){
+							$tousLesMessages = $dao->getLesMessagesTo($dao->getUnUtilisateur($_SESSION['login'])->getId());
+							if (isset ($tousLesMessages)){
 								$nbMessagesNonLu = 0;
-								foreach ($lesMessages as $unMessage){
+								foreach ($tousLesMessages as $unMessage){
 									if ($unMessage->getLu() == 0){
 										$nbMessagesNonLu += 1;
 									}								
@@ -151,12 +151,7 @@ $dao = new DAO();
 								data-toggle="dropdown" role="button" aria-haspopup="true"
 								aria-expanded="false"> &nbsp;Connecté en tant que <b> <?php if ($_SESSION['typeUtilisateur'] == "eleve"){echo $_SESSION['nom'];} else {echo $login; }
 								if (isset ($nbMessagesNonLu) && ($nbMessagesNonLu != 0)){
-									if ($nbMessagesNonLu == 1){
-										echo " (1 message)";	
-									}
-									else{
-										echo " (" . $nbMessagesNonLu . "messages)";
-									}
+									echo " (<span class='fa fa-bell-o'></span>)";
 								}
 								?></b><span
 									class="caret"></span></a>
