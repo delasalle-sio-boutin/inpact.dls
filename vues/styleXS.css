@@ -408,11 +408,11 @@ footer h4 {
 
 /* ------------------------------------------------------------------ MISE EN FORME DE L'EVENEMENT ----------------------------------------------------------------- */
 
-.ui-evenement-actu{
-	margin: auto;
+.ui-evenement-evt{
+	text-align: justify;
 }
 
-.ui-evenement-div{
+.ui-evenement-actu{
 	/* coins arrondis */
 	-moz-border-radius: 20px 20px 20px 20px;
 	-webkit-border-radius: 20px 20px 20px 20px;
@@ -421,18 +421,19 @@ footer h4 {
 	-khtml-border-radius: 20px 20px 20px 20px;
 	border-radius: 20px 20px 20px 20px;
 	/* fond de la division */
-	background-color: #8bc763;
+	border-color: red;
+	border-style: solid;
+    border-width: 1px;
 	overflow: hidden;
 	margin: 10px 10px 10px 10px;
-}
-
-.ui-evenement-evt{
-	text-align: justify;
+	height: 150px;
+	padding: 0px;
 }
 
 .ui-evenement-content{
 	margin-bottom: 15px;
 }
+
 .ui-evenement-content > div{
 	margin: 10px;
 	-moz-border-radius: 0px;
@@ -444,8 +445,8 @@ footer h4 {
 }
 
 .ui-evenement-evt{
-	padding: 5px;
 	overflow: hidden;
+	padding: 5px;
 }
 
 .ui-evenement-suite{

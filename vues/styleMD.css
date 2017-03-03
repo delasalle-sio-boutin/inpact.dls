@@ -394,11 +394,12 @@ ul.pages > li, ul.list >li{
 
 /* ------------------------------------------------------------------ MISE EN FORME DE L'EVENEMENT ----------------------------------------------------------------- */
 
-.ui-evenement-actu{
-	margin: auto;
+
+.ui-evenement-evt{
+	text-align: justify;
 }
 
-.ui-evenement-div{
+.ui-evenement-actu{
 	/* coins arrondis */
 	-moz-border-radius: 20px 20px 20px 20px;
 	-webkit-border-radius: 20px 20px 20px 20px;
@@ -407,17 +408,11 @@ ul.pages > li, ul.list >li{
 	-khtml-border-radius: 20px 20px 20px 20px;
 	border-radius: 20px 20px 20px 20px;
 	/* fond de la division */
-	background-color: #8bc763;
+	border-color: red;
+	border-style: solid;
+    border-width: 1px;
 	overflow: hidden;
 	margin: 10px 10px 10px 10px;
-}
-
-.ui-evenement-evt{
-	text-align: justify;
-}
-
-
-.ui-evenement-actu{
 	height: 150px;
 	padding: 0px;
 }

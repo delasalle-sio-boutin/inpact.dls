@@ -15,6 +15,13 @@ include_once ('modele/DAO.class.php');
 // connexion à la classe DAO
 $dao = new DAO();
 
+function dateDiff($evt){
+	$now = new DateTime(date("Y-m-j"));
+	$evt = new DateTime(outils::convertirEnDateUS($evt));
+	$diff = $now->diff($evt);
+	return $diff->format('%a');
+}
+
 $lesEvenements = $dao->getLesEvenements();
 $i = 1;
 foreach ($lesEvenements as $unEvenement){
@@ -22,6 +29,9 @@ foreach ($lesEvenements as $unEvenement){
 	${'unId'.$i}= $unEvenement->getId();
 	${'unTitre'.$i} = $unEvenement->getTitre();
 	${'unContenu'.$i} = $unEvenement->getContenu();
+	${'uneDateCreation'.$i} = $unEvenement->getDateCreation();
+	${'uneDateEvenement'.$i} = $unEvenement->getDateEvenement();
+	${'unCompteARebours'.$i} = dateDiff($unEvenement->getDateEvenement());
 	$i += 1;
 }
 if (!empty ($_GET['id'])){
