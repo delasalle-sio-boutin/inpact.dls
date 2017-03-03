@@ -5,7 +5,7 @@
 // Création : 23/11/2016 par Killian BOUTIN
 
 // inclusion de la classe Evenement
-include_once ('Evenement.class.php');
+include_once ('Messages.class.php');
 // inclusion de la classe Outils
 include_once ('Outils.class.php');
 ?>
@@ -13,25 +13,33 @@ include_once ('Outils.class.php');
 <html>
 <head>
 	<meta charset="utf-8">
-	<title>Test de la classe Evenement</title>
+	<title>Test de la classe Message</title>
 	<style type="text/css">body {font-family: Arial, Helvetica, sans-serif; font-size: small;}</style>
 </head>
 <body>
 
 <?php
 $unId = 1;
-$unTitre = "DLS ARENA V4";
-$unContenu = "C'est bientôt la DLS ARENA, nous esperons que vous allez aimer !";
-$unEvenement = new Evenement($unId, $unTitre, $unContenu);
+$unIdFrom = 3;
+$unIdTo = 4;
+$uneDateMessage = "20/10/2016";
+$unTitre = "Devoirs";
+$unContenu = "On a quoi à faire ?";
+$unLu = 0;
+$unMessage = new Message($unId, $unIdFrom, $unIdTo, $uneDateMessage, $unTitre, $unContenu, $unLu);
 
-echo ($unEvenement->toString());
+echo ($unMessage->toString());
 echo ('<br>');
 
-$unEvenement->setId(2);
-$unEvenement->setTitre("SOIRÉE DES ANCIENS");
-$unEvenement->setContenu("La soirée des anciens se déroulera le vendredi avant les vacances de la toussaint.");
+$unMessage->setId(2);
+$unMessage->setIdFrom(4);
+$unMessage->setIdTo(3);
+$unMessage->setDateMessage("31/12/2018");
+$unMessage->setTitre("Contrôle");
+$unMessage->setContenu("On a un contrôle ?!");
+$unMessage->setLu(1);
 
-echo ($unEvenement->toString());
+echo ($unMessage->toString());
 echo ('<br>');
 ?>
 

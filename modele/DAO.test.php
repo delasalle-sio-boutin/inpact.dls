@@ -7,9 +7,15 @@
 
 // ATTENTION : la position des tests dans ce fichier est identique à la position des méthodes testées dans la classe DAO
 
-include_once ('Administrateur.class.php');
-include_once ('Eleve.class.php');
-//include_once ('../parametres.localhost.php');
+include_once ('Utilisateur.class.php');
+include_once ('Evenement.class.php');
+include_once ('Outils.class.php');
+include_once ('Messages.class.php');
+include_once ('../parametres.localhost.php');
+
+// connexion du serveur web à la base MySQL
+include_once ('DAO.class.php');
+$dao = new DAO();
 
 ?>
 <!DOCTYPE html>
@@ -22,51 +28,77 @@ include_once ('Eleve.class.php');
 <body>
 
 <?php
-// connexion du serveur web à la base MySQL
-include_once ('DAO.class.php');
-include_once '../parametres.localhost.php';
-$dao = new DAO();
+
 
 /*
-// test de la méthode getAdministrateur ----------------------------------------------------------
-// modifié par Killian le 08/11/2016
-echo "<h3>Test de getAdministrateur(login) : </h3>";
-$unAdministrateur = $dao->getAdministrateur("admin");
-if ($unAdministrateur == null)
-	echo ("Identifiant \"admin\" inexistant ! <br>");
-else
-	echo ($unAdministrateur->toString());
+// test de la méthode getUnUtilisateur(unLogin) ----------------------------------------------------------
+// modifié par Killian le 03/03/2017
+echo "<h3>Test de getUtilisateur(login) : </h3>";
+$unUtilisateur = $dao->getUnUtilisateur("eleve");
+if ($unUtilisateur == null){
+	echo ("Identifiant \"eleve\" inexistant ! <br>");
+}
+else{
+	echo ($unUtilisateur->toString());
 	echo ('<br>');
-
-$unAdministrateur = $dao->getAdministrateur("gremyf");
-if ($unAdministrateur == null)
-	echo ("Administrateur \"gremyf\" inexistant ! <br>");
-else
-	echo ($unAdministrateur->toString());
+}
+$unUtilisateur = $dao->getUnUtilisateur("gremyf");
+if ($unUtilisateur == null){
+	echo ("Eleve \"gremyf\" inexistant ! <br>");
+}
+else{
+	echo ($unUtilisateur->toString());
 	echo ('<br>');
-
+}
 */
 
- // test de la méthode getAdministrateur ----------------------------------------------------------
- // modifié par Killian le 08/11/2016
- echo "<h3>Test de getEleve(login) : </h3>";
- $unUtilisateur = $dao->getEleve("eleve");
- if ($unUtilisateur == null)
- 	echo ("Identifiant \"eleve\" inexistant ! <br>");
- 	else
- 		echo ($unUtilisateur->toString());
- 		echo ('<br>');
-
- 		$unUtilisateur = $dao->getEleve("gremyf");
- 		if ($unUtilisateur == null)
- 			echo ("Eleve \"gremyf\" inexistant ! <br>");
- 			else
- 				echo ($unUtilisateur->toString());
- 				echo ('<br>');
- 				
+/*
+// test de la méthode getUnUtilisateur(unLogin) ----------------------------------------------------------
+// modifié par Killian le 03/03/2017
+echo "<h3>Test de getUnUtilisateurId(id) : </h3>";
+$unUtilisateur = $dao->getUnUtilisateurId(2);
+if ($unUtilisateur == null){
+	echo ("Eleve avec l'id '2' inexistant ! <br>");
+}
+else{
+	echo ($unUtilisateur->toString());
+	echo ('<br>');
+}
+$unUtilisateur = $dao->getUnUtilisateurId(200);
+if ($unUtilisateur == null){
+	echo ("Eleve avec l'id '200' inexistant ! <br>");
+}
+else{
+	echo ($unUtilisateur->toString());
+	echo ('<br>');
+}
+*/
 
 /*
- // test de la méthode getTypeUtilisateur ----------------------------------------------------------
+// test de la méthode getUnEvenement(unId) ----------------------------------------------------------
+// modifié par Killian le 03/03/2017
+echo "<h3>Test de getUnEvenement(id) : </h3>";
+$unEvenement = $dao->getUnEvenement(1);
+if ($unEvenement == null){
+	echo ("Evenement 2 inexistant ! <br>");
+}
+else{
+	echo ($unEvenement->toString());
+	echo ('<br>');
+}
+
+$unEvenement = $dao->getUnEvenement(200);
+if ($unEvenement == null){
+	echo ("Evenement 200 inexistant ! <br>");
+}
+else{
+	echo ($unEvenement->toString());
+	echo ('<br>');
+}
+*/
+
+/*
+ // test de la méthode getTypeUtilisateur(unLogin, unMdp) ----------------------------------------------------------
  // modifié par Killian le 08/11/2016
  echo "<h3>Test de getTypeUtilisateur : </h3>";
  $typeUtilisateur = $dao->getTypeUtilisateur('admin', 'admin');
@@ -80,9 +112,9 @@ else
 */
 
 /*
- // test de la méthode getLesEvenements
+ // test de la méthode getLesEvenements() ----------------------------------------------------------
  // modifié par Killian le 23/11/2016
- echo "<h3>Test de getLesEvenements : </h3>";
+ echo "<h3>Test de getLesEvenements() : </h3>";
  $lesEvenements = $dao->getLesEvenements();
  foreach ($lesEvenements as $unEvenement){
  	echo "id : " . $unEvenement->getId() . "<br>";
@@ -91,3 +123,175 @@ else
  	echo "<br>";
  }
  */
+
+/*
+ // test de la méthode getLesMessages() ----------------------------------------------------------
+ // modifié par Killian le 23/11/2016
+ echo "<h3>Test de getLesMessages() : </h3>";
+ $lesMessages = $dao->getLesMessages();
+ foreach ($lesMessages as $unMessage){
+	 echo "id : " . $unMessage->getId() . "<br>";
+	 echo "from : " . $unMessage->getIdFrom() . "<br>";
+	 echo "to : " . $unMessage->getIdTo() . "<br>";
+	 echo "date Message : " . $unMessage->getDateMessage() . "<br>";
+	 echo "titre : " . $unMessage->getTitre() . "<br>";
+	 echo "contenu : " . $unMessage->getContenu() . "<br>";
+	 echo "lu : " . $unMessage->getLu() . "<br>";
+	 echo "<br>";
+ }
+*/
+
+/*
+// test de la méthode getLesMessagesTo() ----------------------------------------------------------
+// modifié par Killian le 03/03/2017
+echo "<h3>Test de getLesMessagesTo() : </h3>";
+$lesMessages = $dao->getLesMessagesTo(3);
+if (!isset($lesMessages)){
+	echo "Aucun message reçu par l'id 3";
+}
+else{
+	foreach ($lesMessages as $unMessage){
+		echo "id : " . $unMessage->getId() . "<br>";
+		echo "from : " . $unMessage->getIdFrom() . "<br>";
+		echo "to : " . $unMessage->getIdTo() . "<br>";
+		echo "date Message : " . $unMessage->getDateMessage() . "<br>";
+		echo "titre : " . $unMessage->getTitre() . "<br>";
+		echo "contenu : " . $unMessage->getContenu() . "<br>";
+		echo "lu : " . $unMessage->getLu() . "<br>";
+		echo "<br>";
+	}
+}
+$lesMessages = $dao->getLesMessagesTo(5);
+if (!isset($lesMessages)){
+	echo "Aucun message reçu par l'id 5.";
+}
+else{
+	foreach ($lesMessages as $unMessage){
+	 	echo "id : " . $unMessage->getId() . "<br>";
+	 	echo "from : " . $unMessage->getIdFrom() . "<br>";
+	 	echo "to : " . $unMessage->getIdTo() . "<br>";
+	 	echo "date Message : " . $unMessage->getDateMessage() . "<br>";
+	 	echo "titre : " . $unMessage->getTitre() . "<br>";
+	 	echo "contenu : " . $unMessage->getContenu() . "<br>";
+	 	echo "lu : " . $unMessage->getLu() . "<br>";
+	 	echo "<br>";
+	}
+}
+*/
+
+/*
+// test de la méthode getLesMessagesFrom() ----------------------------------------------------------
+// modifié par Killian le 03/03/2017
+echo "<h3>Test de getLesMessagesFrom() : </h3>";
+$lesMessages = $dao->getLesMessagesFrom(3);
+if (!isset($lesMessages)){
+	echo "Aucun message envoyé par l'id 3";
+}
+else{
+	foreach ($lesMessages as $unMessage){
+		echo "id : " . $unMessage->getId() . "<br>";
+		echo "from : " . $unMessage->getIdFrom() . "<br>";
+		echo "to : " . $unMessage->getIdTo() . "<br>";
+		echo "date Message : " . $unMessage->getDateMessage() . "<br>";
+		echo "titre : " . $unMessage->getTitre() . "<br>";
+		echo "contenu : " . $unMessage->getContenu() . "<br>";
+		echo "lu : " . $unMessage->getLu() . "<br>";
+		echo "<br>";
+	}
+}
+$lesMessages = $dao->getLesMessagesFrom(5);
+if (!isset($lesMessages)){
+	echo "Aucun message envoyé par l'id 5.";
+}
+else{
+	foreach ($lesMessages as $unMessage){
+	 	echo "id : " . $unMessage->getId() . "<br>";
+	 	echo "from : " . $unMessage->getIdFrom() . "<br>";
+	 	echo "to : " . $unMessage->getIdTo() . "<br>";
+	 	echo "date Message : " . $unMessage->getDateMessage() . "<br>";
+	 	echo "titre : " . $unMessage->getTitre() . "<br>";
+	 	echo "contenu : " . $unMessage->getContenu() . "<br>";
+	 	echo "lu : " . $unMessage->getLu() . "<br>";
+	 	echo "<br>";
+	}
+}
+*/
+
+/*
+// test de la méthode getUnMessage(unId) ----------------------------------------------------------
+// modifié par Killian le 03/03/2017
+echo "<h3>Test de getUnMessage(unId) : </h3>";
+$leMessage = $dao->getUnMessage(3);
+var_dump($leMessage);
+if ($leMessage == null){
+	echo "Aucun message avec l'id 3 <br><br>";
+}
+else{
+	echo "id : " . $leMessage->getId() . "<br>";
+	echo "from : " . $leMessage->getIdFrom() . "<br>";
+	echo "to : " . $leMessage->getIdTo() . "<br>";
+	echo "date Message : " . $leMessage->getDateMessage() . "<br>";
+	echo "titre : " . $leMessage->getTitre() . "<br>";
+	echo "contenu : " . $leMessage->getContenu() . "<br>";
+	echo "lu : " . $leMessage->getLu() . "<br>";
+	echo "<br>";
+}
+
+$leMessage2 = $dao->getUnMessage(9);
+if ($leMessage2== null){
+	echo "Aucun message avec l'id 9<br><br>";
+}
+else{
+	echo "id : " . $leMessage2->getId() . "<br>";
+	echo "from : " . $leMessage2->getIdFrom() . "<br>";
+	echo "to : " . $leMessage2->getIdTo() . "<br>";
+	echo "date Message : " . $leMessage2->getDateMessage() . "<br>";
+	echo "titre : " . $leMessage2->getTitre() . "<br>";
+	echo "contenu : " . $leMessage2->getContenu() . "<br>";
+	echo "lu : " . $leMessage2->getLu() . "<br>";
+	echo "<br>";
+}
+*/
+
+/*
+// test de la méthode marquerCommeLu(unIdMessage) ----------------------------------------------------------
+// modifié par Killian le 03/03/2017
+echo "<h3>Test de marquerCommeLu(unIdMessage) : </h3>";
+
+$leMessage = $dao->getUnMessage(9);
+$ok = $dao->marquerCommeLu(9);
+if (!$ok){
+	echo "Impossible de marquer comme lu.";
+}
+else{
+	echo "Refresh pour voir la valeur changer et valider le test.<br>";
+	echo "lu : " . $leMessage->getLu() . "<br><br>";
+}
+*/
+
+/*
+// test de la méthode supprimerUnMessage(unIdMessage) ----------------------------------------------------------
+// modifié par Killian le 03/03/2017
+echo "<h3>Test de supprimerUnMessage(unIdMessage) : </h3>";
+$leMessage = $dao->getUnMessage(9);
+$ok = $dao->supprimerUnMessage(9);
+if (!$ok){
+	echo "Impossible de supprimer le message.";
+}
+else{
+	if ($leMessage == null){
+		echo "Aucun message avec l'id 9 <br><br>";
+	}
+	else{
+		echo "Refresh pour voir la valeur changer et valider le test.<br>";
+		echo "id : " . $leMessage->getId() . "<br>";
+		echo "from : " . $leMessage->getIdFrom() . "<br>";
+		echo "to : " . $leMessage->getIdTo() . "<br>";
+		echo "date Message : " . $leMessage->getDateMessage() . "<br>";
+		echo "titre : " . $leMessage->getTitre() . "<br>";
+		echo "contenu : " . $leMessage->getContenu() . "<br>";
+		echo "lu : " . $leMessage->getLu() . "<br>";
+		echo "<br>";
+	}
+}
+*/
