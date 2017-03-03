@@ -54,7 +54,6 @@ include_once ('Evenement.class.php');
 include_once ('Outils.class.php');
 include_once ('Messages.class.php');
 
-
 // inclusion des paramètres de l'application
 include_once ('parametres.localhost.php'); // à activer à la fin, désactiver pour DAO.test.php
 
