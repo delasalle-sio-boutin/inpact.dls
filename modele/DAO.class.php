@@ -15,22 +15,38 @@
 // __construct                   : le constructeur crée la connexion $cnx à la base de données
 // __destruct                    : le destructeur ferme la connexion $cnx à la base de données
 
-// getAdministrateur($unLogin) : Administrateur
-//   recherche et fournit un objet Administrateur à partir de son identifiant
-//   fournit la valeur null si le paramètre n'existe pas ou est incorrect
+// getUnUtilisateur($unLogin) : Utilisateur
+// 
 
-// getProfesseur($unLogin) : Professeur
-//   recherche et fournit un objet Professeur à partir de son identifiant
-//   fournit la valeur null si le paramètre n'existe pas ou est incorrect
+// getUnUtilisateurId($unId) : Utilisateur
+// 
 
-// getEleve($unLogin) : Eleve
-//   recherche et fournit un objet Eleve à partir de son identifiant
-//   fournit la valeur null si le paramètre n'existe pas ou est incorrect
+// getUnEvenement($unId) : Evenement
+// 
 
 // getTypeUtilisateur($unLogin, $unMdp) : Chaine
-//   permet d'authentifier un utilisateur ; retourne 'inconnu' ou 'administrateur' ou 'professeur' ou 'eleve'
+// permet d'authentifier un utilisateur ; retourne 'inconnu' ou 'administrateur' ou 'professeur' ou 'eleve'
 
+// getLesEvenements() : Tableau d'Evenements
+// 
 
+// getLesMessages() : Tableau de Messages
+// 
+
+// getLesMessagesTo() : Tableau de Messages
+// 
+
+// getLesMessagesFrom() : Tableau de Messages
+// 
+
+// getUnMessage($unId) : Message
+// 
+
+// marquerCommeLu($unId) : Boolean
+// 
+
+// supprimerUnMessage($unId) : Boolean
+// 
 
 // certaines méthodes nécessitent les fichiers suivants :
 include_once ('Utilisateur.class.php');
@@ -40,7 +56,7 @@ include_once ('Messages.class.php');
 
 
 // inclusion des paramètres de l'application
-include_once ('parametres.localhost.php');
+include_once ('parametres.localhost.php'); // à activer à la fin, désactiver pour DAO.test.php
 
 // début de la classe DAO (Data Access Object)
 class DAO
@@ -77,7 +93,7 @@ class DAO
 		unset($this->cnx);
 	}
 	
-// fournit un objet Utilisateur à partir de son login
+	// fournit un objet Utilisateur à partir de son login
 	// fournit la valeur null si l'id n'existe pas ou est incorrect
 	// modifié par Killian BOUTIN le 01/03/2017
 	public function getUnUtilisateur($unLogin)
@@ -155,8 +171,41 @@ class DAO
 		}
 	}
 	
+	// fournit un Evenement en fonction de son id
+	// renvoie une collection d'evenements
+	// modifié par Killian BOUTIN le 03/03/2017
+	public function getUnEvenement($unId)
+	{	// préparation de la requête d'extraction des inscriptions non annulées
+	$txt_req = "SELECT *";
+	$txt_req .= " FROM inp_evenements";
+	$txt_req .= " WHERE id = :unId";
+	$req = $this->cnx->prepare($txt_req);
 	
-// fournit le type d'un utilisateur identifié par $adrMail et $motDePasse
+	// liaison de la requête et de son paramètre
+	$req->bindValue("unId", $unId, PDO::PARAM_INT);
+	
+	// extraction des données
+	$req->execute();
+	$uneLigne = $req->fetch(PDO::FETCH_OBJ);
+	
+	if (!$uneLigne) return null;
+	
+	// création d'un objet Inscription
+	$unId = utf8_encode($uneLigne->id);
+	$unTitre = utf8_encode($uneLigne->titre);
+	$unContenu = utf8_encode($uneLigne->contenu);
+	$uneDateCreation = utf8_encode($uneLigne->dateCreation);
+	$uneDateEvenement = utf8_encode($uneLigne->dateEvenement);
+	
+	$unEvenement = new Evenement($unId, $unTitre, $unContenu, $uneDateCreation, $uneDateEvenement);
+	// libère les ressources du jeu de données
+	$req->closeCursor();
+	
+	return $unEvenement;
+	}
+	
+	
+	// fournit le type d'un utilisateur identifié par $adrMail et $motDePasse
 	// renvoie "eleve" ou "administrateur" ou "professeur" si authentification correcte, "inconnu" sinon
 	// modifié par Killian BOUTIN le 15/11/2016
 	public function getTypeUtilisateur($unLogin, $unMdp)
@@ -198,7 +247,7 @@ class DAO
 		$txt_req = "SELECT *";
 		$txt_req .= " FROM inp_evenements";
 		$txt_req .= " WHERE DATEDIFF(STR_TO_DATE(dateEvenement, '%d/%m/%Y'), curdate()) >= 0";
-		$txt_req .= " ORDER BY dateEvenement";
+		$txt_req .= " ORDER BY STR_TO_DATE(dateEvenement, '%d/%m/%Y')";
 		
 		$req = $this->cnx->prepare($txt_req);
 		
@@ -368,7 +417,7 @@ class DAO
 		return $lesMessages;
 	}
 	
-// fournit les infos d'un message en fonction de l'id
+	// fournit les infos d'un message en fonction de l'id
 	// renvoie une collection de messages
 	// modifié par Killian BOUTIN le 01/03/2017
 	public function getUnMessage($unIdMessage)
@@ -384,8 +433,8 @@ class DAO
 		// extraction des données
 		$req->execute();
 		$uneLigne = $req->fetch(PDO::FETCH_OBJ);
-		
-		if (!isset ($uneLigne)) return null;
+
+		if (!$uneLigne) return null;
 		
 		$unId = utf8_encode($uneLigne->idMessage);
 		$unIdFrom = utf8_encode($uneLigne->idFrom);
@@ -438,37 +487,4 @@ class DAO
 		$ok = $req->execute();
 		return $ok;
 	}
-	
-	// fournit un Evenement en fonction de son id
-	// renvoie une collection d'evenements
-	// modifié par Killian BOUTIN le 23/11/2016
-	public function getUnEvenement($unId)
-	{	// préparation de la requête d'extraction des inscriptions non annulées
-		$txt_req = "SELECT *";
-		$txt_req .= " FROM inp_evenements";
-		$txt_req .= " WHERE id = :unId";
-		$req = $this->cnx->prepare($txt_req);
-		
-		// liaison de la requête et de son paramètre
-		$req->bindValue("unId", $unId, PDO::PARAM_INT);
-		
-		// extraction des données
-		$req->execute();
-		$uneLigne = $req->fetch(PDO::FETCH_OBJ);
-		
-		if (!isset ($uneLigne)) return null;
-		
-		// création d'un objet Inscription
-		$unId = utf8_encode($uneLigne->id);
-		$unTitre = utf8_encode($uneLigne->titre);
-		$unContenu = utf8_encode($uneLigne->contenu);
-		$uneDateCreation = utf8_encode($uneLigne->dateCreation);
-		$uneDateEvenement = utf8_encode($uneLigne->dateEvenement);
-		
-		$unEvenement = new Evenement($unId, $unTitre, $unContenu, $uneDateCreation, $uneDateEvenement);
-		// libère les ressources du jeu de données
-		$req->closeCursor();
-		
-		return $unEvenement;
-	}	
 }

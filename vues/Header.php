@@ -136,8 +136,8 @@ $dao = new DAO();
 							$tousLesMessages = $dao->getLesMessagesTo($dao->getUnUtilisateur($_SESSION['login'])->getId());
 							if (isset ($tousLesMessages)){
 								$nbMessagesNonLu = 0;
-								foreach ($tousLesMessages as $unMessage){
-									if ($unMessage->getLu() == 0){
+								foreach ($tousLesMessages as $msg){
+									if ($msg->getLu() == 0){
 										$nbMessagesNonLu += 1;
 									}								
 								}

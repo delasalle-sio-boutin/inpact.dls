@@ -47,7 +47,7 @@ if (isset ( $_POST ["btnEnvoi"] ) == false) {
 }
 
 else {
-	$unUtilisateur = $dao->getEleve($login);
+	$unUtilisateur = $dao->getUnUtilisateur($login);
 	
 	if ( empty ($_POST ["txtNom"]) == true)  $unNom = $unUtilisateur->getNom();  else   $unNom = $_POST ["txtNom"];
 	if( empty ($_POST ["txtPrenom"]) == true)  $unPrenom = $unUtilisateur->getPrenom();  else   $unPrenom = $_POST ["txtPrenom"];

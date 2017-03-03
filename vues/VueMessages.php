@@ -83,7 +83,7 @@
 								echo "</div>";
 								
 								echo '<div id="message">';
-								echo "Message : " . $leMessage->getContenu();
+									echo "Message : " . $leMessage->getContenu();
 								echo "</div>";
 						}
 					}

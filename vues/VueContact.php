@@ -26,8 +26,8 @@
                                         <label for="form_mail">Qui voulez vous contacter ?</label>
                                         <select class=form-control id="form_mail" name="txtContact" required>
                                         	<option selected value=>Selectionnez une personne</option>
-                                     		<option value="adminpact@yopmail.com">Administrateur du site</option>
-											<option value="adminpact@yopmail.com">Professeur</option>
+                                     		<option value="delasalle.sio.boutin.k@gmail.com">Administrateur du site</option>
+											<option value="delasalle.sio.profs@gmail.com">Professeurs</option>
 										</select>
                                         <div class="help-block with-errors"></div>
                                     </div>

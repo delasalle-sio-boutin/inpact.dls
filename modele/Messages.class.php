@@ -67,10 +67,11 @@ class Message
 	public function toString() {
 		$msg  = 'Evenement : <br>';
 		$msg .= 'id : ' . $this->getId() . '<br>';
+		$msg .= 'from : ' . $this->getIdFrom() . '<br>';
+		$msg .= 'to : ' . $this->getIdTo() . '<br>';
+		$msg .= 'date message : ' . $this->getDateMessage() . '<br>';
 		$msg .= 'titre : ' . $this->getTitre() . '<br>';
 		$msg .= 'contenu : ' . $this->getContenu() . '<br>';
-		$msg .= 'date création : ' . $this->getDateCreation() . '<br>';
-		$msg .= 'date évènement : ' . $this->getDateEvenement() . '<br>';
 		$msg .= 'lu : ' . $this->getLu() . '<br>';
 		
 		return $msg;
