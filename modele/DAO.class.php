@@ -242,6 +242,37 @@ $unMail, $uneDateNaissance, $unMailFromProfs, $unMailFromEleves);
 		}
 	}
 	
+	// fournit le type d'un utilisateur identifié par $adrMail et $motDePasse
+	// renvoie "eleve" ou "administrateur" ou "professeur" si authentification correcte, "inconnu" sinon
+	// modifié par Killian BOUTIN le 15/11/2016
+	public function getTypeUtilisateurId($unId)
+	{	// préparation de la requête de recherche dans la table inp_administrateurs
+		$txt_req = "SELECT * FROM inp_utilisateurs WHERE id = :id";
+		$req = $this->cnx->prepare($txt_req);
+		// liaison de la requête et de ses paramètres
+		$req->bindValue("id", $unId, PDO::PARAM_INT);
+		// extraction des données et comptage des réponses
+		$req->execute();
+		$uneLigne = $req->fetch(PDO::FETCH_OBJ);
+		// libère les ressources du jeu de données
+		$req->closeCursor();
+		// fourniture de la réponse
+		if ($uneLigne){
+			if ($uneLigne->niveau == 0){
+				return "eleve";
+			}
+			if ($uneLigne->niveau == 1){
+				return "professeur";
+			}
+			if ($uneLigne->niveau == 2){
+				return "administrateur";
+			}
+		}
+		else{
+			// si on arrive ici, c'est que l'authentification est incorrecte
+			return "inconnu";
+		}
+	}
 	
 	// fournit les Evenements dans une collection (en ne gardant que les évèenements pas encore passés)
 	// renvoie une collection d'evenements

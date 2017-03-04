@@ -43,8 +43,24 @@ else {
 		$_SESSION['mdp'] = $mdp;
 		if ($typeUtilisateur == "eleve"){$_SESSION['nom'] = $dao->getUnUtilisateur($login)->getNom();}
 		$_SESSION['typeUtilisateur'] = $typeUtilisateur;
-		// si l'authentification est correcte, redirection vers la page de menu
-		header ("Location: index.php?action=Menu");
+		// si l'authentification est correcte, on regarde si il a un mail d'un administateur ou d'un prof
+		
+		$lesMessagesRecus = $dao->getLesMessagesTo($dao->getUnUtilisateur($login)->getId());
+		if ($lesMessagesRecus != null){
+			foreach ($lesMessagesRecus as $unMessageRecu){
+				$typeFrom = $dao->getTypeUtilisateurId($unMessageRecu->getIdFrom());
+				if ($unMessageRecu->getLu() == 0 && ($typeFrom == "professeur" || $typeFrom == "administrateur")){
+					$redirect = "Location: index.php?action=MessagesPrives&choix=ConsulterRecus&id=" . $unMessageRecu->getId();
+					header ($redirect);
+				}
+				else{
+					header ("Location: index.php?action=Menu");
+				}
+			}
+		}
+		else{
+			header ("Location: index.php?action=Menu");
+		}
 	}
 	
 	unset($dao);		// fermeture de la connexion à MySQL

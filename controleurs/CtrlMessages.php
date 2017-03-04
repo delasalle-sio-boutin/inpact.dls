@@ -55,9 +55,19 @@ switch($choix){
 			$lesMessages = (empty ($lesMessagesRecus)) ? "Aucun message reçu" : $lesMessagesRecus;
 		}
 		else{
-			$leMessage = $dao->getUnMessage($_GET['id']);
-			if (isset ($_GET['id'])){
-				$dao->marquerCommeLu($_GET['id']);
+			$idMessage = $_GET['id'];
+			/* On vérifie que l'id passé dans l'url correspond bien à un message reçu par l'utilisateur en question */
+			foreach ($lesMessagesRecus as $unMessageRecu){
+				if ($unMessageRecu->getId() == $idMessage){
+					$leMessage = $dao->getUnMessage($idMessage);
+					if (isset ($idMessage)){
+						$dao->marquerCommeLu($idMessage);
+					}
+				}
+				/* Si l'utilisateur essaye de frauder, il est redirigé vers le menu */
+				else{
+					header ("Location: index.php?action=Menu");
+				}
 			}
 		}
 		break;
@@ -69,9 +79,19 @@ switch($choix){
 		if (!isset ($_GET['id'])){
 			$lesMessages = (empty ($lesMessagesEnvoyes)) ? "Aucun message envoyé" : $lesMessagesEnvoyes;
 		}
-		else{
-			$leMessage = $dao->getUnMessage($_GET['id']);
+	else{
+		$idMessage = $_GET['id'];
+		/* On vérifie que l'id passé dans l'url correspond bien à un message reçu par l'utilisateur en question */
+		foreach ($lesMessagesEnvoyes as $unMessageEnvoye){
+			if ($unMessageEnvoye->getId() == $idMessage){
+				$leMessage = $dao->getUnMessage($idMessage);
+			}
+			/* Si l'utilisateur essaye de frauder, il est redirigé vers le menu */
+			else{
+				header ("Location: index.php?action=Menu");
+			}
 		}
+	}
 		break;
 	}
 	 

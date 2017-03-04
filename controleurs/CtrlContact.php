@@ -50,10 +50,10 @@ else {
 	$unUtilisateur = $dao->getUnUtilisateur($login);
 	
 	if ( empty ($_POST ["txtNom"]) == true)  $unNom = $unUtilisateur->getNom();  else   $unNom = $_POST ["txtNom"];
-	if( empty ($_POST ["txtPrenom"]) == true)  $unPrenom = $unUtilisateur->getPrenom();  else   $unPrenom = $_POST ["txtPrenom"];
+	if ( empty ($_POST ["txtPrenom"]) == true)  $unPrenom = $unUtilisateur->getPrenom();  else   $unPrenom = $_POST ["txtPrenom"];
 	if ( empty ($_POST ["txtContact"]) == true)  $unContact = "";  else   $unContact = $_POST ["txtContact"];
 	if ( empty ($_POST ["txtSujet"]) == true)  $unSujet = "";  else   $unSujet = $_POST ["txtSujet"];
-	if( empty ($_POST ["txtMail"]) == true)  $unMailUtilisateur = $unUtilisateur->getMail();  else   $unMailUtilisateur = $_POST ["txtail"];
+	if ( empty ($_POST ["txtMail"]) == true)  $unMailUtilisateur = $unUtilisateur->getMail();  else   $unMailUtilisateur = $_POST ["txtail"];
 	if ( empty ($_POST ["listClasse"]) == true)  $uneClasse = $unUtilisateur->getClasse();  else   $uneClasse = $_POST ["listClasse"];
 	if ( empty ($_POST ["txtMessage"]) == true)  $unMessage = "";  else   $unMessage = $_POST ["txtMessage"];
 	

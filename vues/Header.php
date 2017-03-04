@@ -150,16 +150,16 @@ $dao = new DAO();
 							<li class="dropdown"><a href="#" class="dropdown-toggle"
 								data-toggle="dropdown" role="button" aria-haspopup="true"
 								aria-expanded="false"> &nbsp;Connecté en tant que <b> <?php if ($_SESSION['typeUtilisateur'] == "eleve"){echo $_SESSION['nom'];} else {echo $login; }
-								if (isset ($nbMessagesNonLu) && ($nbMessagesNonLu != 0)){
-									echo " (<span class='fa fa-bell-o'></span>)";
-								}
-								?></b><span
+								if (isset ($nbMessagesNonLu) && ($nbMessagesNonLu != 0)){ ?>
+									<span class="fa-stack fa-1x has-badge" data-count="<?php echo $nbMessagesNonLu ?>">
+									  <i class="fa notif fa-bell-o fa-stack-1x"></i>
+									</span>
+								<?php } ?>
+								</b><span
 									class="caret"></span></a>
 								<ul class="dropdown-menu">
 									<li><a href="index.php?action=ModifierMonCompte">Mon compte</a></li>
-								<?php if ($typeUtilisateur == 'professeur'){?>
-								<li><a href="index.php?action=MessagesPrives">Messages<?php if (isset ($nbMessagesNonLu) && ($nbMessagesNonLu != 0)){ echo "<b> (1)</b>"; }?></a></li>
-								<?php } ?>
+								<li><a href="index.php?action=MessagesPrives">Messages<?php if (isset ($nbMessagesNonLu) && ($nbMessagesNonLu != 0)){ echo "<b> (". $nbMessagesNonLu . ")</b>"; }?></a></li>
 							</ul></li>
 						</ul>
 	                    <?php } ?>
