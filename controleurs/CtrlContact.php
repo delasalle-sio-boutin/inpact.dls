@@ -24,7 +24,7 @@ if (isset ( $_POST ["btnEnvoi"] ) == false) {
 	$unUtilisateur = '';
 
 	//Cas utilisateur non connecté
-	if (!isset ($_SESSION ['typeUtilisateur']) && ($_SESSION['typeUtilisateur']) != "inconnu") {
+	if (!isset ($_SESSION ['typeUtilisateur']) || ($_SESSION['typeUtilisateur']) == "inconnu") {
 		$unNom = "";
 		$unPrenom = "";
 		$unMailUtilisateur = "";
@@ -34,10 +34,8 @@ if (isset ( $_POST ["btnEnvoi"] ) == false) {
 	}
 	//Utilisateur connecté
 	else{
-		
 		$login = $_SESSION['login'];
-		$unUtilisateur = $dao->getUnUtilisateur($login);
-		$unNom = $unUtilisateur->getNom();
+		$unUtilisateur = $dao->getUnUtilisateur($login);		$unNom = $unUtilisateur->getNom();
 		$unPrenom = $unUtilisateur->getPrenom();
 		$unMailUtilisateur = $unUtilisateur->getMail();
 		$uneClasse = $unUtilisateur->getClasse();

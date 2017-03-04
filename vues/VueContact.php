@@ -3,6 +3,7 @@
 // Fonction de la vue VueContact.php : affiche la vue permettant le contact des administrateurs / profs
 // Ecrit le 18/11/2016 par Tony BRAY
 // Modifié le 05/12/2016 par Erwann Bienvenu
+
 ?>
 <head>
  <script src='https://www.google.com/recaptcha/api.js'></script>
