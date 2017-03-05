@@ -56,18 +56,23 @@ switch($choix){
 		}
 		else{
 			$idMessage = $_GET['id'];
+			$ok = false;
 			/* On vérifie que l'id passé dans l'url correspond bien à un message reçu par l'utilisateur en question */
 			foreach ($lesMessagesRecus as $unMessageRecu){
 				if ($unMessageRecu->getId() == $idMessage){
-					$leMessage = $dao->getUnMessage($idMessage);
-					if (isset ($idMessage)){
-						$dao->marquerCommeLu($idMessage);
-					}
+					$ok = true;
 				}
-				/* Si l'utilisateur essaye de frauder, il est redirigé vers le menu */
-				else{
-					header ("Location: index.php?action=Menu");
+			}
+			if ($ok){
+				$leMessage = $dao->getUnMessage($idMessage);
+				if (isset ($idMessage)){
+					$dao->marquerCommeLu($idMessage);
 				}
+				$repondre = true; // on peut repondre à un message reçu
+				break;
+			}
+			else{
+				header ("Location: index.php?action=MessagesPrives");
 			}
 		}
 		break;
@@ -79,34 +84,60 @@ switch($choix){
 		if (!isset ($_GET['id'])){
 			$lesMessages = (empty ($lesMessagesEnvoyes)) ? "Aucun message envoyé" : $lesMessagesEnvoyes;
 		}
-	else{
-		$idMessage = $_GET['id'];
-		/* On vérifie que l'id passé dans l'url correspond bien à un message reçu par l'utilisateur en question */
-		foreach ($lesMessagesEnvoyes as $unMessageEnvoye){
-			if ($unMessageEnvoye->getId() == $idMessage){
-				$leMessage = $dao->getUnMessage($idMessage);
+		else{
+			$idMessage = $_GET['id'];
+			$ok = false;
+			/* On vérifie que l'id passé dans l'url correspond bien à un message reçu par l'utilisateur en question */
+			foreach ($lesMessagesEnvoyes as $unMessageEnvoye){
+				if ($unMessageEnvoye->getId() == $idMessage){
+					$ok = true;
+				}
 			}
-			/* Si l'utilisateur essaye de frauder, il est redirigé vers le menu */
+			// Si il s'agit bien de un de ses messages
+			if ($ok){
+				$leMessage = $dao->getUnMessage($idMessage);
+				$repondre = false; // on ne peut repondre à un message envoyé
+				break;
+			}
+			// Si l'utilisateur essaye de frauder, il est redirigé vers le menu
 			else{
-				header ("Location: index.php?action=Menu");
+				header ("Location: index.php?action=MessagesPrives");
 			}
 		}
-	}
 		break;
 	}
+
 	 
 	case "Nouveau": { //2eme cas : envoyer un nouveau message
-		//Ici on a besoin de la valeur d'aucune variable :p
+		//Ici on a besoin de la valeur d'aucune variable
 		$leTitre = 'Nouveau message';
-		$lesMessages = '';
 		break;
 	}
 	 
 	case "Repondre": { //3eme cas : répondre à un message
-		//Ici on a besoin de la valeur de l'id du membre qui nous a posté un mp
-		$leTitre = 'Réponse à un message';
-		$lesMessages = '';
-		break;
+		// Ici on a besoin de la valeur de l'id du membre qui nous a posté un mp
+		if (!isset ($_GET['id'])){
+			header ("Location: index.php?action=MessagesPrives");
+		}
+		else{
+			$leTitre = 'Réponse à un message';
+			$idMessage = $_GET['id'];
+			$ok = false;
+			// On balaye tous les messages reçus
+			foreach ($lesMessagesRecus as $unMessageRecu){
+				// Si l'id rentré dans l'url correspond bien à un message reçu par l'utilisateur
+				if ($unMessageRecu->getId() == $idMessage){
+					$ok = true;
+				}
+			}
+			if ($ok){
+				$leMessageReponse = $dao->getUnMessage($idMessage);
+			}
+			else{
+				header ("Location: index.php?action=MessagesPrives");
+			}
+			break;
+		}
 	}
 	 
 	case "Supprimer": { //4eme cas : supprimer un message reçu

@@ -529,6 +529,34 @@ div#dateMessage{
 	float: right;
 }
 
+a#repondreMessage{
+	float: right;
+	text-decoration: none;
+	color: black;
+	font-weight: bold;
+	border: 2px solid black;
+	padding: 3px;
+	background-color: f5b570;
+	
+	/* coins arrondis */
+	-moz-border-radius: 10px;
+	-webkit-border-radius: 10px;
+	-o-border-radius: 10px;
+	-ms-border-radius: 10px;
+	-khtml-border-radius: 10px;
+	border-radius: 20px;
+}
+
+div#recap{
+	margin: 20px;
+	border: 1px solid;
+}
+
+div#reponse{
+	margin: 20px;
+	border: 1px solid;
+}
+
 
 /* ------------------------------------------------------------------ MISE EN FORME DE L'EVENEMENT ----------------------------------------------------------------- */
 

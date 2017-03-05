@@ -28,6 +28,7 @@
 		
 		<div id="page-contenu-body">
 			<p><?php 
+				// On affiche le menu si on arrive sur la page des messages privés
 				if (!empty ($leMenu)){
 					$i=0;
 					foreach ($leMenu as $unMenu){ ?>
@@ -37,13 +38,15 @@
 						<?php $i+=1;
 					}
 				}
+				// Si on est pas dans le menu
 				else{
 					// Si on est dans la consultation des messages reçus ou envoyés
-					if (isset ($lesMessages)){
+					if (isset($lesMessages)){
 						// Si la variable est un string, c'est le message pour dire qu'il n'y a pas de message
 						if (is_string($lesMessages)){
 							echo '<p style="text-align: center; font-weight: bold;">'.$lesMessages.'</p>';
 						}
+						// Si il y a des messages
 						else{
 							foreach ($lesMessages as $unMessage){
 								$unUtilisateurFrom = $dao->getUnUtilisateurId($unMessage->getIdFrom());
@@ -67,7 +70,9 @@
 							}
 						}						
 					}
+					// Si on est pas dans la consultation des messages reçus ou envoyés
 					else{
+						// On est ici dans la consultation d'un seul message
 						if (isset ($leMessage)){
 							$unUtilisateurFrom = $dao->getUnUtilisateurId($leMessage->getIdFrom());
 							$nomFrom = $unUtilisateurFrom->getNom();
@@ -84,7 +89,31 @@
 								
 								echo '<div id="message">';
 									echo "Message : " . $leMessage->getContenu();
+									if ($repondre){
+										echo '<a href="index.php?action=MessagesPrives&choix=Repondre&id='.$leMessage->getId().'" id="repondreMessage">Répondre</a></b>';
+									}
 								echo "</div>";
+						}
+						// On est ici dans "nouveau message" ou "répondre"
+						else{
+							echo '<div id="recap">';
+								echo '<div id="message">';
+									echo "Objet : " . $leMessageReponse->getTitre();
+								echo "</div>";
+								
+								echo '<div id="message">';
+									echo "Message : " . $leMessageReponse->getContenu();
+								echo "</div>";
+							echo '</div>';
+							echo '<div id="reponse">';
+								echo '<div id="message">';
+									echo "Objet : " . $leMessageReponse->getTitre();
+								echo "</div>";
+								
+								echo '<div id="message">';
+									echo "Message : " . $leMessageReponse->getContenu();
+								echo "</div>";
+							echo '</div>';
 						}
 					}
 				}
