@@ -74,6 +74,7 @@
 					else{
 						// On est ici dans la consultation d'un seul message
 						if (isset ($leMessage)){
+							
 							$unUtilisateurFrom = $dao->getUnUtilisateurId($leMessage->getIdFrom());
 							$nomFrom = $unUtilisateurFrom->getNom();
 							$prenomFrom = $unUtilisateurFrom->getPrenom();
@@ -96,24 +97,52 @@
 						}
 						// On est ici dans "nouveau message" ou "répondre"
 						else{
-							echo '<div id="recap">';
-								echo '<div id="message">';
-									echo "Objet : " . $leMessageReponse->getTitre();
-								echo "</div>";
+							$unUtilisateurFrom = $dao->getUnUtilisateurId($leMessageReponse->getIdFrom());
+							$nomFrom = $unUtilisateurFrom->getNom();
+							$prenomFrom = $unUtilisateurFrom->getPrenom();
+							?>
+							<div id="recap">
+								<div id="message">
+									<b>Message de <?php echo $nomFrom ?> <?php echo $prenomFrom ?>
+									<div id="dateMessage"> <?php echo $leMessageReponse->getDateMessage() ?></div></b>
+								</div>
 								
-								echo '<div id="message">';
-									echo "Message : " . $leMessageReponse->getContenu();
-								echo "</div>";
-							echo '</div>';
-							echo '<div id="reponse">';
-								echo '<div id="message">';
-									echo "Objet : " . $leMessageReponse->getTitre();
-								echo "</div>";
+								<div id="message">
+									Objet : <?php echo $leMessageReponse->getTitre() ?>
+								</div>
 								
-								echo '<div id="message">';
-									echo "Message : " . $leMessageReponse->getContenu();
-								echo "</div>";
-							echo '</div>';
+								<div id="message">
+									Message : <?php echo $leMessageReponse->getContenu() ?>
+								</div>
+							</div>
+							
+							<div id="reponse">
+								<div id="message">
+									<b>Répondre à <?php echo $nomFrom ?> <?php echo $prenomFrom ?></b>
+								</div>
+							
+								<div id="message">
+									<table style=" margin: 0;">
+										<tr>
+											<td style="width: 20%">
+												Objet :
+											</td>
+											<td style="width: 80%; text-align: left;">
+												<input type=text value="<?php echo $unObjet ?>">
+											</td>
+										</tr>
+										<tr> 
+											<td style="width: 20%">
+												Message :
+											</td>
+											<td style="width: 80%; text-align: left;">
+												<textarea id="reponseMessage" rows="10" cols="50" max-cols= "50" value="<?php echo $unContenu ?>"></textarea>
+											</td>
+										</tr>
+									</table>
+								</div>
+							</div>
+							<?php
 						}
 					}
 				}

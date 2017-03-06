@@ -553,8 +553,13 @@ div#recap{
 }
 
 div#reponse{
-	margin: 20px;
+	width: 40%;
+	margin: 0 auto;
 	border: 1px solid;
+}
+
+textarea#reponseMessage{
+	max-width: 50%;
 }
 
 

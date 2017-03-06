@@ -121,7 +121,7 @@ switch($choix){
 		}
 		else{
 			$leTitre = 'Réponse à un message';
-			$idMessage = $_GET['id'];
+			$idMessage = $_GET['id'];			
 			$ok = false;
 			// On balaye tous les messages reçus
 			foreach ($lesMessagesRecus as $unMessageRecu){
@@ -130,8 +130,11 @@ switch($choix){
 					$ok = true;
 				}
 			}
+			/* Si il s'agit d'un de ses messages reçu, il peut y répondre */
 			if ($ok){
 				$leMessageReponse = $dao->getUnMessage($idMessage);
+				$unObjet = "";
+				$unContenu = "";
 			}
 			else{
 				header ("Location: index.php?action=MessagesPrives");
