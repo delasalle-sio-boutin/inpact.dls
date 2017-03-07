@@ -587,20 +587,20 @@ textarea#reponseMessage{
 
 .ui-evenement-evt{
 	height: 55%;
-	padding: 25px 15px 15px 15px;
+	padding: 35px 15px 15px 15px;
 	overflow: hidden;
 }	
 
 .ui-evenement-suite{
 	height: 20%;
-	padding: 25px;	
+	padding: 25px;
 }
 
 .ui-evenement-content > div{
 	width: 48%;
 }
 
-a#divCliquable{
+.divCliquable{
 	/* coins arrondis */
 	-moz-border-radius: 10px 10px 10px 10px;
 	-webkit-border-radius: 10px 10px 10px 10px;
@@ -612,6 +612,23 @@ a#divCliquable{
 	border-color: rgba(245,181,112, 0.5);
 	border-style: solid;
     border-width: 3px;
+    background: rgba(245,181,112, 0.9);
+	margin: 15px;	
+}
+
+a#divCliquable{
+	/* coins arrondis */
+	-moz-border-radius: 10px 10px 10px 10px;
+	-webkit-border-radius: 10px 10px 10px 10px;
+	-o-border-radius: 10px 10px 10px 10px;
+	-ms-border-radius: 10px 10px 10px 10px;
+	-khtml-border-radius: 10px 10px 10px 10px;
+	border-radius: 10px 10px 10px 10px;
+	/* fond de la division */
+	border-color: rgba(245,181,112, 0.2);
+	border-style: solid;
+    border-width: 3px;
+    background: rgba(245,181,112, 0.8);
 	overflow: hidden;
 	padding: 0px auto;
 	margin: 1%;
@@ -632,6 +649,7 @@ a#divCliquable:nth-child(even){
 
 a#divCliquable:hover{
 	border-color: rgba(245,181,112, 1);
+	background: rgba(245,181,112, 1);
 }
 
 /* ------------------------------------------------------------------ MISE EN FORME DE "CONTACT" ----------------------------------------------------------------- */
