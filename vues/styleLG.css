@@ -635,6 +635,7 @@ a#divCliquable{
 	height: 225px;
 	display: block;
 	text-decoration: none;
+	color: black;
 	width: 48%;
 }
 

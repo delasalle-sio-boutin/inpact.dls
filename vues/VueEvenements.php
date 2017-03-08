@@ -27,7 +27,7 @@
 						 <br>
 					</div>
 					<div class="ui-evenement-suite" style="height: 50px; padding: 5px;">
-						<a id="MsgRetour" href="index.php?action=Evenements" class="fa fa-arrow-left fa-2x"></a>
+						<a id="MsgRetour" href="index.php?action=Evenements" class="fa fa-arrow-left fa-2x" style="text-decoration: none;"></a>
 					</div>
 				</div>
 				
