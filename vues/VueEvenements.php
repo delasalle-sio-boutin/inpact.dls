@@ -32,7 +32,7 @@
 				</div>
 				
 				
-			<?php
+			<?php  
 			} else {
 				foreach ($lesEvenements as $unEvenement){ ?>
 				<a id="divCliquable" href="index.php?action=Evenements&id=<?php echo $unEvenement->getId() ?>">
