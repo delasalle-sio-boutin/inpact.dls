@@ -421,6 +421,27 @@ $unMail, $uneDateNaissance, $unMailFromProfs, $unMailFromEleves);
 	return $lesEvenements;
 	}
 	
+	
+	//creer un événement dans la bdd
+	//renvoie un booléen V/F
+	//modifié par Florentin GREMY le 24/03/2017
+	public function CreerEvenement($unTitre, $uneDateCreation,  $uneDateEvenement, $unContenu) {
+		//requête d'ajout de l'évenement dans la bdd
+		$txt_req = "INSERT INTO inp_evenements (titre, contenu, dateCreation, dateEvenement)";
+		$txt_req .= " VALUES (:unTitre, :unContenu, :uneDateCreation, :uneDateEvenement)";
+		$req = $this->cnx->prepare($txt_req);
+	
+		// liaison de la requête et de son paramètre
+		$req->bindValue("unTitre", $unTitre, PDO::PARAM_STR);
+		$req->bindValue("unContenu", $unTitre, PDO::PARAM_STR);
+		$req->bindValue("uneDateCreation", $unTitre, PDO::PARAM_STR);
+		$req->bindValue("uneDateEvenement", $unTitre, PDO::PARAM_STR);
+	
+		// extraction des données
+		$ok = $req->execute();
+		return $ok;
+	}
+	
 
 	// fournit les aidedevoir dans une collection (en ne gardant que les évèenements pas encore passés)
 	// renvoie une collection d'aidedevoir
