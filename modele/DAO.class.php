@@ -241,6 +241,39 @@ $unMail, $uneDateNaissance, $unMailFromProfs, $unMailFromEleves);
 	return $uneAideDevoir;
 	}
 	
+	// fournit une reponse d'une aideDevoir en fonction de son id
+	// renvoie une collection d'reponseaideDevoirs
+	// modifié par Sophie Audigou le 24/03/2017
+	public function getUneReponseAideDevoir($unIdUtilisateur, $unIdAideDevoir)
+	{	// préparation de la requête d'extraction des inscriptions non annulées
+	$txt_req = "SELECT *";
+	$txt_req .= " FROM inp_aidedevoirreponse";
+	$txt_req .= " WHERE idUtilisateur = :unIdUtilisateur";
+	$txt_req .= " AND unIdAideDevoir = :unIdAideDevoir";
+	$req = $this->cnx->prepare($txt_req);
+	
+	// liaison de la requête et de son paramètre
+	$req->bindValue("unIdUtilisateur", $unIdUtilisateur, PDO::PARAM_INT);
+	$req->bindValue("unIdAideDevoir", $unIdAideDevoir, PDO::PARAM_INT);
+	
+	// extraction des données
+	$req->execute();
+	$uneLigne = $req->fetch(PDO::FETCH_OBJ);
+	
+	if (!$uneLigne) return null;
+	
+	// création d'un objet Inscription
+	$unIdUtilisateur = utf8_encode($uneLigne->idUtilisateur);
+	$unIdAideDevoir = utf8_encode($uneLigne->idAideDevoir);
+	$uneReponse = utf8_encode($uneLigne->reponse);
+	
+	$uneAideDevoirresponse = new AideDevoirReponse($unIdUtilisateur, $unIdAideDevoir, $uneReponse);
+	// libère les ressources du jeu de données
+	$req->closeCursor();
+	
+	return $uneAideDevoir;
+	}
+	
 	
 	// fournit le type d'un utilisateur identifié par $adrMail et $motDePasse
 	// renvoie "eleve" ou "administrateur" ou "professeur" si authentification correcte, "inconnu" sinon
