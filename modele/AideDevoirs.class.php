@@ -2,7 +2,7 @@
 // Projet : DLS - BTS Info - Anciens élèves
 // fichier : modele/AideDevoirs.class.php
 // Rôle : la classe AideDevoirs représentent les enregistremnt des aide au devoirs
-// Création : 03/03/2017 par Sophie Audigou
+// Création : 24/03/2017 par Sophie Audigou
 
 // inclusion de la classe Outils
 include_once ('Outils.class.php');
@@ -12,22 +12,22 @@ class AideDevoirs
 	// ---------------------------------- Membres privés de la classe ---------------------------------------
 	// ------------------------------------------------------------------------------------------------------
 
-	private $id;				// identifiant de l'administrateur
+	private $id;				// identifiant de l'aide
 	private $nom;				// titre de l'évènement
 	private $contenu;			// contenu de l'évènement
 	private $dateCreation;		// date de création de l'article
-	private $dateEvenement;		// date de l'évènement
+	private $idUtilisateur;		// identifiant du demandeur
 
 	// ------------------------------------------------------------------------------------------------------
 	// ----------------------------------------- Constructeur -----------------------------------------------
 	// ------------------------------------------------------------------------------------------------------
 
-	public function AideDevoirs($unId, $unTitre, $unContenu, $uneDateCreation, $uneDateEvenement) {
+	public function AideDevoirs($unId, $unTitre, $unContenu, $uneDateCreation, $unIdUtilisateur) {
 		$this->id = $unId;
 		$this->titre = $unTitre;
 		$this->contenu = $unContenu;
 		$this->dateCreation = $uneDateCreation;
-		$this->dateEvenement = $uneDateEvenement;
+		$this->unIdUtilisateur = $unIdUtilisateur;
 	}
 
 	// ------------------------------------------------------------------------------------------------------
@@ -46,23 +46,28 @@ class AideDevoirs
 	public function getDateCreation() {return $this->dateCreation;}
 	public function setDateCreation($uneDateCreation) {$this->dateCreation = $uneDateCreation;}
 
-	public function getDateEvenement() {return $this->dateEvenement;}
-	public function setDateEvenement($uneDateEvenement) {$this->dateEvenement = $uneDateEvenement;}
+	public function getIdUtilisateur() {return $this->idUtilisateur;}
+	public function setIdUtilisateur($unIdUtilisateur) {$this->IdUtilisateur = $unIdUtilisateur;}
 
 	// ------------------------------------------------------------------------------------------------------
 	// -------------------------------------- Méthodes d'instances ------------------------------------------
 	// ------------------------------------------------------------------------------------------------------
 
 	public function toString() {
-		$msg  = 'Evenement : <br>';
+		$msg  = 'Aide devoirs : <br>';
 		$msg .= 'id : ' . $this->getId() . '<br>';
 		$msg .= 'titre : ' . $this->getTitre() . '<br>';
 		$msg .= 'contenu : ' . $this->getContenu() . '<br>';
 		$msg .= 'date création : ' . $this->getDateCreation() . '<br>';
-		$msg .= 'date évènement : ' . $this->getDateEvenement() . '<br>';
+		$msg .= 'idUtilisateur : ' . $this->getIdUtilisateur() . '<br>';
 
 		return $msg;
 	}
+	
+	/*public function getPrenomUtilisateur($idUtilisateur) {
+		$req = $dao->SELECT prenom from inp_utilisateur where id = :id;
+		
+	}*/
 
 }
 ?>
