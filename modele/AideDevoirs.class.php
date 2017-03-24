@@ -63,6 +63,11 @@ class AideDevoirs
 
 		return $msg;
 	}
+	
+	/*public function getPrenomUtilisateur($idUtilisateur) {
+		$req = $dao->SELECT prenom from inp_utilisateur where id = :id;
+		
+	}*/
 
 }
 ?>

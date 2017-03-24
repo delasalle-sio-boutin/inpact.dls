@@ -17,19 +17,19 @@ include_once ('modele/DAO.class.php');
 $dao = new DAO();
 
 $lesAideDevoirs = $dao->getTousLesAideDevoirs();
+
+/*
 $i = 1;
-foreach ($lesAideDevoirs as $uneAideDevoir){
-	${'unId'.$i}= $uneAideDevoir->getId();
-	${'unTitre'.$i} = $uneAideDevoir->getTitre();
-	${'unContenu'.$i} = $uneAideDevoir->getContenu();
-	${'uneDateCreation'.$i} = $uneAideDevoir->getDateCreation();
-	${'unIdUtilisateur'.$i} = $uneAideDevoir->getIdUtilisateur();
+foreach ($lesAideDevoirs as $uneAideDevoirs){
+	${'unId'.$i}= $uneAideDevoirs->getId();
+	${'unTitre'.$i} = $uneAideDevoirs->getTitre();
+	${'unContenu'.$i} = $uneAideDevoirs->getContenu();
+	${'uneDateCreation'.$i} = $uneAideDevoirs->getDateCreation();
+	${'unIdUtilisateur'.$i} = $uneAideDevoirs->getIdUtilisateur();
 	$i += 1;
 }
-if (!empty ($_GET['id'])){
-	$unId = $_GET['id'];
-	$uneAideDevoir = $dao->getUneAideDevoir($unId);
-}
+*/
+
 include_once ('vues/VueAideDevoirs.php');
 
 

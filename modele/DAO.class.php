@@ -433,8 +433,8 @@ $unMail, $uneDateNaissance, $unMailFromProfs, $unMailFromEleves);
 	public function getTousLesAideDevoirs()
 	{	// préparation de la requête d'extraction des inscriptions non annulées
 	$txt_req = "SELECT *";
-	$txt_req .= " FROM inp_aideDevoirs";
-	$txt_req .= " ORDER BY dateCreation";
+	$txt_req .= " FROM inp_aidedevoirs";
+	$txt_req .= " ORDER BY dateCreation DESC";
 	
 	$req = $this->cnx->prepare($txt_req);
 	
@@ -446,24 +446,23 @@ $unMail, $uneDateNaissance, $unMailFromProfs, $unMailFromEleves);
 	$lesAideDevoirs = array();
 	
 	// tant qu'une ligne est trouvée :
-	while ($uneLigne)
-	{	// création d'un objet Evenement
-	$unId = utf8_encode($uneLigne->id);
-	$unTitre = utf8_encode($uneLigne->titre);
-	$unContenu = utf8_encode($uneLigne->contenu);
-	$uneDateCreation = utf8_encode($uneLigne->dateCreation);
-	$idUtilisateur = utf8_encode($uneLigne->idUtilisateur);
-	
-	$uneAideDevoir = new AideDevoir($unId, $unTitre, $unContenu, $uneDateCreation, $idUtilisateur);
-	// ajout de l'inscription à la collection
-	$lesAidesDevoirs[] = $uneAideDevoir;
-	// extraction de la ligne suivante
-	$uneLigne = $req->fetch(PDO::FETCH_OBJ);
+	while ($uneLigne){	// création d'un objet Evenement
+		$unId = utf8_encode($uneLigne->id);
+		$unTitre = utf8_encode($uneLigne->titre);
+		$unContenu = utf8_encode($uneLigne->contenu);
+		$uneDateCreation = utf8_encode($uneLigne->dateCreation);
+		$idUtilisateur = utf8_encode($uneLigne->idUtilisateur);
+		
+		$uneAideDevoirs = new AideDevoirs($unId, $unTitre, $unContenu, $uneDateCreation, $idUtilisateur);
+		// ajout de l'inscription à la collection
+		$lesAidesDevoirs[] = $uneAideDevoirs;
+		// extraction de la ligne suivante
+		$uneLigne = $req->fetch(PDO::FETCH_OBJ);
 	}
 	// libère les ressources du jeu de données
 	$req->closeCursor();
 	
-	return $lesAideDevoirs;
+	return $lesAidesDevoirs;
 	}
 	
 	// fournit les Messages dans une collection
