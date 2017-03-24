@@ -160,6 +160,7 @@ $dao = new DAO();
 								<ul class="dropdown-menu">
 									<li><a href="index.php?action=ModifierMonCompte">Mon compte</a></li>
 								<li><a href="index.php?action=MessagesPrives">Messages<?php if (isset ($nbMessagesNonLu) && ($nbMessagesNonLu != 0)){ echo "<b> (". $nbMessagesNonLu . ")</b>"; }?></a></li>
+								<?php if ($_SESSION['typeUtilisateur'] != "eleve") echo '<li><a href="index.php?action=GererEvenements">Gerer les événements</a></li>'?>
 							</ul></li>
 						</ul>
 	                    <?php } ?>

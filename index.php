@@ -74,6 +74,9 @@ switch($action){
 	case 'ModifierMonCompte': {
 		include_once ('controleurs/CtrlModifierMonCompte.php'); break;
 	}
+	case 'GererEvenements': {
+		include_once ('controleurs/CtrlGererEvenements.php'); break;
+	}
 	case 'Deconnecter': {
 		session_destroy(); 
 		include_once ('controleurs/CtrlMenu.php'); break;
