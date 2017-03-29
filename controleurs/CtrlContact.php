@@ -22,6 +22,8 @@ if (isset ( $_POST ["btnEnvoi"] ) == false) {
 	$unMessage = "";
 	$unSujet = "";
 	$unUtilisateur = '';
+	$lesProfs = $dao->getLesProfs();
+	//var_dump($lesProfs);
 
 	//Cas utilisateur non connecté
 	if (!isset ($_SESSION ['typeUtilisateur']) || ($_SESSION['typeUtilisateur']) == "inconnu") {

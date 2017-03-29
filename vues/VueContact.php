@@ -2,7 +2,7 @@
 // Projet Annuel - Site Inpact
 // Fonction de la vue VueContact.php : affiche la vue permettant le contact des administrateurs / profs
 // Ecrit le 18/11/2016 par Tony BRAY
-// Modifié le 05/12/2016 par Erwann Bienvenu
+// Modifié le 29/03/2017 par Tony BRAY
 
 ?>
 <head>
@@ -26,9 +26,18 @@
                                     <div class="form-group">
                                         <label for="form_mail">Qui voulez vous contacter ?</label>
                                         <select class=form-control id="form_mail" name="txtContact" required>
-                                        	<option selected value=>Selectionnez une personne</option>
-                                     		<option value="delasalle.sio.boutin.k@gmail.com">Administrateur du site</option>
-											<option value="delasalle.sio.profs@gmail.com">Professeurs</option>
+                                        	<option selected value=>Selectionnez une personne</option>    
+                                        	<option selected value="adminpact@yopmail.com">Administrateur du site</option>                                		
+                                     		<?php 
+                                     		if ($_SESSION['login']){
+                                     			foreach ($lesProfs as $unProf){
+                                     				?>
+                                     				<option value="<?php echo $unProf->getCivilite()." ".$unProf->getNom()?>"><?php echo $unProf->getCivilite()." ".$unProf->getNom()?></option>
+                                     				<?php 
+                                     			}
+                                     		}
+                                     		?>
+											
 										</select>
                                         <div class="help-block with-errors"></div>
                                     </div>

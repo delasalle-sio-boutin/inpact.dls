@@ -54,6 +54,7 @@ include_once ('Evenement.class.php');
 include_once ('Outils.class.php');
 include_once ('Messages.class.php');
 include_once ('AideDevoirs.class.php');
+include_once ('Professeurs.php');
 
 // inclusion des paramètres de l'application
 include_once ('parametres.localhost.php'); // à activer à la fin, désactiver pour DAO.test.php
@@ -728,5 +729,38 @@ $unMail, $uneDateNaissance, $unMailFromProfs, $unMailFromEleves);
 		// extraction des données
 		$ok = $req->execute();
 		return $ok;
+	}
+	
+	// Recupère les profs dans la bdd
+	// Renvoie une collection de prof
+	public function getLesProfs(){
+		$txt_req = "SELECT * FROM inp_profs";
+		$req = $this->cnx->prepare($txt_req);
+		$ok = $req->execute();
+		
+		$uneLigne = $req->fetch(PDO::FETCH_OBJ);
+		
+		// construction d'une collection d'objets Inscription
+		$lesProfs = array();
+		
+		// tant qu'une ligne est trouvée :
+		while ($uneLigne)
+		{	// création d'un objet Evenement
+		$unId = utf8_encode($uneLigne->id);
+		$unNom = utf8_encode($uneLigne->nom);
+		$uneCivilite = utf8_encode($uneLigne->civilite);
+		
+		
+		$unProf = new Professeur($unId, $unNom, $uneCivilite);
+		// ajout de l'inscription à la collection
+		$lesProfs[] = $unProf;
+		// extraction de la ligne suivante
+		$uneLigne = $req->fetch(PDO::FETCH_OBJ);
+		}
+		// libère les ressources du jeu de données
+		$req->closeCursor();
+		
+		return $lesProfs;
+		
 	}
 }
