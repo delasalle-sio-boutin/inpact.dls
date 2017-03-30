@@ -41,6 +41,7 @@ if (isset ( $_POST ["btnEnvoi"] ) == false) {
 		$unPrenom = $unUtilisateur->getPrenom();
 		$unMailUtilisateur = $unUtilisateur->getMail();
 		$uneClasse = $unUtilisateur->getClasse();
+		$lesProfs = $dao->getLesProfs();
 		include_once ('vues/VueContact.php');
 		
 	}
@@ -48,7 +49,7 @@ if (isset ( $_POST ["btnEnvoi"] ) == false) {
 
 else {
 	$unUtilisateur = $dao->getUnUtilisateur($login);
-	
+	$lesProfs = $dao->getLesProfs();
 	if ( empty ($_POST ["txtNom"]) == true)  $unNom = $unUtilisateur->getNom();  else   $unNom = $_POST ["txtNom"];
 	if ( empty ($_POST ["txtPrenom"]) == true)  $unPrenom = $unUtilisateur->getPrenom();  else   $unPrenom = $_POST ["txtPrenom"];
 	if ( empty ($_POST ["txtContact"]) == true)  $unContact = "";  else   $unContact = $_POST ["txtContact"];
@@ -82,9 +83,18 @@ else {
 	
 	// Fin captcha
 	
+	
 	include_once 'modele/Outils.class.php';
 	$outils = new Outils ();
-	$leSujet = "Message du site Inpact (" . $unSujet . ")";
+	$mailOuProf = Outils::estUneAdrMailValide($unContact);
+	if ( $mailOuProf == false){
+		$leSujet = "[Pour ".$unContact."]Message du site Inpact (" . $unSujet . ")";
+		$unContact = "adminpact@yopmail.com";
+	}
+	else{
+		$leSujet = "Message du site Inpact (" . $unSujet . ")";
+	}
+	
 	
 	$messageAEnvoyer = "Message de " . strtoupper ( $unNom ) . " " . ucfirst ( $unPrenom ) . " (" . $uneClasse . ") \n";
 	$messageAEnvoyer = $messageAEnvoyer . "\r" . $unMessage;
