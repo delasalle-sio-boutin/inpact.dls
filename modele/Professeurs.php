@@ -19,33 +19,59 @@ class Professeur{
 		$this->civilite = $uneCivilite;
 		
 	}
+
+    /**
+     * @return mixed
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    /**
+     * @param mixed $id
+     */
+    public function setId($id)
+    {
+        $this->id = $id;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getNom()
+    {
+        return $this->nom;
+    }
+
+    /**
+     * @param mixed $nom
+     */
+    public function setNom($nom)
+    {
+        $this->nom = $nom;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getCivilite()
+    {
+        return $this->civilite;
+    }
+
+    /**
+     * @param mixed $civilite
+     */
+    public function setCivilite($civilite)
+    {
+        $this->civilite = $civilite;
+    }
 	// ------------------------------------------------------------------------------------------------------
 	// ---------------------------------------- Getters et Setters ------------------------------------------
 	// ------------------------------------------------------------------------------------------------------
 	
-	public function getId(){
-		return $this->id;
-	}
-	
-	public function setId($id){
-		$this->id = $id;
-	}
-	
-	public function getNom(){
-		return $this->nom;
-	}
-	
-	public function setNom($nom){
-		$this->nom = $nom;
-	}
-	
-	public function getCivilite(){
-		return $this->civilite;
-	}
-	
-	public function setCivilite($civilite){
-		$this->civilite = $civilite;
-	}
+
 	
 	
 }
