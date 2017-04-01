@@ -22,6 +22,11 @@ function dateDiff($evt){
 	return $diff->format('%a');
 }
 
+if (!isset($_SESSION['visite'])){
+    $dao->addVisite();
+    $_SESSION['visite'] = "1";
+}
+
 $lesEvenements = $dao->getLesEvenements();
 $nbEvenements = sizeof($lesEvenements);
 $nbAffichage = ($nbEvenements < 4) ? $nbEvenements : 4;

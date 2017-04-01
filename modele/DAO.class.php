@@ -733,6 +733,7 @@ $unMail, $uneDateNaissance, $unMailFromProfs, $unMailFromEleves);
 	
 	// Recupère les profs dans la bdd
 	// Renvoie une collection de prof
+    //Créé par Tony BRAY
 	public function getLesProfs(){
 		$txt_req = "SELECT * FROM inp_profs";
 		$req = $this->cnx->prepare($txt_req);
@@ -763,4 +764,12 @@ $unMail, $uneDateNaissance, $unMailFromProfs, $unMailFromEleves);
 		return $lesProfs;
 		
 	}
+
+	public function addVisite(){
+	    $txt_req = "UPDATE inp_param SET nbVisite = nbVisite + 1";
+        $req = $this->cnx->prepare($txt_req);
+        $ok = $req->execute();
+        return $ok;
+
+    }
 }
