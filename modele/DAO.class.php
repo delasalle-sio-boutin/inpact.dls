@@ -469,7 +469,7 @@ $unMail, $uneDateNaissance, $unMailFromProfs, $unMailFromEleves);
 	//modifié par Florentin GREMY le 03/04/2017
 	public function SupprimerEvenement($unID) {
 		//requête d'ajout de l'évenement dans la bdd
-		$txt_req = "DELETE FROM inp_evenements WHERE id = :unID;
+		$txt_req = "DELETE FROM inp_evenements WHERE id = :unID";
 		$req = $this->cnx->prepare($txt_req);
 	
 		// liaison de la requête et de son paramètre
@@ -479,7 +479,6 @@ $unMail, $uneDateNaissance, $unMailFromProfs, $unMailFromEleves);
 		$ok = $req->execute();
 		return $ok;
 	}
-	
 	
 
 	// fournit les aidedevoir dans une collection (en ne gardant que les évèenements pas encore passés)
