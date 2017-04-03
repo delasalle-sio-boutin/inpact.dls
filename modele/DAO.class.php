@@ -267,6 +267,7 @@ $unMail, $uneDateNaissance, $unMailFromProfs, $unMailFromEleves);
 	$unIdUtilisateur = utf8_encode($uneLigne->idUtilisateur);
 	$unIdAideDevoir = utf8_encode($uneLigne->idAideDevoir);
 	$uneReponse = utf8_encode($uneLigne->reponse);
+	$uneDateCreation = utf8_encode($uneLigne->dateCreation);
 	
 	$uneAideDevoirresponse = new AideDevoirReponse($unIdUtilisateur, $unIdAideDevoir, $uneReponse);
 	// libère les ressources du jeu de données
