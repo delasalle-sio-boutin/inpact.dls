@@ -21,9 +21,16 @@
 	 					
 	 						
 	 							 <?php echo $uneAideDevoirs->getTitre() ; ?> </br>
-	 							 <?php echo $uneAideDevoirs->getContenu();?> </br> </br> <?php } ?> 
+	 							  <?php echo $uneAideDevoirs->getContenu(); ?> </br>
+	 							 <?php echo  $uneAideDevoirs->getDateCreation()
+	 							 
+	 							 
+	 							 // foreach pour les reponses ?> </br> 
+	 							 
+	 							 
+	 							 
+	 							 </br> <?php } ?> 
 	 					
-	 						
 	 	
 	 	
 	</div>

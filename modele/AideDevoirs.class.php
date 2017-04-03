@@ -13,8 +13,8 @@ class AideDevoirs
 	// ------------------------------------------------------------------------------------------------------
 
 	private $id;				// identifiant de l'aide
-	private $nom;				// titre de l'évènement
-	private $contenu;			// contenu de l'évènement
+	private $nom;				// titre de l'aide
+	private $contenu;			// contenu de l'aide
 	private $dateCreation;		// date de création de l'article
 	private $idUtilisateur;		// identifiant du demandeur
 
@@ -69,5 +69,66 @@ class AideDevoirs
 		
 	}*/
 
+}
+
+class ReponseAideDevoirs{
+	// ------------------------------------------------------------------------------------------------------
+	// ---------------------------------- Membres privés de la classe ---------------------------------------
+	// ------------------------------------------------------------------------------------------------------
+	
+	private $idUtilisateur;		// identifiant de l'utilisateur qui donne la reponse
+	private $idAideDevoir;		// identifiant de l'aideDevoirs
+	private $reponse;			// contenu de l'évènement
+	private $dateCreation;		// date de création de l'article
+	
+	// ------------------------------------------------------------------------------------------------------
+	// ----------------------------------------- Constructeur -----------------------------------------------
+	// ------------------------------------------------------------------------------------------------------
+	
+	public function AideDevoirs($unIdUtilisateur,$unIdAideDevoir, $unTitre, $unContenu, $uneDateCreation) {
+		$this->idUtilisateur = $unIdUtilisateur;
+		$this->idAideDevoir = $unIdAideDevoir;
+		$this->reponse = $uneReponse;
+		$this->dateCreation = $uneDateCreation;
+	}
+	
+	// ------------------------------------------------------------------------------------------------------
+	// ---------------------------------------- Getters et Setters ------------------------------------------
+	// ------------------------------------------------------------------------------------------------------
+	
+	public function getIdUtilisateur() {return $this->idUtilisateur;}
+	public function setIdUtilisateur($unIdUtilisateur) {$this->IdUtilisateur = $unIdUtilisateur;}
+	
+	public function getIdAideDevoir()	{return $this->idAideDevoir;}
+	public function setIdAideDevoir($unIdAideDevoir) {$this->idAideDevoir = $unIdAideDevoir;}
+
+	public function getReponse() {return $this->reponse;}
+	public function setReponse($uneReponse) {$this->reponse = $uneReponse;}
+	
+	public function getDateCreation() {return $this->dateCreation;}
+	public function setDateCreation($uneDateCreation) {$this->dateCreation = $uneDateCreation;}
+	
+	
+	
+	// ------------------------------------------------------------------------------------------------------
+	// -------------------------------------- Méthodes d'instances ------------------------------------------
+	// ------------------------------------------------------------------------------------------------------
+	
+	public function toString() {
+		$msg  = 'Reponse à l\'Aide aux devoirs : <br>';
+		$msg .= 'id l\'utilisateur : ' . $this->getIdUtilisateur() . '<br>';
+		$msg .= 'aide : ' . $this->getTitre() . '<br>';
+		$msg .= 'contenu : ' . $this->getContenu() . '<br>';
+		$msg .= 'date création : ' . $this->getDateCreation() . '<br>';
+		$msg .= 'idUtilisateur : ' . $this->getIdUtilisateur() . '<br>';
+	
+		return $msg;
+	}
+	
+	/*public function getPrenomUtilisateur($idUtilisateur) {
+	 $req = $dao->SELECT prenom from inp_utilisateur where id = :id;
+	
+	 }*/
+	
 }
 ?>
