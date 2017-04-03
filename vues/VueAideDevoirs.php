@@ -23,9 +23,14 @@
 	 							 <?php echo $uneAideDevoirs->getTitre() ; ?> </br>
 	 							  <?php echo $uneAideDevoirs->getContenu(); ?> </br>
 	 							 <?php echo  $uneAideDevoirs->getDateCreation()
+	 							 foreach ($lesReponsesAideDevoirs as $uneReponseAideDevoirs){ ?>
 	 							 
+	 							 <?php echo $uneReponseAideDesvoirs -> getReponse();?>
+	 							 	
+	 							 	
+	 							 }
 	 							 
-	 							 // foreach pour les reponses ?> </br> 
+	 							  </br> 
 	 							 
 	 							 
 	 							 
