@@ -92,13 +92,13 @@
 					<div class="col-md-6">
 						<div class="form-group">
 							<label for="form_titre">Titre</label>
-							<input id="form_titre" type="text" name="txtTitre" required="required" class="form-control" value="<?php echo $unTitre;?>" data-error="Un titre est requis!">
+							<input id="form_titre" type="text" name="txtTitreModif" required="required" class="form-control" value="<?php echo $unTitre;?>" data-error="Un titre est requis!">
 						</div>
 					</div>
 					<div class="col-md-6">
 						<div class="form-group">
 							<label for="form_date">Date de l'événement</label>
-                        	<input id="form_date" type="date" name="txtDate" required="required" class="form-control" data-error="Une date est requise!" value="<?php echo $uneDateUS; ?>">
+                        	<input id="form_date" type="date" name="txtDateModif" required="required" class="form-control" data-error="Une date est requise!" value="<?php echo $uneDateUS; ?>">
                     	</div>
                    	</div>
               	</div>
@@ -106,7 +106,7 @@
                      <div class="col-md-12">
 	                    <div class="form-group">
 	                      	<label for="form_contenu">Contenu</label>
-	                        <textarea id="form_contenu" name="txtContenu" class="form-control" required="required" data-error="Un contenu est requis."><?php echo $unContenu ;?></textarea>
+	                        <textarea id="form_contenu" name="txtContenuModif" class="form-control" required="required" data-error="Un contenu est requis."><?php echo $unContenu ;?></textarea>
 	                   	</div>
                      </div>
               	</div>

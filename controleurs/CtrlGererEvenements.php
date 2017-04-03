@@ -24,32 +24,39 @@ if (!isset($_GET['id'])){
 		
 		if ($ok){
 			echo 'Création de l\'évenement réussite !';
+			vardump('ajout reussie');
 		}
 		else{
 			echo 'Un problème est survenue lors de la création de l\'évenement !';
+			vardump('ajout pas reussie');
 		}
 	} elseif (isset ($_POST['btnModifier'])){
+		$unId = $_GET['id'];
 		$unTitre = $_POST['txtTitreModif'];
 		$unContenu = $_POST['txtContenuModif'];
 		$uneDateEvenement = Outils::convertirEnDateFR($_POST['txtDateModif']);
 		
-		$ok = $dao->ModifierEvenement($unTitre, $uneDateEvenement, $unContenu);
+		$ok = $dao->ModifierEvenement($unTitre, $uneDateEvenement, $unContenu, $unId);
 		
 		if ($ok){
 			echo 'Modification de l\'évenement réussite !';
+			vardump('modif reussie');
 		}
 		else{
 			echo 'Un problème est survenue lors de la modification de l\'évenement !';
+			vardump('modif pas reussie');
 		}
 	} elseif (isset ($_POST['btnSupprimer'])){
 		$unID = $_GET['id'];
 		$ok = $dao->SupprimerEvenement($unID);
 		
 		if ($ok){
+			vardump('suppression reussie');
 			echo 'Suppression de l\'évenement réussite !';
 		}
 		else{
 			echo 'Un problème est survenue lors de la suppression de l\'évenement !';
+			vardump('suppression pas reussie');
 		}
 	}
 }
