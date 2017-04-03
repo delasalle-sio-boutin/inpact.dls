@@ -17,16 +17,39 @@ if (!isset($_GET['id'])){
 	if (isset ($_POST['btnCreation'])){
 		$unTitre = $_POST['txtTitre'];
 		$unContenu = $_POST['txtContenu'];
-		$uneDateEvenement = $_POST['txtDate'];
+		$uneDateEvenement = Outils::convertirEnDateFR($_POST['txtDate']);
 		$uneDateCreation = date("d/m/Y");
 		
 		$ok = $dao->CreerEvenement($unTitre, $uneDateCreation, $uneDateEvenement, $unContenu);
 		
 		if ($ok){
-			/*var_dump("yep");var_dump("yep");var_dump("yep");var_dump("yep");var_dump("yep");var_dump("yep");var_dump("yep");var_dump("yep");var_dump("yep");var_dump("yep");*/
+			echo 'Création de l\'évenement réussite !';
 		}
 		else{
-			/*var_dump("nop");var_dump("nop");var_dump("nop");var_dump("nop");var_dump("nop");var_dump("nop");var_dump("nop");var_dump("nop");var_dump("nop");var_dump("nop");*/
+			echo 'Un problème est survenue lors de la création de l\'évenement !';
+		}
+	} elseif (isset ($_POST['btnModifier'])){
+		$unTitre = $_POST['txtTitre'];
+		$unContenu = $_POST['txtContenu'];
+		$uneDateEvenement = Outils::convertirEnDateFR($_POST['txtDate']);
+		$uneDateCreation = date("d/m/Y");
+		
+		$ok = $dao->ModifierEvenement($unTitre, $uneDateCreation, $uneDateEvenement, $unContenu);
+		
+		if ($ok){
+			echo 'Création de l\'évenement réussite !';
+		}
+		else{
+			echo 'Un problème est survenue lors de la création de l\'évenement !';
+		}
+	} elseif (isset ($_POST['btnSupprimer'])){
+		$ok = $dao->SupprimerEvenement($unId);
+		
+		if ($ok){
+			echo 'Création de l\'évenement réussite !';
+		}
+		else{
+			echo 'Un problème est survenue lors de la création de l\'évenement !';
 		}
 	}
 }

@@ -434,14 +434,51 @@ $unMail, $uneDateNaissance, $unMailFromProfs, $unMailFromEleves);
 	
 		// liaison de la requête et de son paramètre
 		$req->bindValue("unTitre", $unTitre, PDO::PARAM_STR);
-		$req->bindValue("unContenu", $unTitre, PDO::PARAM_STR);
-		$req->bindValue("uneDateCreation", $unTitre, PDO::PARAM_STR);
-		$req->bindValue("uneDateEvenement", $unTitre, PDO::PARAM_STR);
+		$req->bindValue("unContenu", $unContenu, PDO::PARAM_STR);
+		$req->bindValue("uneDateCreation", $uneDateCreation, PDO::PARAM_STR);
+		$req->bindValue("uneDateEvenement", $uneDateEvenement, PDO::PARAM_STR);
 	
 		// extraction des données
 		$ok = $req->execute();
 		return $ok;
 	}
+	
+	
+	//modifie un événement dans la bdd
+	//renvoie un booléen V/F
+	//modifié par Florentin GREMY le 03/04/2017
+	public function ModifierEvenement($unTitre, $uneDateEvenement, $unContenu) {
+		//requête d'ajout de l'évenement dans la bdd
+		$txt_req = "UPDATE inp_evenements SET titre = ':unTitre', contenu = ':unContenu', dateEvenement = ':uneDateEvenement'";
+		$req = $this->cnx->prepare($txt_req);
+	
+		// liaison de la requête et de son paramètre
+		$req->bindValue("unTitre", $unTitre, PDO::PARAM_STR);
+		$req->bindValue("unContenu", $unContenu, PDO::PARAM_STR);
+		$req->bindValue("uneDateEvenement", $uneDateEvenement, PDO::PARAM_STR);
+	
+		// extraction des données
+		$ok = $req->execute();
+		return $ok;
+	}
+	
+	
+	//supprimer un événement dans la bdd
+	//renvoie un booléen V/F
+	//modifié par Florentin GREMY le 03/04/2017
+	public function SupprimerEvenement($unID) {
+		//requête d'ajout de l'évenement dans la bdd
+		$txt_req = "DELETE FROM inp_evenements WHERE id = :unID;
+		$req = $this->cnx->prepare($txt_req);
+	
+		// liaison de la requête et de son paramètre
+		$req->bindValue("unID", $unID, PDO::PARAM_INT);
+	
+		// extraction des données
+		$ok = $req->execute();
+		return $ok;
+	}
+	
 	
 
 	// fournit les aidedevoir dans une collection (en ne gardant que les évèenements pas encore passés)
