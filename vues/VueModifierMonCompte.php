@@ -2,7 +2,7 @@
 // Projet Annuel - Site Inpact
 // Fonction de la vue VueModifierMonCompte.php : affiche la vue permettant la modification du compte
 // Ecrit le 18/11/2016 par Erwann Bienvenu
-// Modifié le 05/12/2016 par Erwann Bienvenu
+// Modifié le 03/04/2017 par Erwann Bienvenu
 ?>
 
 <body>
@@ -12,7 +12,7 @@
 
 			<div class="row">
 		 		<div class="col-lg-8 col-lg-offset-2">
-					 <form id="contact-form" method="post" action="index.php?action=ModifierMonCompte" role="form">
+					 <form id="contact-form" method="post" action="index.php?action=ModifierMonCompte&action=modif" role="form">
                         <div class="controls">
                         	<div class="row">
 							    <div class="col-md-6">
@@ -23,13 +23,13 @@
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label for="form_name">Nom</label>
-                                        <input id="form_name" type="text" name="txtNom" class="form-control" value="<?php echo /*$unNom*/ "Nom" ; ?>" disabled="disabled">
+                                        <input id="form_name" type="text" name="txtNom" class="form-control" value="<?php echo $unUtilisateur->getNom(); ?>" disabled="disabled">
                                     </div>
                                 </div>
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label for="form_prenom">Prenom</label>
-                                        <input id="form_prenom" type="text" name="txtPrenom" class="form-control" value="<?php echo /*$unPrenom*/ "Prenom"; ?>" disabled="disabled">
+                                        <input id="form_prenom" type="text" name="txtPrenom" class="form-control" value="<?php echo $unUtilisateur->getPrenom(); ?>" disabled="disabled">
                                     </div>
                                 </div>
                             </div>
@@ -38,7 +38,7 @@
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label for="form_classe">Groupe </label>
-                                        <input id="form_classe" type="text" name="txtGroupe" class="form-control" value="<?php echo /*$unPrenom*/ "Groupe"; ?>" disabled="disabled">
+                                        <input id="form_classe" type="text" name="txtGroupe" class="form-control" value="<?php echo $unUtilisateur->getClasse(); ?>" disabled="disabled">
                                     </div>
                                 </div>
                             
@@ -46,7 +46,7 @@
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label for="form_email">Email</label>
-                                        <input id="form_email" type="email" name="txtMail" class="form-control" placeholder="Entrez votre Email *" required="required" value="<?php echo /*$unMailUtilisateur*/ "Mail@mail.mail"; ?>" data-error="Entrez une adresse mail valide.">
+                                        <input id="form_email" type="email" name="txtMail" class="form-control" placeholder="Entrez votre Email *" required="required" value="<?php echo $unUtilisateur->getMail(); ?>" data-error="Entrez une adresse mail valide.">
                                         <div class="help-block with-errors"></div>
                                     </div>
                                 </div>
@@ -58,13 +58,13 @@
                                     <div class="form-group">
                                     	<div id="ck-button">
                                        		<label for="form_MailFromProfs">Recevoir les messages des professeurs par mail</label>                                      
-                                       		<input id="form_mailFromProfs" type="checkbox" name="mailFromProfs" >
+                                       		<input id="form_mailFromProfs" type="checkbox" name="mailFromProfs" <?php if ($unUtilisateur->getMailFromEleves() == 1) {?> checked <?php };?> >
                                        		<div class="help-block with-errors"></div>
                                     	</div>
                                     	
                                     	<div id="ck-button">
                                         	<label for="form_MailFromEleves">Recevoir les messages des élèves par mail</label>                                      
-                                       		<input id="form_mailFromEleves" type="checkbox" name="mailFromEleves" >
+                                       		<input id="form_mailFromEleves" type="checkbox" name="mailFromEleves" <?php if ($unUtilisateur->getMailFromEleves() == 1) {?> checked <?php };?> >
                                         	<div class="help-block with-errors"></div>
                                     	</div>
                                	 	</div>

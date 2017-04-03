@@ -448,15 +448,17 @@ $unMail, $uneDateNaissance, $unMailFromProfs, $unMailFromEleves);
 	//modifie un événement dans la bdd
 	//renvoie un booléen V/F
 	//modifié par Florentin GREMY le 03/04/2017
-	public function ModifierEvenement($unTitre, $uneDateEvenement, $unContenu) {
+	public function ModifierEvenement($unTitre, $uneDateEvenement, $unContenu, $unId) {
 		//requête d'ajout de l'évenement dans la bdd
 		$txt_req = "UPDATE inp_evenements SET titre = ':unTitre', contenu = ':unContenu', dateEvenement = ':uneDateEvenement'";
+		$txt_req .= " WHERE id = :unId";
 		$req = $this->cnx->prepare($txt_req);
 	
 		// liaison de la requête et de son paramètre
 		$req->bindValue("unTitre", $unTitre, PDO::PARAM_STR);
 		$req->bindValue("unContenu", $unContenu, PDO::PARAM_STR);
 		$req->bindValue("uneDateEvenement", $uneDateEvenement, PDO::PARAM_STR);
+		$req->bindValue("unId", $unId, PDO::PARAM_INT);
 	
 		// extraction des données
 		$ok = $req->execute();
@@ -479,7 +481,6 @@ $unMail, $uneDateNaissance, $unMailFromProfs, $unMailFromEleves);
 		$ok = $req->execute();
 		return $ok;
 	}
-	
 	
 
 	// fournit les aidedevoir dans une collection (en ne gardant que les évèenements pas encore passés)
