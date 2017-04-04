@@ -85,7 +85,7 @@ class ReponseAideDevoirs{
 	// ----------------------------------------- Constructeur -----------------------------------------------
 	// ------------------------------------------------------------------------------------------------------
 	
-	public function AideDevoirs($unIdUtilisateur,$unIdAideDevoir, $unTitre, $unContenu, $uneDateCreation) {
+	public function ReponseAideDevoirs($unIdUtilisateur,$unIdAideDevoir, $unTitre, $unContenu, $uneDateCreation) {
 		$this->idUtilisateur = $unIdUtilisateur;
 		$this->idAideDevoir = $unIdAideDevoir;
 		$this->reponse = $uneReponse;
@@ -117,10 +117,9 @@ class ReponseAideDevoirs{
 	public function toString() {
 		$msg  = 'Reponse à l\'Aide aux devoirs : <br>';
 		$msg .= 'id l\'utilisateur : ' . $this->getIdUtilisateur() . '<br>';
-		$msg .= 'aide : ' . $this->getTitre() . '<br>';
-		$msg .= 'contenu : ' . $this->getContenu() . '<br>';
+		$msg .= 'id l\'aide au devoir : ' . $this->getIdAideDevoir() . '<br>';
+		$msg .= 'reponse : ' . $this->getReponse() . '<br>';
 		$msg .= 'date création : ' . $this->getDateCreation() . '<br>';
-		$msg .= 'idUtilisateur : ' . $this->getIdUtilisateur() . '<br>';
 	
 		return $msg;
 	}
