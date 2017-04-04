@@ -18,11 +18,30 @@ $dao = new DAO();
 $unUtilisateur = $dao->getUnUtilisateur($_SESSION['login']);
 
 
-if (isset ($_get['action'])) {
+if (isset ($_GET['modif'])) {
 	
 	$nouveauMail = $_POST['txtMail'];
-	$nouveauMailFromProfs = $_POST['mailFromProfs'];
-	$nouveauMailFromEleves = $_POST['mailFromEleves'];
+	
+	if (isset($_POST['mailFromProfs'])) {
+		
+		$nouveauMailFromProfs = 1;
+	} 
+	else {
+		
+		$nouveauMailFromProfs = 0;
+	}
+	if (isset($_POST['mailFromEleves'])) {
+		
+		$nouveauMailFromEleves = 1;
+	} 
+	else {
+		
+		$nouveauMailFromEleves = 0;
+	}
+	
+	var_dump( $_POST['form_mailFromEleves']);
+	
+	//var_dump("<br> <br> <br> <br>" + $nouveauMail + " " + $nouveauMailFromEleves + " " + $nouveauMailFromProfs + "<br>");
 	
 	$modifMail = false;
 	$modifMailFromProfs = false;
@@ -33,14 +52,15 @@ if (isset ($_get['action'])) {
 	$modifMailFromProfs = ($nouveauMailFromProfs != $unUtilisateur->getMailFromProfs()) ? true : false ;
 	$modifMailFromEleves = ($nouveauMailFromEleves != $unUtilisateur->getMailFromEleves()) ? true : false ;
 
+	
+	
 	if ($modifMail || $modifMailFromProfs || $modifMailFromEleves) {
 		
-		$dao->modifierProfil($unId,$nouveauMail,$nouveauMailFromProfs,$nouveauMailFromEleves);
+		$dao->modifierProfilUtilisateur($unUtilisateur->getId(),$nouveauMail,$nouveauMailFromProfs,$nouveauMailFromEleves);
 		
 	}
 	
 }
-
 
 include_once ('vues/VueModifierMonCompte.php');
 ?>

@@ -12,7 +12,7 @@
 
 			<div class="row">
 		 		<div class="col-lg-8 col-lg-offset-2">
-					 <form id="contact-form" method="post" action="index.php?action=ModifierMonCompte&action=modif" role="form">
+					 <form id="contact-form" method="post" action="index.php?action=ModifierMonCompte&modif=modif" role="form">
                         <div class="controls">
                         	<div class="row">
 							    <div class="col-md-6">

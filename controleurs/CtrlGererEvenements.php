@@ -23,40 +23,26 @@ if (!isset($_GET['id'])){
 		$ok = $dao->CreerEvenement($unTitre, $uneDateCreation, $uneDateEvenement, $unContenu);
 		
 		if ($ok){
-			echo 'Création de l\'évenement réussite !';
-			vardump('ajout reussie');
+			echo 'Création de l\'évenement réussie !';
+			var_dump('ajout reussie');
+			exit;
 		}
 		else{
 			echo 'Un problème est survenue lors de la création de l\'évenement !';
-			vardump('ajout pas reussie');
-		}
-	} elseif (isset ($_POST['btnModifier'])){
-		$unId = $_GET['id'];
-		$unTitre = $_POST['txtTitreModif'];
-		$unContenu = $_POST['txtContenuModif'];
-		$uneDateEvenement = Outils::convertirEnDateFR($_POST['txtDateModif']);
-		
-		$ok = $dao->ModifierEvenement($unTitre, $uneDateEvenement, $unContenu, $unId);
-		
-		if ($ok){
-			echo 'Modification de l\'évenement réussite !';
-			vardump('modif reussie');
-		}
-		else{
-			echo 'Un problème est survenue lors de la modification de l\'évenement !';
-			vardump('modif pas reussie');
+			var_dump('ajout pas reussie');
 		}
 	} elseif (isset ($_POST['btnSupprimer'])){
 		$unID = $_GET['id'];
 		$ok = $dao->SupprimerEvenement($unID);
 		
 		if ($ok){
-			vardump('suppression reussie');
-			echo 'Suppression de l\'évenement réussite !';
+			var_dump('suppression reussie');
+			echo 'Suppression de l\'évenement réussie !';
+			exit;
 		}
 		else{
 			echo 'Un problème est survenue lors de la suppression de l\'évenement !';
-			vardump('suppression pas reussie');
+			var_dump('suppression pas reussie');
 		}
 	}
 }
@@ -68,6 +54,26 @@ else{
 	$uneDateEvenement = $unEvenement->getDateEvenement();
 	$uneDateUS = Outils::convertirEnDateUS($uneDateEvenement);
 	$uneDateCreation = date("d/m/Y");
+	
+	if (isset ($_POST['btnModifier'])){
+		$unId = $_GET['id'];
+		$unTitre = $_POST['txtTitreModif'];
+		$unContenu = $_POST['txtContenuModif'];
+		$uneDateEvenement = Outils::convertirEnDateFR($_POST['txtDateModif']);
+	
+		$ok = $dao->ModifierEvenement($unTitre, $uneDateEvenement, $unContenu, $unId);
+	
+		if ($ok){
+			echo 'Modification de l\'évenement réussite !';
+			var_dump('modif reussie');
+			exit;
+		}
+		else{
+			echo 'Un problème est survenue lors de la modification de l\'évenement !';
+			var_dump($unId);
+			exit;
+		}
+	}
 }
 
 include_once ('vues/VueGererEvenements.php');
