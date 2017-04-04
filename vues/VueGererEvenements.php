@@ -8,9 +8,6 @@
 	<div id="page">
 		<header> <?php include ('Header.php'); ?> </header>
 		<?php
-		
-		
-		
 		if (isset($_GET['choix'])) {
 			$choix = $_GET['choix'];
 			if ($choix == 'creer') { ?>
@@ -48,6 +45,7 @@
                 </div>
              </form> <?php
 			} elseif ($choix == 'modifier') {
+				?> <div style="padding-bottom: 200px;"> <?php
 				foreach ($lesEvenements as $unEvenement){ ?>
 					<div class="divCliquable">
 						<div class="ui-evenement-titre">
@@ -62,8 +60,11 @@
 							<a id="DirectionModifier" href="index.php?action=GererEvenements&choix=modifierzz&id=<?php echo $unEvenement->getId(); ?>" class="btn btn-success btn-block" style="text-decoration: none; background-color: #EEAC65; border-color: #EEAC65;">Modifier</a>
 						</div>
 					</div>
-				<?php }				
+				<?php } ?>
+				</div>
+				<?php 
 			} elseif ($choix == 'supprimer') {
+				?> <div style="padding-bottom: 200px;"> <?php
 				foreach ($lesEvenements as $unEvenement){ ?>
 						<div class="divCliquable">
 							<div class="ui-evenement-titre">
@@ -75,13 +76,14 @@
 								 <br>
 							</div>
 							<div class="ui-evenement-suite" style="height: 50px; padding: 5px;">
-								<a id="btnSupprimer" href="index.php?action=GererEvenements&choix=supprimer ?>" class="btn btn-success btn-block" style="text-decoration: none; background-color: #EEAC65; border-color: #EEAC65;">Supprimer</a>
+								<a id="btnSupprimer" name="btnSupprimer" href="index.php?action=GererEvenements&choix=supprimer&id=<?php echo $unEvenement->getId(); ?>" class="btn btn-success btn-block" style="text-decoration: none; background-color: #EEAC65; border-color: #EEAC65;">Supprimer</a>
 							</div>
 						</div>
-					<?php }
-			} elseif (isset($_GET['id'])) {?>
-				
-			<form id="contact-form" method="post" action="index.php?action=GererEvenements" role="form">
+					<?php } ?>
+					</div>
+					<?php
+			} elseif (isset($_GET['id'])) {?>	
+			<form id="contact-form" method="post" action="index.php?action=GererEvenements&choix=modifier&id=<?php echo $unEvenement->getId(); ?>" role="form">
 				<div class="controls">
 					<div class="row">
 						<div class="col-md-6">
@@ -111,11 +113,9 @@
                      </div>
               	</div>
               	<div class="col-md-12">
-                  	<input id="btnModifier" style="background-color: #f5b570; border-color: #f5b570" name="btnEnvoi" type="submit" class="btn btn-success btn-block" value="Valider la modification de cet événement">
+                  	<input id="btnModifier" style="background-color: #f5b570; border-color: #f5b570" name="btnModifier" type="submit" class="btn btn-success btn-block" value="Valider la modification de cet événement">
                 </div>
-             </form> <?php
-					
-				
+             </form> <?php		
 			}
 		} else { ?>
 		<div id="page-contenu">
@@ -131,8 +131,9 @@
 					<a id="liens" href="index.php?action=GererEvenements&choix=supprimer">Supprimer un événement</a>
 				</form>
 			</div>
+		</div>
 		<?php } ?>
+		<!-- Footer dans le div principale pour qu'il soit toujours en bas de la page -->
+	<footer class="footer-bs " id="footer"> <?php include ('Footer.php'); ?> </footer>
 	</div>
-	<!-- Footer dans le div principale pour qu'il soit toujours en bas de la page -->
-	<footer class="footer-bs " id="footer"> <?php include ('Footer.php'); ?> </footer>	  
 </body>
