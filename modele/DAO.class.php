@@ -143,14 +143,14 @@ $unMail, $uneDateNaissance, $unMailFromProfs, $unMailFromEleves);
 	// modifié par Erwann Bienvenu le 04/04/2017
 	public function modifierProfilUtilisateur($unId,$unNouveauMail,$MailFromProfs,$MailFromEleves) {
 		
-		$txt_req = "UPDATE TABLE inp_utilisateurs SET mail = :newMail, mailFromProfs = :newMailFromProfs, mailFromEleves = :newMailFromEleves WHERE id = :unId";
+		$txt_req = "UPDATE inp_utilisateurs SET mail = :nouveauMail, mailFromProfs = :nouveauMailFromProfs, mailFromEleves = :nouveauMailFromEleves WHERE id = :unId";
 		
 		$req = $this->cnx->prepare($txt_req);
 		
 		// liaison de la requête et de ses paramètre
-		$req->bindValue("newMail", $unNouveauMail, PDO::PARAM_STR);
-		$req->bindValue("newMailFromProfs", $MailFromProfs, PDO::PARAM_INT);
-		$req->bindValue("mailFromEleves", $MailFromEleves, PDO::PARAM_INT);
+		$req->bindValue("nouveauMail", $unNouveauMail, PDO::PARAM_STR);
+		$req->bindValue("nouveauMailFromProfs", $MailFromProfs, PDO::PARAM_INT);
+		$req->bindValue("nouveauMailFromEleves", $MailFromEleves, PDO::PARAM_INT);
 		$req->bindValue("unId", $unId, PDO::PARAM_INT);
 		
 		

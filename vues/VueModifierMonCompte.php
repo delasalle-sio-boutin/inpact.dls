@@ -18,7 +18,9 @@
 							    <div class="col-md-6">
                                 </div>
 							</div>
-							
+							<?php  if ($message != "") { ?>
+							<div> <p style="border:2px solid <?php if ($style == 1) { echo "green;color:green;"; } else {echo "red;color:red;"; }?>;border-radius:10px;text-align:center"> <?php  echo $message;?> </p> </div>
+							<?php  } ?>
                             <div class="row">
                                 <div class="col-md-6">
                                     <div class="form-group">
@@ -58,13 +60,13 @@
                                     <div class="form-group">
                                     	<div id="ck-button">
                                        		<label for="form_MailFromProfs">Recevoir les messages des professeurs par mail</label>                                      
-                                       		<input id="form_mailFromProfs" type="checkbox" name="mailFromProfs" <?php if ($unUtilisateur->getMailFromEleves() == 1) {?> checked <?php };?> >
+                                       		<input id="form_mailFromProfs" type="checkbox" name="mailFromProfs"  <?php  if($unUtilisateur->getMailFromProfs() == 1) { echo "checked" ;}; ?> >
                                        		<div class="help-block with-errors"></div>
                                     	</div>
                                     	
                                     	<div id="ck-button">
                                         	<label for="form_MailFromEleves">Recevoir les messages des élèves par mail</label>                                      
-                                       		<input id="form_mailFromEleves" type="checkbox" name="mailFromEleves" <?php if ($unUtilisateur->getMailFromEleves() == 1) {?> checked <?php };?> >
+                                       		<input id="form_mailFromEleves" type="checkbox" name="mailFromEleves" <?php  if($unUtilisateur->getMailFromEleves() == 1) { echo "checked" ;}; ?> >
                                         	<div class="help-block with-errors"></div>
                                     	</div>
                                	 	</div>

@@ -16,7 +16,7 @@ include_once 'modele/Utilisateur.class.php';
 $dao = new DAO();
 
 $unUtilisateur = $dao->getUnUtilisateur($_SESSION['login']);
-
+$message = "";
 
 if (isset ($_GET['modif'])) {
 	
@@ -39,9 +39,6 @@ if (isset ($_GET['modif'])) {
 		$nouveauMailFromEleves = 0;
 	}
 	
-	var_dump( $_POST['form_mailFromEleves']);
-	
-	//var_dump("<br> <br> <br> <br>" + $nouveauMail + " " + $nouveauMailFromEleves + " " + $nouveauMailFromProfs + "<br>");
 	
 	$modifMail = false;
 	$modifMailFromProfs = false;
@@ -56,11 +53,22 @@ if (isset ($_GET['modif'])) {
 	
 	if ($modifMail || $modifMailFromProfs || $modifMailFromEleves) {
 		
-		$dao->modifierProfilUtilisateur($unUtilisateur->getId(),$nouveauMail,$nouveauMailFromProfs,$nouveauMailFromEleves);
-		
+	    $ok = $dao->modifierProfilUtilisateur($unUtilisateur->getId(),$nouveauMail,$nouveauMailFromProfs,$nouveauMailFromEleves); 
+	    
+	    if ($ok) {
+	    	$style = 1;
+	    	$message = "Modification effectuée !";
+	    }
+	    else {
+	    	$style = 2;
+	    	$message = "Une erreur est survenue.";
+	    }
+	    
 	}
 	
 }
+
+$unUtilisateur = $dao->getUnUtilisateur($_SESSION['login']);
 
 include_once ('vues/VueModifierMonCompte.php');
 ?>
