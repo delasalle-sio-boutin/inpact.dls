@@ -21,6 +21,9 @@
 // getUnUtilisateurId($unId) : Utilisateur
 // 
 
+// modifierProfilUtilisateur($unId,$unNouveauMail,$MailFromProfs,$MailFromEleves) : Boolean
+//
+
 // getUnEvenement($unId) : Evenement
 // 
 
@@ -134,6 +137,28 @@ $unMail, $uneDateNaissance, $unMailFromProfs, $unMailFromEleves);
 			return $unUtilisateur;
 		}
 	}
+	
+	// Met à jour le profil d'un utilisateur grâce à son ID et ses nouveaux paramètres 
+	// Fournit un booléen pour savoir si la requête s'est correctement déroulée
+	// modifié par Erwann Bienvenu le 04/04/2017
+	public function modifierProfilUtilisateur($unId,$unNouveauMail,$MailFromProfs,$MailFromEleves) {
+		
+		$txt_req = "UPDATE TABLE inp_utilisateurs SET mail = :newMail, mailFromProfs = :newMailFromProfs, mailFromEleves = :newMailFromEleves WHERE id = :unId";
+		
+		$req = $this->cnx->prepare($txt_req);
+		
+		// liaison de la requête et de ses paramètre
+		$req->bindValue("newMail", $unNouveauMail, PDO::PARAM_STR);
+		$req->bindValue("newMailFromProfs", $MailFromProfs, PDO::PARAM_INT);
+		$req->bindValue("mailFromEleves", $MailFromEleves, PDO::PARAM_INT);
+		$req->bindValue("unId", $unId, PDO::PARAM_INT);
+		
+		
+		$ok = $req->execute();
+		
+		return $ok;
+	}
+	
 	
 	// fournit un objet Utilisateur à partir de son id
 	// fournit la valeur null si l'id n'existe pas ou est incorrect
