@@ -418,7 +418,7 @@ a#msgRetour{
 	margin: 6px;
 }
 
-a#liens {
+button.liens, a.liens {
 	/* police, couleur et alignement du texte, style du lien */
 	color: black;
 	text-align: center;
@@ -553,13 +553,19 @@ div#recap{
 }
 
 div#reponse{
-	width: 40%;
-	margin: 0 auto;
+	margin: 0px 20px;
 	border: 1px solid;
 }
 
-textarea#reponseMessage{
-	max-width: 50%;
+textarea#txtReponse{
+	width: 90%;
+	max-width: 90%;
+	height: 70px;
+	max-height: 100px;
+}
+
+button#btnValider{
+	margin: 5px;
 }
 
 
@@ -613,7 +619,7 @@ textarea#reponseMessage{
 	border-style: solid;
     border-width: 3px;
     background: rgba(245,181,112, 0.9);
-	margin: 15px;	
+	margin: 15px;
 }
 
 a#divCliquable{

@@ -32,7 +32,7 @@
 				if (!empty ($leMenu)){
 					$i=0;
 					foreach ($leMenu as $unMenu){ ?>
-						<a id="liens" href="index.php?action=MessagesPrives&choix=<?php echo $lesLiens[$i] ?>">
+						<a class="liens" href="index.php?action=MessagesPrives&choix=<?php echo $lesLiens[$i] ?>">
 								<?php echo $unMenu  . " " . $lesNombres[$i]; ?>
 						</a>
 						<?php $i+=1;
@@ -101,47 +101,39 @@
 							$nomFrom = $unUtilisateurFrom->getNom();
 							$prenomFrom = $unUtilisateurFrom->getPrenom();
 							?>
-							<div id="recap">
-								<div id="message">
-									<b>Message de <?php echo $nomFrom ?> <?php echo $prenomFrom ?>
-									<div id="dateMessage"> <?php echo $leMessageReponse->getDateMessage() ?></div></b>
+							<form id="repondre-form" method="post" action="index.php?action=MessagesPrives&choix=Repondre&id=11" role="form">
+								<div id="recap">
+									<div id="message">
+										<b>Message de <?php echo $nomFrom ?> <?php echo $prenomFrom ?>
+										<div id="dateMessage"> <?php echo $leMessageReponse->getDateMessage() ?></div></b>
+									</div>
+									
+									<div id="message">
+										Objet : <?php echo $leMessageReponse->getTitre() ?>
+									</div>
+									
+									<div id="message">
+										Message : <?php echo $leMessageReponse->getContenu() ?>
+									</div>
 								</div>
 								
-								<div id="message">
-									Objet : <?php echo $leMessageReponse->getTitre() ?>
+								<div id="reponse">
+									<div id="message">
+										<b>Répondre à <?php echo $nomFrom ?> <?php echo $prenomFrom ?></b>
+									</div>
+									
+									<div id="message">
+										Objet : <br><input type=text style="width: 90%" id="txtObjet" required value="<?php echo $unObjet ?>">
+									</div>
+									
+									<div id="message">
+										Message : <br><textarea id="txtReponse" rows="10" cols="45" required value="<?php echo $unContenu ?>"></textarea>
+									</div>
+									<br>
+									<button type="submit" id="btnValider" class="liens">Valider</a>
+									<br>
 								</div>
-								
-								<div id="message">
-									Message : <?php echo $leMessageReponse->getContenu() ?>
-								</div>
-							</div>
-							
-							<div id="reponse">
-								<div id="message">
-									<b>Répondre à <?php echo $nomFrom ?> <?php echo $prenomFrom ?></b>
-								</div>
-							
-								<div id="message">
-									<table style=" margin: 0;">
-										<tr>
-											<td style="width: 20%">
-												Objet :
-											</td>
-											<td style="width: 80%; text-align: left;">
-												<input type=text value="<?php echo $unObjet ?>">
-											</td>
-										</tr>
-										<tr> 
-											<td style="width: 20%">
-												Message :
-											</td>
-											<td style="width: 80%; text-align: left;">
-												<textarea id="reponseMessage" rows="10" cols="50" max-cols= "50" value="<?php echo $unContenu ?>"></textarea>
-											</td>
-										</tr>
-									</table>
-								</div>
-							</div>
+							</form>
 							<?php
 						}
 					}
