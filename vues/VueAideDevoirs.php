@@ -22,19 +22,31 @@
 	 						
 	 							 <?php echo $uneAideDevoirs->getTitre() ; ?> </br>
 	 							  <?php echo $uneAideDevoirs->getContenu(); ?> </br>
-	 							 <?php echo  $uneAideDevoirs->getDateCreation()
+	 							 <?php echo  $uneAideDevoirs->getDateCreation();
+	 							
+	 							 if ($uneAideDevoir->getId() == $lesReponsesAideDevoirs->getIdAideDevoir()) 
+	 							 { 
+	 							 
 	 							 foreach ($lesReponsesAideDevoirs as $uneReponseAideDevoirs){ ?>
 	 							 
-	 							 <?php echo $uneReponseAideDesvoirs -> getReponse();?>
+	 							 <?php echo $uneReponseAideDevoirs -> getReponse();}
+	 							 
+	 							 
+	 							 } else 
+	 							 	
+	 							 {}
+	 							 ?>
 	 							 	
 	 							 	
-	 							 }
+	 							
 	 							 
 	 							  </br> 
 	 							 
 	 							 
 	 							 
-	 							 </br> <?php } ?> 
+	 							 </br> <?php } 
+
+									 ?> 
 	 					
 	 	
 	 	
