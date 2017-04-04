@@ -131,13 +131,28 @@ switch($choix){
 				}
 			}
 			/* Si il s'agit d'un de ses messages reçu, il peut y répondre */
-			if ($ok){
-				$leMessageReponse = $dao->getUnMessage($idMessage);
-				$unObjet = "";
-				$unContenu = "";
+			if (!$ok){
+				header ("Location: index.php?action=MessagesPrives");
 			}
 			else{
-				header ("Location: index.php?action=MessagesPrives");
+				/* Si on n'a pas cliqué sur le bouton valider */
+				if (!isset ($_POST['btnValider'])){
+					$leMessageReponse = $dao->getUnMessage($idMessage);
+					$unObjet = "";
+					$unContenu = "";
+				}
+				
+				/* Si on a cliqué sur le bouton valider */
+				else{
+					$idMessage = 0; // autoincrement
+					$idFrom = $unUtilisateur->getId();
+					$idTo = $unUtilisateur->getId();
+					$dateMessage = date("d/m/Y");
+					$unTitre = $_POST['txtTitre'];
+					$unContenu = $_POST['txtMessage'];
+					//$ok = $dao->envoyerMessage($idMessage, $idFrom, $idTo, $dateMessage, $unTitre, $unContenu);
+					var_dump($idMessage, $idFrom, $idTo, $dateMessage, $unTitre, $unContenu);var_dump($idMessage, $idFrom, $idTo, $dateMessage, $unTitre, $unContenu);var_dump($idMessage, $idFrom, $idTo, $dateMessage, $unTitre, $unContenu);
+				}
 			}
 			break;
 		}
