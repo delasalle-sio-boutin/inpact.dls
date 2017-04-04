@@ -15,8 +15,8 @@
 		?>
 		<h1>Aides aux devoirs</h1>
 		<?php 
-		if (isset($_GET['id'])) {
-		$idAideDevoirs = $_GET['id'];
+		/*if (isset($_GET['id'])) {
+		$idAideDevoirs = $_GET['id'];*/
 		
 	 	foreach ($lesAideDevoirs as $uneAideDevoirs){ ?>
 	 					
@@ -43,7 +43,7 @@
 	 							 
 	 							 </br> <?php }
 									
-								}
+								//}
 
 									 ?> 
 	 					
