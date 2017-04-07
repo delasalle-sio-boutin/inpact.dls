@@ -5,7 +5,7 @@
 //                             Cette classe fournit des méthodes d'accès à la bdd inpact
 //                                                 Elle utilise l'objet PDO
 //                       Auteur : Killian BOUTIN, Erwann BIENVENU, Tony BRAY, Florentin GREMY, Lucie QUEREL, Corentin CLEMENT, Sophie AUDIGOU
-//												Dernière modification : 23/11/2016
+//												Dernière modification : 08/04/2017
 // -------------------------------------------------------------------------------------------------------------------------
 
 // ATTENTION : la position des méthodes dans ce fichier est identique à la position des tests dans la classe DAO.test.php
@@ -48,8 +48,19 @@
 // marquerCommeLu($unId) : Boolean
 // 
 
-// supprimerUnMessage($unId) : Boolean
+// envoyerMessage($unMessage);
+//
+
+// supprimerUnMessageFrom($unIdMessage) : Boolean
 // 
+
+// supprimerUnMessageTo($unIdMessage) : Boolean
+//
+
+// getLesProfs() : Professeurs
+//
+
+// addVisite() : Boolean
 
 // certaines méthodes nécessitent les fichiers suivants :
 include_once ('Utilisateur.class.php');
@@ -407,8 +418,6 @@ $unMail, $uneDateNaissance, $unMailFromProfs, $unMailFromEleves);
 		return $lesEvenements;
 	}
 	
-	
-	
 	// fournit les Evenements dans une collection (tous les évènements)
 	// renvoie une collection d'evenements
 	// modifié par Florentin le 03/03/2017
@@ -591,38 +600,38 @@ $unMail, $uneDateNaissance, $unMailFromProfs, $unMailFromEleves);
 	// modifié par Sophie Audigou le 24/03/2017
 	public function getLesReponsesAideDevoirs($unIdAideDevoirs)
 	{	// préparation de la requête d'extraction des inscriptions non annulées
-	$txt_req = "SELECT *";
-	$txt_req .= " FROM inp_reponseaideDevoirs";
-	$txt_req .= " ORDER BY dateCreation ";
-	
-	$req = $this->cnx->prepare($txt_req);
-	
-	// extraction des données
-	$req->execute();
-	$uneLigne = $req->fetch(PDO::FETCH_OBJ);
-	
-	// construction d'une collection d'objets Inscription
-	$lesReponsesAideDevoirs = array();
-	
-	// tant qu'une ligne est trouvée :
-	while ($uneLigne)
-	{	// création d'un objet Evenement
-	$unIdUtilisateur = utf8_encode($uneLigne->idUtilisateur);
-	$unIdAideDevoirs = utf8_encode($uneLigne->idAideDevoirs);
-	$uneReponse = utf8_encode($uneLigne->reponse);
-	$uneDateCreation = utf8_encode($uneLigne->dateCreation);
-
-	
-	$uneReponseAideDevoir = new ReponseAideDevoirs($unIdUtilisateur,$unIdAideDevoirs, $uneReponse, $uneDateCreation );
-	// ajout de l'inscription à la collection
-	$lesReponsesAideDevoirs[] = $uneReponseAideDevoir;
-	// extraction de la ligne suivante
-	$uneLigne = $req->fetch(PDO::FETCH_OBJ);
-	}
-	// libère les ressources du jeu de données
-	$req->closeCursor();
-	
-	return $lesReponsesAideDevoirs;
+		$txt_req = "SELECT *";
+		$txt_req .= " FROM inp_reponseaideDevoirs";
+		$txt_req .= " ORDER BY dateCreation ";
+		
+		$req = $this->cnx->prepare($txt_req);
+		
+		// extraction des données
+		$req->execute();
+		$uneLigne = $req->fetch(PDO::FETCH_OBJ);
+		
+		// construction d'une collection d'objets Inscription
+		$lesReponsesAideDevoirs = array();
+		
+		// tant qu'une ligne est trouvée :
+		while ($uneLigne)
+		{	// création d'un objet Evenement
+			$unIdUtilisateur = utf8_encode($uneLigne->idUtilisateur);
+			$unIdAideDevoirs = utf8_encode($uneLigne->idAideDevoirs);
+			$uneReponse = utf8_encode($uneLigne->reponse);
+			$uneDateCreation = utf8_encode($uneLigne->dateCreation);
+		
+			
+			$uneReponseAideDevoir = new ReponseAideDevoirs($unIdUtilisateur,$unIdAideDevoirs, $uneReponse, $uneDateCreation );
+			// ajout de l'inscription à la collection
+			$lesReponsesAideDevoirs[] = $uneReponseAideDevoir;
+			// extraction de la ligne suivante
+			$uneLigne = $req->fetch(PDO::FETCH_OBJ);
+		}
+		// libère les ressources du jeu de données
+		$req->closeCursor();
+		
+		return $lesReponsesAideDevoirs;
 	}
 	
 	// fournit les reponse de aidedevoirs dans une collection (tous les ReponseAideDevoirs)
@@ -649,7 +658,6 @@ $unMail, $uneDateNaissance, $unMailFromProfs, $unMailFromEleves);
 		$unIdAideDevoir = utf8_encode($uneLigne->idAideDevoir);
 		$uneReponse = utf8_encode($uneLigne->reponse);
 		$uneDateCreation = utf8_encode($uneLigne->dateCreation);
-
 	
 		$uneAideDevoirs = new AideDevoirs($unIdUtilisateur, $uneAideDevoirs, $uneReponse, $uneDateCreation);
 		// ajout de l'inscription à la collection
@@ -692,8 +700,10 @@ $unMail, $uneDateNaissance, $unMailFromProfs, $unMailFromEleves);
 			$unTitre = utf8_encode($uneLigne->titre);
 			$unContenu = utf8_encode($uneLigne->contenu);
 			$unLu = utf8_encode($uneLigne->lu);
+			$afficherFrom = utf8_encode($uneLigne->afficherFrom);
+			$afficherTo = utf8_encode($uneLigne->afficherTo);
 			
-			$unMessage = new Message($unId, $unIdFrom, $unIdTo, $uneDateMessage, $unTitre, $unContenu, $unLu);
+			$unMessage = new Message($unId, $unIdFrom, $unIdTo, $uneDateMessage, $unTitre, $unContenu, $unLu, $afficherFrom, $afficherTo);
 			// ajout de l'inscription à la collection
 			$lesMessages[] = $unMessage;
 			// extraction de la ligne suivante
@@ -713,6 +723,9 @@ $unMail, $uneDateNaissance, $unMailFromProfs, $unMailFromEleves);
 		$txt_req = "SELECT *";
 		$txt_req .= " FROM inp_messages";
 		$txt_req .= " WHERE idTo = :unIdTo";
+		$txt_req .= " AND afficherTo = '1'";
+		// On affiche les messages non lu, puis dans l'ordre décroissant de la date et de l'id pour avoir le dernier message reçu en premier
+		$txt_req .= " ORDER BY lu ASC, STR_TO_DATE(dateMessage, '%d/%m/%Y') DESC, idMessage DESC";
 		$req = $this->cnx->prepare($txt_req);
 		
 		// liaison de la requête et de son paramètre
@@ -739,8 +752,10 @@ $unMail, $uneDateNaissance, $unMailFromProfs, $unMailFromEleves);
 				$unTitre = utf8_encode($uneLigne->titre);
 				$unContenu = utf8_encode($uneLigne->contenu);
 				$unLu = utf8_encode($uneLigne->lu);
+				$afficherFrom = utf8_encode($uneLigne->afficherFrom);
+				$afficherTo = utf8_encode($uneLigne->afficherTo);
 					
-				$unMessage = new Message($unId, $unIdFrom, $unIdTo, $uneDateMessage, $unTitre, $unContenu, $unLu);
+				$unMessage = new Message($unId, $unIdFrom, $unIdTo, $uneDateMessage, $unTitre, $unContenu, $unLu, $afficherFrom, $afficherTo);
 				// ajout de l'inscription à la collection
 				$lesMessages[] = $unMessage;
 				// extraction de la ligne suivante
@@ -761,6 +776,9 @@ $unMail, $uneDateNaissance, $unMailFromProfs, $unMailFromEleves);
 		$txt_req = "SELECT *";
 		$txt_req .= " FROM inp_messages";
 		$txt_req .= " WHERE idFrom = :unIdFrom";
+		$txt_req .= " AND afficherFrom = '1'";
+		// On affiche les messages dans l'ordre décroissant de la date et de l'id pour avoir le dernier message envoyé en premier
+		$txt_req .= " ORDER BY STR_TO_DATE(dateMessage, '%d/%m/%Y') DESC, idMessage DESC";
 		$req = $this->cnx->prepare($txt_req);
 		
 		// liaison de la requête et de son paramètre
@@ -788,8 +806,10 @@ $unMail, $uneDateNaissance, $unMailFromProfs, $unMailFromEleves);
 				$unTitre = utf8_encode($uneLigne->titre);
 				$unContenu = utf8_encode($uneLigne->contenu);
 				$unLu = utf8_encode($uneLigne->lu);
+				$afficherFrom = utf8_encode($uneLigne->afficherFrom);
+				$afficherTo = utf8_encode($uneLigne->afficherTo);
 					
-				$unMessage = new Message($unId, $unIdFrom, $unIdTo, $uneDateMessage, $unTitre, $unContenu, $unLu);
+				$unMessage = new Message($unId, $unIdFrom, $unIdTo, $uneDateMessage, $unTitre, $unContenu, $unLu, $afficherFrom, $afficherTo);
 				// ajout de l'inscription à la collection
 				$lesMessages[] = $unMessage;
 				// extraction de la ligne suivante
@@ -828,8 +848,10 @@ $unMail, $uneDateNaissance, $unMailFromProfs, $unMailFromEleves);
 		$unTitre = utf8_encode($uneLigne->titre);
 		$unContenu = utf8_encode($uneLigne->contenu);
 		$unLu = utf8_encode($uneLigne->lu);
+		$afficherFrom = utf8_encode($uneLigne->afficherFrom);
+		$afficherTo = utf8_encode($uneLigne->afficherTo);
 		
-		$unMessage = new Message($unId, $unIdFrom, $unIdTo, $uneDateMessage, $unTitre, $unContenu, $unLu);
+		$unMessage = new Message($unId, $unIdFrom, $unIdTo, $uneDateMessage, $unTitre, $unContenu, $unLu, $afficherFrom, $afficherTo);
 		
 		// libère les ressources du jeu de données
 		$req->closeCursor();
@@ -857,11 +879,54 @@ $unMail, $uneDateNaissance, $unMailFromProfs, $unMailFromEleves);
 	
 	// fournit les infos d'un message en fonction de l'id
 	// renvoie une collection de messages
-	// modifié par Killian BOUTIN le 01/03/2017
-	public function supprimerUnMessage($unIdMessage)
+	// modifié par Killian BOUTIN le 08/04/2017
+	public function envoyerUnMessage($unMessage)
 	{	// préparation de la requête d'extraction des inscriptions non annulées
-		$txt_req = "DELETE";
-		$txt_req .= " FROM inp_messages";
+		$txt_req = "INSERT INTO inp_messages VALUES";
+		$txt_req .= " (:id, :idFrom, :idTo, :dateMessage, :titre, :contenu, :lu, :afficherFrom, :afficherTo);";
+		$req = $this->cnx->prepare($txt_req);
+		
+		// liaison de la requête et de son paramètre
+		$req->bindValue("id", $unMessage->getId(), PDO::PARAM_INT);
+		$req->bindValue("idFrom", $unMessage->getIdFrom(), PDO::PARAM_INT);
+		$req->bindValue("idTo", $unMessage->getIdTo(), PDO::PARAM_INT);
+		$req->bindValue("dateMessage", $unMessage->getDateMessage(), PDO::PARAM_STR);
+		$req->bindValue("titre", utf8_decode($unMessage->getTitre()), PDO::PARAM_STR);
+		$req->bindValue("contenu", utf8_decode($unMessage->getContenu()), PDO::PARAM_STR);
+		$req->bindValue("lu", utf8_decode($unMessage->getLu()), PDO::PARAM_STR);
+		$req->bindValue("afficherFrom", utf8_decode($unMessage->getAfficherFrom()), PDO::PARAM_STR);
+		$req->bindValue("afficherTo", utf8_decode($unMessage->getAfficherTo()), PDO::PARAM_STR);
+		
+		// extraction des données
+		$ok = $req->execute();
+		return $ok;
+	}
+	
+// supprime un message en affichage d'un message envoyés
+	// renvoie une collection de messages
+	// modifié par Killian BOUTIN le 01/03/2017
+	public function supprimerUnMessageFrom($unIdMessage)
+	{	// préparation de la requête d'extraction des inscriptions non annulées
+		$txt_req = "UPDATE inp_messages";
+		$txt_req .= " SET afficherFrom = '0'";
+		$txt_req .= " WHERE idMessage = :unIdMessage";
+		$req = $this->cnx->prepare($txt_req);
+		
+		// liaison de la requête et de son paramètre
+		$req->bindValue("unIdMessage", $unIdMessage, PDO::PARAM_INT);
+		
+		// extraction des données
+		$ok = $req->execute();
+		return $ok;
+	}
+	
+	// supprime un message en affichage d'un message envoyés
+	// renvoie une collection de messages
+	// modifié par Killian BOUTIN le 01/03/2017
+	public function supprimerUnMessageTo($unIdMessage)
+	{	// préparation de la requête d'extraction des inscriptions non annulées
+		$txt_req = "UPDATE inp_messages";
+		$txt_req .= " SET afficherTo = '0'";
 		$txt_req .= " WHERE idMessage = :unIdMessage";
 		$req = $this->cnx->prepare($txt_req);
 		
@@ -889,16 +954,15 @@ $unMail, $uneDateNaissance, $unMailFromProfs, $unMailFromEleves);
 		// tant qu'une ligne est trouvée :
 		while ($uneLigne)
 		{	// création d'un objet Evenement
-		$unId = utf8_encode($uneLigne->id);
-		$unNom = utf8_encode($uneLigne->nom);
-		$uneCivilite = utf8_encode($uneLigne->civilite);
-		
-		
-		$unProf = new Professeur($unId, $unNom, $uneCivilite);
-		// ajout de l'inscription à la collection
-		$lesProfs[] = $unProf;
-		// extraction de la ligne suivante
-		$uneLigne = $req->fetch(PDO::FETCH_OBJ);
+			$unId = utf8_encode($uneLigne->id);
+			$unNom = utf8_encode($uneLigne->nom);
+			$uneCivilite = utf8_encode($uneLigne->civilite);
+			
+			$unProf = new Professeur($unId, $unNom, $uneCivilite);
+			// ajout de l'inscription à la collection
+			$lesProfs[] = $unProf;
+			// extraction de la ligne suivante
+			$uneLigne = $req->fetch(PDO::FETCH_OBJ);
 		}
 		// libère les ressources du jeu de données
 		$req->closeCursor();

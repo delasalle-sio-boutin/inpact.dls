@@ -44,6 +44,22 @@ div#page{
 	bottom: 0;
 }
 
+p#unResultat{
+	border: 2px solid #f5b570;
+	width: 50%;
+	margin: 0 auto;
+	text-align: center;
+	
+	/* coins arrondis en haut uniquement */
+	-moz-border-radius: 15px;
+	-webkit-border-radius: 15px;
+	-o-border-radius: 15px;
+	-ms-border-radius: 15px;
+	-khtml-border-radius: 15px;
+	border-radius: 15px;
+	
+}
+
 /* ------------------------------------------------------------------ MISE EN FORME DES PAGES "connexion" ; "..." ------------------------------------------------------------------ */
 
 div#page-contenu{
@@ -418,7 +434,7 @@ a#msgRetour{
 	margin: 6px;
 }
 
-button.liens, a.liens {
+input.liens, a.liens {
 	/* police, couleur et alignement du texte, style du lien */
 	color: black;
 	text-align: center;
@@ -529,24 +545,6 @@ div#dateMessage{
 	float: right;
 }
 
-a#repondreMessage{
-	float: right;
-	text-decoration: none;
-	color: black;
-	font-weight: bold;
-	border: 2px solid black;
-	padding: 3px;
-	background-color: f5b570;
-	
-	/* coins arrondis */
-	-moz-border-radius: 10px;
-	-webkit-border-radius: 10px;
-	-o-border-radius: 10px;
-	-ms-border-radius: 10px;
-	-khtml-border-radius: 10px;
-	border-radius: 20px;
-}
-
 div#recap{
 	margin: 20px;
 	border: 1px solid;
@@ -557,15 +555,11 @@ div#reponse{
 	border: 1px solid;
 }
 
-textarea#txtReponse{
+textarea#txtMessage{
 	width: 90%;
 	max-width: 90%;
 	height: 70px;
 	max-height: 100px;
-}
-
-button#btnValider{
-	margin: 5px;
 }
 
 

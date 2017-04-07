@@ -20,12 +20,14 @@ class Message
 	private $titre; 			// titre
 	private $contenu;			// contenu
 	private $lu; 				// 0 si non lu, 1 si lu
+	private $afficherFrom;		// 0 si non effacé par le recepteur, 1 si oui
+	private $afficherTo;		// 0 si non effacé par l'envoyeur, 1 si oui
 	
 	// ------------------------------------------------------------------------------------------------------
 	// ----------------------------------------- Constructeur -----------------------------------------------
 	// ------------------------------------------------------------------------------------------------------
 	
-	public function Message($unId, $unIdFrom, $unIdTo, $uneDateMessage, $unTitre, $unContenu, $unLu) {
+	public function Message($unId, $unIdFrom, $unIdTo, $uneDateMessage, $unTitre, $unContenu, $unLu, $afficherFrom, $afficherTo) {
 		$this->id = $unId;
 		$this->idFrom = $unIdFrom;
 		$this->idTo = $unIdTo;
@@ -33,6 +35,8 @@ class Message
 		$this->titre = $unTitre;
 		$this->contenu = $unContenu;
 		$this->lu = $unLu;
+		$this->afficherFrom = $afficherFrom;
+		$this->afficherTo = $afficherTo;
 	}
 
 	// ------------------------------------------------------------------------------------------------------
@@ -59,6 +63,12 @@ class Message
 	
 	public function getLu() {return $this->lu;}
 	public function setLu($unLu) {$this->lu = $unLu;}
+	
+	public function getAfficherFrom()	{return $this->afficherFrom;}
+	public function setAfficherFrom($afficherFrom) {$this->afficherFrom = $afficherFrom;}
+	
+	public function getAfficherTo()	{return $this->afficherTo;}
+	public function setAfficherTo($unIdTo) {$this->afficherTo = $afficherTo;}
 
 	// ------------------------------------------------------------------------------------------------------
 	// -------------------------------------- Méthodes d'instances ------------------------------------------
@@ -73,6 +83,8 @@ class Message
 		$msg .= 'titre : ' . $this->getTitre() . '<br>';
 		$msg .= 'contenu : ' . $this->getContenu() . '<br>';
 		$msg .= 'lu : ' . $this->getLu() . '<br>';
+		$msg .= 'afficher from : ' . $this->getAfficherFrom() . '<br>';
+		$msg .= 'afficher to : ' . $this->getAfficherTo() . '<br>';
 		
 		return $msg;
 	}
