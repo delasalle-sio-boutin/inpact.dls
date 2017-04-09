@@ -8,7 +8,7 @@
 	<div id="page">
 		<header> <?php include ('Header.php'); ?> </header>
 		<?php
-		if (isset($_GET['choix'])) {
+		if (isset($_GET['choix'])) { //test
 			$choix = $_GET['choix'];
 			if ($choix == 'creer') { ?>
 			<form id="contact-form" method="post" action="index.php?action=GererEvenements&choix=creer" role="form">
