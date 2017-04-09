@@ -484,7 +484,7 @@ $unMail, $uneDateNaissance, $unMailFromProfs, $unMailFromEleves);
 	//modifié par Florentin GREMY le 03/04/2017
 	public function ModifierEvenement($unTitre, $uneDateEvenement, $unContenu, $unId) {
 		//requête d'ajout de l'évenement dans la bdd
-		$txt_req = "UPDATE inp_evenements SET titre = ':unTitre', contenu = ':unContenu', dateEvenement = ':uneDateEvenement'";
+		$txt_req = "UPDATE inp_evenements SET titre = :unTitre, contenu = :unContenu, dateEvenement = :uneDateEvenement";
 		$txt_req .= " WHERE id = :unId";
 		$req = $this->cnx->prepare($txt_req);
 	

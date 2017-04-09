@@ -31,20 +31,7 @@ if (!isset($_GET['id'])){
 			echo 'Un problème est survenue lors de la création de l\'évenement !';
 			var_dump('ajout pas reussie');
 		}
-	} elseif (isset ($_POST['btnSupprimer'])){
-		$unID = $_GET['id'];
-		$ok = $dao->SupprimerEvenement($unID);
-		
-		if ($ok){
-			var_dump('suppression reussie');
-			echo 'Suppression de l\'évenement réussie !';
-			exit;
-		}
-		else{
-			echo 'Un problème est survenue lors de la suppression de l\'évenement !';
-			var_dump('suppression pas reussie');
-		}
-	}
+	} 
 }
 /* Modification */
 else{
@@ -66,12 +53,25 @@ else{
 		if ($ok){
 			echo 'Modification de l\'évenement réussite !';
 			var_dump('modif reussie');
-			exit;
+			
 		}
 		else{
 			echo 'Un problème est survenue lors de la modification de l\'évenement !';
-			var_dump($unId);
+			var_dump('modif ratée');
+			
+		}
+	} elseif (isset ($_POST['btnSupprimer'])){
+		$unID = $_GET['id'];
+		$ok = $dao->SupprimerEvenement($unID);
+		
+		if ($ok){
+			var_dump('suppression reussie');
+			echo 'Suppression de l\'évenement réussie !';
 			exit;
+		}
+		else{
+			echo 'Un problème est survenue lors de la suppression de l\'évenement !';
+			var_dump('suppression pas reussie');
 		}
 	}
 }

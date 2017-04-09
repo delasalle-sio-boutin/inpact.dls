@@ -7,8 +7,9 @@
 <body>
 	<div id="page">
 		<header> <?php include ('Header.php'); ?> </header>
+		<div id="main">
 		<?php
-		if (isset($_GET['choix'])) { //test
+		if (isset($_GET['choix'])) {
 			$choix = $_GET['choix'];
 			if ($choix == 'creer') { ?>
 			<form id="contact-form" method="post" action="index.php?action=GererEvenements&choix=creer" role="form">
@@ -76,7 +77,7 @@
 								 <br>
 							</div>
 							<div class="ui-evenement-suite" style="height: 50px; padding: 5px;">
-								<a id="btnSupprimer" name="btnSupprimer" href="index.php?action=GererEvenements&choix=supprimer&id=<?php echo $unEvenement->getId(); ?>" class="btn btn-success btn-block" style="text-decoration: none; background-color: #EEAC65; border-color: #EEAC65;">Supprimer</a>
+								<a id="btnSupprimer" name="btnSupprimer" href="index.php?action=GererEvenements&choix=supprimerzz&name=<?php echo $unEvenement->getId(); ?>" class="btn btn-success btn-block" style="text-decoration: none; background-color: #EEAC65; border-color: #EEAC65;">Supprimer</a>
 							</div>
 						</div>
 					<?php } ?>
@@ -116,6 +117,20 @@
                   	<input id="btnModifier" style="background-color: #f5b570; border-color: #f5b570" name="btnModifier" type="submit" class="btn btn-success btn-block" value="Valider la modification de cet événement">
                 </div>
              </form> <?php		
+			} elseif (isset($_GET['name'])) {?>	
+			<form id="contact-form" method="post" action="index.php?action=GererEvenements&choix=supprimer&name=<?php echo $unEvenement->getId(); ?>" role="form">
+				<div class="controls">
+					<div class="row">
+						<div class="col-md-6">
+							Etes-vous sure de vouloir supprimer cet événement ?
+						</div>
+					</div>
+				</div>
+				
+              	<div class="col-md-12">
+                  	<input id="btnSupprimer" style="background-color: #f5b570; border-color: #f5b570" name="btnSupprimer" type="submit" class="btn btn-success btn-block" value="Valider la suppression de cet événement">
+                </div>
+             </form> <?php		
 			}
 		} else { ?>
 		<div id="page-contenu">
@@ -126,13 +141,14 @@
 			</div>
 			<div id="page-contenu-body">
 				<form name="form1" id="form1" action="index.php?action=GererEvenements" method="post">
-					<a id="liens" href="index.php?action=GererEvenements&choix=creer">Créer un nouvel événement</a>
-					<a id="liens" href="index.php?action=GererEvenements&choix=modifier">Modifier un événement</a>
-					<a id="liens" href="index.php?action=GererEvenements&choix=supprimer">Supprimer un événement</a>
+					<a class="liens" href="index.php?action=GererEvenements&choix=creer">Créer un nouvel événement</a>
+					<a class="liens" href="index.php?action=GererEvenements&choix=modifier">Modifier un événement</a>
+					<a class="liens" href="index.php?action=GererEvenements&choix=supprimer">Supprimer un événement</a>
 				</form>
 			</div>
 		</div>
 		<?php } ?>
+		</div>
 		<!-- Footer dans le div principale pour qu'il soit toujours en bas de la page -->
 	<footer class="footer-bs " id="footer"> <?php include ('Footer.php'); ?> </footer>
 	</div>
