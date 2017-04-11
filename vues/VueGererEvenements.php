@@ -77,13 +77,13 @@
 								 <br>
 							</div>
 							<div class="ui-evenement-suite" style="height: 50px; padding: 5px;">
-								<a id="btnSupprimer" name="btnSupprimer" href="index.php?action=GererEvenements&choix=supprimerzz&name=<?php echo $unEvenement->getId(); ?>" class="btn btn-success btn-block" style="text-decoration: none; background-color: #EEAC65; border-color: #EEAC65;">Supprimer</a>
+								<a id="DirectionSupprimer" href="index.php?action=GererEvenements&choix=supprimerzz&id=<?php echo $unEvenement->getId(); ?>" class="btn btn-success btn-block" style="text-decoration: none; background-color: #EEAC65; border-color: #EEAC65;">Supprimer</a>
 							</div>
 						</div>
 					<?php } ?>
 					</div>
 					<?php
-			} elseif (isset($_GET['id'])) {?>	
+			} elseif ($choix == 'modifierzz' && isset($_GET['id'])) {?>	
 			<form id="contact-form" method="post" action="index.php?action=GererEvenements&choix=modifier&id=<?php echo $unEvenement->getId(); ?>" role="form">
 				<div class="controls">
 					<div class="row">
@@ -117,16 +117,19 @@
                   	<input id="btnModifier" style="background-color: #f5b570; border-color: #f5b570" name="btnModifier" type="submit" class="btn btn-success btn-block" value="Valider la modification de cet événement">
                 </div>
              </form> <?php		
-			} elseif (isset($_GET['name'])) {?>	
-			<form id="contact-form" method="post" action="index.php?action=GererEvenements&choix=supprimer&name=<?php echo $unEvenement->getId(); ?>" role="form">
-				<div class="controls">
-					<div class="row">
-						<div class="col-md-6">
-							Etes-vous sure de vouloir supprimer cet événement ?
+			} elseif ($choix == 'supprimerzz' && isset($_GET['id'])) {?>
+			<form id="contact-form" method="post" action="index.php?action=GererEvenements&choix=supprimer&id=<?php echo $unEvenement->getId(); ?>" role="form">
+			<h5 style="margin-left: 17px;color: white;">Êtes-vous sûr de vouloir supprimer l'événement: </h5>
+				<div class="divCliquable">
+						<div class="ui-evenement-titre">
+							 <?php echo $unEvenement->getTitre() . " (du " . $unEvenement->getDateEvenement() . ")"; ?>
+							 <br>
 						</div>
-					</div>
+						<div class="ui-evenement-evt" style="height: auto;">
+							 <?php echo $unEvenement->getContenu(); ?>
+							 <br>
+						</div>
 				</div>
-				
               	<div class="col-md-12">
                   	<input id="btnSupprimer" style="background-color: #f5b570; border-color: #f5b570" name="btnSupprimer" type="submit" class="btn btn-success btn-block" value="Valider la suppression de cet événement">
                 </div>
