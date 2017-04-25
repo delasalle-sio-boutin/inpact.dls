@@ -13,6 +13,7 @@
 			$choix = $_GET['choix'];
 			if ($choix == 'creer') { ?>
 			<form id="contact-form" method="post" action="index.php?action=GererEvenements&choix=creer" role="form">
+				<a id="MsgRetour" href="index.php?action=GererEvenements" class="fa fa-arrow-left fa-2x"></a>
 				<div class="controls">
                     <div class="row">
 						<div class="col-md-6">
@@ -85,6 +86,7 @@
 					<?php
 			} elseif ($choix == 'modifierzz' && isset($_GET['id'])) {?>	
 			<form id="contact-form" method="post" action="index.php?action=GererEvenements&choix=modifier&id=<?php echo $unEvenement->getId(); ?>" role="form">
+				<a id="MsgRetour" href="index.php?action=GererEvenements" class="fa fa-arrow-left fa-2x"></a>
 				<div class="controls">
 					<div class="row">
 						<div class="col-md-6">
@@ -119,6 +121,8 @@
              </form> <?php		
 			} elseif ($choix == 'supprimerzz' && isset($_GET['id'])) {?>
 			<form id="contact-form" method="post" action="index.php?action=GererEvenements&choix=supprimer&id=<?php echo $unEvenement->getId(); ?>" role="form">
+			<a id="MsgRetour" href="index.php?action=GererEvenements" class="fa fa-arrow-left fa-2x"></a>
+			<br><br>
 			<h5 style="margin-left: 17px;color: white;">Êtes-vous sûr de vouloir supprimer l'événement: </h5>
 				<div class="divCliquable">
 						<div class="ui-evenement-titre">
