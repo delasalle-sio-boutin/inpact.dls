@@ -6,9 +6,12 @@
 
 include_once 'modele/DAO.class.php';
 include_once 'modele/Outils.class.php';
-
 include_once 'modele/Evenement.class.php';
 $dao = new DAO();
+
+if (($_SESSION['typeUtilisateur'] != "administrateur") && ($_SESSION['typeUtilisateur'] != "professeur")){
+	header('Location: index.php');
+}
 
 $lesEvenements = $dao->getTousLesEvenements();
 

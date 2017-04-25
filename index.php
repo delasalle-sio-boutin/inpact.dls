@@ -14,6 +14,7 @@
 //    index.php?action=APropos                	: pour afficher la page A Propos
 //    index.php?action=Contact                	: pour afficher la page de contact
 //    index.php?action=Evenements               : pour afficher la page Evenement
+//    index.php?action=GererEvenements          : pour afficher la page GererEvenement
 //    index.php?action=PolitiqueConfidentilite  : pour afficher la page Politique et confidentialité
 //    index.php?action=TermesConditions         : pour afficher la page des termes et conditions
 //	  index.php?action=ModifierMonCompte		: pour afficher la pgae de modification du compte
