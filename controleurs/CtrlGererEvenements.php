@@ -23,13 +23,11 @@ if (!isset($_GET['id'])){
 		$ok = $dao->CreerEvenement($unTitre, $uneDateCreation, $uneDateEvenement, $unContenu);
 		
 		if ($ok){
-			echo 'Création de l\'évenement réussie !';
-			var_dump('ajout reussie');
-			exit;
+			echo "<script>alert('Ajout réalisé avec succès')</script>";
+			
 		}
 		else{
-			echo 'Un problème est survenue lors de la création de l\'évenement !';
-			var_dump('ajout pas reussie');
+			echo "<script>alert('Un problème est survenue lors de la création !')</script>";
 		}
 	} 
 }
@@ -51,27 +49,21 @@ else{
 		$ok = $dao->ModifierEvenement($unTitre, $uneDateEvenement, $unContenu, $unId);
 	
 		if ($ok){
-			echo 'Modification de l\'évenement réussite !';
-			var_dump('modif reussie');
-			
+			echo "<script>alert('Modification réalisé avec succès')</script>";	
 		}
 		else{
-			echo 'Un problème est survenue lors de la modification de l\'évenement !';
-			var_dump('modif ratée');
-			
+			echo "<script>alert('Un problème est survenue lors de la modification !')</script>";
 		}
 	} elseif (isset ($_POST['btnSupprimer'])){
 		$unID = $_GET['id'];
 		$ok = $dao->SupprimerEvenement($unID);
 		
 		if ($ok){
-			var_dump('suppression reussie');
-			echo 'Suppression de l\'évenement réussie !';
-			exit;
+			echo "<script>alert('Supression réalisé avec succès')</script>";
+
 		}
 		else{
-			echo 'Un problème est survenue lors de la suppression de l\'évenement !';
-			var_dump('suppression pas reussie');
+			echo "<script>alert('Un problème est survenue lors de la supression !')</script>";
 		}
 	}
 }
