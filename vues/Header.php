@@ -21,19 +21,6 @@
 <link
 	href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css"
 	rel="stylesheet">
-
-<!-- 
-	APPAREMENT UTILE POUR LA CONNEXION
-	<script type="text/javascript">
-
-		$(document).ready(function(){
-		    //Handles menu drop down
-		    $('.dropdown-menu').find('form').click(function (e) {
-		        e.stopPropagation();
-		    });
-		});
-
-	</script> -->
 </head>
 
 <body>
@@ -94,7 +81,7 @@ $dao = new DAO();
 											id="liens" src="images/Linkedin.png">Linkedin</a></li>
 								</ul></li>
 							<li><a href="index.php?action=Contact">Contact</a></li>
-							<li><a href="index.php?action=Frames">Embed</a></li>
+							<li><a href="index.php?action=Frames">Pages externes</a></li>
 						</ul>
 						
 						<?php if ($_SESSION['login'] == ''){?>

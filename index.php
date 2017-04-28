@@ -62,7 +62,7 @@ switch($action){
 	case 'Evenements': {
 		include_once ('controleurs/CtrlEvenements.php'); break;
 	}
-	case 'PolitiqueConfidentilite': {
+	case 'PolitiqueConfidentialite': {
 		include_once ('controleurs/CtrlPolitiqueConfidentialite.php'); break;
 	}
 	case 'TermesConditions': {
