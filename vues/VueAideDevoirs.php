@@ -15,27 +15,25 @@
 		?>
 		<h1>Aides aux devoirs</h1>
 		<?php 
-		
+		/*if (isset($_GET['id'])) {
+		$idAideDevoirs = $_GET['id'];*/
 		
 	 	foreach ($lesAideDevoirs as $uneAideDevoirs){ ?>
 	 					
-	 						
-	 							 <?php echo $uneAideDevoirs->getTitre() ; ?> </br>
-	 							  <?php echo $uneAideDevoirs->getContenu(); ?> </br>
-	 							 <?php echo  $uneAideDevoirs->getDateCreation();
+ 						
+ 			<?php echo $uneAideDevoirs->getTitre() ; ?> </br>
+ 			<?php echo $uneAideDevoirs->getContenu(); ?> </br>
+ 			<?php echo $uneAideDevoirs->getDateCreation();
 	 							
-	 							 if ($uneAideDevoir->getId() == $lesReponsesAideDevoirs->getIdAideDevoir()) 
-	 							 { 
-	 							 
-	 							 foreach ($lesReponsesAideDevoirs as $uneReponseAideDevoirs){ ?>
-	 							 
-	 							 <?php echo $uneReponseAideDevoirs -> getReponse();}
-	 							 
-	 							 
-	 							 } else 
-	 							 	
-	 							 {}
-	 							 ?>
+	 			 if ($uneAideDevoirs->getId() == $lesReponsesAideDevoirs->getIdAideDevoir()) 
+	 				 { 
+	 					foreach ($lesReponsesAideDevoirs as $uneReponseAideDevoirs){ 
+	 							 echo $uneReponseAideDevoirs -> getReponse();}
+	 							 	 							 
+	 				} 
+	 				else 
+	 				{}
+	 				?>
 	 							 	
 	 							 	
 	 							
@@ -43,8 +41,9 @@
 	 							  </br> 
 	 							 
 	 							 
-	 							 
-	 							 </br> <?php } 
+	 							 </br> <?php }
+									
+								//}
 
 									 ?> 
 	 					

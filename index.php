@@ -14,6 +14,7 @@
 //    index.php?action=APropos                	: pour afficher la page A Propos
 //    index.php?action=Contact                	: pour afficher la page de contact
 //    index.php?action=Evenements               : pour afficher la page Evenement
+//    index.php?action=GererEvenements          : pour afficher la page GererEvenement
 //    index.php?action=PolitiqueConfidentilite  : pour afficher la page Politique et confidentialité
 //    index.php?action=TermesConditions         : pour afficher la page des termes et conditions
 //	  index.php?action=ModifierMonCompte		: pour afficher la pgae de modification du compte
@@ -23,6 +24,8 @@ session_start();				// permet d'utiliser des variables de session
  
 // si $debug est égal à true, certaines variables sont affichées (pour la mise au point)
 $debug = false;
+$mailAdministrateur = "admin@dlsinpact.fr";
+$mailMessage = "no-reply@dlsinpact.fr";
 
 // on vérifie le paramètre action de l'URL
 if ( isset ($_GET['action']) == false)  $action = '';  else   $action = $_GET['action'];

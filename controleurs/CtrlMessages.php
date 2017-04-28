@@ -111,10 +111,12 @@ switch($choix){
 	case "Nouveau": { //2eme cas : envoyer un nouveau message
 		//Ici on a besoin de la valeur d'aucune variable
 		$leTitre = 'Nouveau message';
+		// ON FAIT PRESQUE PAREIL QUE POUR REPONDRE A UN MESSAGE
 		break;
 	}
 	 
 	case "Repondre": { //3eme cas : répondre à un message
+		$leResultat = "";
 		// Ici on a besoin de la valeur de l'id du membre qui nous a posté un mp
 		if (!isset ($_GET['id'])){
 			header ("Location: index.php?action=MessagesPrives");
@@ -131,13 +133,38 @@ switch($choix){
 				}
 			}
 			/* Si il s'agit d'un de ses messages reçu, il peut y répondre */
-			if ($ok){
-				$leMessageReponse = $dao->getUnMessage($idMessage);
-				$unObjet = "";
-				$unContenu = "";
+			if (!$ok){
+				header ("Location: index.php?action=MessagesPrives");
 			}
 			else{
-				header ("Location: index.php?action=MessagesPrives");
+				$leMessageReponse = $dao->getUnMessage($idMessage);
+				/* Si on n'a pas cliqué sur le bouton valider */
+				if (isset ($_POST['btnValider']) == false){
+					$unObjet = $leMessageReponse->getTitre();
+					$unContenu = "";
+				}
+				
+				/* Si on a cliqué sur le bouton valider */
+				else{
+					$idMessage = 0; // autoincrement
+					$unIdFrom = $unUtilisateur->getId();
+					$unIdTo = $leMessageReponse->getIdFrom();
+					$uneDateMessage = date("d/m/Y");
+					$unObjet = $leMessageReponse->getTitre();
+					$unContenu = $_POST['txtMessage'];
+					$unLu = 0;
+					$afficherFrom = 1;
+					$afficherTo = 1;
+					$unMessage = new Message($idMessage, $unIdFrom, $unIdTo, $uneDateMessage, $unObjet, $unContenu, $unLu, $afficherFrom, $afficherTo);
+					$ok = $dao->envoyerUnMessage($unMessage);
+					
+					if (!$ok){
+						$leResultat = "L'envoi du message a rencontré un problème. Veuillez contacter un technicien.";
+					}
+					else{
+						$leResultat = "L'envoi du message est un succès.";
+					}
+				}
 			}
 			break;
 		}
@@ -146,12 +173,32 @@ switch($choix){
 	case "Supprimer": { //4eme cas : supprimer un message reçu
 		$leTitre = "Suppression";
 		if (isset ($_POST['Supprimer'])){
-			$ok = $dao->supprimerUnMessage($_POST['Supprimer']);
-			if ($ok){
-				$lesMessages = "Message supprimé avec succès";
+			$unIdMessage = $_POST['Supprimer'];
+			$idUtilisateur = $unUtilisateur->getId();
+			$unMessage = $dao->getUnMessage($unIdMessage);
+			
+			// Si c'est un message envoyé
+			if ($idUtilisateur == $unMessage->getIdFrom()){
+				$ok = $dao->supprimerUnMessageFrom($unIdMessage);
+				if ($ok){
+					header("Location:index.php?action=MessagesPrives&choix=ConsulterEnvoyes");
+				}
 			}
+			// Si c'est un message reçu
+			elseif($idUtilisateur == $unMessage->getIdTo()){
+				$ok = $dao->supprimerUnMessageTo($unIdMessage);
+				if ($ok){
+					header("Location:index.php?action=MessagesPrives&choix=ConsulterRecus");
+				}
+			}
+			// Sinon, il n'a rien à faire sur ce lien, il est redirigé
 			else{
-				$lesMessages = "Suppression du message a rencontré une erreur. Merci de contacter un technicien.";
+				header("Location:index.php?action=MessagesPrives");
+			}
+			
+			// Si la suppression s'est mal déroulée, on affiche un message d'erreur
+			if (!$ok){
+				$lesMessages = "La suppression du message a rencontré une erreur. Merci de contacter un technicien.";
 			}
 		}
 		else{

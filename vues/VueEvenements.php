@@ -8,7 +8,7 @@
 	<div id="page">
 		<header> <?php include ('Header.php'); ?> </header>
 		
-		<div id="mainEvenement">
+		<div id="main">
 			<?php if (isset($_GET['id'])) {
 				$idEvenement = $_GET['id'];?>
 				
