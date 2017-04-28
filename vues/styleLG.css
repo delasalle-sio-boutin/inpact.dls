@@ -6,19 +6,19 @@
 }
 
 html{
-	height:100%;
+	height: 100%;
 }
 
 /* Mise en forme générale de la page */
 body{
-	height:100%;
+	height: 100%;
 	position: relative;
 	background: #c0c0c0;
 }
 
 /* Mise en forme de la div "#page" (comprend header main footer) */
 div#page{
-	min-height:99%;
+	min-height: 99%;
 	position: relative;
 }
  
@@ -573,10 +573,6 @@ textarea#txtMessage{
 	overflow-x: hidden; */
 	text-align: left;
 	overflow-x: hidden;
-}
-
-.ui-evenement-evt{
-	text-align: justify;
 }
 
 .ui-evenement-titre{

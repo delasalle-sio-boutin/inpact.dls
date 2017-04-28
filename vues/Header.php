@@ -129,25 +129,21 @@ $dao = new DAO();
 									}								
 								}
 							}
-							?>
-						<ul class="nav navbar-nav pull-right">
-							<li><a href="index.php?action=Deconnecter">Se déconnecter</a></li>
-						</ul>
+						?>
 						<ul class="nav navbar-nav pull-right ui-right">
-							<li class="dropdown"><a href="#" class="dropdown-toggle"
-								data-toggle="dropdown" role="button" aria-haspopup="true"
-								aria-expanded="false"> &nbsp;Connecté en tant que <b> <?php if ($_SESSION['typeUtilisateur'] == "eleve"){echo $_SESSION['nom'];} else {echo $login; }
-								if (isset ($nbMessagesNonLu) && ($nbMessagesNonLu != 0)){ ?>
-									<span class="fa-stack fa-1x has-badge" data-count="<?php echo $nbMessagesNonLu ?>">
-									  <i class="fa notif fa-bell-o fa-stack-1x"></i>
-									</span>
-								<?php } ?>
-								</b><span
-									class="caret"></span></a>
-								<ul class="dropdown-menu">
-									<li><a href="index.php?action=ModifierMonCompte">Mon compte</a></li>
+							<li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+							&nbsp;<span class="connecte">Connecté en tant que </span> <b> <?php if ($_SESSION['typeUtilisateur'] == "eleve"){echo $_SESSION['nom'];} else {echo $login; }
+							if (isset ($nbMessagesNonLu) && ($nbMessagesNonLu != 0)){ ?>
+								<span class="fa-stack fa-1x has-badge" data-count="<?php echo $nbMessagesNonLu ?>">
+								  <i class="fa notif fa-bell-o fa-stack-1x"></i>
+								</span>
+							<?php } ?>
+							</b><span class="caret"></span></a>
+							<ul class="dropdown-menu">
+								<li><a href="index.php?action=ModifierMonCompte">Mon compte</a></li>
 								<li><a href="index.php?action=MessagesPrives">Messages<?php if (isset ($nbMessagesNonLu) && ($nbMessagesNonLu != 0)){ echo "<b> (". $nbMessagesNonLu . ")</b>"; }?></a></li>
 								<?php if ($_SESSION['typeUtilisateur'] != "eleve") echo '<li><a href="index.php?action=GererEvenements">Gerer les événements</a></li>'?>
+								<li><a href="index.php?action=Deconnecter">Se déconnecter</a></li>
 							</ul></li>
 						</ul>
 	                    <?php } ?>

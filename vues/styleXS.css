@@ -28,17 +28,13 @@ div#page{
 
 #main{
 	position: relative;
-	padding-bottom: 205px;
-	margin: 0 auto;
+	padding-bottom: 205px; /* 20px par rapport au footer */
+	margin: 20px auto 0 auto;
 	width: 98%;
 	/* border: #000 1px solid;
 	overflow-x: hidden; */
 	text-align: left;
 	overflow-x: hidden;
-}
-
-div#ui-content(){
-	
 }
 
 #footer{
@@ -47,6 +43,23 @@ div#ui-content(){
 	position: absolute;
 	bottom: 0;
 }
+
+p#unResultat{
+	border: 2px solid #f5b570;
+	width: 50%;
+	margin: 0 auto;
+	text-align: center;
+	
+	/* coins arrondis en haut uniquement */
+	-moz-border-radius: 15px;
+	-webkit-border-radius: 15px;
+	-o-border-radius: 15px;
+	-ms-border-radius: 15px;
+	-khtml-border-radius: 15px;
+	border-radius: 15px;
+}
+
+/* ------------------------------------------------------------------ MISE EN FORME DES PAGES "connexion" ; "..." ------------------------------------------------------------------ */
 
 div#page-contenu{
 	/* hauteur, largeur, centrage avec des marges auto, padding nul, bordure noire, alignement gauche, arrière plan orange */
@@ -82,7 +95,7 @@ div#page-contenu-head{
 
 div#page-contenu-body{
 	width: 100%;
-	margin: 10px;
+	padding: 10px;
 }
 
 table{
@@ -147,6 +160,10 @@ ul#menu-horizontal li {
   	background: none;
 }
 
+div#navbar{
+	height: 100px;
+}
+
 /* Mise en forme des titres de la navigation */
 .navbar a, .dropdown-menu>li>a, .dropdown-menu>li>a:focus, .dropdown-menu>li>a:hover, .navbar-toggle{
 	color: #fff;
@@ -155,11 +172,6 @@ ul#menu-horizontal li {
 /* Mise en forme du texte de la barre de navigation quand on passe la souris dessus */
 .nav li a:hover{
   	color: black;
-}
-
-/* Enlever le "connecté en tant que" quand la page est inférieure à 991px */
-ul.ui-right{
-	margin-right: -9999px;
 }
 
 /* Mise en forme du bouton de navigation quand la taille d'écran est inférieure à  768px */
@@ -181,11 +193,30 @@ img#liens{
 	min-height: 10px;
 }
 
+.fa-stack[data-count]:after{
+  position:absolute;
+  right:20%;
+  top:-7%;
+  content: attr(data-count);
+  font-size:60%;
+  padding:.6em;
+  border-radius:999px;
+  line-height:.75em;
+  color: white;
+  background:rgba(255,0,0,1);
+  text-align:center;
+  margin-left: -7px;
+}
+
+.notif{
+	margin-left: -7px;
+}
+
 /* Permet de mettre la division de connection à gauche, quand la taille d'écran est infèrieure à 768px */
 .ui-login{
-	border: 1px solid black;
-	margin-left: 15px;
-	text-align: left;
+	/*border: 1px solid black;
+	 margin-left: 15px;
+	text-align: left; */
 }
 
 .pull-right {
@@ -260,6 +291,11 @@ footer h4 {
 .footer-nav h4.info { margin-left: -20px; }
 
 .footer-social h4 { margin: 10px -37px 20px -15px;}
+
+ul.pages > li, ul.list >li{
+	border-left: solid 3px rgba(255,255,255,1.0);
+	list-style: none;
+}
 	
 
 /* ------------------------------------------------------------------ MISE EN FORME DU BOUTON TOP ----------------------------------------------------------------- */
@@ -406,6 +442,147 @@ footer h4 {
 	padding: 5px;
 }
 
+/* ---------------------------------------------------------------- MISE EN FORME DE MESSAGES PRIVES --------------------------------------------------------------- */
+
+div#page-contenu{
+	width: 80%;
+}
+
+a#msgRetour{
+	position: absolute;
+	text-decoration: none;
+	color: black;
+	margin: 6px;
+}
+
+input.liens, a.liens {
+	/* police, couleur et alignement du texte, style du lien */
+	color: black;
+	text-align: center;
+	text-decoration: none;
+	font-weight: bold;
+	font-size: 15px;
+
+	/* ombre portée du texte du bouton */
+	text-shadow: 0 1px 0 #fff;
+		
+	/* dimensions, margin, padding, type d'affichage, bordure */
+	width: 350px;
+	height: 40px;
+	padding: 7px;
+	display: block;
+	border: 1px solid rgba(0, 0, 0, 0.1);
+	margin: 5px auto;
+	text-align: center;
+	vertical-align: center;
+	
+	
+	/* coins arrondis */
+	-moz-border-radius: 7px;
+	-webkit-border-radius: 7px;
+	-o-border-radius: 7px;
+	-ms-border-radius: 7px;
+	-khtml-border-radius: 7px;
+	border-radius: 7px;
+	
+	/* fond avec un dégradé de couleur (blanc en haut, gris en bas) */
+	background: -moz-linear-gradient(top, rgb(245,181,112), rgb(250, 218, 183));
+	background: -webkit-gradient(linear, right top, right bottom, from(rgb(245,181,112)), to(rgb(250, 218, 183)));
+	background: linear-gradient(to bottom, rgb(245,181,112), rgb(250, 218, 183));
+	
+	/* ombre portée du bouton */
+	-webkit-box-shadow: 2px 2px 2px 0px rgba(0, 0, 0, 0.3);
+	-moz-box-shadow: 2px 2px 2px 0px rgba(0, 0, 0, 0.3);
+	-o-box-shadow: 2px 2px 2px 0px rgba(0, 0, 0, 0.3);
+	box-shadow: 2px 2px 2px 0px rgba(0, 0, 0, 0.3);
+}
+
+a#liens:hover {
+	color: #3f3f3f;
+	opacity: 0.9;
+}
+
+a#messages{
+	display: block;
+	padding: 5px;
+	background: #b3b3b3;
+	border-top: 1px solid;
+	text-decoration: none;
+	height: 30px;
+	color: black;
+}
+
+div#messages:last-child{
+	border-bottom: 1px solid;
+}
+
+a#messages:hover{
+	color: black;
+	border-color: black;
+	background-color: #a6a6a6;
+}
+
+a#message:hover{
+	color: blue;
+}
+
+button#Supprimer{
+	position: absolute;
+	text-decoration: none;
+	color: black;
+	margin: 6px;
+	border: none;
+	background: none;
+	font-size: 1.4em;
+}
+
+div#de{
+	float: left;
+	margin: 0 0 0 2%;
+	width: 25%;
+	height: 20px;
+	overflow: hidden;
+}
+
+div#titre{
+	float: left;
+	width: 66%;
+	height: 20px;
+	overflow: hidden;
+}
+
+div#date{
+	float: right;
+	width: 7%;
+	height: 20px;
+	overflow: hidden;
+}
+
+div#message{
+	padding: 5px;
+}
+
+div#dateMessage{
+	float: right;
+}
+
+div#recap{
+	margin: 20px;
+	border: 1px solid;
+}
+
+div#reponse{
+	margin: 0px 20px;
+	border: 1px solid;
+}
+
+textarea#txtMessage{
+	width: 90%;
+	max-width: 90%;
+	height: 70px;
+	max-height: 100px;
+}
+
 /* ------------------------------------------------------------------ MISE EN FORME DE L'EVENEMENT ----------------------------------------------------------------- */
 #mainEvenement{
 	position: relative;
@@ -415,10 +592,6 @@ footer h4 {
 	overflow-x: hidden; */
 	text-align: left;
 	overflow-x: hidden;
-}
-
-.ui-evenement-evt{
-	text-align: justify;
 }
 
 .ui-evenement-titre{
@@ -431,6 +604,7 @@ footer h4 {
 	height: 55%;
 	padding: 35px 15px 15px 15px;
 	overflow: hidden;
+	text-align: justify;
 }	
 
 .ui-evenement-suite{
@@ -481,6 +655,15 @@ a#divCliquable{
 	width: 95%;
 }
 
+a#divCliquable:nth-child(odd){
+	float: left;
+}
+
+a#divCliquable:nth-child(even){
+	position: relative;
+	float: right;
+}
+
 a#divCliquable:hover{
 	border-color: rgba(245,181,112, 1);
 	background: rgba(245,181,112, 1);
@@ -488,7 +671,7 @@ a#divCliquable:hover{
 
 /* ------------------------------------------------------------------ MISE EN FORME DE "CONTACT" ----------------------------------------------------------------- */
 
-input[type="text"], input[type="password"]{
+input[type="text"], input[type="password"], textarea{
 	/* coins arrondis */
 	-moz-border-radius: 5px 5px 5px 5px;
 	-webkit-border-radius: 5px 5px 5px 5px;
@@ -498,10 +681,15 @@ input[type="text"], input[type="password"]{
 	border-radius: 5px 5px 5px 5px;
 }
 
-input[type="text"]:focus, input[type="password"]:focus{
+input[type="text"]:focus, input[type="password"]:focus, textarea:focus{
 	border: solid 2px #f5b570;
 	outline: 0;
 }
+
+div.controls{
+	padding-top: 5%;
+}
+
 
 /* ------------------------------------------------------------------ MISE EN FORME DE "LIENS EXTERNES" ----------------------------------------------------------------- */
 
