@@ -90,8 +90,8 @@ $dao = new DAO();
 										target="_blank"><img id="liens" src="images/facebook.png">Facebook</a></li>
 									<li><a href="https://twitter.com/dls_sio" target="_blank"><img
 											id="liens" src="images/twitter.png">Twitter</a></li>
-									<li><a href="https://fr.linkedin.com/" target="_blank"><img
-											id="liens" src="images/Linkedin.png">Linkedin</a></li>
+									<li><a href="https://github.com/delasalle-sio-boutin/inpact.dls" target="_blank"><img
+											id="liens" src="images/github.png">Linkedin</a></li>
 								</ul></li>
 							<li><a href="index.php?action=Contact">Contact</a></li>
 							<li><a href="index.php?action=Frames">Embed</a></li>
