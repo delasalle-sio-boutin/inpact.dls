@@ -152,12 +152,14 @@ class DAO
 	// modifié par Erwann Bienvenu le 04/04/2017
 	public function modifierProfilUtilisateur($unId, $unNouveauMail, $MailFromProfs, $MailFromEleves) {
 		
-	
+		$txt_req = "UPDATE inp_utilisateurs SET mail = :nouveauMail, mailFromProfs = :nouveauMailFromProfs, mailFromEleves = :nouveauMailFromEleves WHERE id = :unId";
 		
 		$req = $this->cnx->prepare($txt_req);
 		
 		// liaison de la requête et de ses paramètre
-		
+		$req->bindValue("nouveauMail", $unNouveauMail, PDO::PARAM_STR);
+		$req->bindValue("nouveauMailFromProfs", $MailFromProfs, PDO::PARAM_INT);
+		$req->bindValue("nouveauMailFromEleves", $MailFromEleves, PDO::PARAM_INT);
 		$req->bindValue("unId", $unId, PDO::PARAM_INT);
 		
 		$ok = $req->execute();
