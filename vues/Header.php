@@ -3,7 +3,7 @@
 
 <head>
 <title>Association Inpact</title>
-<link rel="icon" href="images/logo.png">
+<link rel="icon" href="images/ico.png">
 
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
