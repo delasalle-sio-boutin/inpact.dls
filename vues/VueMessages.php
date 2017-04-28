@@ -100,43 +100,87 @@
 							// On est ici dans "nouveau message" ou "répondre"
 							else{
 								if ($leResultat == ""){
-									$unUtilisateurFrom = $dao->getUnUtilisateurId($leMessageReponse->getIdFrom());
-									$nomFrom = $unUtilisateurFrom->getNom();
-									$prenomFrom = $unUtilisateurFrom->getPrenom();
-									?>
-									<form id="repondre-form" method="post" action="index.php?action=MessagesPrives&choix=Repondre&id=<?php echo $leMessageReponse->getId()?>" role="form">
-										<div id="recap">
-											<div id="message">
-												<b>Message de <?php echo $nomFrom ?> <?php echo $prenomFrom ?>
-												<div id="dateMessage"> <?php echo $leMessageReponse->getDateMessage() ?></div></b>
+									// répondre
+									if ($leMessageReponse != ""){
+										$nomFrom = $unUtilisateurFrom->getNom();
+										$prenomFrom = $unUtilisateurFrom->getPrenom();
+										?>
+										<form id="repondre-form" method="post" action="index.php?action=MessagesPrives&choix=Repondre&id=<?php echo $leMessageReponse->getId()?>" role="form">
+											<div id="recap">
+												<div id="message">
+													<b>Message de <?php echo $nomFrom ?> <?php echo $prenomFrom ?>
+													<div id="dateMessage"> <?php echo $leMessageReponse->getDateMessage() ?></div></b>
+												</div>
+												
+												<div id="message">
+													Objet : <?php echo $leMessageReponse->getTitre() ?>
+												</div>
+												
+												<div id="message">
+													Message : <?php echo $leMessageReponse->getContenu() ?>
+												</div>
 											</div>
 											
-											<div id="message">
-												Objet : <?php echo $leMessageReponse->getTitre() ?>
+											<div id="reponse">
+												<div id="message">
+													<b>Répondre à <?php echo $nomFrom ?> <?php echo $prenomFrom ?></b>
+												</div>
+												
+												<div id="message">
+													Objet : <?php echo $unObjet ?>
+												</div>
+												
+												<div id="message">
+													Message : <br><textarea id="txtMessage" name="txtMessage" rows="10" cols="45" placeholder="Corps du message" required value="<?php echo $unContenu ?>"></textarea>
+												</div>
+												
+												<input style="margin: 10px auto;" type="submit" id="btnValider" name="btnValider" class="liens" value="Valider">
 											</div>
+										</form>
+										<?php
+									}
+									// nouveau
+									else{ ?>
+										<form id="repondre-form" method="post" action="index.php?action=MessagesPrives&choix=Nouveau" role="form">
+											<div id="reponse">
 											
-											<div id="message">
-												Message : <?php echo $leMessageReponse->getContenu() ?>
+												<div id="message">
+												Destinataire :
+												 <select style="width: 30%" class=form-control id="form_mail" name="txtContact" required>
+		                                        	<option style="display:none;" selected>Selectionnez une personne</option>
+		                                        	<optgroup label="Professeurs">
+		                                        		<option value="adminpact@yopmail.com">Tous les professeurs</option>
+														<?php
+														foreach ($lesProfs as $unProf){ ?>
+		                                     				<option value="<?php echo "p" . $unProf->getCivilite()." ".$unProf->getNom()?>"><?php echo "--- ".$unProf->getCivilite()." ".$unProf->getNom()?></option>
+		                                     			<?php } ?>
+		                                     		</optgroup>
+		                                     		<optgroup label="Eleves">
+			                                     		<?php 
+			                                     		foreach ($lesDestinataires as $unDestinataire){ 
+			                                     			if (($unDestinataire->getLogin() != "Prof") && ($unDestinataire->getLogin() != "Admin") && ($unDestinataire != $unUtilisateur)){
+				                                     			?>
+			                                     				<option value="<?php echo "e" . $unDestinataire->getId() ?>"><?php echo "--- ".$unDestinataire->getNom()." ".$unDestinataire->getPrenom()." [".$unDestinataire->getClasse()."]"?></option>
+		                                     			<?php 
+			                                     			}
+			                                     		} ?>
+			                                     	</optgroup>
+                                     			</select>
+												</div>
+												
+												<div id="message">
+													Objet : <br><input type="text" id="txtObjet" name="txtObjet" placeholder="Objet du message" required value="<?php echo $unObjet ?>"></textarea>
+												</div>
+												
+												<div id="message">
+													Message : <br><textarea id="txtMessage" name="txtMessage" rows="10" cols="45" placeholder="Corps du message" required value="<?php echo $unContenu ?>"></textarea>
+												</div>
+												
+												<input style="margin: 10px auto;" type="submit" id="btnValider" name="btnValider" class="liens" value="Valider">
 											</div>
-										</div>
-										
-										<div id="reponse">
-											<div id="message">
-												<b>Répondre à <?php echo $nomFrom ?> <?php echo $prenomFrom ?></b>
-											</div>
-											
-											<div id="message">
-												Objet : <?php echo $unObjet ?>
-											</div>
-											
-											<div id="message">
-												Message : <br><textarea id="txtMessage" name="txtMessage" rows="10" cols="45" placeholder="Corps du message" required value="<?php echo $unContenu ?>"></textarea>
-											</div>
-											
-											<input style="margin: 10px auto;" type="submit" id="btnValider" name="btnValider" class="liens" value="Valider">
-										</div>
-									</form>
-									<?php
+										</form>
+										<?php
+									}
 								}
 								else{ ?>
 									<p id="unResultat"> <?php echo $leResultat; ?> </p>

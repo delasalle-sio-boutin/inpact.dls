@@ -109,15 +109,71 @@ switch($choix){
 
 	 
 	case "Nouveau": { //2eme cas : envoyer un nouveau message
-		//Ici on a besoin de la valeur d'aucune variable
-		$leTitre = 'Nouveau message';
-		// ON FAIT PRESQUE PAREIL QUE POUR REPONDRE A UN MESSAGE
+		$leResultat = "";
+		$unUtilisateurFrom = $unUtilisateur->getId();
+		$leMessageReponse = "";
+		$lesProfs = $dao->getLesProfs();
+		$lesDestinataires = $dao->getLesUtilisateurs();
+		
+		/* Si on n'a pas cliqué sur le bouton valider */
+		if (isset ($_POST['btnValider']) == false){
+			$unObjet = "";
+			$unContenu = "";
+		}
+		
+		/* Si on a cliqué sur le bouton valider */
+		else{
+			$idMessage = 0; // autoincrement
+			$unIdFrom = $unUtilisateur->getId();
+			$unContact = $_POST['txtContact'];
+			$unObjet = "";
+			$profOuEleve = substr($unContact, 0, 1); // on récupère la première lettre de ce qu'on nous retourne qui sera p (prof), e (eleve) ou le début de l'adresse des profs (tous les professeurs)
+			// Si on envoi à tous les profs ou un prof en particulier, on recupère l'id du compte prof dans la table pour envoyer à l'adresse mail associée
+			if ((Outils::estUneAdrMailValide($unContact)) || ($profOuEleve == "p")){
+				foreach ($lesDestinataires as $unDestinataire){
+					if ($unDestinataire->getLogin() == "Prof"){
+						$unIdTo = $unDestinataire->getId(); break;
+					}
+				}
+				// Si il envoi un message à un prof en particulier
+				if ($profOuEleve == "p"){
+					$unObjet .= "[" . substr($unContact, 1, strlen($unContact) -1) . "] ";
+				}
+			}
+			// Si on envoie à un élève, on recupère son id
+			else{
+				if ($profOuEleve == "e"){
+					$unIdTo = substr($unContact, 1, strlen($unContact) -1);
+				}
+			}
+			
+			$uneDateMessage = date("d/m/Y");
+			$unObjet .= $_POST['txtObjet'];
+			$unContenu = $_POST['txtMessage'];
+			$unLu = 0;
+			$afficherFrom = 1;
+			$afficherTo = 1;
+			$unMessage = new Message($idMessage, $unIdFrom, $unIdTo, $uneDateMessage, $unObjet, $unContenu, $unLu, $afficherFrom, $afficherTo);
+			$ok = $dao->envoyerUnMessage($unMessage);
+			
+			if (!$ok){
+				$leResultat = "L'envoi du message a rencontré un problème. Veuillez contacter un technicien.";
+			}
+			else{
+				// Si l'utilisateur veut être contacté lorqu'il reçoit un mail d'un autre utilisateur
+				$unDestinataire = $dao->getUnUtilisateurId($unIdTo);
+				if (($unUtilisateur->getLogin() == "Prof" && $unDestinataire->getMailFromProfs() == 1) || ($unUtilisateur->getLogin() != "Prof" && $unDestinataire->getMailFromEleves() == 1)){
+					Outils::envoyerMail($unDestinataire->getMail(), $unObjet, $unContenu, $mailMessages);
+				}
+				$leResultat = "L'envoi du message est un succès.";
+			}
+		}
 		break;
 	}
 	 
 	case "Repondre": { //3eme cas : répondre à un message
 		$leResultat = "";
-		// Ici on a besoin de la valeur de l'id du membre qui nous a posté un mp
+		// Ici on a besoin de la valeur de l'id du message
 		if (!isset ($_GET['id'])){
 			header ("Location: index.php?action=MessagesPrives");
 		}
@@ -138,6 +194,7 @@ switch($choix){
 			}
 			else{
 				$leMessageReponse = $dao->getUnMessage($idMessage);
+				$unUtilisateurFrom = $dao->getUnUtilisateurId($leMessageReponse->getIdFrom());
 				/* Si on n'a pas cliqué sur le bouton valider */
 				if (isset ($_POST['btnValider']) == false){
 					$unObjet = $leMessageReponse->getTitre();

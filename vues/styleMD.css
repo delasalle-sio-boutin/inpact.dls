@@ -495,7 +495,7 @@ input[type="text"], input[type="password"]{
 	border-radius: 5px 5px 5px 5px;
 }
 
-input[type="text"]:focus, input[type="password"]:focus{
+input[type="text"]:focus, input[type="password"]:focus, textarea:focus{
 	border: solid 2px #f5b570;
 	outline: 0;
 }

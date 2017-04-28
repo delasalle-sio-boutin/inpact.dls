@@ -25,7 +25,7 @@ session_start();				// permet d'utiliser des variables de session
 // si $debug est égal à true, certaines variables sont affichées (pour la mise au point)
 $debug = false;
 $mailAdministrateur = "admin@dlsinpact.fr";
-$mailMessage = "no-reply@dlsinpact.fr";
+$mailMessages = "no-reply@dlsinpact.fr";
 
 // on vérifie le paramètre action de l'URL
 if ( isset ($_GET['action']) == false)  $action = '';  else   $action = $_GET['action'];
