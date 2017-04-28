@@ -161,7 +161,7 @@ ul#menu-horizontal li {
 }
 
 div#navbar{
-	height: 100px;
+	max-height: 200px;
 }
 
 /* Mise en forme des titres de la navigation */
@@ -467,9 +467,9 @@ input.liens, a.liens {
 	text-shadow: 0 1px 0 #fff;
 		
 	/* dimensions, margin, padding, type d'affichage, bordure */
-	width: 350px;
-	height: 40px;
-	padding: 7px;
+	width: 90%;
+	height: 30px;
+	padding: 2px;
 	display: block;
 	border: 1px solid rgba(0, 0, 0, 0.1);
 	margin: 5px auto;
