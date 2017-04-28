@@ -29,10 +29,10 @@ global $ADR_MAIL_EMETTEUR, $ADR_MAIL_ADMINISTRATEUR, $ADR_SERVICE_WEB;
 // adresse de l'émetteur lors d'un envoi de courriel
 // autres adresses fictives "delasalle.sio.emetteur@gmail.com" et "delasalle.sio.destinataire@gmail.com"
 
-$ADR_MAIL_EMETTEUR = "delasalle.sio.eleves@gmail.com";// mot de pase sio1sio2 (boite mail test)
+$ADR_MAIL_EMETTEUR = "adminpact@yopmail.com";// mot de pase sio1sio2 (boite mail test)
 
 // adresse de l'administrateur lors d'un envoi de courriel
-$ADR_MAIL_ADMINISTRATEUR = "delasalle.sio.boutin.k@gmail.com";
+$ADR_MAIL_ADMINISTRATEUR = "adminpact@yopmail.com";
 
 // ATTENTION : on ne met pas de balise de fin de script pour ne pas prendre le risque
 // d'enregistrer d'espaces après la balise de fin de script !!!!!!!!!!!!

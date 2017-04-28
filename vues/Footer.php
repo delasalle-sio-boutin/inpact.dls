@@ -35,9 +35,9 @@
     <div class="col-xs-3 col-md-3 footer-social animated fadeInDown">
        <h4>Follow Us</h4>
         <ul>
-        	<a href="https://www.facebook.com"><i class="fa fa-facebook fa-2x social-fb" id="social"></i></a>
-            <a href="https://twitter.com/"><i class="fa fa-twitter fa-2x social-tw" id="social"></i></a>
-            <a href="https://linkedin.com/"><i class="fa fa-linkedin fa-2x social-in" id="social"></i></a>
+        	<a href="https://www.facebook.com/Inpactdls/"><i class="fa fa-facebook fa-2x social-fb" id="social"></i></a>
+            <a href="https://twitter.com/DLS_SIO"><i class="fa fa-twitter fa-2x social-tw" id="social"></i></a>
+            <a href="https://github.com/delasalle-sio-boutin/inpact.dls"><i class="fa fa-github fa-2x social-in" id="social"></i></a>
         </ul>
     </div> 	
 </div>
