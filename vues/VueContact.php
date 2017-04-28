@@ -27,8 +27,8 @@
                                         <label for="form_mail">Qui voulez vous contacter ?</label>
                                         <select class=form-control id="form_mail" name="txtContact" required>
                                         	<option selected value=>Selectionnez une personne</option>    
-                                        	<option value="adminpact@yopmail.com">Administrateur du site</option>
-                                        	<option value="adminpact@yopmail.com">Professeurs</option>                               		
+                                        	<option value="admin@dlsinpact.fr">Administrateur du site</option>
+                                        	<option value="delasalle.sio.prof@gmail.com">Professeurs</option>
                                      		<?php 
                                      		if ($_SESSION['login']){
                                      			foreach ($lesProfs as $unProf){
